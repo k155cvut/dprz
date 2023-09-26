@@ -32,7 +32,7 @@
   - videa.md - seznam videí na podporu výuky
 - .gitignore - soubor ignorovaných souborů při sledování změn při verzování
 - LICENSE
-- mkdocs.yml - konfigurační soubor MkDocs Material pluginu: nízev stránky, navigace, pluginy, nastavení motivu, lokalizace, další rozšíření..
+- mkdocs.yml - konfigurační soubor MkDocs Material pluginu: název stránky, navigace, pluginy, nastavení motivu, lokalizace, další rozšíření..
 - README.md
 
 **Instalace**
