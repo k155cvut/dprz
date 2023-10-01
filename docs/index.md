@@ -23,7 +23,7 @@ Během výuky bude používán převážně open source software [**SNAP**](http
 5. Canty, M.J.: Image Analysis, Clasification and Change Detection in Remote Sensing. CRC Taylor & Francis. 2007. ISBN: 0-8493-7251-8
 
 ## Přednášky
-účast doporučená
+Účast doporučená.
 {: style="opacity:50%;margin-top:0;"}
 
 Přednášející: Prof. Dr. Ing. Karel Pavelka
