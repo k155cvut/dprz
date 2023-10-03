@@ -39,17 +39,47 @@
   <defs>
 </svg> -->
 
-# Úvod do práce v prostředí ArcGIS, prostorová data, datové zdroje
+# Úvod do DPZ, ukázka webových portálů pro prohlížení a stahování družicových dat
 
 <hr class="l1">
 
 ## Cíl cvičení
 
-Seznámení s programem ArcGIS Pro, základní orientace v prostředí programu, přidávání dat do mapy a ovládání mapy
+- Stručné seznámení s dálkovým průzkumem Země (úvodní prezentace dostupná zde: [**PDF**](https://geo.fsv.cvut.cz/vyuka/155dprz/cv1/cv1_uvod-do-DPZ.pdf))
+- Seznámení se s webovými portály poskytující družicová data
+- Stažení družicových dat pro práci v následujících cvičení
 
 <hr class="l1">
 
 ## Základní pojmy
+
+- **Pixel**: Základní obrazový prvek. Místo, kterému odpovídá jeden měřený údaj. V rastru má jasně dané souřadnice.
+- **Pásmo**: Část elektromagnetického spektra vymezená krajními vlnovými délkami. Množství pásem a jejich šířka určuje vlastnosti dat.
+
+### Druhy rozlišení u družicových dat
+
+- **Prostorové**: Udává velikost jednoho pixelu. Dělíme na nízké, střední, vysoké a velmi vysoké.
+- **Spektrální**: Počet dostupných pásem. Data můžeme dělit na panchromatická (1 pásmo), multispektrální a hyperspektrální (desítky až stovky pásem)
+- **Časové (temporální)**: Frekvence s jakou je družice schopna snímat stejné území na Zemi dvakrát po sobě.
+- **Radiometrické**: Udává hloubku pixelu, tj. jakou nejmenší změnu v intenzitě záření dokážeme rozlišit (udáváno v bitech).
+
+### Pasivní vs. aktivní senzory
+
+**Pasivní senzory** zaznamenávají záření z jiných zdrojů, než je senzor. Nejčastěji se jedná o sluneční světlo odražené od zemského povrchu či o tepelné záření, které vydává samotná Země (případně objekty na ní). Nevýhodou pasivních senzorů je, že pokud pracují na optickém principu, tak nemohou pracovat v noci a nedokážou proniknout skrz oblačnost. Oproti tomu **aktivní senzory** využívají svůj vlastní zdroj záření, které vysílají ke zkoumanému objektu (např. Země), a měří množství záření, které se odrazí zpět. Narozdíl od od pasivních senzorů dokážou aktivní senzory získávat informace jak ve dne, tak i v noci. Pokud se navíc jedná rodat, tak je možné provádět měření i přes oblačnost.
+
+### Zpracovaná vs. nezpracovaná data
+
+**Zpracovaná** data jsou taková data, u nichž byly provedeny základní radiometrické (kalibrace senzoru), geometrické (polohové) a atmosferické korekce. **Nezpracovaná** (raw) data jsou pak data bez zmíněných korekcí.
+
+### Oběžné dráhy družic
+
+Zpravidla se využívají dva druhy oběžných drah: **slunečně synchronní polární** oběžné dráhy a **geostacionární** oběžné dráhy.
+- **Geostacionární** oběžné dráhy jsou kruhové dráhy ve výšce přibližně 36 000 km nad rovníkem. Družice na těchto oběžných drahách obíhají kolem Země stejnou úhlovou rychlostí jako je rotace země, a tudíž snímají neustále to samé místo na Zemi. Mezi družice využívající tyto oběžné dráhy patří napr. meteorologické družice.
+- **Slunečně synchronní (helio-synchronní) polární** oběžné dráhy jsou přibližně kruhové dráhy ve výšce zhruba 800 km nad Zemí. Družice na těchto drahách přelétají v blízkosti pólů planety, a jak se Země otáčí, tak sledují zemský povrch povrch každý den ve stejný místní čas a za stejného slunečního oslvětlení. Na tyto dráhy se umisťují družice, které mají sledovat celý povrch planety.
+
+## Webové portály
+
+Existuje řada webových portálů nabízející prohlížení a stahování družicových dat. Tyto webové portály lze rozdělit na portály nabízející volně dostupná data a portály nabízející komerční data. Komerční data nabízejí oproti volně dostupným datům často výhodu řádově vyššího prostorového rozlišení, nicméně je potřeba si za ně zaplatit. V rámci tohoto cvičení se podíváme na webové portály s volně dostupnými daty.
 
 ### Software pro výuku
 Během většiny výuky bude používán program **ArcGIS Pro** – pokročilý desktopový geografický informační systém (GIS) vyvinutý společností **Esri**. Umožňuje uživatelům **vytvářet**, **editovat**, **analyzovat** a **vizualizovat** prostorová data v různých vrstvách, včetně **rastrových** a **vektorových** map, **ortofotomap**, **digitálního výškového modelu** a dalších datasetů.  

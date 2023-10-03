@@ -1,3 +1,8 @@
+<style>
+  .process_container {display:flex !important; justify-content:center; align-items:center; gap:calc((100vw * 0.06) - 6px) calc((100vw * 0.06) - 6px)} 
+  .process_container img {max-height:90px;}
+</style>
+
 # Charakteristika předmětu
 
 Cvičení z předmětu 155DPRZ vás seznámí ze základy dálkového průzkumu Země. 
@@ -13,6 +18,12 @@ Naučíte se:
 - používat **cloudové nástroje** pro zpracování dat DPZ
 
 Během výuky bude používán převážně open source software [**SNAP**](https://step.esa.int/main/download/snap-download/). Část cvičení bude probíhat v softwaru [**ArcGIS Pro**](https://www.arcdata.cz/cs-cz/produkty/arcgis/arcgis-pro/prehled). Na konci kurzu je pak jedno cvičení věnováno práci v cloudovém prostředí [**Google Earth Engine**](https://earthengine.google.com/).
+
+![](assets/SNAP_icon.jpg){ .off-glb style="filter:none !important;"}
+![](assets/agp_logo.png#only-light){ .off-glb style="filter:none !important;"}
+![](assets/agp_logo2.png#only-dark){ .off-glb style="filter:none !important;"}
+![](assets/earth-engine-logo.png){ .off-glb style="filter:none !important;"}
+{: .process_container}
 
 ## Doporučená literatura
 
