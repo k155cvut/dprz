@@ -77,20 +77,22 @@ Zpravidla se využívají dva druhy oběžných drah: **slunečně synchronní p
 - **Geostacionární** oběžné dráhy jsou kruhové dráhy ve výšce přibližně 36 000 km nad rovníkem. Družice na těchto oběžných drahách obíhají kolem Země stejnou úhlovou rychlostí jako je rotace země, a tudíž snímají neustále to samé místo na Zemi. Mezi družice využívající tyto oběžné dráhy patří napr. meteorologické družice.
 - **Slunečně synchronní (helio-synchronní) polární** oběžné dráhy jsou přibližně kruhové dráhy ve výšce zhruba 800 km nad Zemí. Družice na těchto drahách přelétají v blízkosti pólů planety, a jak se Země otáčí, tak sledují zemský povrch povrch každý den ve stejný místní čas a za stejného slunečního oslvětlení. Na tyto dráhy se umisťují družice, které mají sledovat celý povrch planety.
 
+### Program Copernicus
+
+Jedná se o program EU pro pozorování Země. Je koordinován a spravován Evropskou komisí. Zaměřuje se na sledování atmosféry, pevniny, moří a klimatu. Data poskytovaná programem Copernicus jsou přístupná bez poplatků. V rámci většiny cvičení budou využívána právě data z programu Copernicus.
+
+<div style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MGJss4lDaBo?si=stLxSof5nyzOw-K-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+V rámci programu Copernicus byla vypuštěna řada družic. Tyto družice spadají pod tzv. mise Sentinel. Jedná se o družice Sentinel-1, Sentinel-2, Sentinel-3, Sentinel-5 Precursor (Sentinel-5P) a Sentinel-6. Dále je plánováno vypuštění družic Sentinel-4 a Sentinel-5.
+
+[:material-open-in-new: The Sentinel missions](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/The_Sentinel_missions){ .md-button .md-button--primary .button_smaller target="_blank"}
+{: align=center style="display:flex; justify-content:center; align-items:center; column-gap:20px; row-gap:10px; flex-wrap:wrap;"}
+
 ## Webové portály
 
 Existuje řada webových portálů nabízející prohlížení a stahování družicových dat. Tyto webové portály lze rozdělit na portály nabízející volně dostupná data a portály nabízející komerční data. Komerční data nabízejí oproti volně dostupným datům často výhodu řádově vyššího prostorového rozlišení, nicméně je potřeba si za ně zaplatit. V rámci tohoto cvičení se podíváme na webové portály s volně dostupnými daty.
-
-### Software pro výuku
-Během většiny výuky bude používán program **ArcGIS Pro** – pokročilý desktopový geografický informační systém (GIS) vyvinutý společností **Esri**. Umožňuje uživatelům **vytvářet**, **editovat**, **analyzovat** a **vizualizovat** prostorová data v různých vrstvách, včetně **rastrových** a **vektorových** map, **ortofotomap**, **digitálního výškového modelu** a dalších datasetů.  
-Uživatelé mohou vytvářet a upravovat **atributy** a **geometrii** prvků, provádět pokročilé **analýzy**, vytvářet a **publikovat mapové vrstvy** a vytvářet **interaktivní mapové aplikace**. Program obsahuje také nástroje pro **vizualizaci** dat, tvorbu mapových prezentací a **sdílení výsledků** s ostatními uživateli.  
-
-![](../assets/cviceni1/agp_logo.png#only-light){ .off-glb width=200px style="filter:none !important;"}
-![](../assets/cviceni1/agp_logo2.png#only-dark){ .off-glb width=200px style="filter:none !important;"}
-{: align=center}
-
-???+ note "&nbsp;<span style="color:#448aff">Pozn.</span>"
-      Vzhledem k vysokým pořizovacím nákladům se systém ArcGIS využívá především ve velkých firmách a orgánech státní správy. V menších podnicích je rozšířenější jeho open source alternativa QGIS (tomu bude věnována pozornost v závěru kurzu).
 
 ### Prostorová (GIS) data <span style="font-size:60%;font-style:italic;vertical-align:10%;margin-left:15px;">(vektorová)</span>
 Geografický informační systém (GIS) využívá obecně jakákoliv data obsahující __prostorovou (polohovou) informaci__. Poloha může být reprezentována nejen kombinací souřadnic (_X + Y_, _šířka + délka_ aj.), ale také např. adresou (o libovolné podrobnosti). Doplňkem k polohové informaci obvykle bývá připojena jakákoliv další informace formou atributů v __atributové tabulce__.
