@@ -1,4 +1,6 @@
 <style>
+  .url-name {line-height:1.2;}                                                /* Button s URL */
+  .url-name span:first-child {font-size:.7em; font-weight:300;}               /* Button s URL – format*/
   .process_container {display:flex !important; justify-content:center; align-items:center; gap:calc((100vw * 0.06) - 6px) calc((100vw * 0.06) - 6px)} 
   .process_container img {max-height:90px;}
 </style>
@@ -24,6 +26,12 @@ Během výuky bude používán převážně open source software [**SNAP**](http
 ![](assets/agp_logo2.png#only-dark){ .off-glb style="filter:none !important;"}
 ![](assets/earth-engine-logo.png){ .off-glb style="filter:none !important;"}
 {: .process_container}
+
+## SNAP tutoriály
+
+[<span>:material-open-in-new: step.esa.int</span><br>Tutorials – STEP](https://step.esa.int/main/doc/tutorials/){ .md-button .md-button--primary .url-name target="_blank"}
+[<span>:material-open-in-new: youtube.com</span><br>ESA SNAP Tutorials](https://www.youtube.com/playlist?list=PLjD2jvOGfddcGUuN4or7J6VfAaIR5uH7u){ .md-button .md-button--primary .url-name target="_blank"}
+{: align=center style="display:flex; justify-content:center; align-items:center; column-gap:20px; row-gap:10px; flex-wrap:wrap;"}
 
 ## Doporučená literatura
 
