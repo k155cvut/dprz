@@ -27,11 +27,24 @@
   .grid:hover {transition: all .1s ease-in-out;box-shadow: 0 10px 16px rgba(0,0,0,0.2);}
 </style>
 
-# Vektorová data, atributové dotazy, prostorové dotazy
+# Seznámení se softwarem SNAP, vytvoření subsetu, barevná syntéza, tvorba spektrálních křivek
 
-<!-- ## Cíl cvičení -->
+<hr class="l1">
+
+## Cíl cvičení
+
+- Nahrání dat do **SNAP** a základní orientace v softwaru
+- Vytvoření subsetu ze stažených dat Sentinel-2
+- Tvorba RGB obrázku pomocí kombinace jednotlivých pásem
+- Analýza spektrálních vlastností různých povrchů pomocí spektrálních křivek
+
+<hr class="l1">
 
 ## Základní pojmy
+
+- **Resampling** (převzorkování)
+- **Barevná syntéza**
+- **Spektrální křivka**
 
 ### Vektorová a rastrová prostorová data
 
