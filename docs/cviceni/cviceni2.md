@@ -20,7 +20,7 @@
   .process_container {display:flex !important; justify-content:center; align-items:center; gap:calc((100vw * 0.03) - 6px) calc((100vw * 0.03) - 6px);} /* Kontejner pro content = FlexBox */
   .process_container div {display:flex;}                                                                                           /* Obsah (obrazky a sipky) */
   .process_container .process_icon {width:/*40px*/calc((100vw * 0.01) + 25px); flex-shrink:0;filter:none !important;}              /* Velikost ikony (bacha na mobily) */
-  .process_container img {max-height:150px;}                                                                                       /* Obrazky ve flexboxech maji maximalni vysku */
+  .process_container img {max-height:400px;}                                                                                       /* Obrazky ve flexboxech maji maximalni vysku */
 
   /* Grids */
   .grid {display:inline-block !important;border:.05rem solid var(--md-default-fg-color--lightest);border-radius:.1rem;padding:.8rem;transition: all .1s ease-in-out;}
@@ -42,130 +42,117 @@
 
 ## Základní pojmy
 
-- **Resampling** (převzorkování)
-- **Barevná syntéza**
-- **Spektrální křivka**
-
-### Vektorová a rastrová prostorová data
-
-<div class="process_container" style="flex-wrap:wrap;align-items:stretch;">
-  <div class="grid" style="flex:1 1 300px;">
-    <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 3v6h2.95l2 6H6v6h6v-4.59L17.41 11H22V5h-6v4.57L10.59 15H9.06l-2-6H8V3M4 5h2v2H4m14 0h2v2h-2M8 17h2v2H8Z"></path></svg></span>&nbsp;
-    <strong>Vektorová data</strong>
-    <hr style="margin:10px 0;">
-    <p>Tvořena <strong>vrcholy</strong> (Vertices) a <strong>cestami</strong> (Paths) – ty jsou určeny skutečnými souřadnicemi</p>
-    <p>Podrobnost je určena <strong>podrobností souřadnic vrcholů</strong></p>
-    <p>Vhodné pro <strong>diskrétně rozložená data</strong> (např. poloha bodů, kategorie pokrytí půdy)</p>
-    <p>Možné problémy s <strong>topologií</strong> (mezery a překryvy)</p>
-  </div>
-  <div class="grid" style="flex:1 1 300px;">
-    <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 4v4h4V4h-4m6 0v4h4V4h-4m0 6v4h4v-4h-4m0 6v4h4v-4h-4m-2 4v-4h-4v4h4m-6 0v-4H4v4h4m0-6v-4H4v4h4m0-6V4H4v4h4m2 6h4v-4h-4v4M4 2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4c-1.08 0-2-.9-2-2V4a2 2 0 0 1 2-2Z"></path></svg></span>&nbsp;
-    <strong>Rastrová data</strong>
-    <span style="font-size:60%;font-style:italic;vertical-align:10%;margin-left:15px;color:#888">součástí budoucích cvičení</span>
-    <hr style="margin:10px 0;">
-    <p>Tvořena pravidelnou mřížkou <strong>pixelů</strong> – ty jsou určeny pixelovými souřadnicemi (pořadí řádku/sloupce)</p>
-    <p>Podrobnost je určena <strong>velikostí pixelu</strong> (v metrech)</p>
-    <p>Vhodné pro jevy měnící se <strong>spojitě</strong> (např. model terénu, znečištění ovzduší) i <strong>diskrétně</strong>, dále pak <strong>obrazová data</strong> (např. satelitní)</p>
-  </div>
-</div>
-
-<!-- ## Použité datové podklady -->
-
-## Náplň cvičení
-
-### Atributové dotazy
-
-Atributový dotaz (Attribute Query) je metoda výběru/filtrace prvků na základě **hodnot jejich atributů**. Doplňuje tak metodu [interaktivního výběru prvků](/cviceni/cviceni1/#select-tool) z 1. cvičení. Základem je pravidlo pro výběr – tzv. **výraz** (Expression). ArcGIS Pro umožňuje sestavovat výrazy interaktivně pomocí dialogu, nicméně pro využití plného potenciálu výrazů je vhodné využít kód v jazyce _SQL_.
-<br><br>
-
-<style>
-  code.AGPF {border:2px solid var(--md-primary-fg-color);padding:.1em .4em !important;/*transition: all .1s ease-in-out !important; display:inline-block !important;*/}
-  code.AGPF .twemoji {vertical-align:-10% !important;}
-  /* code.AGPF:hover {transform: scale(0.96);} */
-</style>
-
-**Atributový dotaz** (nad daty v mapě): <code class="AGPF">:material-tab: Map</code> → <code class="AGPF">:material-button-cursor: Select By Attributes</code> → vyplnit údaje do dialogu nástroje...
-[:material-open-in-new: Select features using attributes](https://pro.arcgis.com/en/pro-app/latest/help/mapping/navigation/select-features-using-attributes.htm){ .md-button .md-button--primary .button_smaller target="\_blank"}
-
-![](../assets/cviceni1/img_33.png)
-![](../assets/cviceni1/arrow.svg){: .off-glb .process_icon}
-![](../assets/cviceni1/img_34.png)
-![](../assets/cviceni1/arrow.svg){: .off-glb .process_icon}
-![](../assets/cviceni1/img_35.png)
-{: .process_container}
-
-<figcaption>Do pole <code>Input Rows</code> je automaticky předvyplněna vrstva vybraná v obsahu mapy </figcaption>
-
-Pomocí přepínátka ![](../assets/cviceni1/img_36.png){: .off-glb style="vertical-align: -20%;margin:0px 5px;"} lze měnit zápis mezi interaktivním dialogovým zadáním a výrazem v jazyce SQL.
-
-[:material-open-in-new: Introduction to query expressions](https://pro.arcgis.com/en/pro-app/latest/help/mapping/navigation/write-a-query-in-the-query-builder.htm){ .md-button .md-button--primary .button_smaller target="\_blank"}
-[:material-open-in-new: Construct and modify queries](https://pro.arcgis.com/en/pro-app/latest/help/mapping/navigation/construct-and-modify-queries.htm){ .md-button .md-button--primary .button_smaller target="\_blank"}
-{: align=center style="display:flex; justify-content:center; align-items:center; column-gap:20px; row-gap:10px; flex-wrap:wrap;"}
-
-<style>
-  details.page_color_admonition summary:first-child::before {background-color:var(--md-primary-fg-color) !important;}
-  /* details.page_color_admonition summary:first-child         {color:#009485 !important;} */
-  details.page_color_admonition summary:first-child::after  {color:var(--md-primary-fg-color) !important;}
-  details.page_color_admonition {border-color: var(--md-primary-fg-color) !important;margin:50px 0px;}
-  details.page_color_admonition summary {background-color: #0094851a !important;}
-</style>
-<details class="example page_color_admonition">
-  <summary>Příklad k vyzkoušení<div style="display:inline-block; border-left: 1px solid var(--md-admonition-fg-color); height:.9rem;vertical-align:-20%;margin:0px 20px"></div><span style="font-weight:normal;">testování atributových dotazů na skutečných datech</span></summary>
-  <iframe style="filter:none !important;margin-top:.6rem;" width="100%" height="500" frameborder="0" allowfullscreen src="https://experience.arcgis.com/experience/cbee738914f543748264319797ea0711/?draft=true&org=CTUPrague"></iframe>
-  <hr class="l1" style="margin-bottom:0px !important;">
-  <div style="margin-top:10px;margin-left:10px;font-weight:bold;font-size:larger;">Schéma atributů vrstvy:</div>
-  
-  <style>
-    #small_table_padding :is(th,td) {padding:5px 10px;}
-    .md-typeset__table {width:100%;}
-    .md-typeset__scrollwrap {margin-top:5px !important;}
-    tbody {width:100%;display:table;}
-  </style>
-  <table id="small_table_padding">
-    <tr>
-      <th>atribut</th>
-      <th>datový typ</th>
-      <th>popis</th>
-    </tr>
-    <tr>
-      <td>stop_name</td>
-      <td><code>string</code></td>
-      <td>Název zastávky</td>
-    </tr>
-    <tr>
-      <td>routes_nam</td>
-      <td><code>string</code></td>
-      <td>Označení linek, které obsluhují zastávku, ve formátu <code>-cislolinky-,-cislolinky-</code> řazeno vzestupně</td>
-    </tr>
-    <tr>
-      <td>route_type</td>
-      <td><code>integer</code></td>
-      <td>ID druhu dopravy, které obsluhují zastávku, <br><code>0=tramvaj</code>, <code>1=metro</code>, <code>2=vlak</code>, <code>3=autobus</code>, <code>4=přívoz</code>, <code>7=lanovka</code>, <code>8=tramvaj i autobus</code></td>
-    </tr>
-    <tr>
-      <td>on_request</td>
-      <td><code>integer</code></td>
-      <td>Zastávka na znamení <code>0=není na znamení</code>, <code>1=je na znamení</code></td>
-    </tr>
-    <tr>
-      <td>platf_len</td>
-      <td><code>float</code></td>
-      <td>Délka nástupiště (metry)</td>
-    </tr>
-  </table>
-</details>
+- **Resampling** (převzorkování): Změna prostorového rozlišení rastrovách dat (změna velikosti pixelu).
+- **Barevná syntéza**: Kombinace tří různých pásem pro vytvoření RGB snímku. Výsledkem může být snímek v přirozených či falešných barvách.
+- **Spektrální křivka**: Závislost mezi odrazivostí a vlnovou délkou pro daný objekt či povrch. Tvar těchto křivek bývá pro daný objekt typický.
 
 <hr class="l1">
 
-### Prostorové dotazy
+## Práce v softwaru SNAP
 
-Prostorový dotaz (Spatial Query) je metoda výběru/filtrace prvků jedné vrstvy na základě vzájemné polohy s prvky druhé vrstvy.
+### Nahrání dat do SNAP
 
-[:material-open-in-new: Select features by location](https://pro.arcgis.com/en/pro-app/latest/help/mapping/navigation/select-features-by-location.htm){ .md-button .md-button--primary .button_smaller target="\_blank"}
-[:material-open-in-new: Select Layer By Location (Data Management)](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/select-layer-by-location.htm){ .md-button .md-button--primary .button_smaller target="\_blank"}
-[:material-open-in-new: Select By Location graphic examples](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/select-by-location-graphical-examples.htm){ .md-button .md-button--primary .button_smaller target="\_blank"}
-{: align=center style="display:flex; justify-content:center; align-items:center; column-gap:20px; row-gap:10px; flex-wrap:wrap;"}
+Stažená data Sentinel-2 otevřeme pomocí ***File*** → ***Open Product...***, případně kliknutím na ikonu ***Open Product***. Data lze též otevřít jejich přetažením přímo do SNAP, nikoliv však do mapového okna, ale do ***Product Explorer***, který se nachází v levé horní části prostředí SNAP.
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+![](../assets/cviceni2/01_open_product.png){ style="width:80%;"}
+![](../assets/cviceni2/02_open_product_icon.png){ style="width:80%;"}
+{: .process_container}
 
-<!-- ## Zadání domácího úkolu k semestrální práci -->
+Data Sentinel-2 pro práci ve SNAP nemusíme rozbalovat a otevřeme tak přímo stažený **ZIP** soubor.
+
+![](../assets/cviceni2/03_open_product_window.png){ style="width:80%;"}
+{: style="margin-bottom:0px;" align=center }
+
+V levé části prostředí SNAP v ***Product Explorer*** se poté objeví náš produkt. Ten si rozbalíme, v části ***Bands*** si vybereme jakékoliv pásmo a dvojklikem ho zobrazíme v mapovém okně.
+
+![](../assets/cviceni2/04_map_window.png)
+{: style="margin-bottom:0px;" align=center }
+
+???+ note "&nbsp;<span style="color:#448aff">Pozn.</span>"
+      Open source software SNAP má občas tendence nedělat zrovna to, co se po něm chce (hlášení podivných chybových zpráv, nereagování na uživatelské vstupy, atd.). V takovém případě doporučujeme celý SNAP zavřít (případně nejdřív uložit provedené změny) a znovu spustit, což ve většině případů problém vyřeší.
+
+### Základní orientace ve SNAP
+
+V levé dolní části prostředí SNAP se nachází čtyři záložky, z nichž tři jsou pro nás zajímavé. Jedná se o ***Navigation***, ***Colour Manipulation*** a ***World View***. V ***Navigation*** se zobrazuje celá scéna nahraná do aktuálního mapového okna. Při zoomování v mapovém okně se zde rovněž zobrazuje aktuální poloha daného výřezu na zobrazené scéně, se kterým můžeme pomocí levého tlačítky myši i pohybovat. Velmi užitečné jsou zde i ikony pro synchronizaci mapových oken a kurzoru v případě prohlížení více pásem najednou. ***Colour Manipulation*** slouží pro barevnou úpravu zobrazení produktů v mapovém okně. Záložka ***World View*** pak ukazuje, kde přesně se daná scéna nachází na Zemi.
+
+![](../assets/cviceni2/05_navigation.png)
+![](../assets/cviceni2/06_colour_manipulation.png)
+![](../assets/cviceni2/07_world_view.png)
+{: .process_container}
+
+V levé horní části vedle záložky ***Product Explorer*** se nachází záložka ***Pixel Info***. Ta se hodí v případě, že chceme znát informaci o konkrétním pixelu, na kterém se zrovna nachází náš kurzor.
+
+![](../assets/cviceni2/08_pixel_info.png){ style="width:45%;"}
+{: style="margin-bottom:0px;" align=center }
+
+Do mapového okna lze přidat více než jedno pásmo. Dvojklikem na jednotlivá pásma si je tam postupně můžeme přidávat a následně mezi nimi překlikávat. Pokud si je chceme zobrazit souběžně vedle sebe (například pro porovnání), lze využít jedné z funkcí: ***Tile Horizontally***, ***Tile Vertically*** či ***Tile Evenly***.
+
+![](../assets/cviceni2/10_tilling_icons.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni2/09_tilling.png)
+{: .process_container}
+<figcaption>Zobrazení různých pásem s rozdílným prostorovým rozlišením vedle sebe.</figcaption>
+
+### Vytvoření RGB snímku
+
+Pro snadnější orientaci je místo prohlížení jednotlivých scén, které jsou v odstínech šedi (pokud si je neobarvíme jinak), vhodné vytvořit pomocí barevné syntézy RGB snímek. To lze udělat kliknutím pravým tlačítkem myši na product v ***Product Explorer*** a následným kliknutím na ***Open RGB Image Window***. V nově otevřeném okně poté nastavíme kombinaci pásem, pomocí kterých bude definována barevná syntéza.
+
+![](../assets/cviceni2/11_open_RGB.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni2/12_rgb_window.png)
+{: .process_container}
+
+V případě dat Sentinel-2 je zde již přednastavena kombinace pásem **B4 - B3 - B2**, což odpovídá právě kombinaci červeného, zeleného a modrého pásma, díky čemuž vznikne obraz v přírodních barvách, ve kterých bychom dané území viděli i my pouhým okem. Je ale možné používat i jiné předdefinované kombinace či vytvářet své vlastní. Musí být ale dodržena podmínka, že kombinovat lze pásma pouze se stejným prostorovým rozlišením. V opačném případě nám SNAP zahlásí chybovou hlášku poukazující právě na tento fakt. Zvolenou barevnou syntézu potvrdíme kliknutím na tlačítko ***OK***, čímž se nám vzniklý RGB snímek přidá do mapového okna.
+
+![](../assets/cviceni2/13_rgb_airplane.png){ style="width:80%;"}
+{: style="margin-bottom:0px;" align=center }
+
+Pokud máte "štěstí", můžete na své scéně najít podobný úkaz jako na obrázku výše. Nejedná se o chybu senzoru, ale o zachycené letadlo prolétávající v době snímání pod družicí. O štěstí lze ale mluvit opravdu jen v uvozovkách, protože nám to zanáší do dat nechtěný šum.
+
+### Tvorba subsetu
+
+V rámci cvičení není praktické především z výpočetních důvodů pracovat s celou scénou Sentinel-2, která má rozměry 110 km × 110 km. Proto si vytvoříme subset o rozměrech zhruba 30 km × 30 km. Subset lze vytvořit kliknutím v menu na ***Raster*** → ***Subset...***.
+
+![](../assets/cviceni2/14_subset_menu.png){ style="width:40%;"}
+{: style="margin-bottom:0px;" align=center }
+
+Takto by se ale složitě odhadoval subset o konkrétních rozměrech, které by se musely dopočítávat ze souřadnic, což by bylo poměrně pracné. Doporučujeme proto následující postup.
+
+Nejprve si upravíme mapové okno do zhruba čtvercového tvaru a zazoomujeme do naší oblasti zájmu.
+
+![](../assets/cviceni2/15_square_map_window.png)
+{: style="margin-bottom:0px;" align=center }
+
+Poté pomocí funkce ***Determines the distance between two points*** změříme přibližně velikost mapového okna. Měření se provede kliknutím na jedno místo a následně dvojklikem na místo druhé.
+
+![](../assets/cviceni2/16_measure_distance_tool.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni2/17_distance.png)
+{: .process_container}
+
+Pokud vzdálenost odpovídá zhruba 30 km, přepneme kurzor na ***Selection tool***, a poté klikneme pravým tlačítkem myši do mapového okna a zvolíme možnost ***Spatial Subset from View...***. 
+
+![](../assets/cviceni2/17b_selection_tool.png){ style="width:70%;"}
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni2/18_subset_from_view.png){ style="width:70%;"}
+{: .process_container}
+
+Otevře se nám nové okno, ve kterém můžeme pozměnit parametry subsetu. V záložce ***Spatial Subset*** můžeme vše ponechat tak, jak je. Pokud ale chceme subset o rozměrech přesbě 30 km × 30 km, můžeme upravit hodnoty **Scene start X**, **Scene start Y** a **Scene end X**, **Scene end Y** tak, aby výsledné hodnoty **Subset scene width** a **Subset scene height** byly rovny 500. To ale platí pouze v případě, že je jako referenční pásmo použito pásmo o prostorovém rozlišení 60 m (např. B1). Důvod je ten, že 500 × 60 m = 30 000 m. Pokud by bylo použito jako referenční pásmo pásmo o prostorovém rozlišení 20 m či 10 m, je potřeba hodnoty **Subset scene width** a **Subset scene height** náležitě upravit. V záložce ***Band Subset*** mohu zvolit, jaká všechna pásma budou součástí subsetu. I zde ponecháme všechno tak, jak je (tj. ponecháme zaškrtnuto ***Select all***).
+
+![](../assets/cviceni2/19_spatial_subset.png)
+![](../assets/cviceni2/20_band_subset.png)
+{: .process_container}
+
+Po stisknutí tlačítka ***OK*** se v ***Product Explorer*** objeví nově vzniklý subset.
+
+![](../assets/cviceni2/21_new_product.png){ style="width:50%;"}
+{: style="margin-bottom:0px;" align=center }
+
+Nově vytvořený produkt můžeme poté uložit na disk. To lze udělat kliknutím pravým tlačítkem myši na daný produkt a zvolit možnost ***Save Product*** či ***Save Product As...***. SNAP nás poté informuje, že produkt bude uložen do formátu **BEAM-DIMAP**, což je nativní formát softwaru SNAP, a zeptá se nás, jestli chceme pokračovat v konverzi produktu. Dotaz potvrdíme tlačítkem ***Yes***, zvolíme místo, kam chceme produkt uložit a dáme ***Save***, čímž se na disku vytvoří **DIM** soubor s naším subsetem.
+
+![](../assets/cviceni2/22_save_product.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni2/23_save_product_window.png)
+{: .process_container}
+
+### Resampling
