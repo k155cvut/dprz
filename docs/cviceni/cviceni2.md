@@ -192,3 +192,42 @@ Když se nyní podíváme znovu do ***Open RGB Image Window***, uvidíme, že m�
 <hr class="l1">
 
 ## Úkol - Tvorba spektrálních křivek
+
+### Zadání
+
+- Vytvořit graf se spektrálními křivkami různých povrchů nacházejících se na vytvořeném subsetu scény ze Sentinel-2.
+- Okomentovat, jak se různé povrchy v jednotlivých pásmech chovají (kde dochází k vysoké odrazivosti, kde je naopak záření pohlcováno, atd.)
+
+### Postup
+
+Spektrální křivky ve SNAP zobrazíme pomocí nástroje ***Optical*** → ***Spectrum View***. Poté, pokud najedeme kurzorem na jakoukoliv scénu v mapovém okně, se nám začne zobrazovat spektrální křivka napříč všemi pásmy pro aktuální pozici kurzoru. Můžeme tak pozorovat, jak se křivka mění při pohybu kurzorem mezi různými typy povrchů.
+
+![](../assets/cviceni2/29_spectrum_view_menu.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni2/30_spectrum_view.png)
+{: .process_container}
+
+Cílem je ale zobrazit spektrální křivky pro více povrchů současně. K tomu použijeme nástroje ***View*** → ***Tool Windows*** → ***Pin Manager*** a ***Pin placing tool***. Jak napovídají oba názvy, pomocí ***Pin placing tool*** budeme vkládat piny do mapového okna, a pomocí ***Pin Manager*** je budeme zpravovat.
+
+![](../assets/cviceni2/31_pin_manager_menu.png){ style="width:80%;"}
+![](../assets/cviceni2/32_pin_placing_tool.png){ style="width:80%;"}
+{: .process_container}
+
+Pomocí ***Pin placing tool*** tedy naklikáme piny pro různé povrchy (nejlépe nad RGB snímkem) a v ***Pin Manager*** je pojmenujeme a přiřadíme barvy.
+
+![](../assets/cviceni2/33a_pin.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni2/33b_pin_manager.png)
+{: .process_container}
+
+Po naklikání všech pinů znovu otevřeme ***Spectrum View*** a pomocí ikony ***Show spectra for all pins*** si zobrazíme spektrální křivky pro všechny naklikané piny.
+
+![](../assets/cviceni2/34_spectrum_view_pins.png){ style="width:70%;"}
+{: style="margin-bottom:0px;" align=center }
+
+My si ale vytvoříme graf samostatně, a to tím, že si jednotlivá spektra vyexpertujeme do **CSV**. To se učíní ve ***Spectrum View*** pomocí ikony ***Export spectra to text file***. Tento soubor pak načteme například do *Excel* (případně *MATLAB* či *Python*) a vytvoříme graf se všemi náležitostmi (popisky os, legenda, atd.). Výsledný graf poté okomentujeme.
+
+![](../assets/cviceni2/35_export_spectra.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni2/36_graph.png)
+{: .process_container}
