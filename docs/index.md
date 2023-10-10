@@ -1,4 +1,7 @@
 <style>
+  .md-button {text-align:center;transition: all .1s ease-in-out !important;}  /* Button – zarovnani textu */
+  .md-button:hover {transform: scale(1.04);opacity:.8;background-color:var(--md-primary-fg-color) !important;border-color:var(--md-primary-fg-color) !important;color:var(--md-primary-bg-color) !important;/*filter: brightness(80%);*/}            /* Button Hover – animace zvetseni a zmeny barvy */
+  .md-button:focus {opacity:.8;background-color:var(--md-primary-fg-color) !important;border-color:var(--md-primary-fg-color) !important;color:var(--md-primary-bg-color) !important;}                                                                /* Button Focus – stejny vzhled jako hover */
   .url-name {line-height:1.2;}                                                /* Button s URL */
   .url-name span:first-child {font-size:.7em; font-weight:300;}               /* Button s URL – format*/
   .process_container {display:flex !important; justify-content:center; align-items:center; gap:calc((100vw * 0.06) - 6px) calc((100vw * 0.06) - 6px)} 

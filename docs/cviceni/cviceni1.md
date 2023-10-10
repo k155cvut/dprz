@@ -5,6 +5,9 @@
   img,iframe {filter:drop-shadow(0 10px 16px rgba(0,0,0,0.2)) drop-shadow(0 6px 20px rgba(0,0,0,0.2)) !important; object-fit:contain;} /* Stin pod obrazky a videi */
 
   /* TLACITKA */
+  .md-button {text-align:center;transition: all .1s ease-in-out !important;}  /* Button – zarovnani textu */
+  .md-button:hover {transform: scale(1.04);opacity:.8;background-color:var(--md-primary-fg-color) !important;border-color:var(--md-primary-fg-color) !important;color:var(--md-primary-bg-color) !important;/*filter: brightness(80%);*/}            /* Button Hover – animace zvetseni a zmeny barvy */
+  .md-button:focus {opacity:.8;background-color:var(--md-primary-fg-color) !important;border-color:var(--md-primary-fg-color) !important;color:var(--md-primary-bg-color) !important;}                                                                /* Button Focus – stejny vzhled jako hover */
   .url-name {line-height:1.2;/*padding-top:5px !important;*/}                 /* Button s URL */
   .url-name span:first-child {font-size:.7em; font-weight:300;}               /* Button s URL – format*/
   .url-name span.twemoji {vertical-align:-0px;}                               /* Button s URL – zarovnani ikony*/
