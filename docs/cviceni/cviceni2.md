@@ -20,7 +20,7 @@
   .process_container {display:flex !important; justify-content:center; align-items:center; gap:calc((100vw * 0.03) - 6px) calc((100vw * 0.03) - 6px);} /* Kontejner pro content = FlexBox */
   .process_container div {display:flex;}                                                                                           /* Obsah (obrazky a sipky) */
   .process_container .process_icon {width:/*40px*/calc((100vw * 0.01) + 25px); flex-shrink:0;filter:none !important;}              /* Velikost ikony (bacha na mobily) */
-  .process_container img {max-height:400px;}                                                                                       /* Obrazky ve flexboxech maji maximalni vysku */
+  .process_container img {max-height:600px;}                                                                                       /* Obrazky ve flexboxech maji maximalni vysku */
 
   /* Grids */
   .grid {display:inline-block !important;border:.05rem solid var(--md-default-fg-color--lightest);border-radius:.1rem;padding:.8rem;transition: all .1s ease-in-out;}
@@ -45,6 +45,16 @@
 - **Resampling** (převzorkování): Změna prostorového rozlišení rastrovách dat (změna velikosti pixelu).
 - **Barevná syntéza**: Kombinace tří různých pásem pro vytvoření RGB snímku. Výsledkem může být snímek v přirozených či falešných barvách.
 - **Spektrální křivka**: Závislost mezi odrazivostí a vlnovou délkou pro daný objekt či povrch. Tvar těchto křivek bývá pro daný objekt typický.
+
+<hr class="l1">
+
+## Pásma Sentinel-2
+
+Data Sentinel-2 obasahují celkem 12 (v případě L2A produktů) resp. 13 (v případě L1C produktů) pásem. Při práci s těmito daty je dobré znát, kterým vlnovým délkám jednotlivá pásma odpovídají (tj. v jaké části spektra se nacházejí) a jaké mají jednotlivá pásma prostorové rozlišení. Tyto informace přehledně znázorňuje následující obrázek.
+
+![](../assets/cviceni2/00_Sentinel2_Spectral_Bands.jpg)
+{: style="margin-bottom:0px;" align=center }
+<figcaption>Přehled jednotlivých pásem Sentinel-2</figcaption>
 
 <hr class="l1">
 
@@ -156,3 +166,29 @@ Nově vytvořený produkt můžeme poté uložit na disk. To lze udělat kliknut
 {: .process_container}
 
 ### Resampling
+
+Při práci se Sentinel-2 daty můžeme narazit na problém při kombinování pásem s různým prostorovým rozlišením (jako např. při barevné syntéze). Aby se tomuto předešlo, je potřeba data převzorkovat na stejné prostorové rozlišení pro všechna pásma. Toho lze docílit pomocí ***Raster*** → ***Geometric*** → ***Resampling***.
+
+![](../assets/cviceni2/24_resampling_menu.png){ style="width:40%;"}
+{: style="margin-bottom:0px;" align=center }
+
+V záložce ***I/O Parameters*** zvolíme produkt, který chceme převzorkovat, zadáme název převzorkovaného produktu a případně zaškrtneme, zda chceme produkt uložit na disk. V ***Resampling Parameters*** poté zvolíme referenční pásmo, podle kterého bude převzorkování provedeno. Zvolíme tedy jedno z pásem s prostorovým rozlišením 10 m (tj. B2, B3, B4 nebo B8). Zbytek necháme tak, jak je, a klikneme na ***Run***.
+
+![](../assets/cviceni2/25_resampling_io.png)
+![](../assets/cviceni2/26_resampling_parameters.png)
+{: .process_container}
+
+???+ note "&nbsp;<span style="color:#448aff">Pozn.</span>"
+      Pokud jsme zaškrtli, že chceme produkt rovnou zapsat na disk, může celá operace trvat o trochu déle v závislosti na velikosti dat a výkonu počítače.
+
+![](../assets/cviceni2/27_resampling_finished.png){ style="width:40%;"}
+{: style="margin-bottom:0px;" align=center }
+
+Když se nyní podíváme znovu do ***Open RGB Image Window***, uvidíme, že máme na výběr mnohem více předdefinovaných kombinací pásem.
+
+![](../assets/cviceni2/28_more_rgb_combinations.png){ style="width:40%;"}
+{: style="margin-bottom:0px;" align=center }
+
+<hr class="l1">
+
+## Úkol - Tvorba spektrálních křivek
