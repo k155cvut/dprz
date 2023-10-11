@@ -1,4 +1,4 @@
-# Prostorové funkce (geoprocessing), spatial join
+# Vegetační (spektrální) indexy
 
 ## Cíl cvičení
 

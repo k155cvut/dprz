@@ -218,7 +218,7 @@ Po naklikání všech pinů znovu otevřeme ***Spectrum View*** a pomocí ikony 
 ![](../assets/cviceni2/34_spectrum_view_pins.png){ style="width:70%;"}
 {: style="margin-bottom:0px;" align=center }
 
-My si ale vytvoříme graf samostatně, a to tím, že si jednotlivá spektra vyexpertujeme do **CSV**. To se učíní ve ***Spectrum View*** pomocí ikony ***Export spectra to text file***. Tento soubor pak načteme například do *Excel* (případně *MATLAB* či *Python*) a vytvoříme graf se všemi náležitostmi (popisky os, legenda, atd.). Výsledný graf poté okomentujeme.
+My si ale vytvoříme graf samostatně, a to tím, že si jednotlivá spektra vyexportujeme do **CSV**. To se učíní ve ***Spectrum View*** pomocí ikony ***Export spectra to text file***. Tento soubor pak načteme například do *Excel* (případně *MATLAB* či *Python*) a vytvoříme graf se všemi náležitostmi (popisky os, legenda, atd.). Výsledný graf poté okomentujeme.
 
 ![](../assets/cviceni2/35_export_spectra.png)
 ![](../assets/arrow.svg){: .off-glb .process_icon}
