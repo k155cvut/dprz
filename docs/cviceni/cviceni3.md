@@ -42,7 +42,7 @@
 
 <hr class="l1">
 
-## Počítání spektrálních indexů ve SNAP
+## Počítání spektrálních indexů
 
 Spektrálních indexů existuje celá řada. Příklady indexů můžeme nalézt např. <a href="https://www.indexdatabase.de/db/i.php" target="_blank"> **zde**</a> nebo <a href="https://custom-scripts.sentinel-hub.com/custom-scripts/sentinel/sentinel-2/" target="_blank"> **zde**</a>. V rámci tohoto cvičení se podíváme na následující indexy:
 
@@ -107,3 +107,15 @@ Vypočtené pásmo se nám přidá do mapového okna a také do *Bands*. Pokud j
 ![](../assets/arrow.svg){: .off-glb .process_icon}
 ![](../assets/cviceni3/08_ndmi.png)
 {: .process_container}
+
+V tomto případě červená barva znázorňuje místa s nízkou hodnotou NDMI, a tudíž místa s žádnou či velmi nízkou úrovní vlhkosti ve vegetaci, a naopak modrá místa znázorňují místa s větším obsahem vlkosti. Při porovnání s RGB snímkem tak můžeme vidět, že červeně znázorněná místa odpovídají holé půde a zástavbě a modrá místa především zemědělským plodinám.
+
+![](../assets/cviceni3/09_ndmi_rgb.png)
+{: style="margin-bottom:0px;" align=center }
+<figcaption>Porovnání NDMI s RGB syntézou v přírodních barvách</figcaption>
+
+<hr class="l1">
+
+## Maskování
+
+Příklad maskování si ukážeme na dalším indexu, který si spočítáme. Cílem bude zamaskovat místa porostlá vegetací. K tomu je ideální použít index [:material-open-in-new: NDVI](https://eos.com/make-an-analysis/ndvi/){ .md-button .md-button--primary .button_smaller .external_link_icon target="_blank"} neboli *Normalized Difference Vegetation Index*, který slouží právě k detekci vegetace a ke zkoumání jejího stavu. Vzoreček pro výpočet je následující: *NDVI = (B8 - B4)/(B8 + B4)*, a postup výpočtu je stejný, jako tomu bylo u *NDMI*.
