@@ -28,7 +28,7 @@
 
 - Stručné seznámení s dálkovým průzkumem Země (úvodní prezentace dostupná zde: <a href="https://geo.fsv.cvut.cz/vyuka/155dprz/cv1/cv1_uvod-do-DPZ.pdf" target="_blank"> **PDF**</a>)
 - Seznámení se s webovými portály poskytující družicová data
-- Stažení družicových dat pro práci v následujících cvičení
+- Stažení družicových dat pro práci v následujících cvičeních
 
 <hr class="l1">
 
