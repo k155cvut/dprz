@@ -100,3 +100,10 @@ Vypočtené pásmo se nám přidá do mapového okna a také do *Bands*. Pokud j
 ![](../assets/arrow.svg){: .off-glb .process_icon}
 ![](../assets/cviceni3/06_convert_band.png){ style="width:80%;"}
 {: .process_container}
+
+[:material-open-in-new: NDMI](https://eos.com/make-an-analysis/ndmi/){ .md-button .md-button--primary .button_smaller .external_link_icon target="_blank"} neboli *Normalized Difference Moisture Index* popisuje úroveň vlhkosti ve vegetaci a slouží tedy jako indikátor vodního stresu vegetace. Nabývá hodnot od -1 do 1. Čím vyšší hodnota, tím vyšší úroveň vlhkosti ve vegetaci. Pro lepší názornost přiřadíme pásmu s indexem NDMI některou z nabízených barevných palet ve SNAP. Palety najdeme v záložce ***Colour Manipulation*** → ***Palette***, kde si nějakou vybereme (např. *gradient_red_white_blue*).
+
+![](../assets/cviceni3/07_palette.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni3/08_ndmi.png)
+{: .process_container}
