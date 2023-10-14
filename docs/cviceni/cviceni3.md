@@ -118,4 +118,64 @@ V tomto případě červená barva znázorňuje místa s nízkou hodnotou NDMI, 
 
 ## Maskování
 
-Příklad maskování si ukážeme na dalším indexu, který si spočítáme. Cílem bude zamaskovat místa porostlá vegetací. K tomu je ideální použít index [:material-open-in-new: NDVI](https://eos.com/make-an-analysis/ndvi/){ .md-button .md-button--primary .button_smaller .external_link_icon target="_blank"} neboli *Normalized Difference Vegetation Index*, který slouží právě k detekci vegetace a ke zkoumání jejího stavu. Vzoreček pro výpočet je následující: *NDVI = (B8 - B4)/(B8 + B4)*, a postup výpočtu je stejný, jako tomu bylo u *NDMI*.
+Příklad maskování si ukážeme na dalším indexu, který si spočítáme. Cílem bude zamaskovat místa porostlá vegetací. K tomu je ideální použít index [:material-open-in-new: NDVI](https://eos.com/make-an-analysis/ndvi/){ .md-button .md-button--primary .button_smaller .external_link_icon target="_blank"} neboli *Normalized Difference Vegetation Index*, který slouží právě k detekci vegetace a ke zkoumání jejího stavu. Vzoreček pro výpočet je následující: *NDVI = (B8 - B4)/(B8 + B4)*, a postup výpočtu je stejný, jako tomu bylo u *NDMI*. K vytvoření masky použijeme nástroj ***Mask Manager*** nacházející se v právě části prostředí SNAP. Pokud tam tento nástroj nevidíme, lze jej spustit z menu ***View*** → ***Tool Windows*** → ***Mask Manager***. V našem případě se zde již nachází některé předpočítané masky, které byly součástí produktu Sentinel-2.
+
+![](../assets/cviceni3/10_mask_manager.png)
+![](../assets/cviceni3/11_mask_manager_menu.png)
+{: .process_container}
+
+V ***Mask Manager*** jsou tři možnosti, jak masky tvořit. Jsou jimi: ***Creates a new mask based on a logical band maths expression***, ***Creates a new mask based on a value range*** a ***Creates a new mask based on a new geometry container (lines and polygons)***. Vytvořené mask je pak možné dále kombinovat pomocí logických operátorů. My nyní použijeme druhou možnost a vytvoříme masku pomocí rozsahu hodnot. Nejprve je ale potřeba znát, co hodnoty NDVI představují. To zhruba znázorňuje následující tabulka.
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Povrch</strong></th>
+      <th><strong>Rozsah hodnot</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Vodní plocha</strong></td>
+      <td>(-1; 0)</td>
+    </tr>
+    <tr>
+      <td><strong>Zástavba a holá půda</strong></td>
+      <td>(0; 0.2)</td>
+    </tr>
+    <tr>
+      <td><strong>Řídká vegetace</strong></td>
+      <td>(0.2; 0.3)</td>
+    </tr>
+    <tr>
+      <td><strong>Středně hustá vegetace</strong></td>
+      <td>(0.3; 0.5)</td>
+    </tr>
+    <tr>
+      <td><strong>Hustá vegetace</strong></td>
+      <td>(0.5; 1)</td>
+    </tr>
+  </tbody>
+</table>
+
+Hovořit se ale rovněž dá i o zdravé a nezdravé vegataci. Chlorofyl totiž pohlcuje červené záření a buněčná struktura rostlin naopak odráží záření infračervené, což ve výsledku způsobuje vysoké honoty NDVI. Když ale není vegetace v dobrém stavu a chlorofylu ubývá, dochází k vyššímu odrazu červeného záření, což se projevuje nižšími hodnotami NDVI.
+
+Řekněme tedy, že chceme vytvořit masku s hustou a středně hustou vegetací. V ***Mask Manager*** zvolíme možnost ***Creates a new mask based on a value range*** a zadáme požadovaný rozsah hodnot NDVI.
+
+![](../assets/cviceni3/12_mask_value_range.png){ style="width:80%;"}
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni3/13_vegetation_mask.png){ style="width:80%;"}
+{: .process_container}
+
+V ***Mask Manager*** se nám poté objeví nová maska, kterou si můžeme pojmenovat či jí změnit barvu.
+
+![](../assets/cviceni3/14_new_mask.png){ style="width:50%;"}
+{: style="margin-bottom:0px;" align=center }
+
+Následně si masku zobrazíme přes nějaké pásmo (ideálně přes RGB kompozit) a přesvědčíme se, zda opravdu maskuje to, co jsme chtěli.
+
+![](../assets/cviceni3/15_show_mask.png)
+{: style="margin-bottom:0px;" align=center }
+
+<hr class="l1">
+
+## Úkol - Tvorba NDVI mapy a detekce vodní ploch
