@@ -179,3 +179,76 @@ Následně si masku zobrazíme přes nějaké pásmo (ideálně přes RGB kompoz
 <hr class="l1">
 
 ## Úkol - Tvorba NDVI mapy a detekce vodní ploch
+
+### Zadání
+
+- Vytvořit NDVI mapu s diskrétními barvami pro různé druhy povrchů detekovatelných pomocí NDVI, popsat co jaká barva znázorňuje
+- Detekovat vodní plochy pomocí vybraných indexů
+- Zhodnotit který z indexů detekoval vodní plochy nejlépe, aniž by docházelo i k zázadnímu detekování zástavby
+- Zjistit celkovou detekovanou plochu vody pro jednotlivé indexy
+
+### Postup
+
+První část úkolu je snadná. NDVI již máme spočítané, takže jen stačí přidělit jednotlivým hodnotám NDVI barvy dle tabulky výše. Zobrazíme si tedy pásmo NDVI a přejdeme do ***Colour Manipulation***. Zvolíme možnost ***Sliders*** a klikneme na ***More Options***, kde zaškrtneme checkbox ***Discrete colours***.
+
+![](../assets/cviceni3/16_discrete_colors.png){ style="width:40%;"}
+{: style="margin-bottom:0px;" align=center }
+
+Slidery poté upravíme dle našich potřeb. Kliknutím na hodnotu slider můžeme tuto hodnotu měnit. Kliknutím na samotný slider můžeme měnit barvu daného slideru (při zaškrtnutém *Discrete colours* bude vybraná barva platit pro hodnoty od daného slideru až po slider následující). Kliknutím pravým talčítkem myši můžeme slidery buď přidávan nebo odstraňovat. Není potřeba zadávat slider pro nejvyšší možnou hodnotu. Stačí mít slider pro počáteční hodnotu posledního intervalu.
+
+![](../assets/cviceni3/17_left_slider.png)
+![](../assets/cviceni3/18_add_new_slider.png)
+![](../assets/cviceni3/19_final_sliders.png)
+{: .process_container}
+
+Výsledná mapa pak může vypadat nějak takto:
+
+![](../assets/cviceni3/20_ndvi_map.png){ style="width:60%;"}
+{: style="margin-bottom:0px;" align=center }
+
+Druhá část není o nic složitější. Pro detekci vody použijeme následující indexy: NDVI, NDWI a AWEI<sub>sh</sub>. Jen je potřeba znát, které hodnoty zhruba odpovídají vodní hladině. Tuto informaci shrnuje následující tabulka.
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Index</strong></th>
+      <th><strong>Hodnoty pro vodní plochu</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>NDVI</strong></td>
+      <td>(-1; 0)</td>
+    </tr>
+    <tr>
+      <td><strong>NDWI</strong></td>
+      <td>(0; 1)</td>
+    </tr>
+    <tr>
+      <td><strong>AWEI<sub>sh</sub></strong></td>
+      <td>> 0</td>
+    </tr>
+  </tbody>
+</table>
+
+Postup pro NDVI a NDWI je stejný jako při maskování vegetace. U AWEI<sub>sh</sub> je postup také identický. Jen při tvorbě samotné masky použijeme místo ***Creates a new mask based on a value range*** funkci ***Creates a new mask based on a logical band maths expression***.
+
+![](../assets/cviceni3/21_Logical_Expression.png){ style="width:50%;"}
+{: style="margin-bottom:0px;" align=center }
+
+Výsledky detekce vodních ploch poté porovnáme. Hodnoty indexů definující vodní plochy můžeme rovněž trochu upravovat, dokud není dosaženo optimálních výsledků. Nejhůře pro detekci vody by měl vyjít index NDVI (na obrázku níže vlevo), který pro tento účel není primárně určen.
+
+![](../assets/cviceni3/22_ndvi_water.png)
+![](../assets/cviceni3/23_ndwi_water.png)
+![](../assets/cviceni3/24_awei_water.png)
+{: .process_container}
+
+Celkovou plochu, které naše masky pokrývají, zjistíme pomocí ***Analysis*** → ***Statistics***.
+
+![](../assets/cviceni3/25_statistics_menu.png)
+{: style="margin-bottom:0px;" align=center }
+
+Po otevření nového okna je nejprve nutno znovu kliknout do mapového okna, aby nástroj věděl, odkud se bude statistika počítat. V právě části poté zaškrtneme možnost ***Use ROI mask(s):*** a zvolíme konkrétní masku. Následně klikneme v dvě modré šipky v pravé horní části, čímž se statistika spočítá. V lévé části pak najdeme hodnotu ***#Pixels total***, která v tomto případě udává počet pixelů pokrytých maskou.
+
+![](../assets/cviceni3/26_statistics.png)
+{: style="margin-bottom:0px;" align=center }
