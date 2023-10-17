@@ -245,7 +245,7 @@ Výsledky detekce vodních ploch poté porovnáme. Hodnoty indexů definující 
 
 Celkovou plochu, které naše masky pokrývají, zjistíme pomocí ***Analysis*** → ***Statistics***.
 
-![](../assets/cviceni3/25_statistics_menu.png)
+![](../assets/cviceni3/25_statistics_menu.png){ style="width:30%;"}
 {: style="margin-bottom:0px;" align=center }
 
 Po otevření nového okna je nejprve nutno znovu kliknout do mapového okna, aby nástroj věděl, odkud se bude statistika počítat. V právě části poté zaškrtneme možnost ***Use ROI mask(s):*** a zvolíme konkrétní masku. Následně klikneme v dvě modré šipky v pravé horní části, čímž se statistika spočítá. V lévé části pak najdeme hodnotu ***#Pixels total***, která v tomto případě udává počet pixelů pokrytých maskou.
