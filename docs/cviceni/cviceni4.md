@@ -20,7 +20,7 @@
   .process_container {display:flex !important; justify-content:center; align-items:center; column-gap:calc((100vw * 0.03) - 6px);} /* Kontejner pro content = FlexBox */
   .process_container div {display:flex;}                                                                                           /* Obsah (obrazky a sipky) */
   .process_container .process_icon {width:/*40px*/calc((100vw * 0.01) + 25px); flex-shrink:0;filter:none !important;}              /* Velikost ikony (bacha na mobily) */
-  .process_container img {max-height:600px;}                                                                                       /* Obrazky ve flexboxech maji maximalni vysku */
+  .process_container img {max-height:600px; display:flex;}                                                                                       /* Obrazky ve flexboxech maji maximalni vysku */
 </style>
 
 # Filtrace obrazu
@@ -36,6 +36,29 @@
 
 ## Základní pojmy
 
-Aplikace prostorových filtrů na obrazová data se řadí mezi metody zvýraznění obrazu. S jinými metodami zvýraznění obrazu jsme se setkali již v minulých cvičeních.
+Aplikace prostorových filtrů na obrazová data se řadí mezi metody zvýraznění obrazu. S jinými metodami zvýraznění obrazu jsme se setkali již v minulých cvičeních. Příkladem byla úprava (roztažení) histogramu v *Colour Manipulation*, či vytváření barevných syntéz a počítání spektrálních indexů. Metody zvýraznění obrazu můžeme tedy rozdělit do následujících skupin:
+
+- **Bodové** (radiometrické) zvýraznění - manipulace s odstíny šedi, prahování, hustotní řezy
+- **Prostorové** zvýraznění - prostorové **filtrace**, Fourierovy transformace
+- **Spektrální** zvýraznění - sestavování barevných syntéz, barevná zvýraznění více pásem (analýza hlavních komponent, aritmetické kombinace, IHS
+transformace)
+
+### Prostorová frekvence
+
+Popisuje množství změn v hodnotách pixelů pro dané území v závislosti na vzdálenosti. Nízká prostorová frekvence znamená, že jsou si hodnoty v rastru podobné. Naopak pokud se hodnoty v rastru výrazně liší, mluvíme o vysoké prostorové frekvenci.
+
+![](../assets/cviceni4/01_low_spatial_frequency.png)
+![](../assets/cviceni4/02_high_spatial_frequency.png)
+{: .process_container}
+<figcaption>Nízká prostorová frekvence (vlevo) a vysoká prostorová frekvence (vpravo)</figcaption>
+
+### Konvoluce
+
+- Jedná se o proces, kde je pro výpočet nových hodnot pixelů využito pohyblivé okno (kernel) s předem definovanými hodnotami váh. Toto pohyblivé okno se postupně pohybuje po celém rastru.
+- Pohyblivé okno je zpravidla čtvercového tvaru a má nejčastěji rozměry 3×3, 5×5 nebo 7×7 (je potřeba mít lichý počet sloupců a řádků, protože se počítá hodnota prostředního pixelu).
+- Nové hodnoty rastru se počítají pomocí tzv. konvolučního vzorce, což ale není nic jiného, než vážený průměr hodnot pixelů v pohyblivém okně.
+
+![](../assets/cviceni4/03_convolution.png){ style="width:50%;"}
+{: style="margin-bottom:0px;" align=center }
 
 <hr class="l1">
