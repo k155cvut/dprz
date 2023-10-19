@@ -55,10 +55,42 @@ Popisuje množství změn v hodnotách pixelů pro dané území v závislosti n
 ### Konvoluce
 
 - Jedná se o proces, kde je pro výpočet nových hodnot pixelů využito pohyblivé okno (kernel) s předem definovanými hodnotami váh. Toto pohyblivé okno se postupně pohybuje po celém rastru.
-- Pohyblivé okno je zpravidla čtvercového tvaru a má nejčastěji rozměry 3×3, 5×5 nebo 7×7 (je potřeba mít lichý počet sloupců a řádků, protože se počítá hodnota prostředního pixelu).
-- Nové hodnoty rastru se počítají pomocí tzv. konvolučního vzorce, což ale není nic jiného, než vážený průměr hodnot pixelů v pohyblivém okně.
+- Pohyblivé okno je zpravidla čtvercového tvaru a má většinou rozměry 3×3, 5×5 nebo 7×7 (je potřeba mít lichý počet sloupců a řádků, protože se počítá hodnota prostředního pixelu).
+- Nové hodnoty rastru se počítají nejčastěji pomocí tzv. konvolučního vzorce, což ale není nic jiného, než vážený průměr hodnot pixelů v pohyblivém okně.
 
 ![](../assets/cviceni4/03_convolution.png){ style="width:50%;"}
 {: style="margin-bottom:0px;" align=center }
 
+### Dělení filtrů
+
+Prostorové filtry můžeme dělit dvěma způsoby. První způsob dělení je podle druhu informace, kterou dané filtry propouští, a druhou metodou je pak způsob, jakým jsou nové hodnoty rastru určovány.
+
+**Dělení podle propustnosti informací**
+
+- **Vysokofrekvenční** (high-pass) filtry - propouštějí vysokofrekvenční informaci a zesilují tedy rozdíly mezi hodnotami v obraze. Dochází tak ke zvýraznění obrazu. Využívají se například pro detekci hran.
+- **Nízkofrekvenční** (low-pass) filtry - propouštějí pouze nízkofrekvenční informaci a potlačují tak rozdíly mezi hodnotami v obraze. Dochází k vyhlazení obrazu. Slouží například k redukci šumu.
+
+**Dělení podle způsobu výpočtu nových hodnot**
+
+- **Lineární** filtry - nová hodnota daného pixelu je vypočtena jako lineární kombinace hodnot v jeho okolí (v pohyblivém okně). Je použito konvolučního vzorce.
+- **Nelineární** filtry - nová hodnota daného pixelu není lineární kombinací okolních hodnot. Příkladem může být např. mediánový filtr, či filtry přiřazující danému pixelu maximální případně minimální hodnotu z okolí.
+
+### Využití filtrů a shrnutí
+
+Filtry mají v DPZ řadu využití. Příklady mohou být následující:
+
+- Vylepšení, zvýraznění obrazu
+- Analýzu či automatické zpracování
+- Odstranění šumu
+- Vyhlazení klasifikačních výsledků
+
+Princip prostorových filtrů názorně shrnují následující videa:
+
+<div class="process_container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5_V_iJmtwwg?si=VStQYNNZ062CIMoQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PDLSvWuhDwI?si=SDYJPBYJWyWw5TCW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 <hr class="l1">
+
+## Ukázka použití filtrů ve SNAP
