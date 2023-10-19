@@ -20,7 +20,7 @@
   .process_container {display:flex !important; justify-content:center; align-items:center; column-gap:calc((100vw * 0.03) - 6px);} /* Kontejner pro content = FlexBox */
   .process_container div {display:flex;}                                                                                           /* Obsah (obrazky a sipky) */
   .process_container .process_icon {width:/*40px*/calc((100vw * 0.01) + 25px); flex-shrink:0;filter:none !important;}              /* Velikost ikony (bacha na mobily) */
-  .process_container img {max-height:600px; display:flex;}                                                                                       /* Obrazky ve flexboxech maji maximalni vysku */
+  .process_container img {max-height:600px; display:flex;}                                    /* Obrazky ve flexboxech maji maximalni vysku */
 </style>
 
 # Filtrace obrazu
@@ -55,7 +55,7 @@ Popisuje množství změn v hodnotách pixelů pro dané území v závislosti n
 ### Konvoluce
 
 - Jedná se o proces, kde je pro výpočet nových hodnot pixelů využito pohyblivé okno (kernel) s předem definovanými hodnotami váh. Toto pohyblivé okno se postupně pohybuje po celém rastru.
-- Pohyblivé okno je zpravidla čtvercového tvaru a má většinou rozměry 3×3, 5×5 nebo 7×7 (je potřeba mít lichý počet sloupců a řádků, protože se počítá hodnota prostředního pixelu).
+- Pohyblivé okno je zpravidla čtvercového tvaru a má většinou rozměry 3×3, 5×5 nebo 7×7 pixelů (je potřeba mít lichý počet sloupců a řádků, protože se počítá hodnota prostředního pixelu, nicméně nemusí to být pravidlem).
 - Nové hodnoty rastru se počítají nejčastěji pomocí tzv. konvolučního vzorce, což ale není nic jiného, než vážený průměr hodnot pixelů v pohyblivém okně.
 
 ![](../assets/cviceni4/03_convolution.png){ style="width:50%;"}
@@ -73,7 +73,7 @@ Prostorové filtry můžeme dělit dvěma způsoby. První způsob dělení je p
 **Dělení podle způsobu výpočtu nových hodnot**
 
 - **Lineární** filtry - nová hodnota daného pixelu je vypočtena jako lineární kombinace hodnot v jeho okolí (v pohyblivém okně). Je použito konvolučního vzorce.
-- **Nelineární** filtry - nová hodnota daného pixelu není lineární kombinací okolních hodnot. Příkladem může být např. mediánový filtr, či filtry přiřazující danému pixelu maximální případně minimální hodnotu z okolí.
+- **Nelineární** filtry - nová hodnota daného pixelu není lineární kombinací okolních hodnot a k výpočtu tedy není použita konvoluce. Příkladem může být např. mediánový filtr, či filtry přiřazující danému pixelu maximální případně minimální hodnotu z okolí.
 
 ### Využití filtrů a shrnutí
 
@@ -94,3 +94,51 @@ Princip prostorových filtrů názorně shrnují následující videa:
 <hr class="l1">
 
 ## Ukázka použití filtrů ve SNAP
+
+Ve SNAP máme dvě možnosti, jak se dostat v prostorovým filtrům. Buď můžeme kliknout pravým tlačítkem myši na některé pásmo v *Product Explorer* a následně zvolit možnost ***Filtered Band...*** nebo můžeme přes menu ***Raster*** → ***Filtered Band...*** Pokud k prostorovým filtrům přistupujeme druhým způsobem, je potřeba mít označeno pásmo buď v *Product Explorer* nebo v mapovém okně.
+
+![](../assets/cviceni4/04_filtered_band.png){ style="width:80%;"}
+![](../assets/cviceni4/05_filtered_band_menu.png){ style="width:80%;"}
+{: .process_container}
+
+V nově otevřeném okně si pak můžeme vybrat jeden z nabízených filtrů nebo si vytvořit svůj vlastní. Dále můžeme volit počet iterací nebo se podívat na kernel jednotlivých filtrů.
+
+![](../assets/cviceni4/06_Create_Filtered_Band.png){ style="width:70%;"}
+![](../assets/cviceni4/07_kernel.png){ style="width:70%;"}
+{: .process_container}
+<figcaption>Vpravo ukázka kernelu vysokofrekvenčního filtru</figcaption>
+
+Po aplikování filtru se nám filtrovaný obraz přidá do mapového okna.
+
+![](../assets/cviceni4/08_filter_examples.png)
+{: style="margin-bottom:0px;" align=center }
+<figcaption>Ukázky filtrů. Vlevo nahoře - původní pásmo B8, vpravo nahoře - High-Pass filtr, vlevo dole - Low-Pass filtr, vpravo dole - Standard Deviation filtr</figcaption>
+
+<hr class="l1">
+
+## Úkol - Aplikace vybraných filtrů
+
+- Použít na jedno z původních desetimetrových pásem (tj. B2, B3, B4 nebo B8) čtyři různé filtry (alespoň jeden nízkofrekvenční a jeden vysokofrekvenční). Popsat co se děje s obrazem pro následující oblasti:
+    - Vodní plocha a břehové oblasti
+    - Město / zástavba
+    - Lesní plocha
+- Ke každému popisu přidat obrázek jako důkaz
+- V závěru zhodnoťte, které filtry jsou výhodné pro zvýraznění změn mezi jednotlivými plochami a které potlačí různorodosti v rámci ploch stejného typu.
+
+### Nízkofrekvenční filtry
+
+- Průměrový (Mean)
+- Mediánový
+- Low-Pass
+- Min/Max
+- Morphological
+
+### Vysokofrekvenční filtry
+
+- Line (edge) detection
+- Laplace
+- High-Pass
+- Emboss
+- Standard Deviation
+
+Vysokofrekvenční filtr lze získat i tak, když od původního pásma odečteme pásmo s aplikovaným nízkofrekvenčním filtrem.
