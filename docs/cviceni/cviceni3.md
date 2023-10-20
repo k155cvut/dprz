@@ -80,8 +80,8 @@ Spektrálních indexů existuje celá řada. Příklady indexů můžeme nalézt
 
 Pokud chceme spektrální indexy počítat ve SNAP, využijeme nástroj ***Band Maths...***, který nalezneme buď kliknutím pravým tlačítkem na vybraný produkt v ***Product Explorer***, nebo přes menu ***Raster*** → ***Band Maths...***
 
-![](../assets/cviceni3/01_band_maths.png){ style="width:80%;"}
-![](../assets/cviceni3/02_band_maths_menu.png){ style="width:80%;"}
+![](../assets/cviceni3/01_band_maths.png){ style="width:432px;"}
+![](../assets/cviceni3/02_band_maths_menu.png){ style="width:298px;"}
 {: .process_container}
 
 ???+ note "&nbsp;<span style="color:#448aff">Pozn.</span>"
@@ -96,9 +96,9 @@ V nově otevřeném okně poté zadáme název nově vytvořeného pásma (v na�
 
 Vypočtené pásmo se nám přidá do mapového okna a také do *Bands*. Pokud jsme v předchozím kroku nechali zaškrtnuto *Virtual (save expression only, don't store data)*, zobrazuje se u ikony pásma písmeno *V* značící, že pásmo je pouze virtuální. Pokud bychom ho chtěli zapsat na disk, klikneme na pásmo pravým talčítkem myši a dáme ***Convert Band***.
 
-![](../assets/cviceni3/05_new_band.png){ style="width:80%;"}
+![](../assets/cviceni3/05_new_band.png){ style="width:163px;"}
 ![](../assets/arrow.svg){: .off-glb .process_icon}
-![](../assets/cviceni3/06_convert_band.png){ style="width:80%;"}
+![](../assets/cviceni3/06_convert_band.png){ style="width:309px;"}
 {: .process_container}
 
 [:material-open-in-new: NDMI](https://eos.com/make-an-analysis/ndmi/){ .md-button .md-button--primary .button_smaller .external_link_icon target="_blank"} neboli *Normalized Difference Moisture Index* popisuje úroveň vlhkosti ve vegetaci a slouží tedy jako indikátor vodního stresu vegetace. Nabývá hodnot od -1 do 1. Čím vyšší hodnota, tím vyšší úroveň vlhkosti ve vegetaci. Pro lepší názornost přiřadíme pásmu s indexem NDMI některou z nabízených barevných palet ve SNAP. Palety najdeme v záložce ***Colour Manipulation*** → ***Palette***, kde si nějakou vybereme (např. *gradient_red_white_blue*).
@@ -161,9 +161,9 @@ Hovořit se ale rovněž dá i o zdravé a nezdravé vegataci. Chlorofyl totiž 
 
 Řekněme tedy, že chceme vytvořit masku s hustou a středně hustou vegetací. V ***Mask Manager*** zvolíme možnost ***Creates a new mask based on a value range*** a zadáme požadovaný rozsah hodnot NDVI.
 
-![](../assets/cviceni3/12_mask_value_range.png){ style="width:80%;"}
+![](../assets/cviceni3/12_mask_value_range.png){ style="width:244px;"}
 ![](../assets/arrow.svg){: .off-glb .process_icon}
-![](../assets/cviceni3/13_vegetation_mask.png){ style="width:80%;"}
+![](../assets/cviceni3/13_vegetation_mask.png){ style="width:343px;"}
 {: .process_container}
 
 V ***Mask Manager*** se nám poté objeví nová maska, kterou si můžeme pojmenovat či jí změnit barvu.

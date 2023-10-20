@@ -48,8 +48,8 @@ Data Sentinel-2 obasahují celkem 12 (v případě L2A produktů) resp. 13 (v p�
 
 Stažená data Sentinel-2 otevřeme pomocí ***File*** → ***Open Product...***, případně kliknutím na ikonu ***Open Product***. Data lze též otevřít jejich přetažením přímo do SNAP, nikoliv však do mapového okna, ale do ***Product Explorer***, který se nachází v levé horní části prostředí SNAP.
 
-![](../assets/cviceni2/01_open_product.png){ style="width:80%;"}
-![](../assets/cviceni2/02_open_product_icon.png){ style="width:80%;"}
+![](../assets/cviceni2/01_open_product.png){ style="width:261px;"}
+![](../assets/cviceni2/02_open_product_icon.png){ style="width:220px;"}
 {: .process_container}
 
 Data Sentinel-2 pro práci ve SNAP nemusíme rozbalovat a otevřeme tak přímo stažený **ZIP** soubor.
@@ -126,9 +126,9 @@ Poté pomocí funkce ***Determines the distance between two points*** změříme
 
 Pokud vzdálenost odpovídá zhruba 30 km, přepneme kurzor na ***Selection tool***, a poté klikneme pravým tlačítkem myši do mapového okna a zvolíme možnost ***Spatial Subset from View...***. 
 
-![](../assets/cviceni2/17b_selection_tool.png){ style="width:70%;"}
+![](../assets/cviceni2/17b_selection_tool.png){ style="width:91px;"}
 ![](../assets/arrow.svg){: .off-glb .process_icon}
-![](../assets/cviceni2/18_subset_from_view.png){ style="width:70%;"}
+![](../assets/cviceni2/18_subset_from_view.png){ style="width:282px;"}
 {: .process_container}
 
 Otevře se nám nové okno, ve kterém můžeme pozměnit parametry subsetu. V záložce ***Spatial Subset*** můžeme vše ponechat tak, jak je. Pokud ale chceme subset o rozměrech přesbě 30 km × 30 km, můžeme upravit hodnoty **Scene start X**, **Scene start Y** a **Scene end X**, **Scene end Y** tak, aby výsledné hodnoty **Subset scene width** a **Subset scene height** byly rovny 500. To ale platí pouze v případě, že je jako referenční pásmo použito pásmo o prostorovém rozlišení 60 m (např. B1). Důvod je ten, že 500 × 60 m = 30 000 m. Pokud by bylo použito jako referenční pásmo pásmo o prostorovém rozlišení 20 m či 10 m, je potřeba hodnoty **Subset scene width** a **Subset scene height** náležitě upravit. V záložce ***Band Subset*** mohu zvolit, jaká všechna pásma budou součástí subsetu. I zde ponecháme všechno tak, jak je (tj. ponecháme zaškrtnuto ***Select all***).
@@ -193,8 +193,8 @@ Spektrální křivky ve SNAP zobrazíme pomocí nástroje ***Optical*** → ***S
 
 Cílem je ale zobrazit spektrální křivky pro více povrchů současně. K tomu použijeme nástroje ***View*** → ***Tool Windows*** → ***Pin Manager*** a ***Pin placing tool***. Jak napovídají oba názvy, pomocí ***Pin placing tool*** budeme vkládat piny do mapového okna, a pomocí ***Pin Manager*** je budeme zpravovat.
 
-![](../assets/cviceni2/31_pin_manager_menu.png){ style="width:80%;"}
-![](../assets/cviceni2/32_pin_placing_tool.png){ style="width:80%;"}
+![](../assets/cviceni2/31_pin_manager_menu.png){ style="width:599px;"}
+![](../assets/cviceni2/32_pin_placing_tool.png){ style="width:220px;"}
 {: .process_container}
 
 Pomocí ***Pin placing tool*** tedy naklikáme piny pro různé povrchy (nejlépe nad RGB snímkem) a v ***Pin Manager*** je pojmenujeme a přiřadíme barvy.

@@ -97,14 +97,14 @@ Princip prostorových filtrů názorně shrnují následující videa:
 
 Ve SNAP máme dvě možnosti, jak se dostat v prostorovým filtrům. Buď můžeme kliknout pravým tlačítkem myši na některé pásmo v *Product Explorer* a následně zvolit možnost ***Filtered Band...*** nebo můžeme přes menu ***Raster*** → ***Filtered Band...*** Pokud k prostorovým filtrům přistupujeme druhým způsobem, je potřeba mít označeno pásmo buď v *Product Explorer* nebo v mapovém okně.
 
-![](../assets/cviceni4/04_filtered_band.png){ style="width:80%;"}
-![](../assets/cviceni4/05_filtered_band_menu.png){ style="width:80%;"}
+![](../assets/cviceni4/04_filtered_band.png){ style="height:400px;"}
+![](../assets/cviceni4/05_filtered_band_menu.png){ style="height:413px;"}
 {: .process_container}
 
 V nově otevřeném okně si pak můžeme vybrat jeden z nabízených filtrů nebo si vytvořit svůj vlastní. Dále můžeme volit počet iterací nebo se podívat na kernel jednotlivých filtrů.
 
-![](../assets/cviceni4/06_Create_Filtered_Band.png){ style="width:70%;"}
-![](../assets/cviceni4/07_kernel.png){ style="width:70%;"}
+![](../assets/cviceni4/06_Create_Filtered_Band.png){ style="height:450px;"}
+![](../assets/cviceni4/07_kernel.png){ style="height:450px;"}
 {: .process_container}
 <figcaption>Vpravo ukázka kernelu vysokofrekvenčního filtru</figcaption>
 
