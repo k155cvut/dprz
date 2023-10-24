@@ -23,13 +23,28 @@
   .process_container img {max-height:600px; display:flex;}                                    /* Obrazky ve flexboxech maji maximalni vysku */
 </style>
 
-# Neřízená a řízená klasifikace
+# Neřízená klasifikace
 
 <hr class="l1">
 
 ## Cíl cvičení
 
-- Naučit se klasifikovat optická družicová data s cílem vytvořit vrstvu pokrytí území (land cover)
+- Naučit se klasifikovat optická družicová data pomocí neřízené klasifikace s cílem vytvořit vrstvu pokrytí území (land cover)
 - Porozumět rozdílu mezi neřízenou a řízenou klasifikací
 
 <hr class="l1">
+
+## Základní pojmy
+
+### Klasifikace obecně
+
+- Klasifikaci lze obecně definovat jako seskupování vzájemně si podobných prvků do určitých skupin (tříd, kategorií).
+- V dálkovém průzkumu Země klasifikace představuje proces, při kterém se jednotlivé pixely originálního numerického záznamu zařazují do tříd, a vzniká tak klasifikovaný snímek. Originální obrazový záznam se tak stává tematickou mapou (nejčastěji mapa land cover).
+- Přiřazování pixelů do tříd probíhá na základě tzv. **příznaků** (u optických dat mluvíme o spektrálních příznacích, tj. hodnoty spektrální odrazivosti různých povrchů).
+- Příznaky tvoří tzv. **příznakový prostor**, který je definován všemi pásmy, v nichž lze naměřit nebo vypočíst určitou charakteristiku.
+
+![](../assets/cviceni5/01_schema.png){ style="width:80%;"}
+{: style="margin-bottom:0px;" align=center }
+<figcaption>Zjednodušené schéma klasifikace, kdy se z multispektrálních dat tvoří tematická mapa</figcaption>
+
+### Dělení klasifikace
