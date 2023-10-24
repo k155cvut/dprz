@@ -31,6 +31,7 @@
 
 - Naučit se klasifikovat optická družicová data pomocí neřízené klasifikace s cílem vytvořit vrstvu pokrytí území (land cover)
 - Porozumět rozdílu mezi neřízenou a řízenou klasifikací
+- Pochopit princip neřízené klasifikace
 
 <hr class="l1">
 
@@ -48,3 +49,37 @@
 <figcaption>Zjednodušené schéma klasifikace, kdy se z multispektrálních dat tvoří tematická mapa</figcaption>
 
 ### Dělení klasifikace
+
+Klasifikaci obrazových dat můžeme dělit dvěma způsoby. První způsob klasifikaci dělí podle toho, kdy do ní my jakožto operátor vstupujeme. Mluvíme poté o následujících typech klasifikací:
+
+- **Neřízená** klasifikace - Na začátku zadáváme pouze počet tříd, které chceme klasifikovat. Co ale dané třídy ve skutečnosti představují, musíme určit až dodatečně po samotné klasifikaci.
+- **Řízená** klasifikace - Na začátku určujeme konkrétní třídy, které chceme klasifikovat. Klasifikátoru zároveň poskytujeme trénovací množiny, na kterých se klasifikátor jednotlivé třídy "učí".
+- **Hybridní** klasifikace - Kombinuje dohromady neřízenou a řízenou klasifikaci.
+
+Druhým způsobem je dělení klasifikace podle toho, zda do tříd přiřazujeme jednotlivé pixely nebo skupiny pixelů. Mluvíme pak o následujících typech klasifikací:
+
+- **Pixelová** (per-pixel) klasifikace - Ke konkrétní třídě jsou postupně přiřazovány jednotlivé pixely.
+- **Objektová** klasifikace - Do konkrétních tříd nejsou přiřazovány jednotlivé pixely, ale skupiny pixelů.
+
+### Princip neřízené klasifikace
+
+Většina algoritmů neřízené klasifikace je založena na **shlukové analýze**. Ta iterativním způsobem slučuje pixely do shluků se stejnými či podobnými spektrálními vlastnostmi. Základním předpokladem tedy je, že pixely, které patří do jedné třídy, jsou ve vícerozměrném prostoru přirozeně blízko sebe a naopak pixely odlišných skupin, které představují povrchy lišící se svým spektrálním chováním, jsou dobře separované. Vytvořené shluky se nazívají **spektrální třídy**. Tyto spektrální třídy ale nemají požadovanou informační hodnotu a teprve jejich interpretací a postupným spojováním vzikají **třídy informační**.
+
+V rámci tohoto cvičení si ve SNAP vyzkoušíme neřízenou klasifikaci pomocí metody **K-Means Cluster Analysis**. Ta po uživateli přes spuštěním požaduje pouze zadání konkrétního počtu shluků a počet iterací. Postup výpočtu lze pak shrnout do následujících kroků:
+
+1. Definování počtu výsledných shluků a určení počtu iterací
+2. Určení počáteční polohy centroidu pro každý shluk (pokud není poloha explicitně zadána, jsou centroidy rozmístěny rovnoměrně po diagonále příznakového prostoru)
+3. Postupné přiřazení všech pixelů k tomu shluku, k němuž mají v příznakovém prostoru nejblíže
+4. Výpočet nové polohy centroidu pro každý shluk na základě nově přiřazených pixelů
+5. Opakování kroků 3. a 4. dokud nenastane jedna z následujících momžností:
+    1. Bylo dosaženo jednoho z **kritérií konvergence**, tj. poloha centroidů či počet pixelů zařazených do jednotlivých shluků se již výrazně nemění
+    2. Bylo dosaženo maximálního počtu iterací zadaného uživatelem
+
+![](../assets/cviceni5/02_shlukovani.png){ style="width:80%;"}
+{: style="margin-bottom:0px;" align=center }
+<figcaption>Princip iteračního postupu shlukování</figcaption>
+
+Následně pak uživatel již samostatně provádí následující dva kroky, které jsou stejné pro všechny metody neřízené klasifikace.
+
+1. Přiřazení konkrétního významu každému tzv. stabilnímu shluku (spektrální třídě)
+2. Vytvoření informačních tříd spojováním tříd spektrálních
