@@ -93,7 +93,7 @@ Neřízenou klasifikaci ve SNAP najdeme v menu **Raster** → **Classification**
 ![](../assets/cviceni5/03_unsup_classification_menu.png){ style="width:70%;"}
 {: style="margin-bottom:0px;" align=center }
 
-Otevře se nám nové okno, kde nejprve v záložce **I/O Parameters** zvolíme ***Source Product***, což bude náš převzorkovaný subset (do výpočtu musí vstupovat pásma se stejným prostorovým rozlišením), a dále pak název nového produktu, zda ho chceme uložit atd. V záložce **Processing Parameters** poté nastavíme parametry algoritmu, jimiž jsou počet spektrálních tříd (***Number of clusters***) a počet iterací (***Number of iterations***). Parametr ***Random seed*** můžeme nechat tak, jak je. Ten pouze náhodně generuje počáteční shluky. V ***Source band names*** nakonec vybereme jednotlivá pásma, která budou do klasifikace vstupovat. Pokud bychom chtěli klasifikaci provést jen na určité části území, můžeme použit ***ROI-mask*** k vybrání konkrétní masky.
+Otevře se nám nové okno, kde nejprve v záložce **I/O Parameters** zvolíme ***Source Product***, což bude náš převzorkovaný subset (do výpočtu musí vstupovat pásma se stejným prostorovým rozlišením), a dále pak název nového produktu, zda ho chceme uložit atd. V záložce **Processing Parameters** poté nastavíme parametry algoritmu, jimiž jsou počet spektrálních tříd (***Number of clusters***) a počet iterací (***Number of iterations***). Parametr ***Random seed*** můžeme nechat tak, jak je. Ten pouze náhodně generuje počáteční shluky. V ***Source band names*** nakonec vybereme jednotlivá pásma, která budou do klasifikace vstupovat (můžeme použít např. i jednotlivé spektrální indexy, pokud je máme v produktu uloženy). Pokud bychom chtěli klasifikaci provést jen na určité části území, můžeme použit ***ROI-mask*** k vybrání konkrétní masky.
 
 ![](../assets/cviceni5/04_kmeans_io.png){ style="height:392px;"}
 ![](../assets/cviceni5/05_kmeans_processing.png){ style="height:392px;"}
@@ -115,3 +115,59 @@ Po dokončení výpočtu se do *Product Explorer* přidá nový produkt, kde v *
 <hr class="l1">
 
 ## Vliv počátečních parametrů na výsledek
+
+Vcelku rozumná úvaha by byla nastavit *Number of clusters* na počet tříd, které na scéně doopravdy vidíme. Těmi mohou být například *Zástavba*, *Holá půda*, *Zemědělské oblasti*, *Les* a *Vodní plocha* (tříd je reálně samozřejmě víc, nicméně např. třídu *Traviny* jen těžko rozeznáme na datech Sentinel-2 od třídy *Zemědělské oblasti*). Zkusme tedy začít s těmito parametry:
+
+**První pokus**
+
+- **Number of clusters** = 5
+- **Number of iterations** = 1
+
+**Druhý pokus**
+
+- **Number of clusters** = 5
+- **Number of iterations** = 30
+
+![](../assets/cviceni5/09_kmeans_5classes.png)
+{: style="margin-bottom:0px;" align=center }
+<figcaption>Vlevo - RGB scéna, uprostřed - 5 tříd a 1 iterace, vpravo - 5 tříd a 30 iterací</figcaption>
+
+Z výsledků je patrné, že při pěti třídách a jedné iteraci nedochází k dobré separabilitě tříd. V tomto případě jedna třída pokrývá jak vodní plochu, tak i holou půdu a les. Při třiceti iteracích je pak už vidět, že se jednotlivé třídy od sebe oddělily již mnohem lépe, a názorně to tak ilustruje princip fungování algoritmu *K-Means*. Nicméně výsledek není ani tak optimální. Došlo sice k separování jednotlivých tříd, ale ne těch, u kterých bychom to chtěli. Vodní plocha, holá půda a z část i zástavba v tomto případě stále spadají pod jednu spektrální třídu a je tedy potřeba zvýšit počet klastrů. Můžeme takto vyzkoušet například 10, 15 či 20 tříd, případně i navyšovat počet iterací.
+
+![](../assets/cviceni5/10_kmeans_10classes.png)
+{: style="margin-bottom:0px;" align=center }
+<figcaption>Vlevo - RGB scéna, uprostřed - 10 tříd a 30 iterací, vpravo - 10 tříd a 50 iterací</figcaption>
+
+Zvýšením počtu tříd na 10 již výsledky vypadají nadějněji. Tentokrát se již holá půda z větší části odseparovala od vody, a se zvýšením počtu iterací na 50 došlo i k poměrně dobrému separování vody od zástavby (byť ne kompletně).
+
+![](../assets/cviceni5/11_kmeans_15classes.png)
+{: style="margin-bottom:0px;" align=center }
+<figcaption>Vlevo - RGB scéna, uprostřed - 15 tříd a 30 iterací, vpravo - 15 tříd a 50 iterací</figcaption>
+
+U patnácti tříd vypadají výsledky zas o něco lépe, byť alespoň na této části scény dochází stále k míchání zástavby a holé půdy jak při 30 iterací, tak při 50 iterací. Zároveň ale s přibývajícím počtem tříd začíná být klasifikovaný snímek čím dál méně přehledný a je potřeba při posuzování výsledku být více pečlivější.
+
+<hr class="l1">
+
+## Úkol - Neřízená klasifikace
+
+- Provést neřízenou klasifikaci na svém území
+- Seskupit spektrální třídy do informačních tříd (mít pokud možno správně klasifikovanou vodu, zemědělské oblasti, les, holou půdu a zástavbu)
+- Zhodnotit výsledek (jakou jste použili klasifikaci, jaké jste nastavili parametry, kolik je ve výsledku tříd, s čím a proč byly problémy atd.)
+
+### Postup
+
+Neřízenou klasifikaci ve SNAP jsme si ukazovali již výše. SNAP bohužel neumožňuje nějaké jednoduché seskupování tříd v rastru, nicméně pro náš účel postačí, když si třídy pojmenujeme, a těm třídám, které představují stejný povrch, přidělíme stejnou barvu. Upravíme tedy tabulku v *Colour Manipulation*, kde se mimochodem dozvíme i četnost jednotlivých spektrálních tříd.
+
+![](../assets/cviceni5/12_kmeans_colour_manipulation.png){ style="width:40%;"}
+{: style="margin-bottom:0px;" align=center }
+
+Při vyšším počtu tříd může ale nastat situace, že mezi sebou začonu jednotlivé barvy splývat, což zhoršuje orientaci, co jaká třída vlastně znamená. Samozřejmě lze využít nástroj *Pixel Info*, který nám řekne, o jakou hodnotu se na konkrétním místě jedná. Mnohem přehlednější je ale využítí maskování s tím, že si jednotlivé spektrální třídy zobrazíme přímo na RGB scéně. K tomu ale potřebujeme propsat klasifikovanou vrstvu do našeho produktu s pásmy Sentinel-2. To uděláme pomocí funkce *Band Maths...*, kde jako *Target product* zvolíme produkt s pásmy Sentinel-2 a klikneme na *Edit Expression...* Zde poté přepneme produkt na produkt s klasifikovanou vrstvou, kterou následně dvojklikem vložíme do *Expression*. Nakonec dáme *OK* a znovu *OK*, čímž dostaneme klasifikovanou vrstvu do našeho produktu.
+
+![](../assets/cviceni5/13_band_maths.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni5/14_band_maths2.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni5/15_kmeans_product.png)
+{: .process_container}
+
+Když si tuto vrstvu poté zobrazíme v mapovém okně, zobrazuje se pouze v odstínech šedi. Z klasifikovaného produktu si ale můžeme uložit barevnou paletu a nahrát jí do klasifikované vrstvy, kterou jsme si vytvořili v původním produktu. Nicméně i tak bychom doporučovali využít tuto vrstvu pouze pro maskování a barevné úpravy provádět v klasifikovaném produktu, u kterého se tabulka s hodnotami a barvami jednotlivých spektrálních tříd zobrazuje lépe a přehledněji. Masku pro konkrétní spektrální třídu vytvoříme v *Mask Manager* pomocí funkce *Creates a new mask based on a logical band maths expression*.
