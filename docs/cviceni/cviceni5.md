@@ -171,3 +171,29 @@ Při vyšším počtu tříd může ale nastat situace, že mezi sebou začonu j
 {: .process_container}
 
 Když si tuto vrstvu poté zobrazíme v mapovém okně, zobrazuje se pouze v odstínech šedi. Z klasifikovaného produktu si ale můžeme uložit barevnou paletu a nahrát jí do klasifikované vrstvy, kterou jsme si vytvořili v původním produktu. Nicméně i tak bychom doporučovali využít tuto vrstvu pouze pro maskování a barevné úpravy provádět v klasifikovaném produktu, u kterého se tabulka s hodnotami a barvami jednotlivých spektrálních tříd zobrazuje lépe a přehledněji. Masku pro konkrétní spektrální třídu vytvoříme v *Mask Manager* pomocí funkce *Creates a new mask based on a logical band maths expression*.
+
+![](../assets/cviceni5/16_mask_manager.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni5/17_mask_expression.png)
+{: .process_container}
+
+Poté se můžeme podívat, s jakým krajinným prvkem se vypočtená maska překrývá. V tomto případě lze vidět, že spektrální třída s hodnotou 0 odpovídá holé půdě.
+
+![](../assets/cviceni5/18_mask.png){ style="width:80%;"}
+{: style="margin-bottom:0px;" align=center }
+
+Tuto informaci následně zaneseme do tabulky v *Colour Manipulation* u klasifikovaného produktu. Do tabulky napíšeme název třídy a přiřadíme nějakou barvu.
+
+![](../assets/cviceni5/19_info_class.png){ style="width:50%;"}
+{: style="margin-bottom:0px;" align=center }
+
+Stejný postup provedeme pro všechny spekrální třídy. Není ale potřeba vytvářet pokaždé novou masku. Stačí upravit tu stávající pomocí funkce ***Edit the selected mask***.
+
+![](../assets/cviceni5/20_edit_mask.png){ style="width:50%;"}
+{: style="margin-bottom:0px;" align=center }
+
+Konečný výsledek může vypadat nějak takto:
+
+![](../assets/cviceni5/21_all_information_classes.png)
+![](../assets/cviceni5/22_reclassification.png)
+{: .process_container}
