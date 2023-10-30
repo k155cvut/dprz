@@ -23,12 +23,23 @@
   .process_container img {max-height:600px; display:flex;}                                    /* Obrazky ve flexboxech maji maximalni vysku */
 </style>
 
-# Řízená klasifikace
+# Řízená klasifikace, validace land cover produktů
 
 <hr class="l1">
 
 ## Cíl cvičení
 
+- Naučit se provádět řízenou klasifikaci na družicových datech
+- Porozumnět principu validování land cover produktů
+
 <hr class="l1">
 
 ## Základní pojmy
+
+- **Řízená klasifikace**
+- **Trénovací plochy**
+- **Klasifikátor**
+- **Validace**
+- **Matice chyb** (Kontingenční tabulka)
+- **Přetrénování** (Overfitting)
+- **Land use / land cover**
