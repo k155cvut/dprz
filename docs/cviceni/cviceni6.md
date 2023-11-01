@@ -36,10 +36,25 @@
 
 ## Základní pojmy
 
-- **Řízená klasifikace**
-- **Trénovací plochy**
-- **Klasifikátor**
-- **Validace**
-- **Matice chyb** (Kontingenční tabulka)
-- **Přetrénování** (Overfitting)
-- **Land use / land cover**
+- **Řízená klasifikace** - Jedná se o proces, při kterém se klasifikátor nejprve učí vlastnosti předem zadaných tříd na poskytnutých trénovacích vzorcích a následně tyto "znalosti" aplikuje na celý dataset. V DPZ lze celý proces rozdělit do následujících kroků:
+
+    1. Určení jednotlivých tříd a definování trénovacích vzorků (v DPZ často mluvíme o trénovacích plochách)
+    2. Výpočet statistických charakteristik (tzv. **spektrálních příznaků**) pro trénovací plochy popisující jednotlivé třídy, editace trénovacích ploch a výběr vhodných pásem pro vlastní klasifikaci
+    3. Volba vhodného rozhodovacího pravidla (tzv. klasifikátoru) pro zařazení všech prvků obrazu (pixelů) do jednotlivých tříd
+    4. Zatřídění všech obrazových prvků do stanovených tříd
+    5. Úprava, hodnocení a prezentace výsledků klasifikace
+
+![](../assets/cviceni6/01_schema_klasifikace.png){ style="width:60%;"}
+{: style="margin-bottom:0px;" align=center }
+<figcaption>Schéma řízené klasifikace</figcaption>
+
+- **Trénovací plochy** - Jedná se o reprezentativní pixely nebo prvky ze souboru obrazových dat pro každou definovanou třídu. Pro úspěšnost klasifikace je volba trénovacích množin stěžejní. Je tedy potřeba mít definovám dostatečný počet těchto trénovacích ploch a v ideálním případě je mít i rovnoměrně rozmístěné na obrazových datech (pokud to jednotlivé třídy dovolují). Důležité také je, aby byly trénovací plochy jednotlivých tříd spektrálně co nejvíce homogenní.
+- **Klasifikátor** - Algoritmus nebo metoda použitá k provedení klasifikace. V současné době jsou nejpopulárnější metody patřící do strojového či hlubokého učení, případně metody využívající umělých neuronových sítí.
+- **Validace** - Kontrola přesnoti výsledku klasifikace s využitím tzv. testovacího datasetu. K určení přesnosti se užívá řada metrik. Patří mezi ně například *Celková přesnost*, *Uživatelská přesnost* či *Zpracovatelská přesnost*.
+- **Chybová matice** (Kontingenční tabulka) - Čtvercová matice, kde počet sloupců i řádků odpovídá počtu definovaných tříd. Slouží k přehlednému zobrazení záměny mezi jednotlivými třídami (tj. které třídy se špatně klasifikovaly do jiných tříd). Správně klasifikovaná data se v této matici nachází na hlavní diagonále. V ideálním případě by měla být hlavní diagonála tvořena nejvyššími hodnotami v matici a hodnoty mimo diagonálu by se měly blížit nule.
+- **Přetrénování** (Overfitting) - Přetrénování klasifikátoru je jev, kdy se klasifikátor až příliš přizpůsobí trénovacím datům. Důsledkem pak může být špatná generalizace při použití na jiných datech, než na kterých byl klasifikátor natrénován.
+- **Land use / land cover** - Jedná se o výsledek klasifikace družicových obrazových dat. Konkrétně se jedná o tematické mapy popisující zemský povrch. *Land use* povrch popisuje z hlediska jeho využití lidmi. *Land cover* pak znázorňuje jednotlivé druhy povrchů (voda, holá půda, les atd.).
+
+<hr class="l1">
+
+## Řízená klasifikace ve SNAP
