@@ -46,7 +46,7 @@
 
 ### Pasivní vs. aktivní senzory
 
-**Pasivní senzory** zaznamenávají záření z jiných zdrojů, než je senzor. Nejčastěji se jedná o sluneční světlo odražené od zemského povrchu či o tepelné záření, které vydává samotná Země (případně objekty na ní). Nevýhodou pasivních senzorů je, že pokud pracují na optickém principu, tak nemohou pracovat v noci a nedokážou proniknout skrz oblačnost. Oproti tomu **aktivní senzory** využívají svůj vlastní zdroj záření, které vysílají ke zkoumanému objektu (např. Země), a měří množství záření, které se odrazí zpět. Narozdíl od od pasivních senzorů dokážou aktivní senzory získávat informace jak ve dne, tak i v noci. Pokud se navíc jedná rodat, tak je možné provádět měření i přes oblačnost.
+**Pasivní senzory** zaznamenávají záření z jiných zdrojů, než je senzor. Nejčastěji se jedná o sluneční světlo odražené od zemského povrchu či o tepelné záření, které vydává samotná Země (případně objekty na ní). Nevýhodou pasivních senzorů je, že pokud pracují na optickém principu, tak nemohou pracovat v noci a nedokážou proniknout skrz oblačnost. Oproti tomu **aktivní senzory** využívají svůj vlastní zdroj záření, které vysílají ke zkoumanému objektu (např. Země), a měří množství záření, které se odrazí zpět. Narozdíl od od pasivních senzorů dokážou aktivní senzory získávat informace jak ve dne, tak i v noci. Pokud se navíc jedná radarová data, tak je možné provádět měření i přes oblačnost.
 
 ### Zpracovaná vs. nezpracovaná data
 
@@ -57,7 +57,7 @@
 Zpravidla se využívají dva druhy oběžných drah: **slunečně synchronní polární** oběžné dráhy a **geostacionární** oběžné dráhy.
 
 - **Geostacionární** oběžné dráhy jsou kruhové dráhy ve výšce přibližně 36 000 km nad rovníkem. Družice na těchto oběžných drahách obíhají kolem Země stejnou úhlovou rychlostí jako je rotace země, a tudíž snímají neustále to samé místo na Zemi. Mezi družice využívající tyto oběžné dráhy patří napr. meteorologické družice.
-- **Slunečně synchronní (helio-synchronní) polární** oběžné dráhy jsou přibližně kruhové dráhy ve výšce zhruba 800 km nad Zemí. Družice na těchto drahách přelétají v blízkosti pólů planety, a jak se Země otáčí, tak sledují zemský povrch povrch každý den ve stejný místní čas a za stejného slunečního oslvětlení. Na tyto dráhy se umisťují družice, které mají sledovat celý povrch planety.
+- **Slunečně synchronní (helio-synchronní) polární** oběžné dráhy jsou přibližně kruhové dráhy ve výšce zhruba 800 km nad Zemí. Družice na těchto drahách přelétají v blízkosti pólů planety, a jak se Země otáčí, tak sledují zemský povrch každý den ve stejný místní čas a za stejného slunečního osvětlení. Na tyto dráhy se umisťují družice, které mají sledovat celý povrch planety.
 
 ### Program Copernicus
 
@@ -95,7 +95,7 @@ Tento webový portál slouží především k prohlížení, vizualizaci a porov
 
 - <a href="https://dataspace.copernicus.eu/browser" target="_blank"> https://dataspace.copernicus.eu/browser </a>
 
-Copernicus Browser je nově vziklý webový portál pro stahování dat Sentinel a je součástí tzv. <a href="https://dataspace.copernicus.eu/" target="_blank"> Copernicus Data Space Ecostystem</a>. Navazuje na webový portál **Copernicus Open Access Hub**, jehož činnost byla ukončena na konci října 2023. Na rozdíl od svého předchůdce, kde především starší data byla v tzv. *offline* módu, a uživatel si o ně nejprve musel zažádat, by měl poskytovat veškerá data okamžitě. Kromě stahování umožňuje data i různě vyzualizovat a provádět základní analýzy.
+Copernicus Browser je nově vzniklý webový portál pro stahování dat Sentinel a je součástí tzv. <a href="https://dataspace.copernicus.eu/" target="_blank"> Copernicus Data Space Ecostystem</a>. Navazuje na webový portál **Copernicus Open Access Hub**, jehož činnost byla ukončena na konci října 2023. Na rozdíl od svého předchůdce, kde především starší data byla v tzv. *offline* módu, a uživatel si o ně nejprve musel zažádat, by měl poskytovat veškerá data okamžitě. Kromě stahování umožňuje data i různě vyzualizovat a provádět základní analýzy.
 
 <div class="process_container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Am93Xi0PZ5o?si=gp6TSlNDp8OvsiMd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -147,7 +147,7 @@ Dále pomocí nástroje ***Create an area of interest***, který se nachází v 
 
 **3. Nastavení vyhledávacích parametrů**
 
-V levé části webového portálu sepřepneme do záložky ***SEARCH***. Ta se zkládá ze tří částí: ***SEARCH CRITERIA***, ***DATA SOURCES*** a ***TIME RANGE***. Prví část využijeme, pokud známe název hledaného produktu (v tom případě nemusíme vyznačovat zájmové území). Ve druhé části nastavíme, z jaké družice Sentinel požadovaná data chceme, a určíme doplňující parametry. V našem případě chceme data z družice **Sentinel-2** s úrovní předzpracování **L2A**. Dále zvolíme maximální procento pokrytí scény oblačností (ideálně chceme data bez oblačnosti). V poslední části zadáme časové období, v jakém byla daná scéna pořízena (pro účely cvičení zvolíme scénu z **vegetačního** období). Scénu poté vyhledáme tlačítkem ***Search***.
+V levé části webového portálu se přepneme do záložky ***SEARCH***. Ta se zkládá ze tří částí: ***SEARCH CRITERIA***, ***DATA SOURCES*** a ***TIME RANGE***. Prví část využijeme, pokud známe název hledaného produktu (v tom případě nemusíme vyznačovat zájmové území). Ve druhé části nastavíme, z jaké družice Sentinel požadovaná data chceme, a určíme doplňující parametry. V našem případě chceme data z družice **Sentinel-2** s úrovní předzpracování **L2A**. Dále zvolíme maximální procento pokrytí scény oblačností (ideálně chceme data bez oblačnosti). V poslední části zadáme časové období, v jakém byla daná scéna pořízena (pro účely cvičení zvolíme scénu z **vegetačního** období). Scénu poté vyhledáme tlačítkem ***Search***.
 
 ![](../assets/cviceni1/05_search_criteria.png)
 ![](../assets/cviceni1/06_data_sources.png)

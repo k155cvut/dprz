@@ -26,7 +26,7 @@
 
 ## Základní pojmy
 
-- **Resampling** (převzorkování): Změna prostorového rozlišení rastrovách dat (změna velikosti pixelu).
+- **Resampling** (převzorkování): Změna prostorového rozlišení rastrových dat (změna velikosti pixelu).
 - **Barevná syntéza**: Kombinace tří různých pásem pro vytvoření RGB snímku. Výsledkem může být snímek v přirozených či falešných barvách.
 - **Spektrální křivka**: Závislost mezi odrazivostí a vlnovou délkou pro daný objekt či povrch. Tvar těchto křivek bývá pro daný objekt typický.
 
@@ -67,7 +67,7 @@ V levé části prostředí SNAP v ***Product Explorer*** se poté objeví náš
 
 ### Základní orientace ve SNAP
 
-V levé dolní části prostředí SNAP se nachází čtyři záložky, z nichž tři jsou pro nás zajímavé. Jedná se o ***Navigation***, ***Colour Manipulation*** a ***World View***. V ***Navigation*** se zobrazuje celá scéna nahraná do aktuálního mapového okna. Při zoomování v mapovém okně se zde rovněž zobrazuje aktuální poloha daného výřezu na zobrazené scéně, se kterým můžeme pomocí levého tlačítky myši i pohybovat. Velmi užitečné jsou zde i ikony pro synchronizaci mapových oken a kurzoru v případě prohlížení více pásem najednou. ***Colour Manipulation*** slouží pro barevnou úpravu zobrazení produktů v mapovém okně. Záložka ***World View*** pak ukazuje, kde přesně se daná scéna nachází na Zemi.
+V levé dolní části prostředí SNAP se nachází čtyři záložky, z nichž tři jsou pro nás zajímavé. Jedná se o ***Navigation***, ***Colour Manipulation*** a ***World View***. V ***Navigation*** se zobrazuje celá scéna nahraná do aktuálního mapového okna. Při zoomování v mapovém okně se zde rovněž zobrazuje aktuální poloha daného výřezu na zobrazené scéně, se kterým můžeme pomocí levého tlačítky myši i pohybovat. Velmi užitečné jsou zde ikony pro synchronizaci mapových oken a kurzoru v případě prohlížení více pásem najednou. ***Colour Manipulation*** slouží pro barevnou úpravu zobrazených produktů v mapovém okně. Záložka ***World View*** pak ukazuje, kde přesně se daná scéna nachází na Zemi.
 
 ![](../assets/cviceni2/05_navigation.png)
 ![](../assets/cviceni2/06_colour_manipulation.png)

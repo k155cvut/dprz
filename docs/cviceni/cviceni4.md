@@ -29,8 +29,8 @@
 
 ## Cíl cvičení
 
-- porozumět principu prostorových filtrů
-- umět prostorové filtry aplikovat
+- Porozumět principu prostorových filtrů
+- Umět prostorové filtry aplikovat
 
 <hr class="l1">
 
@@ -80,7 +80,7 @@ Prostorové filtry můžeme dělit dvěma způsoby. První způsob dělení je p
 Filtry mají v DPZ řadu využití. Příklady mohou být následující:
 
 - Vylepšení, zvýraznění obrazu
-- Analýzu či automatické zpracování
+- Analýza či automatické zpracování
 - Odstranění šumu
 - Vyhlazení klasifikačních výsledků
 
@@ -95,7 +95,7 @@ Princip prostorových filtrů názorně shrnují následující videa:
 
 ## Ukázka použití filtrů ve SNAP
 
-Ve SNAP máme dvě možnosti, jak se dostat v prostorovým filtrům. Buď můžeme kliknout pravým tlačítkem myši na některé pásmo v *Product Explorer* a následně zvolit možnost ***Filtered Band...*** nebo můžeme přes menu ***Raster*** → ***Filtered Band...*** Pokud k prostorovým filtrům přistupujeme druhým způsobem, je potřeba mít označeno pásmo buď v *Product Explorer* nebo v mapovém okně.
+Ve SNAP máme dvě možnosti, jak se dostat k prostorovým filtrům. Buď můžeme kliknout pravým tlačítkem myši na některé pásmo v *Product Explorer* a následně zvolit možnost ***Filtered Band...*** nebo můžeme přes menu ***Raster*** → ***Filtered Band...*** Pokud k prostorovým filtrům přistupujeme druhým způsobem, je potřeba mít označeno pásmo buď v *Product Explorer* nebo v mapovém okně.
 
 ![](../assets/cviceni4/04_filtered_band.png){ style="height:400px;"}
 ![](../assets/cviceni4/05_filtered_band_menu.png){ style="height:413px;"}
@@ -123,7 +123,7 @@ Po aplikování filtru se nám filtrovaný obraz přidá do mapového okna.
     - Město / zástavba
     - Lesní plocha
 - Ke každému popisu přidat obrázek jako důkaz
-- V závěru zhodnoťte, které filtry jsou výhodné pro zvýraznění změn mezi jednotlivými plochami a které potlačí různorodosti v rámci ploch stejného typu.
+- V závěru zhodnoťte, které filtry jsou výhodné pro zvýraznění změn mezi jednotlivými plochami a které potlačují různorodosti v rámci ploch stejného typu.
 
 ### Nízkofrekvenční filtry
 

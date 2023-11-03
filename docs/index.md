@@ -34,6 +34,8 @@ Během výuky bude používán převážně open source software [**SNAP**](http
 
 [<span>:material-open-in-new: step.esa.int</span><br>Tutorials – STEP](https://step.esa.int/main/doc/tutorials/){ .md-button .md-button--primary .url-name target="_blank"}
 [<span>:material-open-in-new: youtube.com</span><br>ESA SNAP Tutorials](https://www.youtube.com/playlist?list=PLjD2jvOGfddcGUuN4or7J6VfAaIR5uH7u){ .md-button .md-button--primary .url-name target="_blank"}
+[<span>:material-open-in-new: youtube.com</span><br>Introductory Remote Sensing](https://www.youtube.com/playlist?list=PLf6lu3bePWHCOUjTDZRNx5N07otDM8iUq){ .md-button .md-button--primary .url-name target="_blank"}
+[<span>:material-open-in-new: youtube.com</span><br>Sentinel-1 Complete Tutorials in SNAP](https://www.youtube.com/playlist?list=PLJeebDESAF94gWsdm63tabJMh3D4LrxzV){ .md-button .md-button--primary .url-name target="_blank"}
 {: align=center style="display:flex; justify-content:center; align-items:center; column-gap:20px; row-gap:10px; flex-wrap:wrap;"}
 
 ## Doporučená literatura

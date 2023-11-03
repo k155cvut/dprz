@@ -40,6 +40,12 @@
 
 - **Spektrální index**: Matematická kombinace dvou nebo více pásem s cílem získat informace o specifických vlastnostech zemského povrchu jako např. stav vegetace, kvalita vody, atd.
 
+Více o spektrálních indexech a jejich konkrétní ukázky nalezneme v následujícím videu:
+
+<div style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/25OZ1mD8aLc?si=Q-9Ed3AB_btmuCOA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 <hr class="l1">
 
 ## Počítání spektrálních indexů
@@ -184,7 +190,7 @@ Následně si masku zobrazíme přes nějaké pásmo (ideálně přes RGB kompoz
 
 - Vytvořit NDVI mapu s diskrétními barvami pro různé druhy povrchů detekovatelných pomocí NDVI, popsat co jaká barva znázorňuje
 - Detekovat vodní plochy pomocí vybraných indexů
-- Zhodnotit který z indexů detekoval vodní plochy nejlépe, aniž by docházelo i k zázadnímu detekování zástavby
+- Zhodnotit který z indexů detekoval vodní plochy nejlépe, aniž by docházelo i k zásadnímu detekování zástavby
 - Zjistit celkovou detekovanou plochu vody pro jednotlivé indexy
 
 ### Postup
@@ -248,7 +254,7 @@ Celkovou plochu, které naše masky pokrývají, zjistíme pomocí ***Analysis**
 ![](../assets/cviceni3/25_statistics_menu.png){ style="width:30%;"}
 {: style="margin-bottom:0px;" align=center }
 
-Po otevření nového okna je nejprve nutno znovu kliknout do mapového okna, aby nástroj věděl, odkud se bude statistika počítat. V právě části poté zaškrtneme možnost ***Use ROI mask(s):*** a zvolíme konkrétní masku. Následně klikneme v dvě modré šipky v pravé horní části, čímž se statistika spočítá. V lévé části pak najdeme hodnotu ***#Pixels total***, která v tomto případě udává počet pixelů pokrytých maskou.
+Po otevření nového okna je nejprve nutno znovu kliknout do mapového okna, aby nástroj věděl, odkud se bude statistika počítat. V právě části poté zaškrtneme možnost ***Use ROI mask(s):*** a zvolíme konkrétní masku. Následně klikneme na dvě modré šipky v pravé horní části, čímž se statistika spočítá. V lévé části pak najdeme hodnotu ***#Pixels total***, která v tomto případě udává počet pixelů pokrytých maskou.
 
 ![](../assets/cviceni3/26_statistics.png)
 {: style="margin-bottom:0px;" align=center }
