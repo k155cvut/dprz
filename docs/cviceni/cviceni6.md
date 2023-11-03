@@ -111,4 +111,7 @@ Na to, do jakého vektorového kontejneru chceme polygon vkládat, se nás SNAP 
 
 Tímto způsobem vytvoříme trénovací plochy pro všechny třídy. Trénovacích ploch by mělo být dostatečné množství a je ideální, aby se nacházely rovnoměrně po celé ploše obrazových dat.
 
+???+ note "&nbsp;<span style="color:#448aff">Pozn.</span>"
+      Někdy se může stát, že funkce **Polygon drawing tool** nebude z nějakého důvodu reagovat. V takovém případě je potřeba buď zkusit uložit práci a vypnout a zapnout SNAP, případně tvořit trénovací plochy pomocí jedné z funkcí **Rectangle drawing tool** či **Ellipse drawing tool**.
+
 ### Kontrola homogenity trénovacích ploch
