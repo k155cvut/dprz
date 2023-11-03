@@ -58,3 +58,57 @@
 <hr class="l1">
 
 ## Řízená klasifikace ve SNAP
+
+### Transformace obrazových dat do WGS84
+
+Tento krok budeme považovat za tzv. nultý krok, protože není běžnou součástí řízené klasifikace. Ve SNAP bohužel z nějakého důvodu řízená klasifikace funguje pouze na *Lat/Long* datech v systému WGS84. Je tedy potřeba si naše data přetransformovat. K tomu slouží funkce nacházející se v **Raster** → **Geometric** → **Reprojection**.
+
+![](../assets/cviceni6/02_reprojection_menu.png){ style="width:40%;"}
+{: style="margin-bottom:0px;" align=center }
+
+V záložce ***I/O Parameters*** nastavíme produkt, který chceme transformovat, název transformovaného produktu a zda chceme výsledný produkt uložit. V záložce ***Reprojection Parameters*** poté nastavíme, do jakého systému bude produkt transformován. V tomto případě můžeme nechat vše tak, jak je.
+
+![](../assets/cviceni6/03_reprojection_io.png){ style="height:548px;"}
+![](../assets/cviceni6/04_reprojection_parameters.png){ style="height:548px;"}
+{: .process_container}
+
+Výsledkem je pak v závislosti na poloze více či méně "zdeformovaná" scéna.
+
+![](../assets/cviceni6/05_reprojected_scene.png){ style="width:80%;"}
+{: style="margin-bottom:0px;" align=center }
+
+### Tvorba trénovacích ploch
+
+Prvním krokem řízené klasifikace je definování jednotlivých tříd a k nim odpovídajících trénovacích ploch. Pokud trénovací plochy nemáme odněkud přebrané, musíme si je vytvořit sami. Trénovací plochy budeme vkládat do tzv. vektorových kontejnerů. Vektorový kontejner vytvoříme pomocí **Vector** → **New Vector Data Container**, případně pomocí ikony této funkce. Vektorové kontejnery vytvoříme pro všechny klasifikační třídy (buď všechny najednou nebo postupně po vytvoření trénovacích ploch pro danou třídu).
+
+![](../assets/cviceni6/06_container_menu.png)
+![](../assets/cviceni6/07_container_icon.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni6/08_new_container.png)
+{: .process_container}
+
+Jednotlivé vektorové kontejnery se nám pak zobrazí v **Layer Manager** (spolu s dalšími již existujícími kontejnery) a zároveň i v *Product Explorer* ve složce **Vector Data**.
+
+![](../assets/cviceni6/09_layer_manager.png){ style="height:113px;"}
+![](../assets/cviceni6/10_vector_data.png){ style="height:128px;"}
+{: .process_container}
+
+Máme-li vytvořený vektorový kontejner, můžeme začít s tvorbou trénovacích ploch. Ty budeme tvořit pomocí funkce **Polygon drawing tool**. Poté, když chceme začít kreslit polygon, se nás SNAP zeptám, do kterého kontejneru chceme polygon vložit. Z nabídky tedy vybereme příslušný název kontejneru a nakreslíme trénovací plochu. Kreslení polygonu ukončíme dvojklikem.
+
+![](../assets/cviceni6/11_polygon_draw.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni6/12_choose_container.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni6/13_training_area.png)
+{: .process_container}
+
+Na to, do jakého vektorového kontejneru chceme polygon vkládat, se nás SNAP zeptá dvakrát. Následně už se automaticky volí dříve zvolený kontejner. Pokud bychom ale chtěli poté vkládat polygon do jiného kontejneru, je potřeba příslušný kontejner označit v **Layer Manager**.
+
+![](../assets/cviceni6/14_selected_container.png){ style="height:80px;"}
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni6/15_new_training_area.png){ style="height:534px;"}
+{: .process_container}
+
+Tímto způsobem vytvoříme trénovací plochy pro všechny třídy. Trénovacích ploch by mělo být dostatečné množství a je ideální, aby se nacházely rovnoměrně po celé ploše obrazových dat.
+
+### Kontrola homogenity trénovacích ploch
