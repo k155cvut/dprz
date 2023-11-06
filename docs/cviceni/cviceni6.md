@@ -111,7 +111,70 @@ Na to, do jakého vektorového kontejneru chceme polygon vkládat, se nás SNAP 
 
 Tímto způsobem vytvoříme trénovací plochy pro všechny třídy. Trénovacích ploch by mělo být dostatečné množství a je ideální, aby se nacházely rovnoměrně po celé ploše obrazových dat.
 
+![](../assets/cviceni6/16_all_training_areas.png){ style="width:80%;"}
+{: style="margin-bottom:0px;" align=center }
+
 ???+ note "&nbsp;<span style="color:#448aff">Pozn.</span>"
       Někdy se může stát, že funkce **Polygon drawing tool** nebude z nějakého důvodu reagovat. V takovém případě je potřeba buď zkusit uložit práci a vypnout a zapnout SNAP, případně tvořit trénovací plochy pomocí jedné z funkcí **Rectangle drawing tool** či **Ellipse drawing tool**.
 
 ### Kontrola homogenity trénovacích ploch
+
+Pro co nejlepší natrénování klasifikátoru je vhodné, aby trénovací plochy byly pokud možno co nejhomogennější a mezi sebou spektrálně odlišné. Homogenitu tříd ve SNAP můžeme zkontrolovat dvěma způsoby.
+
+#### Histogram
+
+Funkci pro vykreslování histogramů najdeme v menu **Analysis** → **Histogram**, případně v **Analysis** → **Statistics**, kde se kromě histogramu zobrazují i další informace. Dále je potřeba mít zaškrtnuté ***Use ROI mask:*** a zvolit příslušnou vektorovou vrstvu obsahující konkrétní třídu. Zároveň je nutné znovu kliknout do mapového okna, aby nástroj věděl, nad jakými daty histogram počítat.
+
+![](../assets/cviceni6/17_histogram_menu.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni6/18_histogram.png)
+{: .process_container}
+
+Z histogramu lze poté vyčíst, zda je třída homogenní a nebo je tvořena více třídami. V ideálním případě by měl být histogram tvořen jedním vrcholem. Pokud je vrcholů více, indikuje to, že je více i tříd (tj. počet vrcholů = počet tříd). Na příkladu níže jsou zobrazeny histogramy pro vodu (vlevo), pole (uprostřed) a holou půdu (vpravo). Z histogramů vyplývá, že trénovací plochy pro vodu jsou homogenní, zatímco trénovací plochy pro pole a holou půdu jsou ve skutečnosti tvořemi dvěmi, resp. až třemi spektrálními třídami.
+
+![](../assets/cviceni6/19_hist_water.png)
+![](../assets/cviceni6/20_hist_pole.png)
+![](../assets/cviceni6/21_hist_bareland.png)
+{: .process_container}
+<figcaption>Histogramy vybraných tříd (vlevo - voda, uprostřed - pole, vpravo - holá půda)</figcaption>
+
+???+ note "&nbsp;<span style="color:#448aff">Pozn.</span>"
+      Histogram se vždy zobrazuje pro jedno konkrétní pásmo (v tomto případě B4). Pokud by bylo použito pásmo jiné, histogramy by se zamozřejmě trochu lišily.
+
+#### Rozptylogram (scatter plot)
+
+Druhou možností sledovat homogenitu tříd je tzv. rozptylogram, který najdeme v menu **Analysis** → **Scatter Plot**. Znovu je potřeba zaškrtnou ***Use ROI mask:*** a zvolit příslušnou vektorovou vrstvu obsahující konkrétní třídu. Dále je potřeba vybrat pásma, jejichž hodnoty budou vyneseny na osu X a osu Y (můžeme zvolit např. pásma B4 a B8).
+
+![](../assets/cviceni6/22_scatter_plot_menu.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni6/23_scatter_plot.png)
+{: .process_container}
+
+Rozptylogram v tomto případě znázorňuje již zmíněný **příznakový prostor** (v našem případě dvourozměrný). Třídy by pak měly v rozptylogramu tvořit tzv. shluky. V ideálním případě by tak jedna třída měla tvořit jeden shluk. Pokud je shluků víc, indikuje to znovu i více tříd. Příklady níže ukazují rozptylogramy pro vodu (vlevo), pole (uprostřed) a holou půdu (vpravo). Je tedy vidět, že by bylo vhodné některé třídy rozdělit do více podtříd.
+
+![](../assets/cviceni6/24_scatter_water.png)
+![](../assets/cviceni6/25_scatter_pole.png)
+![](../assets/cviceni6/26_scatter_bareland.png)
+{: .process_container}
+<figcaption>Rozptylogramy vybraných tříd (vlevo - voda, uprostřed - pole, vpravo - holá půda)</figcaption>
+
+### Spuštění řízené klasifikace
+
+Řízenou klasifikaci ve SNAP najdeme v menu **Raster** → **Classification** → **Supervised Classification**, kde si vybereme jeden z nabízených algoritmů. V našem případě **Random Forest Classifier**.
+
+![](../assets/cviceni6/27_sup_classification_menu.png){ style="width:70%;"}
+{: style="margin-bottom:0px;" align=center }
+
+**Random Forest** je v současné době jedním z nejpopulárnějších klasifikátorů na bázi strojového učení. Vychází z tzv. *Decision Trees (rozhodovacích stromů)*, kde každý strom vezme jen určitý a náhodný počet příznaků a z nich určí, o jakou třídu se podle něj jedná. Výsledná třída je pak určena na základě přavažujícího výsledku ze všech stromů.
+
+![](../assets/cviceni6/28_random_forest.png){ style="width:60%;"}
+{: style="margin-bottom:0px;" align=center }
+
+Nástroj **Random Forest Classifier** se ve SNAP zkládá ze tří záložek. V ***ProductSet-Reader*** je potřeba zvolit produkt, který se bude klasifikovat. Záložka ***Random-Forest-Classifier*** slouží k nastavení samotného klasifikátoru. Volíme zde, jestli chceme trénovat klasifikátor na rastru nebo na vektorech (v našem případě chceme na vektorech). Dále jestli chceme klasifikátor evaluovat, ale především určujeme hodnoty ***Number of training samples*** a ***Number of trees***. V neposlední řadě je potřeba označit i všechny třídy, které chceme klasifikovat a označit i všechna pásma, která chceme v klasifikaci použít (kromě původních pásem Sentinel-2 můžeme použít i vypočtené spektrální indexy atd.). V poslední záložce ***Write*** zvolíme, kam chceme klasifikovaný produkt uložit.
+
+![](../assets/cviceni6/29_rf_productset.png)
+![](../assets/cviceni6/30_rf_classifier.png)
+![](../assets/cviceni6/31_rf_write.png)
+{: .process_container}
+
+Pro první pokus klasifikace můžeme nechat parametry klasifikátoru tak, jak jsou. Byť tedy počet stromů nastavený na 10 se zdá být relativně nízký (v praxi se využívá klidně až 300 stromů). Důležíté je také pochopit, jak zde funguje hodnota počtu trénovacích vzorků. Kromě trénování dochází totiž i k testování klasifikátoru, tudíž pokud je defaultně nastavena hodnota trénovacích vzorků na 5000, znamená to, že dalších 5000 vzorků bude použito na testování. Tyto počty se poté rovnoměrně rozdělí mezi jednotlivé třídy. Pokud jsme si definovali 5 tříd, na jednu třídu tak přijde 1000 trénovacích vzorků, které jsou náhodně vybrány z trénovavích ploch. Toto je tedy potřeba brát do úvahy, a pokud chceme využít co nejvíce pixelů z trénovacích ploch, které jsme vytvářeli, je potřeba hodnotu ***Number of training samples*** náležitě upravit. Počet pixelů, které pokrývají jednotlivé třídy, zjistíme v **Analysis** → **Statistics**. Samozřejmě je potřeba i počítat s tím, že čím více trénovacích vzorků a čím více stromů, tím déle pak samotný výpočet trvá.
