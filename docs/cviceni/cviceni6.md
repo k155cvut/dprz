@@ -117,6 +117,17 @@ Tímto způsobem vytvoříme trénovací plochy pro všechny třídy. Trénovac�
 ???+ note "&nbsp;<span style="color:#448aff">Pozn.</span>"
       Někdy se může stát, že funkce **Polygon drawing tool** nebude z nějakého důvodu reagovat. V takovém případě je potřeba buď zkusit uložit práci a vypnout a zapnout SNAP, případně tvořit trénovací plochy pomocí jedné z funkcí **Rectangle drawing tool** či **Ellipse drawing tool**.
 
+Kromě nefunkčnosti **Polygon drawing tool** může nastat i poněkud horší problém. Po naklikání všech trénovacích ploch a uložení produktu se můžeme rozhodnout, že v práci budeme pokračovat později a SNAP zavřeme. Při znovuotevření produktu a snaze vytvořit RGB kompozit či si zobrazit jakékoliv pásmo se zobrazí následující chybové hlášky:
+
+![](../assets/cviceni6/Error1.png){ style="height:171px;"}
+![](../assets/cviceni6/Error2.png){ style="height:171px;"}
+{: .process_container}
+
+Nejspíš se jedná o nějaký *bug* a celý transformovaný produkt je nefunkční. Neznamená to ale, že jsme vytvořené trénovací plochy nadobro ztratily. Každý **DIM** soubor má k sobě přidruženou složku s koncovkou **.data** a právě v této složce lze naše trénovací plochy dohledat. Ve složce se nacházejí soubory jednotlivých pásem a také podsložka ***vector_data***, ve které se nacházejí **CSV** soubory jednotlivých vektorových dat, mezi nimiž jsou i vytvořené trénovací plochy. Soubory trénovacích ploch poté můžeme jednoduše překopírovat do příslušné složky nově vytvořeného transformovaného produktu.
+
+![](../assets/cviceni6/dim_data.png)
+{: style="margin-bottom:0px;" align=center }
+
 ### Kontrola homogenity trénovacích ploch
 
 Pro co nejlepší natrénování klasifikátoru je vhodné, aby trénovací plochy byly pokud možno co nejhomogennější a mezi sebou spektrálně odlišné. Homogenitu tříd ve SNAP můžeme zkontrolovat dvěma způsoby.
@@ -177,4 +188,4 @@ Nástroj **Random Forest Classifier** se ve SNAP zkládá ze tří záložek. V 
 ![](../assets/cviceni6/31_rf_write.png)
 {: .process_container}
 
-Pro první pokus klasifikace můžeme nechat parametry klasifikátoru tak, jak jsou. Byť tedy počet stromů nastavený na 10 se zdá být relativně nízký (v praxi se využívá klidně až 300 stromů). Důležíté je také pochopit, jak zde funguje hodnota počtu trénovacích vzorků. Kromě trénování dochází totiž i k testování klasifikátoru, tudíž pokud je defaultně nastavena hodnota trénovacích vzorků na 5000, znamená to, že dalších 5000 vzorků bude použito na testování. Tyto počty se poté rovnoměrně rozdělí mezi jednotlivé třídy. Pokud jsme si definovali 5 tříd, na jednu třídu tak přijde 1000 trénovacích vzorků, které jsou náhodně vybrány z trénovavích ploch. Toto je tedy potřeba brát do úvahy, a pokud chceme využít co nejvíce pixelů z trénovacích ploch, které jsme vytvářeli, je potřeba hodnotu ***Number of training samples*** náležitě upravit. Počet pixelů, které pokrývají jednotlivé třídy, zjistíme v **Analysis** → **Statistics**. Samozřejmě je potřeba i počítat s tím, že čím více trénovacích vzorků a čím více stromů, tím déle pak samotný výpočet trvá.
+Pro první pokus klasifikace můžeme nechat parametry klasifikátoru tak, jak jsou. Byť tedy počet stromů nastavený na 10 se zdá být relativně nízký (v praxi se využívá až stovky stromů). Důležíté je také pochopit, jak zde funguje hodnota počtu trénovacích vzorků. Kromě trénování dochází totiž i k testování klasifikátoru, tudíž pokud je defaultně nastavena hodnota trénovacích vzorků na 5000, znamená to, že dalších 5000 vzorků bude použito na testování. Tyto počty se poté rovnoměrně rozdělí mezi jednotlivé třídy. Pokud jsme si definovali 5 tříd, na jednu třídu tak přijde 1000 trénovacích vzorků, které jsou náhodně vybrány z trénovacích ploch. Toto je tedy potřeba brát do úvahy, a pokud chceme využít co nejvíce pixelů z trénovacích ploch, které jsme vytvářeli, je potřeba hodnotu ***Number of training samples*** náležitě upravit. Počet pixelů, které pokrývají jednotlivé třídy, zjistíme v **Analysis** → **Statistics**. Samozřejmě je potřeba i počítat s tím, že čím více trénovacích vzorků a čím více stromů, tím déle pak samotný výpočet trvá.
