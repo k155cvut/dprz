@@ -23,7 +23,7 @@
   .process_container img {max-height:600px; display:flex;}                                    /* Obrazky ve flexboxech maji maximalni vysku */
 </style>
 
-# Řízená klasifikace, validace land cover produktů
+# Řízená klasifikace, validace výsledku klasifikace
 
 <hr class="l1">
 
@@ -188,4 +188,80 @@ Nástroj **Random Forest Classifier** se ve SNAP zkládá ze tří záložek. V 
 ![](../assets/cviceni6/31_rf_write.png)
 {: .process_container}
 
-Pro první pokus klasifikace můžeme nechat parametry klasifikátoru tak, jak jsou. Byť tedy počet stromů nastavený na 10 se zdá být relativně nízký (v praxi se využívá až stovky stromů). Důležíté je také pochopit, jak zde funguje hodnota počtu trénovacích vzorků. Kromě trénování dochází totiž i k testování klasifikátoru, tudíž pokud je defaultně nastavena hodnota trénovacích vzorků na 5000, znamená to, že dalších 5000 vzorků bude použito na testování. Tyto počty se poté rovnoměrně rozdělí mezi jednotlivé třídy. Pokud jsme si definovali 5 tříd, na jednu třídu tak přijde 1000 trénovacích vzorků, které jsou náhodně vybrány z trénovacích ploch. Toto je tedy potřeba brát do úvahy, a pokud chceme využít co nejvíce pixelů z trénovacích ploch, které jsme vytvářeli, je potřeba hodnotu ***Number of training samples*** náležitě upravit. Počet pixelů, které pokrývají jednotlivé třídy, zjistíme v **Analysis** → **Statistics**. Samozřejmě je potřeba i počítat s tím, že čím více trénovacích vzorků a čím více stromů, tím déle pak samotný výpočet trvá.
+Pro první pokus klasifikace můžeme nechat parametry klasifikátoru tak, jak jsou. Byť tedy počet stromů nastavený na 10 se zdá být relativně nízký (v praxi se využívá až stovky stromů). Důležíté je také pochopit, jak zde funguje hodnota počtu trénovacích vzorků. Kromě trénování dochází totiž i k testování klasifikátoru, tudíž pokud je defaultně nastavena hodnota trénovacích vzorků na 5000, znamená to, že dalších 5000 vzorků bude použito na testování. Tyto počty se poté rovnoměrně rozdělí mezi jednotlivé třídy. Pokud jsme si definovali 5 tříd, na jednu třídu tak přijde 1000 trénovacích vzorků, které jsou náhodně vybrány z trénovacích ploch. Toto je tedy potřeba brát do úvahy, a pokud chceme využít co nejvíce pixelů z trénovacích ploch, které jsme vytvářeli, je potřeba hodnotu ***Number of training samples*** náležitě upravit. Počet pixelů, které pokrývají jednotlivé třídy, zjistíme v **Analysis** → **Statistics**. Samozřejmě je potřeba i počítat s tím, že čím více trénovacích vzorků a čím více stromů, tím déle pak samotný výpočet trvá. Následující tabulka znázorňuje časovou náročnost výpočtu pro různá nestavení vstupních parametrů (v tomto případě do klasifikace vstupovalo 12 pásem Sentinel-2 a 4 vypočtené spektrální indexy):
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Number of training samples</strong></th>
+      <th><strong>Number of trees</strong></th>
+      <th><strong>Čas výpočtu</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>5000</td>
+      <td>10</td>
+      <td>46 s</td>
+    </tr>
+    <tr>
+      <td>10000</td>
+      <td>10</td>
+      <td>52 s</td>
+    </tr>
+    <tr>
+      <td>40000</td>
+      <td>10</td>
+      <td>4 min</td>
+    </tr>
+    <tr>
+      <td>40000</td>
+      <td>30</td>
+      <td>11,5 min</td>
+    </tr>
+    <tr>
+      <td>100000</td>
+      <td>10</td>
+      <td>17 min</td>
+    </tr>
+    <tr>
+      <td>100000</td>
+      <td>30</td>
+      <td>50 min</td>
+    </tr>
+    <tr>
+      <td>200000</td>
+      <td>10</td>
+      <td>51 min</td>
+    </tr>
+  </tbody>
+</table>
+
+Z tabulky vyplývá, že vyšší časovou náročnost způsobuje parametr ***Number of trees***.
+
+Výsledkem klasifikace je nový produkt obsahující klasifikovanou vrstvu, kterou najdeme pod názvem *LabeledClasses*.
+
+![](../assets/cviceni6/32_classification_product.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni6/33_classification_result.png)
+{: .process_container}
+
+Při podrobnějším zkoumání výsledku klasifikace si můžeme všimnout tmavě šedých pixelů nekorespondujících s žádnou barvou v legendě.
+
+![](../assets/cviceni6/34_legend.png)
+![](../assets/cviceni6/35_low_confidence.png)
+{: .process_container}
+
+Jedná se o zamaskované pixely, jejichž *"Confidence"* (viz vrstva ***Confidence*** v klasifikovaném produktu) je menší než určitá mez. Tuto mez lze změnit kliknutím pravým tlačítkem na vrstvu *LabeledClasses* v klasifikovaném produktu a vybráním možnosti *Properties*. Zde následně změníme hodnotu ***Valid-Pixel Expression*** z ***Confidence >= 0.5*** např. na ***Confidence >= 0***, čímž se pixely odmaskují.
+
+![](../assets/cviceni6/36_labeledclasses_properties.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni6/37_set_confidence_value.png)
+{: .process_container}
+
+Z mnou dosažených výsledků je ale vidět, že poměrně dost oblastí s holou půdou se klasifikovalo jako zástavba a bylo by tedy potřeba na klasifikaci dále pracovat.
+
+![](../assets/cviceni6/38_misclassification.png){ style="width:80%;"}
+{: style="margin-bottom:0px;" align=center }
+
+## Validace výsledku klasifikace
