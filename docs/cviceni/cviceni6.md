@@ -265,3 +265,79 @@ Z mnou dosažených výsledků je ale vidět, že poměrně dost oblastí s holo
 {: style="margin-bottom:0px;" align=center }
 
 ## Validace výsledku klasifikace
+
+Nedílnou součástí klasifikace obrazových dat je i posouzení její přesnosti. Ta se posuzuje pomocí tzv. validačních (testovacích) dat reprezentujících skutečnost, kterými mohou být body zaměřené v terénu či nad ortofotem, případně data typu ZABAGED atd. Důležité také je, aby se jednalo o data nezávislá na datech trénovacích. V opačném případě by taková validace nebyla směrodatná. Přesnost klasifikace se nejčastěji posuzuje pomocí **chybové matice** (kontingenční tabulky), a z ní plynoucích statistických ukazatelů, jakými jsou např. **uživatelská přesnost**, **zpracovatelská přesnost** či **celková přesnost**.
+
+### Chybová matice
+
+Jedná se o čtvercovou matici, kde počet sloupců i řádků odpovídá počtu definovaných tříd. Řádky chybové matice jsou zpravidla tvořeny klasifikovanými daty a sloupce daty, které odpovídají skutečnosti. Správně klasifikovaná data se v této matici nachází na hlavní diagonále. V ideálním případě by měla být hlavní diagonála tvořena nejvyššími hodnotami v matici a hodnoty mimo diagonálu by se měly blížit nule.
+
+![](../assets/cviceni6/39_error-matrix.png){ style="width:60%;"}
+{: style="margin-bottom:0px;" align=center }
+
+### Celková přesnost
+
+Celková přesnost (overall accuracy) se vztahuje k celé klasifikaci a udává poměr spávně klasifikovaných pixelů ku všem pixelům vstupujících do validování. Je to tedy suma hodnot na hlavní diagonále chybové matice ku celkovému počtu testovacích vzorků. Dle chybové matice výše by se celková přesnosti rovnala: **(21 + 31 + 22)/95 = 0,78**. Celková přesnost klasifikace nicméně není nejlepším ukazatelem správnosti klasifikace, protože nám neříká nic o tom, jak se klasifikovaly jednotlivé třídy.
+
+### Uživatelská přesnost
+
+Uživatelská přesnost (user's accuracy), ve strojovém učení označována také jako **Precision**, udává, s jakou pravděpodobností pixel zařazený do určité třídy tuto třídu opravdu představuje. Počítá se pro každou třídu zvlášť, a to jako podíl správně klasifikovaných pixelů ku celkovému počtu pixelů, které do dané třídy byly zařazeny. Hodnoty uživatelské přesnosti pro jednotlivé třídy uvedené v matici chyb výše by byly následující:
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Třída</strong></th>
+      <th><strong>Uživatelská přesnost</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Water</td>
+      <td>21/27 = 0,78</td>
+    </tr>
+    <tr>
+      <td>Forest</td>
+      <td>31/37 = 0,84</td>
+    </tr>
+    <tr>
+      <td>Urban</td>
+      <td>22/31 = 0,71</td>
+    </tr>
+  </tbody>
+</table>
+
+### Zpracovatelská přesnost
+
+Zpracovatelská přesnost (producer's accuracy), ve strojovém učení označována také jako **Recall**, je poměr správně klasifikovaných pixelů ku celkovému počtu pixelů použitých pro testování dané třídy. Stejně tedy jako u uživatelské přesnoti se počítá pro každou třídu zvlášt, a pro data z matice chyb uvedené výše by nabývala následujících hodnot:
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Třída</strong></th>
+      <th><strong>Zpracovatelská přesnost</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Water</td>
+      <td>21/33 = 0,64</td>
+    </tr>
+    <tr>
+      <td>Forest</td>
+      <td>31/39 = 0,79</td>
+    </tr>
+    <tr>
+      <td>Urban</td>
+      <td>22/23 = 0,96</td>
+    </tr>
+  </tbody>
+</table>
+
+Uživatelskou (precision) a zpracovatelskou (recall) přesnost názorně znázorňuje následující obrázek:
+
+![](../assets/cviceni6/40_precision_recall.png){ style="width:60%;"}
+{: style="margin-bottom:0px;" align=center }
+
+### F1 score
+
+Metrika kombinující precision a recall pomocí harmonického průměru. Narozdíl od klasického průměru má harmonický průměr tendenci přiklánět se k nižšímu z obou hodnot. Proto pro dosažení vysokého F1 score je potřeba mít vysokou hodnotu jak u precision, tak u recall, což zajišťuje dobrou rovnováhu obou hodnot. Vzoreček je tedy následující: **F1 = 2 × Precision × Recall / (Precision + Recall)**.
