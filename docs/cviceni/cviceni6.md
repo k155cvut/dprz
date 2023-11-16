@@ -264,6 +264,8 @@ Z mnou dosažených výsledků je ale vidět, že poměrně dost oblastí s holo
 ![](../assets/cviceni6/38_misclassification.png){ style="width:80%;"}
 {: style="margin-bottom:0px;" align=center }
 
+<hr class="l1">
+
 ## Validace výsledku klasifikace
 
 Nedílnou součástí klasifikace obrazových dat je i posouzení její přesnosti. Ta se posuzuje pomocí tzv. validačních (testovacích) dat reprezentujících skutečnost, kterými mohou být body zaměřené v terénu či nad ortofotem, případně data typu ZABAGED atd. Důležité také je, aby se jednalo o data nezávislá na datech trénovacích. V opačném případě by taková validace nebyla směrodatná. Přesnost klasifikace se nejčastěji posuzuje pomocí **chybové matice** (kontingenční tabulky), a z ní plynoucích statistických ukazatelů, jakými jsou např. **uživatelská přesnost**, **zpracovatelská přesnost** či **celková přesnost**.
@@ -342,6 +344,8 @@ Uživatelskou (precision) a zpracovatelskou (recall) přesnost názorně znázor
 
 Metrika kombinující precision a recall pomocí harmonického průměru. Narozdíl od klasického průměru má harmonický průměr tendenci přiklánět se k nižšímu z obou hodnot. Proto pro dosažení vysokého F1 score je potřeba mít vysokou hodnotu jak u precision, tak u recall, což zajišťuje dobrou rovnováhu obou hodnot. Vzoreček je tedy následující: **F1 = 2 × Precision × Recall / (Precision + Recall)**.
 
+<hr class="l1">
+
 ## Validace ve SNAP
 
 SNAP narozdíl od jiných softwarů bohužel neumožňuje nějakou automatickou validaci provádět. Nicméně pro pochopení principu validace ho v rámci cvičení využít můžeme. Konkrétně použijeme nástroje ***Pin placing tool*** a ***Pin Manager*** a následně si chybovou matici ručně vytvoříme v Excelu. Pro účely cvičení budeme pro každou třídu vkládat 10 pinů a pro zachování nezávislosti na trénovacích datech je budeme vkládat mimo dříve vytvořené trénovací plochy. Řekněme tedy, že nejprve budeme chtít vytvořit piny pro třídu *Holá půda*. Pomocí nástroje ***Pin placing tool*** vytvoříme 10 pinů na místech s holou půdou a ideálně je umístíme rovnoměrně napříč celou scénou (pracujeme nad transformovaným produktem nad RGB kompozitem). 
@@ -405,6 +409,8 @@ Pro správné vyplnění matice chyb je dobré vědět, jaká hodnota odpovídá
 {: style="margin-bottom:0px;" align=center }
 
 Znovu ale připomínám, že takovýto postup validace slouží jen jako názorná ukázka. Aby byla validace více vypovídající, tak by bylo vhodné, aby se prováděla na více testovacích vzorcích. Tomu i odpovídá fakt, že se mi v tomto případě čtyři z pěti tříd klasifikovaly se 100% přesností, což asi nebude úplně pravda.
+
+<hr class="l1">
 
 ## Úkol - Řízená klasifikace
 
