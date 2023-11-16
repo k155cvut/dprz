@@ -341,3 +341,73 @@ Uživatelskou (precision) a zpracovatelskou (recall) přesnost názorně znázor
 ### F1 score
 
 Metrika kombinující precision a recall pomocí harmonického průměru. Narozdíl od klasického průměru má harmonický průměr tendenci přiklánět se k nižšímu z obou hodnot. Proto pro dosažení vysokého F1 score je potřeba mít vysokou hodnotu jak u precision, tak u recall, což zajišťuje dobrou rovnováhu obou hodnot. Vzoreček je tedy následující: **F1 = 2 × Precision × Recall / (Precision + Recall)**.
+
+## Validace ve SNAP
+
+SNAP narozdíl od jiných softwarů bohužel neumožňuje nějakou automatickou validaci provádět. Nicméně pro pochopení principu validace ho v rámci cvičení využít můžeme. Konkrétně použijeme nástroje ***Pin placing tool*** a ***Pin Manager*** a následně si chybovou matici ručně vytvoříme v Excelu. Pro účely cvičení budeme pro každou třídu vkládat 10 pinů a pro zachování nezávislosti na trénovacích datech je budeme vkládat mimo dříve vytvořené trénovací plochy. Řekněme tedy, že nejprve budeme chtít vytvořit piny pro třídu *Holá půda*. Pomocí nástroje ***Pin placing tool*** vytvoříme 10 pinů na místech s holou půdou a ideálně je umístíme rovnoměrně napříč celou scénou (pracujeme nad transformovaným produktem nad RGB kompozitem). 
+
+![](../assets/cviceni2/32_pin_placing_tool.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni6/41_validation_pin.png)
+{: .process_container}
+
+Po naklikání 10 pinů s holou půdou si otevřeme ***Pin Manager*** a přepíšeme hodnoty *Label* z "Pin 1", "Pin 2" atd. na název třídy, kterou jsme zrovna klikali, tj. *Holá půda*. Bohužel to asi nejde nějak hromadně, takže nezbývá nic jiného než použít metodu *Copy - Paste*.
+
+![](../assets/cviceni2/31_pin_manager_menu.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni6/42_pin_manager.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni6/43_pin_manager_label.png)
+{: .process_container}
+
+Stejný postup uděláme pro všechny ostatní třídy.
+
+![](../assets/cviceni6/44_all_pins.png){ style="width:80%;"}
+{: style="margin-bottom:0px;" align=center }
+
+???+ note "&nbsp;<span style="color:#448aff">Pozn.</span>"
+      Pokud by se opět stalo, že by transformovaný produkt přestal fungovat, tak pro obnovení pinů lze použít stejný postup jako u obnovení trénovacích ploch.
+
+Když máme naklikané všechny piny pro všechny třídy, je potřeba překopírovat piny vytvořené nad RGB kompozitem do našeho klasifikovaného snímku. K tomu použijeme v ***Pin Manager*** funkci ***Transfer the selected pins to other products.*** Je potřeba mít ale vybrány (selectovány) všechny piny, jinak se překopíruje jen část.
+
+![](../assets/cviceni6/45_transfer_pins.png){ style="height:165px;"}
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni6/46_transfer_product.png){ style="height:174px;"}
+{: .process_container}
+
+V mapovém okně se poté můžeme podívat, jestli v klasifikovaném produktu piny opravdu máme.
+
+![](../assets/cviceni6/47_pins_in_classification.png){ style="width:80%;"}
+{: style="margin-bottom:0px;" align=center }
+
+Dále je potřeba do tabulky v ***Pin Manager*** přidat sloupec s hodnotou klasifikované třídy. To uděláme pomocí funkce ***Filter pixel data to be displayed in table.*** Z nabítky vybereme vrstvu *LabeledClasses* a dáme OK.
+
+![](../assets/cviceni6/48_filter_pixel_data.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni6/49_labeledclasses.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni6/50_new_column.png)
+{: .process_container}
+
+Posledním krokem je export tabulky do textového souboru pomocí funkce ***Export selected data to flat text file.*** Znovu je potřeba mít selectované všechny piny.
+
+![](../assets/cviceni6/51_export_pins.png){ style="width:20%;"}
+{: style="margin-bottom:0px;" align=center }
+
+Následně si tyto data nahrajeme do Excelu (případně jiného softwaru) a vytvoříme matici chyb. <a href="https://geo.fsv.cvut.cz/vyuka/155dprz/cv6/matice_chyb.xlsx" target="_blank"> **Zde**</a> si můžete stáhnout předpřipravenou šablonu, do které můžete data postupně vkládat.
+
+![](../assets/cviceni6/52_excel_matice_chyb.png)
+{: style="margin-bottom:0px;" align=center }
+
+Pro správné vyplnění matice chyb je dobré vědět, jaká hodnota odpovídá které třídě. To zjistíme v ***Colour Manipulation*** klasifikovaného produktu. Matici chyb poté vyplňujeme po sloupcích, kde do každého řádku zapíšeme počet testovacích vzorků z dané třídy, které se klasifikovaly jako třída na konkrétním řádku matice.
+
+![](../assets/cviceni6/34_legend.png){ style="width:40%;"}
+{: style="margin-bottom:0px;" align=center }
+
+Znovu ale připomínám, že takovýto postup validace slouží jen jako názorná ukázka. Aby byla validace více vypovídající, tak by bylo vhodné, aby se prováděla na více testovacích vzorcích. Tomu i odpovídá fakt, že se mi v tomto případě čtyři z pěti tříd klasifikovaly se 100% přesností, což asi nebude úplně pravda.
+
+## Úkol - Řízená klasifikace
+
+- Spočítat řízenou klasifikaci na svém území
+- Provést validaci výsledku klasifikace
+- Zhodnotit výsledky (jakou jste použili klasifikaci, jaké jste nastavili parametry, jaké třídy jste klasifikovali, s čím byly problémy atd.)
