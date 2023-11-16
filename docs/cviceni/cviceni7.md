@@ -29,8 +29,19 @@
 
 ## Cíl cvičení
 
+- Naučit se exportovat data ze SNAP
+- Porozumnět principu segmentace a objektové klasifikace
+- Umět toto téma zpracovat v ArcGIS Pro
+
 <hr class="l1">
 
 ## Základní pojmy
 
+- **Segmentace** - Jedná se o proces, při kterém dochází k seskupování sousedních pixelů na samostatné a smysluplné oblasti nebo objekty na základě určitých společných vlastností, jakými jsou například barva, textura či tvarové charakteristiky.
+- **Objektová klasifikace** - Jedná se o druh klasifikace, která kombinuje jak spektrální, tak i prostorové informace pro kategorizaci obrazových objektů, což jsou obvykle segmenty nebo oblasti obrazu, nikoli jednotlivé pixely.
+
 <hr class="l1">
+
+## Export dat ze SNAP
+
+Software SNAP nemá nástroje pro objektovou klasifikaci. Tu tedy budeme chtít provést v jiném softwaru, v našem případě v ArcGIS Pro. Proto si náš dříve vytvořený subset vyexportujeme do souboru, který budeme moct v ArcGIS Pro otevřít.
