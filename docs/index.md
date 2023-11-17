@@ -38,6 +38,15 @@ Během výuky bude používán převážně open source software [**SNAP**](http
 [<span>:material-open-in-new: youtube.com</span><br>Sentinel-1 Complete Tutorials in SNAP](https://www.youtube.com/playlist?list=PLJeebDESAF94gWsdm63tabJMh3D4LrxzV){ .md-button .md-button--primary .url-name target="_blank"}
 {: align=center style="display:flex; justify-content:center; align-items:center; column-gap:20px; row-gap:10px; flex-wrap:wrap;"}
 
+## DPZ v ArcGIS Pro
+
+[<span>:material-open-in-new: pro.arcgis.com</span><br>Imagery and remote sensing in ArcGIS Pro](https://pro.arcgis.com/en/pro-app/latest/help/data/imagery/imagery-and-remote-sensing-in-arcgis.htm){ .md-button .md-button--primary .url-name target="_blank"}
+[<span>:material-open-in-new: youtube.com</span><br>Remote Sensing in ArcGIS Pro](https://www.youtube.com/playlist?list=PL3TjE07UZwaLOxwY0hDXAvRnozPNJfj0h){ .md-button .md-button--primary .url-name target="_blank"}
+[<span>:material-open-in-new: youtube.com</span><br>ArcGIS Pro Image Processing](https://www.youtube.com/playlist?list=PLW6kSC5GYhLVJhJtbXSfqyye8Ag4Ka8HW){ .md-button .md-button--primary .url-name target="_blank"}
+[<span>:material-open-in-new: youtube.com</span><br>Imagery and Remote Sensing](https://www.youtube.com/playlist?list=PLGZUzt4E4O2I64qHyVPAxtDPJj0LtJIpQ){ .md-button .md-button--primary .url-name target="_blank"}
+[<span>:material-open-in-new: youtube.com</span><br>Remote Sensing with ArcGIS Pro](https://www.youtube.com/playlist?list=PLkV8CNVuB_rLK-WQbDHOMMCTJOylWSNfC){ .md-button .md-button--primary .url-name target="_blank"}
+{: align=center style="display:flex; justify-content:center; align-items:center; column-gap:20px; row-gap:10px; flex-wrap:wrap;"}
+
 ## Doporučená literatura
 
 1. Halounová L., Pavelka K.: Dálkový průzkum Země. Vydavatelství ČVUT, Praha 2007. ISBN: 80-01-03124-1
