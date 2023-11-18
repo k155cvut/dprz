@@ -59,14 +59,31 @@ Data se nám uložila do jednoho ***TIF*** souboru. Jedná se o klasický rastro
 
 <hr class="l1">
 
-## Základní práce s daty DPZ v ArcGIS Pro
+## Zobrazení dat DPZ v ArcGIS Pro
 
 Při prvním vložení našeho exportovaného subsetu do ArcGIS Pro se mohou data zobrazit jen v jednotlité černé barvě, jako tomu je v následujícím obrázku.
 
 ![](../assets/cviceni7/04_arcgis_pro.png)
 {: style="margin-bottom:0px;" align=center }
 
-Jako první by to mohlo evokovat, že je s daty něco v nepořádku. Není tomu ale tak, jen nejsou správně zobrazená. Přepneme se proto do záložky **Raster Layer** (je potřeba mít označenou naší rastrovou vrstvu) a zvolíme možnost **Stretch Type**. Vidíme, že jako defaultní nastavení zde byla vybrána možnost *None*. Zkusíme tedy zvolit jinou nabízenou možnost.
+Jako první by to mohlo evokovat, že je s daty něco v nepořádku. Není tomu ale tak, jen nejsou správně zobrazená. Přepneme se proto do záložky **Raster Layer** (je potřeba mít označenou naší rastrovou vrstvu) a zvolíme možnost **Stretch Type**. Vidíme, že jako defaultní nastavení zde byla vybrána možnost *None*. Zkusíme tedy zvolit jinou z nabízených možností.
 
-![](../assets/cviceni7/05_stretch_type.png){ style="height:611px;"}
+![](../assets/cviceni7/05_stretch_type.png){ style="height:458px;"}
+{: style="margin-bottom:0px;" align=center }
+
+V mém případě se nejlépe jevila možnost *Standard Deviation*.
+
+![](../assets/cviceni7/06_stdev_stretch.png)
+{: style="margin-bottom:0px;" align=center }
+
+Jsme tedy již schopni rozeznat, co na naší scéně vidíme, nicméně data se nám zobrazují v jakýchsi falešných barvách. Je tomu tak proto, protože ArcGIS Pro vkládá automaticky do RGB kombinace první tři pásma z *multiband* souboru. My ale již víme, že u dat Sentinel-2 tomu tak není. Červené pásmo zde odpovídá pásmu B4, zelené pásmo pásmu B3 a modré pásmo pásmu B2. Pokud si chceme data zobrazit ve skutečných barvách, musíme kanály vstupující do RGB kompozitu podle toho upravit. To uděláme pomocí **Raster Layer** → **Symbology**, kde poté zvolíme možnost **RGB**. Otevře se nám novy panel, kde si již můžeme správně nastavit RGB kombinaci. V případě potřeby je i zde možno měnit *Stretch type*.
+
+![](../assets/cviceni7/07_symbology_menu.png){ style="height:251px;"}
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni7/08_symbology_settings.png){ style="height:496px;"}
+{: .process_container}
+
+Poté se již data zobrazí v přírodních barvách.
+
+![](../assets/cviceni7/09_true_color.png)
 {: style="margin-bottom:0px;" align=center }
