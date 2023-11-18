@@ -44,4 +44,13 @@
 
 ## Export dat ze SNAP
 
-Software SNAP nemá nástroje pro objektovou klasifikaci. Tu tedy budeme chtít provést v jiném softwaru, v našem případě v ArcGIS Pro. Proto si náš dříve vytvořený subset vyexportujeme do souboru, který budeme moct v ArcGIS Pro otevřít.
+Software SNAP nemá nástroje pro objektovou klasifikaci. Tu tedy budeme chtít provést v jiném softwaru, v našem případě v ArcGIS Pro. Proto si náš dříve vytvořený a převzorkovaný subset vyexportujeme do souboru, který budeme moct v ArcGIS Pro otevřít. Export produktu lze provést z menu **File** → **Export**, kde si vybereme jeden z nabízených formátů. Pokud bychom ale takto exportovali rovnou náš převzorkovaný subset, tak by se nám do výsledného souboru propsala veškerá data, který náš produkt obsahuje, tj. všechna pásma, vektorová data, masky, atd. Všechna tato data by poté tvořila jednotlivé vrstvy, čímž by se exportovaný soubor stal dosti nepřehledný a těžko používatelný. Proto si nejprve vytvoříme produkt, který bude obsahovat pouze ta data, která opravdu budeme chtít exportovat. Použijeme tedy funkci **Raster** → **Bands extractor**.
+
+![](../assets/cviceni7/01_band_extractor_menu.png){ style="width:30%;"}
+{: style="margin-bottom:0px;" align=center }
+
+V záložce ***I/O Parameters*** nastavíme zdrojový produkt a název exportovaného produktu. A zároveň můžeme rovnou změnit typ souboru z *BEAM-DIMAP* na *GeoTIFF*. V ***Processing Parameters*** poté vybereme pásma, která chceme do exportovaného produktu zapsat. V tomto případě nám postačí jen původní pásma Sentinel-2.
+
+![](../assets/cviceni7/02_bands extractor_io.png)
+![](../assets/cviceni7/03_bands extractor_processing.png)
+{: .process_container}
