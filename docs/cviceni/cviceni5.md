@@ -44,7 +44,7 @@
 - Přiřazování pixelů do tříd probíhá na základě tzv. **příznaků** (u optických dat mluvíme o spektrálních příznacích, tj. hodnoty spektrální odrazivosti různých povrchů).
 - Příznaky tvoří tzv. **příznakový prostor**, který je definován všemi pásmy, v nichž lze naměřit nebo vypočíst určitou charakteristiku.
 
-![](../assets/cviceni5/01_schema.png){ style="width:80%;"}
+![](../assets/cviceni5/01_schema.png)
 {: style="margin-bottom:0px;" align=center }
 <figcaption>Zjednodušené schéma klasifikace, kdy se z multispektrálních dat tvoří tematická mapa</figcaption>
 
@@ -75,7 +75,7 @@ V rámci tohoto cvičení si ve SNAP vyzkoušíme neřízenou klasifikaci pomoc�
     1. Bylo dosaženo jednoho z **kritérií konvergence**, tj. poloha centroidů či počet pixelů zařazených do jednotlivých shluků se již výrazně nemění
     2. Bylo dosaženo maximálního počtu iterací zadaného uživatelem
 
-![](../assets/cviceni5/02_shlukovani.png){ style="width:80%;"}
+![](../assets/cviceni5/02_shlukovani.png){ style="height:266px;"}
 {: style="margin-bottom:0px;" align=center }
 <figcaption>Princip iteračního postupu shlukování</figcaption>
 
@@ -90,7 +90,7 @@ Následně pak uživatel již samostatně provádí následující dva kroky, kt
 
 Neřízenou klasifikaci ve SNAP najdeme v menu **Raster** → **Classification** → **Unsupervised Classification**, kde poté zvolíme jednu ze dvou nabízených možností. V našem případě zvolíme **K-Means Cluster Analysis**.
 
-![](../assets/cviceni5/03_unsup_classification_menu.png){ style="width:70%;"}
+![](../assets/cviceni5/03_unsup_classification_menu.png){ style="height:394px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Otevře se nám nové okno, kde nejprve v záložce **I/O Parameters** zvolíme ***Source Product***, což bude náš převzorkovaný subset (do výpočtu musí vstupovat pásma se stejným prostorovým rozlišením), a dále pak název nového produktu, zda ho chceme uložit atd. V záložce **Processing Parameters** poté nastavíme parametry algoritmu, jimiž jsou počet spektrálních tříd (***Number of clusters***) a počet iterací (***Number of iterations***). Parametr ***Random seed*** můžeme nechat tak, jak je. Ten pouze náhodně generuje počáteční shluky. V ***Source band names*** nakonec vybereme jednotlivá pásma, která budou do klasifikace vstupovat (můžeme použít např. i jednotlivé spektrální indexy, pokud je máme v produktu uloženy). Pokud bychom chtěli klasifikaci provést jen na určité části území, můžeme použit ***ROI-mask*** k vybrání konkrétní masky.
@@ -102,7 +102,7 @@ Otevře se nám nové okno, kde nejprve v záložce **I/O Parameters** zvolíme 
 ???+ note "&nbsp;<span style="color:#448aff">Pozn.</span>"
       Výpočet může být v závislosti na vstupních parametrech a velikosti území časově trochu náročnější.
 
-![](../assets/cviceni5/06_computation_time.png){ style="width:40%;"}
+![](../assets/cviceni5/06_computation_time.png){ style="height:217px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Po dokončení výpočtu se do *Product Explorer* přidá nový produkt, kde v *Bands* najdeme naší klasifikovanou vrstvu pod názvem *class_indices*.
@@ -158,7 +158,7 @@ U patnácti tříd vypadají výsledky zas o něco lépe, byť alespoň na této
 
 Neřízenou klasifikaci ve SNAP jsme si ukazovali již výše. SNAP bohužel neumožňuje nějaké jednoduché seskupování tříd v rastru, nicméně pro náš účel postačí, když si třídy pojmenujeme, a těm třídám, které představují stejný povrch, přidělíme stejnou barvu. Upravíme tedy tabulku v *Colour Manipulation*, kde se mimochodem dozvíme i četnost jednotlivých spektrálních tříd.
 
-![](../assets/cviceni5/12_kmeans_colour_manipulation.png){ style="width:40%;"}
+![](../assets/cviceni5/12_kmeans_colour_manipulation.png){ style="height:570px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Při vyšším počtu tříd může ale nastat situace, že mezi sebou začnou jednotlivé barvy splývat, což zhoršuje orientaci, co jaká třída vlastně znamená. Samozřejmě lze využít nástroj *Pixel Info*, který nám řekne, o jakou hodnotu se na konkrétním místě jedná. Mnohem přehlednější je ale využítí maskování s tím, že si jednotlivé spektrální třídy zobrazíme přímo na RGB scéně. K tomu ale potřebujeme propsat klasifikovanou vrstvu do našeho produktu s pásmy Sentinel-2. To uděláme pomocí funkce *Band Maths...*, kde jako *Target product* zvolíme produkt s pásmy Sentinel-2 a klikneme na *Edit Expression...* Zde poté přepneme produkt na produkt s klasifikovanou vrstvou, kterou následně dvojklikem vložíme do *Expression*. Nakonec dáme *OK* a znovu *OK*, čímž dostaneme klasifikovanou vrstvu do našeho produktu.
@@ -179,17 +179,17 @@ Když si tuto vrstvu poté zobrazíme v mapovém okně, zobrazuje se pouze v ods
 
 Poté se můžeme podívat, s jakým krajinným prvkem se vypočtená maska překrývá. V tomto případě lze vidět, že spektrální třída s hodnotou 0 odpovídá holé půdě.
 
-![](../assets/cviceni5/18_mask.png){ style="width:80%;"}
+![](../assets/cviceni5/18_mask.png){ style="height:535px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Tuto informaci následně zaneseme do tabulky v *Colour Manipulation* u klasifikovaného produktu. Do tabulky napíšeme název třídy a přiřadíme nějakou barvu.
 
-![](../assets/cviceni5/19_info_class.png){ style="width:50%;"}
+![](../assets/cviceni5/19_info_class.png){ style="height:111px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Stejný postup provedeme pro všechny spekrální třídy. Není ale potřeba vytvářet pokaždé novou masku. Stačí upravit tu stávající pomocí funkce ***Edit the selected mask***.
 
-![](../assets/cviceni5/20_edit_mask.png){ style="width:50%;"}
+![](../assets/cviceni5/20_edit_mask.png){ style="height:242px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Konečný výsledek může vypadat nějak takto:

@@ -170,10 +170,10 @@ Vyhledanou scénu si můžeme v mapovém okně vizualizovat či si o ní zobrazi
 
 Pokud jsme s vybranou scénou spokojeni, pomocí ikony ***Download product*** scénu stáhneme (případně použijem tlačítko ***Download*** v **PRODUCT INFO**). Produkt se stáhne ve formátu **ZIP** a pro práci v softwaru **SNAP** jej není třeba rozbalovat.
 
-![](../assets/cviceni1/11_product_download.png){ style="width:50%;"}
+![](../assets/cviceni1/11_product_download.png){ style="height:134px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Někdy se může stát, že pro naše zadané parametry nebude nalezen žádný produkt. V takovém případě je potřeba vyhledávací parametry pozměnit.
 
-![](../assets/cviceni1/12_no_product_found.png){ style="width:40%;"}
+![](../assets/cviceni1/12_no_product_found.png){ style="height:122px;"}
 {: style="margin-bottom:0px;" align=center }

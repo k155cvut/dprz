@@ -46,11 +46,27 @@
 
 Software SNAP nemá nástroje pro objektovou klasifikaci. Tu tedy budeme chtít provést v jiném softwaru, v našem případě v ArcGIS Pro. Proto si náš dříve vytvořený a převzorkovaný subset vyexportujeme do souboru, který budeme moct v ArcGIS Pro otevřít. Export produktu lze provést z menu **File** → **Export**, kde si vybereme jeden z nabízených formátů. Pokud bychom ale takto exportovali rovnou náš převzorkovaný subset, tak by se nám do výsledného souboru propsala veškerá data, který náš produkt obsahuje, tj. všechna pásma, vektorová data, masky, atd. Všechna tato data by poté tvořila jednotlivé vrstvy, čímž by se exportovaný soubor stal dosti nepřehledný a těžko používatelný. Proto si nejprve vytvoříme produkt, který bude obsahovat pouze ta data, která opravdu budeme chtít exportovat. Použijeme tedy funkci **Raster** → **Bands extractor**.
 
-![](../assets/cviceni7/01_band_extractor_menu.png){ style="width:30%;"}
+![](../assets/cviceni7/01_band_extractor_menu.png){ style="height:398px;"}
 {: style="margin-bottom:0px;" align=center }
 
 V záložce ***I/O Parameters*** nastavíme zdrojový produkt a název exportovaného produktu. A zároveň můžeme rovnou změnit typ souboru z *BEAM-DIMAP* na *GeoTIFF*. V ***Processing Parameters*** poté vybereme pásma, která chceme do exportovaného produktu zapsat. V tomto případě nám postačí jen původní pásma Sentinel-2.
 
-![](../assets/cviceni7/02_bands extractor_io.png)
-![](../assets/cviceni7/03_bands extractor_processing.png)
+![](../assets/cviceni7/02_bands extractor_io.png){ style="height:313px;"}
+![](../assets/cviceni7/03_bands extractor_processing.png){ style="height:313px;"}
 {: .process_container}
+
+Data se nám uložila do jednoho ***TIF*** souboru. Jedná se o klasický rastrový formát. V našem případě se navíc jedná ještě o tzv. *Multiband Layer*, protože v sobě obsahuje více než jednu vrstvu. Nyní již tedy můžeme otevřít ArcGIS Pro, vytvořit nový *Map* projekt a vložit exportovaný *TIF* soubor.
+
+<hr class="l1">
+
+## Základní práce s daty DPZ v ArcGIS Pro
+
+Při prvním vložení našeho exportovaného subsetu do ArcGIS Pro se mohou data zobrazit jen v jednotlité černé barvě, jako tomu je v následujícím obrázku.
+
+![](../assets/cviceni7/04_arcgis_pro.png)
+{: style="margin-bottom:0px;" align=center }
+
+Jako první by to mohlo evokovat, že je s daty něco v nepořádku. Není tomu ale tak, jen nejsou správně zobrazená. Přepneme se proto do záložky **Raster Layer** (je potřeba mít označenou naší rastrovou vrstvu) a zvolíme možnost **Stretch Type**. Vidíme, že jako defaultní nastavení zde byla vybrána možnost *None*. Zkusíme tedy zvolit jinou nabízenou možnost.
+
+![](../assets/cviceni7/05_stretch_type.png){ style="height:611px;"}
+{: style="margin-bottom:0px;" align=center }

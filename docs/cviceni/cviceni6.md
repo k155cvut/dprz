@@ -44,7 +44,7 @@
     4. Zatřídění všech obrazových prvků do stanovených tříd
     5. Úprava, hodnocení a prezentace výsledků klasifikace
 
-![](../assets/cviceni6/01_schema_klasifikace.png){ style="width:60%;"}
+![](../assets/cviceni6/01_schema_klasifikace.png){ style="height:138px;"}
 {: style="margin-bottom:0px;" align=center }
 <figcaption>Schéma řízené klasifikace</figcaption>
 
@@ -63,7 +63,7 @@
 
 Tento krok budeme považovat za tzv. nultý krok, protože není běžnou součástí řízené klasifikace. Ve SNAP bohužel z nějakého důvodu řízená klasifikace funguje pouze na *Lat/Long* datech v systému WGS84. Je tedy potřeba si naše data přetransformovat. K tomu slouží funkce nacházející se v **Raster** → **Geometric** → **Reprojection**.
 
-![](../assets/cviceni6/02_reprojection_menu.png){ style="width:40%;"}
+![](../assets/cviceni6/02_reprojection_menu.png){ style="height:393px;"}
 {: style="margin-bottom:0px;" align=center }
 
 V záložce ***I/O Parameters*** nastavíme produkt, který chceme transformovat, název transformovaného produktu a zda chceme výsledný produkt uložit. V záložce ***Reprojection Parameters*** poté nastavíme, do jakého systému bude produkt transformován. V tomto případě můžeme nechat vše tak, jak je.
@@ -74,7 +74,7 @@ V záložce ***I/O Parameters*** nastavíme produkt, který chceme transformovat
 
 Výsledkem je pak v závislosti na poloze více či méně "zdeformovaná" scéna.
 
-![](../assets/cviceni6/05_reprojected_scene.png){ style="width:80%;"}
+![](../assets/cviceni6/05_reprojected_scene.png){ style="height:472px;"}
 {: style="margin-bottom:0px;" align=center }
 
 ### Tvorba trénovacích ploch
@@ -111,7 +111,7 @@ Na to, do jakého vektorového kontejneru chceme polygon vkládat, se nás SNAP 
 
 Tímto způsobem vytvoříme trénovací plochy pro všechny třídy. Trénovacích ploch by mělo být dostatečné množství a je ideální, aby se nacházely rovnoměrně po celé ploše obrazových dat.
 
-![](../assets/cviceni6/16_all_training_areas.png){ style="width:80%;"}
+![](../assets/cviceni6/16_all_training_areas.png){ style="height:520px;"}
 {: style="margin-bottom:0px;" align=center }
 
 ???+ note "&nbsp;<span style="color:#448aff">Pozn.</span>"
@@ -173,12 +173,12 @@ Rozptylogram v tomto případě znázorňuje již zmíněný **příznakový pro
 
 Řízenou klasifikaci ve SNAP najdeme v menu **Raster** → **Classification** → **Supervised Classification**, kde si vybereme jeden z nabízených algoritmů. V našem případě **Random Forest Classifier**.
 
-![](../assets/cviceni6/27_sup_classification_menu.png){ style="width:70%;"}
+![](../assets/cviceni6/27_sup_classification_menu.png){ style="height:449px;"}
 {: style="margin-bottom:0px;" align=center }
 
 **Random Forest** je v současné době jedním z nejpopulárnějších klasifikátorů na bázi strojového učení. Vychází z tzv. *Decision Trees (rozhodovacích stromů)*, kde každý strom vezme jen určitý a náhodný počet příznaků a z nich určí, o jakou třídu se podle něj jedná. Výsledná třída je pak určena na základě přavažujícího výsledku ze všech stromů.
 
-![](../assets/cviceni6/28_random_forest.png){ style="width:60%;"}
+![](../assets/cviceni6/28_random_forest.png){ style="height:389px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Nástroj **Random Forest Classifier** se ve SNAP zkládá ze tří záložek. V ***ProductSet-Reader*** je potřeba zvolit produkt, který se bude klasifikovat. Záložka ***Random-Forest-Classifier*** slouží k nastavení samotného klasifikátoru. Volíme zde, jestli chceme trénovat klasifikátor na rastru nebo na vektorech (v našem případě chceme na vektorech). Dále jestli chceme klasifikátor evaluovat, ale především určujeme hodnoty ***Number of training samples*** a ***Number of trees***. V neposlední řadě je potřeba označit i všechny třídy, které chceme klasifikovat a označit i všechna pásma, která chceme v klasifikaci použít (kromě původních pásem Sentinel-2 můžeme použít i vypočtené spektrální indexy atd.). V poslední záložce ***Write*** zvolíme, kam chceme klasifikovaný produkt uložit.
@@ -261,7 +261,7 @@ Jedná se o zamaskované pixely, jejichž *"Confidence"* (viz vrstva ***Confiden
 
 Z mnou dosažených výsledků je ale vidět, že poměrně dost oblastí s holou půdou se klasifikovalo jako zástavba a bylo by tedy potřeba na klasifikaci dále pracovat.
 
-![](../assets/cviceni6/38_misclassification.png){ style="width:80%;"}
+![](../assets/cviceni6/38_misclassification.png){ style="height:520px;"}
 {: style="margin-bottom:0px;" align=center }
 
 <hr class="l1">
@@ -274,7 +274,7 @@ Nedílnou součástí klasifikace obrazových dat je i posouzení její přesnos
 
 Jedná se o čtvercovou matici, kde počet sloupců i řádků odpovídá počtu definovaných tříd. Řádky chybové matice jsou zpravidla tvořeny klasifikovanými daty a sloupce daty, které odpovídají skutečnosti. Správně klasifikovaná data se v této matici nachází na hlavní diagonále. V ideálním případě by měla být hlavní diagonála tvořena nejvyššími hodnotami v matici a hodnoty mimo diagonálu by se měly blížit nule.
 
-![](../assets/cviceni6/39_error-matrix.png){ style="width:60%;"}
+![](../assets/cviceni6/39_error-matrix.png){ style="height:422px;"}
 {: style="margin-bottom:0px;" align=center }
 
 ### Celková přesnost
@@ -337,7 +337,7 @@ Zpracovatelská přesnost (producer's accuracy), ve strojovém učení označov�
 
 Uživatelskou (precision) a zpracovatelskou (recall) přesnost názorně znázorňuje následující obrázek:
 
-![](../assets/cviceni6/40_precision_recall.png){ style="width:60%;"}
+![](../assets/cviceni6/40_precision_recall.png){ style="height:381px;"}
 {: style="margin-bottom:0px;" align=center }
 
 ### F1 score
@@ -366,7 +366,7 @@ Po naklikání 10 pinů s holou půdou si otevřeme ***Pin Manager*** a přepí�
 
 Stejný postup uděláme pro všechny ostatní třídy.
 
-![](../assets/cviceni6/44_all_pins.png){ style="width:80%;"}
+![](../assets/cviceni6/44_all_pins.png){ style="height:489px;"}
 {: style="margin-bottom:0px;" align=center }
 
 ???+ note "&nbsp;<span style="color:#448aff">Pozn.</span>"
@@ -381,7 +381,7 @@ Když máme naklikané všechny piny pro všechny třídy, je potřeba překopí
 
 V mapovém okně se poté můžeme podívat, jestli v klasifikovaném produktu piny opravdu máme.
 
-![](../assets/cviceni6/47_pins_in_classification.png){ style="width:80%;"}
+![](../assets/cviceni6/47_pins_in_classification.png){ style="height:490px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Dále je potřeba do tabulky v ***Pin Manager*** přidat sloupec s hodnotou klasifikované třídy. To uděláme pomocí funkce ***Filter pixel data to be displayed in table.*** Z nabítky vybereme vrstvu *LabeledClasses* a dáme OK.
@@ -395,7 +395,7 @@ Dále je potřeba do tabulky v ***Pin Manager*** přidat sloupec s hodnotou klas
 
 Posledním krokem je export tabulky do textového souboru pomocí funkce ***Export selected data to flat text file.*** Znovu je potřeba mít selectované všechny piny.
 
-![](../assets/cviceni6/51_export_pins.png){ style="width:20%;"}
+![](../assets/cviceni6/51_export_pins.png){ style="height:166px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Následně si tyto data nahrajeme do Excelu (případně jiného softwaru) a vytvoříme matici chyb. <a href="https://geo.fsv.cvut.cz/vyuka/155dprz/cv6/matice_chyb.xlsx" target="_blank"> **Zde**</a> si můžete stáhnout předpřipravenou šablonu, do které můžete data postupně vkládat.
@@ -405,7 +405,7 @@ Následně si tyto data nahrajeme do Excelu (případně jiného softwaru) a vyt
 
 Pro správné vyplnění matice chyb je dobré vědět, jaká hodnota odpovídá které třídě. To zjistíme v ***Colour Manipulation*** klasifikovaného produktu. Matici chyb poté vyplňujeme po sloupcích, kde do každého řádku zapíšeme počet testovacích vzorků z dané třídy, které se klasifikovaly jako třída na konkrétním řádku matice.
 
-![](../assets/cviceni6/34_legend.png){ style="width:40%;"}
+![](../assets/cviceni6/34_legend.png){ style="height:122px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Znovu ale připomínám, že takovýto postup validace slouží jen jako názorná ukázka. Aby byla validace více vypovídající, tak by bylo vhodné, aby se prováděla na více testovacích vzorcích. Tomu i odpovídá fakt, že se mi v tomto případě čtyři z pěti tříd klasifikovaly se 100% přesností, což asi nebude úplně pravda.

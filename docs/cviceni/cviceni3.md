@@ -86,8 +86,8 @@ Spektrálních indexů existuje celá řada. Příklady indexů můžeme nalézt
 
 Pokud chceme spektrální indexy počítat ve SNAP, využijeme nástroj ***Band Maths...***, který nalezneme buď kliknutím pravým tlačítkem na vybraný produkt v ***Product Explorer***, nebo přes menu ***Raster*** → ***Band Maths...***
 
-![](../assets/cviceni3/01_band_maths.png){ style="width:432px;"}
-![](../assets/cviceni3/02_band_maths_menu.png){ style="width:298px;"}
+![](../assets/cviceni3/01_band_maths.png){ style="height:171px;"}
+![](../assets/cviceni3/02_band_maths_menu.png){ style="height:115px;"}
 {: .process_container}
 
 ???+ note "&nbsp;<span style="color:#448aff">Pozn.</span>"
@@ -102,9 +102,9 @@ V nově otevřeném okně poté zadáme název nově vytvořeného pásma (v na�
 
 Vypočtené pásmo se nám přidá do mapového okna a také do *Bands*. Pokud jsme v předchozím kroku nechali zaškrtnuto *Virtual (save expression only, don't store data)*, zobrazuje se u ikony pásma písmeno *V* značící, že pásmo je pouze virtuální. Pokud bychom ho chtěli zapsat na disk, klikneme na pásmo pravým talčítkem myši a dáme ***Convert Band***.
 
-![](../assets/cviceni3/05_new_band.png){ style="width:163px;"}
+![](../assets/cviceni3/05_new_band.png){ style="height:309px;"}
 ![](../assets/arrow.svg){: .off-glb .process_icon}
-![](../assets/cviceni3/06_convert_band.png){ style="width:309px;"}
+![](../assets/cviceni3/06_convert_band.png){ style="height:350px;"}
 {: .process_container}
 
 [:material-open-in-new: NDMI](https://eos.com/make-an-analysis/ndmi/){ .md-button .md-button--primary .button_smaller .external_link_icon target="_blank"} neboli *Normalized Difference Moisture Index* popisuje úroveň vlhkosti ve vegetaci a slouží tedy jako indikátor vodního stresu vegetace. Nabývá hodnot od -1 do 1. Čím vyšší hodnota, tím vyšší úroveň vlhkosti ve vegetaci. Pro lepší názornost přiřadíme pásmu s indexem NDMI některou z nabízených barevných palet ve SNAP. Palety najdeme v záložce ***Colour Manipulation*** → ***Palette***, kde si nějakou vybereme (např. *gradient_red_white_blue*).
@@ -167,14 +167,14 @@ Hovořit se ale rovněž dá i o zdravé a nezdravé vegataci. Chlorofyl totiž 
 
 Řekněme tedy, že chceme vytvořit masku s hustou a středně hustou vegetací. V ***Mask Manager*** zvolíme možnost ***Creates a new mask based on a value range*** a zadáme požadovaný rozsah hodnot NDVI.
 
-![](../assets/cviceni3/12_mask_value_range.png){ style="width:244px;"}
+![](../assets/cviceni3/12_mask_value_range.png){ style="height:90px;"}
 ![](../assets/arrow.svg){: .off-glb .process_icon}
-![](../assets/cviceni3/13_vegetation_mask.png){ style="width:343px;"}
+![](../assets/cviceni3/13_vegetation_mask.png){ style="height:113px;"}
 {: .process_container}
 
 V ***Mask Manager*** se nám poté objeví nová maska, kterou si můžeme pojmenovat či jí změnit barvu.
 
-![](../assets/cviceni3/14_new_mask.png){ style="width:50%;"}
+![](../assets/cviceni3/14_new_mask.png){ style="height:41px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Následně si masku zobrazíme přes nějaké pásmo (ideálně přes RGB kompozit) a přesvědčíme se, zda opravdu maskuje to, co jsme chtěli.
@@ -197,7 +197,7 @@ Následně si masku zobrazíme přes nějaké pásmo (ideálně přes RGB kompoz
 
 První část úkolu je snadná. NDVI již máme spočítané, takže jen stačí přidělit jednotlivým hodnotám NDVI barvy dle tabulky výše. Zobrazíme si tedy pásmo NDVI a přejdeme do ***Colour Manipulation***. Zvolíme možnost ***Sliders*** a klikneme na ***More Options***, kde zaškrtneme checkbox ***Discrete colours***.
 
-![](../assets/cviceni3/16_discrete_colors.png){ style="width:40%;"}
+![](../assets/cviceni3/16_discrete_colors.png){ style="height:310px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Slidery poté upravíme dle našich potřeb. Kliknutím na hodnotu slider můžeme tuto hodnotu měnit. Kliknutím na samotný slider můžeme měnit barvu daného slideru (při zaškrtnutém *Discrete colours* bude vybraná barva platit pro hodnoty od daného slideru až po slider následující). Kliknutím pravým talčítkem myši můžeme slidery buď přidávan nebo odstraňovat. Není potřeba zadávat slider pro nejvyšší možnou hodnotu. Stačí mít slider pro počáteční hodnotu posledního intervalu.
@@ -209,7 +209,7 @@ Slidery poté upravíme dle našich potřeb. Kliknutím na hodnotu slider může
 
 Výsledná mapa pak může vypadat nějak takto:
 
-![](../assets/cviceni3/20_ndvi_map.png){ style="width:60%;"}
+![](../assets/cviceni3/20_ndvi_map.png){ style="height:693px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Druhá část není o nic složitější. Pro detekci vody použijeme následující indexy: NDVI, NDWI a AWEI<sub>sh</sub>. Jen je potřeba znát, které hodnoty zhruba odpovídají vodní hladině. Tuto informaci shrnuje následující tabulka.
@@ -239,7 +239,7 @@ Druhá část není o nic složitější. Pro detekci vody použijeme následuj�
 
 Postup pro NDVI a NDWI je stejný jako při maskování vegetace. U AWEI<sub>sh</sub> je postup také identický. Jen při tvorbě samotné masky použijeme místo ***Creates a new mask based on a value range*** funkci ***Creates a new mask based on a logical band maths expression***.
 
-![](../assets/cviceni3/21_Logical_Expression.png){ style="width:50%;"}
+![](../assets/cviceni3/21_Logical_Expression.png){ style="height:334px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Výsledky detekce vodních ploch poté porovnáme. Hodnoty indexů definující vodní plochy můžeme rovněž trochu upravovat, dokud není dosaženo optimálních výsledků. Nejhůře pro detekci vody by měl vyjít index NDVI (na obrázku níže vlevo), který pro tento účel není primárně určen.
@@ -251,7 +251,7 @@ Výsledky detekce vodních ploch poté porovnáme. Hodnoty indexů definující 
 
 Celkovou plochu, které naše masky pokrývají, zjistíme pomocí ***Analysis*** → ***Statistics***.
 
-![](../assets/cviceni3/25_statistics_menu.png){ style="width:30%;"}
+![](../assets/cviceni3/25_statistics_menu.png){ style="height:233px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Po otevření nového okna je nejprve nutno znovu kliknout do mapového okna, aby nástroj věděl, odkud se bude statistika počítat. V právě části poté zaškrtneme možnost ***Use ROI mask(s):*** a zvolíme konkrétní masku. Následně klikneme na dvě modré šipky v pravé horní části, čímž se statistika spočítá. V lévé části pak najdeme hodnotu ***#Pixels total***, která v tomto případě udává počet pixelů pokrytých maskou.
