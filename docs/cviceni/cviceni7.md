@@ -147,7 +147,7 @@ Když jsme s výsledkem segmentace spokojení, můžeme přejít k druhému krok
 ![](../assets/cviceni7/20_training_samples_pane.png){ style="height:494px;"}
 {: .process_container}
 
-**Training Samples Manager** má v sobě již předdefinované klasifikační třídy. Ty ale můžeme smazat a vytvořit si své vlastní. Stejně tak můžeme změnit název celého klasifikačního schématu z defaultního *NLCD2011*. Trénovací plochy zde poté můžeme tvořit buď pomocí jednotlivých bodů či kreslením různých geometrických obrazců. Nicméně asi jako nejjednodušší možností se nabízí využít jednotlivých segmentů jako trénovacích ploch. Jednotlivé segmenty můžeme vybírat pomocí nástroje **Segment Picker**. Následně si tedy označíme třídu, pro kterou chceme trénovací plochy sbírat, a můžeme začít klikat na jednotlivé segmenty.
+**Training Samples Manager** má v sobě již předdefinované klasifikační třídy. Ty ale můžeme smazat a vytvořit si své vlastní. Stejně tak můžeme změnit název celého klasifikačního schématu z defaultního *NLCD2011*. Trénovací plochy zde poté můžeme tvořit buď pomocí jednotlivých bodů či kreslením různých geometrických obrazců. Nicméně asi jako nejjednodušší možnost se nabízí využít jednotlivých segmentů jako trénovacích ploch. Jednotlivé segmenty můžeme vybírat pomocí nástroje **Segment Picker**. Následně si tedy označíme třídu, pro kterou chceme trénovací plochy sbírat, a můžeme začít klikat na jednotlivé segmenty.
 
 ![](../assets/cviceni7/21_segment_picker.png){ style="height:344px;"}
 {: style="margin-bottom:0px;" align=center }
