@@ -88,6 +88,8 @@ Poté se již data zobrazí v přírodních barvách.
 ![](../assets/cviceni7/09_true_color.png)
 {: style="margin-bottom:0px;" align=center }
 
+<hr class="l1">
+
 ## Klasifikace v ArcGIS Pro
 
 V ArcGIS Pro jsou dvě možnosti jak přistupovat ke klasifikování. První možností je, že už víme, jaké dostupné nástroje chceme použít, a vyhledáme si je sami v panelu ***Geoprocessing*** či z nabídky **Classification Tools**. Pokud geoprocesingový panel nemáme již připnutý u mapového okna, najdeme ho v menu **View** → **Geoprocessing**.
@@ -109,13 +111,15 @@ Druhou možností je využít tzv. [:material-open-in-new: Image Classification 
 ![](../assets/cviceni7/14_classification_wizard_pane.png){ style="height:494px;"}
 {: .process_container}
 
+<hr class="l1">
+
 ## Postup pro objektovou klasifikaci
 
 V rámci cvičení využijeme první možnost a jednotlivé kroky si budeme spouštět postupně.
 
 ### Segmentace
 
-Prvním krokem objektové klasifikace je segmentace obrazových dat. Jak název napovídá, výsledkem tohoto kroku bude segmentovaný obraz. Jednotlivé segmenty jsou tvořeny pixely, které jsou si barevně podobné. Segmentaci najdeme v menu **Imagery** → **Classification Tools** → **Segmentation** (alternativou může být funkce ***Segment Mean Shift***, kterou najdeme v geoprocesingovém panelu, a která se liší pouze větším množstvím zadávaných parametrů). Funkce **Segmentation** má zde na vstupu tři parametry. Parametr ***Spectral detail*** udává, jak moc důležité budou spektrální rozdíly jednotlivých prvků v obrazových datech. Čím vyšší je hodnota, tím větší je separabilita spektrálně podobných prvků do různých segmetů. Druhým parametrem je ***Spatial detail***, který nastavuje důležitost blízkosti jednotlivých objektů na obrazových datech mezi sebou. Vyšší hodnoty jsou vhodné pro menší seskupené objekty. Naopak nižší hodnoty vytvářejí více vyhlazené výstupy. Posledním parametrem je ***Minimum segment size in pixels***, který určuje, z jakého minimálního množství pixelů musí být daný segment tvořen. Nicméně neexistuje asi žádný obecný návad, jak jednotlivé parametry nastavit, a je potřeba si to pro zpracovávaná data vyzkoušet, jaká kombinace nám vyhovuje nejvíc. Pro začátek můžeme zkusit segmentaci spustit s defaultním nastavením.
+Prvním krokem objektové klasifikace je segmentace obrazových dat. Jak název napovídá, výsledkem tohoto kroku bude segmentovaný obraz. Jednotlivé segmenty jsou tvořeny pixely, které jsou si barevně podobné. Na rozdíl od pixelové klasifikace, kde se postupně klasifikují jednotlivé pixely, tak v objektové klasifikaci se budou klasifikovat právě tyto segmenty. Segmentaci najdeme v menu **Imagery** → **Classification Tools** → **Segmentation** (alternativou může být funkce ***Segment Mean Shift***, kterou najdeme v geoprocesingovém panelu, a která se liší pouze větším množstvím zadávaných parametrů). Funkce **Segmentation** má zde na vstupu tři parametry. Parametr ***Spectral detail*** udává, jak moc důležité budou spektrální rozdíly jednotlivých prvků v obrazových datech. Čím vyšší je hodnota, tím větší je separabilita spektrálně podobných prvků do různých segmetů. Druhým parametrem je ***Spatial detail***, který nastavuje důležitost blízkosti jednotlivých objektů na obrazových datech mezi sebou. Vyšší hodnoty jsou vhodné pro menší seskupené objekty. Naopak nižší hodnoty vytvářejí více vyhlazené výstupy. Posledním parametrem je ***Minimum segment size in pixels***, který určuje, z jakého minimálního množství pixelů musí být daný segment tvořen. Nicméně neexistuje asi žádný obecný návod, jak jednotlivé parametry nastavit, a je potřeba si pro zpracovávaná data vyzkoušet, jaká kombinace nám vyhovuje nejvíce. Pro začátek můžeme zkusit segmentaci spustit s defaultním nastavením.
 
 ![](../assets/cviceni7/15_segmentation_menu.png){ style="height:271px;"}
 ![](../assets/arrow.svg){: .off-glb .process_icon}
@@ -135,3 +139,53 @@ Po dokončení segmentace je vhodné výsledek porovnat s realitou. Můžeme bu�
 Z mého výsledku je vidět, že především v zástavbě dochází k rozdělení obrazu na až zbytečně moc segmentů, a není tedy od věci zkusit parametry pozměnit.
 
 ### Tvorba trénovacích ploch
+
+Když jsme s výsledkem segmentace spokojení, můžeme přejít k druhému kroku, čímž je tvorba trénovacích ploch. Trénovací plochy budeme tvořit pomocí nástroje nacházejícího se v **Imagery** → **Classification Tools** → **Training Samples Manager**.
+
+![](../assets/cviceni7/19_training_samples_menu.png){ style="height:203px;"}
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni7/20_training_samples_pane.png){ style="height:494px;"}
+{: .process_container}
+
+**Training Samples Manager** má v sobě již předdefinované klasifikační třídy. Ty ale můžeme smazat a vytvořit si své vlastní. Stejně tak můžeme změnit název celého klasifikačního schématu z defaultního *NLCD2011*. Trénovací plochy zde poté můžeme tvořit buď pomocí jednotlivých bodů či kreslením různých geometrických obrazců. Nicméně asi jako nejjednodušší možností se nabízí využít jednotlivých segmentů jako trénovacích ploch. Jednotlivé segmenty můžeme vybírat pomocí nástroje **Segment Picker**. Následně si tedy označíme třídu, pro kterou chceme trénovací plochy sbírat, a můžeme začít klikat na jednotlivé segmenty.
+
+![](../assets/cviceni7/21_segment_picker.png){ style="height:344px;"}
+{: style="margin-bottom:0px;" align=center }
+
+Při vybírání segmentů je ale důležité, abychom je vybírali v dostatečném *zoom levelu*. Pokud bychom byli oddáleni moc, jednotlivé segmenty mohou být zjednodušené, což může vést k nesprávnému označení. Porovnání zjednodušeného a správě označeného segmentu znázorňuje následující obrázek.
+
+![](../assets/cviceni7/22_oversimplified_segment.png)
+![](../assets/cviceni7/23_correct_segment.png)
+{: .process_container}
+
+Ve spodní části **Training Samples Manager** můžeme poté jednotlivé plochy spravovat. Trénovací plochy rovněž doporučuji si uložit (v tomto případě nejlépe do geodatabáze vytvořené spolu s novým projektem).
+
+![](../assets/cviceni7/24_training_samples_info.png){ style="height:322px;"}
+{: style="margin-bottom:0px;" align=center }
+
+[:material-open-in-new: Use Training Samples Manager](https://pro.arcgis.com/en/pro-app/latest/help/analysis/image-analyst/training-samples-manager.htm){ .md-button .md-button--primary .button_smaller target="_blank"}
+{: align=center style="display:flex; justify-content:center; align-items:center; column-gap:20px; row-gap:10px; flex-wrap:wrap;"}
+
+### Klasifikace
+
+Klasifikaci provedeme pomocí nástroje **Imagery** → **Classification Tools** → **Classify**. Bohužel nástroj není tak intuitivní jako **Classification Wizard**, který se nás nejprve ptá, jaký typ klasifikace chceme provést. Zde již musíme vědět, k čemu se jaký z nabízených klasifikátorů používá, podle čehož se pak i mění nabídka vstupních parametrů. My chceme provést řízenou objektovou klasifikaci. K tomu je tedy potřeba vybrat jakýkoliv z nabízených klasifikátorů kromě *ISO Cluster*, který se používá při neřízené klasifikaci. My použijeme klasifikátor *Random Trees*, který by měl být snad to samé, co *Random Forest*. Dále zadáme naše trénovací plochy, maximální počet stromů, maximální hloubku stromů (což je parametr, který určuje, jak moc se mohou stromy větvit) a maximální počet trénovacích vzorků v jednotlivých klasifikačních třídách. Dále je pak důležité vložit do nástroje segmentovaný obraz, jinak by se jednalo o klasickou pixelovou klasifikaci. Při vložení segmentovaného obrazu se nám zobrazí nabídka, které všechny atributy budeme chtít pro jednotlivé segmenty použít (můžeme zaškrtnou vše). Co je dále podstatné je to, abychom celou klasifikaci prováděli nad našimi **multispektrálními daty** (náš subset). Klasifikaci lze samozřejmě provést i nad segmentovaným obrazem, výsledky by ale byly dosti neuspokojivé.
+
+![](../assets/cviceni7/25_classify_menu.png){ style="height:271px;"}
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni7/26_classify_pane.png){ style="height:494px;"}
+{: .process_container}
+
+Výsledkem je pak klasifikovaný obraz. Výsledek závisí především na tom, jak jsme původní data segmentovali. Pokud segmentace byla velmi podrobná, ale některé segmenty se nezařadily do správné třídy, je potřeba přidat více trénovacích ploch, případně pozměnit parametry klasifikace.
+
+![](../assets/cviceni7/27_classification_result.png)
+{: style="margin-bottom:0px;" align=center }
+
+[:material-open-in-new: Classify](https://pro.arcgis.com/en/pro-app/latest/help/analysis/image-analyst/classify.htm){ .md-button .md-button--primary .button_smaller target="_blank"}
+{: align=center style="display:flex; justify-content:center; align-items:center; column-gap:20px; row-gap:10px; flex-wrap:wrap;"}
+
+<hr class="l1">
+
+## Úkol - Objektová klasifikace
+
+- Provést objektovou klasifikaci na svém území
+- Zhodnotit výsledky (jaký byl postup objektové klasifikace, jaké jste nastavili parametry, jaké třídy jste klasifikovali, s čím byly problémy atd.)
