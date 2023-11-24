@@ -93,3 +93,38 @@ Poskytnutá data zachycují bývalou vojenskou základnu z 2. světové války s
 
 ![](../assets/cviceni8/08_barrels.JPG){ style="width:80%;"}
 {: style="margin-bottom:0px;" align=center }
+
+<hr class="l1">
+
+## Příprava dat pro klasifikaci
+
+### Pansharpening
+
+### Oříznutí na zájmovou oblast
+
+### Vytvoření spektrálních indexů
+
+### Spojení více pásem do jednoho souboru
+
+<hr class="l1">
+
+## Řízená klasifikace
+
+### Klasifikační třídy a trénovací plochy
+
+### Klasifikace
+
+<hr class="l1">
+
+## Postklasifikační úpravy
+
+- Sieve filter
+
+<hr class="l1">
+
+## Určení počtu barelů
+
+- Zamaskování hangáru a náklaďáků
+- Summarize Categorical Raster
+
+<hr class="l1">
