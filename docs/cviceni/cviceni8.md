@@ -190,7 +190,7 @@ Na RGB kompozitu se v tomto případě ale velmi těžko rozlišuje mezi vegetac
 ![](../assets/cviceni8/21_false_color.png)
 {: style="margin-bottom:0px;" align=center }
 
-Poté již pomocí nástroje **Imagery** → **Classification Tools** → **Training Samples Manager** můžeme začít vytvářet jednotlivé trénovací plochy. Zde si vytvoříme nové klasifikační schéma pomocí funkce ***Create New Schema*** a následně si ho i uložíme. Trénovací plochy jednotlivých tříd vytváříme pomocí nástroje ***Polygon***.
+Poté již pomocí nástroje **Imagery** → **Classification Tools** → **Training Samples Manager** můžeme začít vytvářet jednotlivé trénovací plochy. Zde si vytvoříme nové klasifikační schéma pomocí funkce ***Create New Schema*** a následně si ho i uložíme (doporučuji začít číslovat klasifikační třídy od hodnoty 0, abychom později předešli jistým nepříjemnostem). Trénovací plochy jednotlivých tříd vytváříme pomocí nástroje ***Polygon***.
 
 ![](../assets/cviceni8/22_new_schema.png){ style="height:268px;"}
 ![](../assets/arrow.svg){: .off-glb .process_icon}
@@ -221,7 +221,19 @@ V případě, že nejsme spokojeni s výsledkem ani po různých úpravách para
 
 ## Postklasifikační úpravy
 
-- Sieve filter
+Po dokončení klasifikace je někdy vhodné provést postklasifikační úpravy. V našem případě budou tyto úpravy zahrnovat odfiltrování špatně klasifikovaných pixelů či drobných skupin pixelů. K tomu se používá tzv. **Sieve** filtr, který tyto pixely odstraní a klasifikovaný výsledek vyhladí. Tento nástroj bohužel nativně v ArcGIS Pro není, nicméně byl vytvořen jedním z uživatelů a my si ho tak do ArcGIS Pro můžeme přidat. Na <a href="https://www.arcgis.com/home/item.html?id=d3d9deccd7e148eca9855deac0112452" target="_blank"> **tomto odkazu**</a> si jej tedy stáhněte. Stažený soubor odzipujte a následně jej přes **Catalog** → **Computer** najděte. Jedná se o klasický toolbox, který v sobě obsahuje dva nástroje. My použijeme nástroj **Regular Sieve**. Zde nastavíme vstupní a výstupní rastr a také minimální velikost shluku pixelů, kdy daný shluk nebude odfiltrován (velikost se udává v pixelech). Můžeme také měnit logický výraz, nicméně cokoliv jiného než *is less than* nebo *is less than or equal to* v tuto chvíli nemá asi smysl. Začneme např. s hodnotou 10 a uvidíme, jak bude klasifikovaný výsledek vypadat poté.
+
+![](../assets/cviceni8/29_external_toolbox.png){ style="height:494px;"}
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni8/30_sieve_filter.png){ style="height:354px;"}
+{: .process_container}
+
+Nástroj **Regular Sieve** bohužel z nějakého důvodu překlasifikovává data tak, aby číslování tříd začínalo od 0. Takže pokud jsme si je číslovali od 1, tak došlo k jejich přečíslování. Pokud jsme měli číslování od 0, ale došlo ke změně symbologie, můžeme použít nástroj [:material-open-in-new: Apply Symbology From Layer](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/apply-symbology-from-layer.htm){ .md-button .md-button--primary .button_smaller target="_blank"} k překopírování symbologie z původního klasifikovaného výsledku. Nicméně z následujícího porovnání je vidět, že aplikování sieve filtru výsledku výrazně pomohlo.
+
+![](../assets/cviceni8/31_presieved.png)
+![](../assets/cviceni8/32_sieved.png)
+{: .process_container}
+<figcaption>Porovnání výsledku klasifikace před použitím sieve filtru a po jeho aplikování</figcaption>
 
 <hr class="l1">
 
