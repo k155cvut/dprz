@@ -148,7 +148,7 @@ Pro klasifikování máme k dispozici zatím jen 4 pásma a není tedy od věci 
 
 Index NDWI zde bohužel předdefinován není, takže budeme muset použít jiný nástroj. Konkrétně tedy nástroj **Imagery** → **Raster Functions** → **Band Arithmetic**. Zde poté zvolíme, jakou metodu chceme použít (vybereme tedy NDWI), a zadáme pořadí potřebných pásem NIR a Green (4 2).
 
-![](../assets/cviceni8/16_band_arithmetic.png)
+![](../assets/cviceni8/15_raster_functions.png)
 ![](../assets/arrow.svg){: .off-glb .process_icon}
 ![](../assets/cviceni8/16_band_arithmetic.png)
 ![](../assets/arrow.svg){: .off-glb .process_icon}
@@ -177,7 +177,45 @@ Nyní můžeme všechny ostatní vrsty zavřít, protože dále již budeme prac
 
 ### Klasifikační třídy a trénovací plochy
 
+V závislosti na zvolené scéně budeme klasifikovat buď 4 nebo 5 tříd. Konkrétně se bude jednat o následující třídy:
+
+- Barely
+- Vegetace
+- Holá půda
+- Voda
+- Sníh a led (pouze v roce 2019)
+
+Na RGB kompozitu se v tomto případě ale velmi těžko rozlišuje mezi vegetací a holou půdou. Proto doporučuji si data zobrazit ve falešných barvách v kombinaci NIR-R-G. U *Stretch Type* nastaveném na *Standard Deviation* je vhodné zkusit změnit i parametr *Number of standard deviations* na hodnotu 1 (minimálně na scéně z roku 2019 toto nastavení zvýrazní různé povrchy).
+
+![](../assets/cviceni8/21_false_color.png)
+{: style="margin-bottom:0px;" align=center }
+
+Poté již pomocí nástroje **Imagery** → **Classification Tools** → **Training Samples Manager** můžeme začít vytvářet jednotlivé trénovací plochy. Zde si vytvoříme nové klasifikační schéma pomocí funkce ***Create New Schema*** a následně si ho i uložíme. Trénovací plochy jednotlivých tříd vytváříme pomocí nástroje ***Polygon***.
+
+![](../assets/cviceni8/22_new_schema.png){ style="height:268px;"}
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni8/23_classes.png){ style="height:258px;"}
+{: .process_container}
+
+Vytvořené trénovací plochy doporučuji uložit znovu do geodatabáze.
+
+![](../assets/cviceni8/24_training_areas.png){ style="height:166px;"}
+{: style="margin-bottom:0px;" align=center }
+
 ### Klasifikace
+
+Klasifikaci spustíme pomocí nástroje **Imagery** → **Classification Tools** → **Classify**. Zvolíme klasifikátor ***Random Trees*** a nastavíme parametry. Je dobré se zde zaměřit na parametr ***Maximum Number of Samples per Class*** a zvážit, jestli je 1000 dostatečný počet. Pokud se podíváme znovu do **Training Samples Manager** a ve spodní části najedeme myší na hodnotu *Pixels* u jedné z tříd, tak se nám zobrazí, kolik pixelů je danou třídou pokryto. V mém případě je to 38177 pixelů u nejméně zastoupené třídy. Proto je tedy na zvážení, jestli by se hodnota ***Maximum Number of Samples per Class*** neměla navýšit. Můžeme ale nejprve vyzkoušet, jaký bude výsledek klasifikace s 1000 vzorky, a v případě neuspokojivého výsledku počet vzorku zvýšit. Nicméně výpočet se zde zdá být poměrně rychlý, a nebál bych se tedy s parametry experimentovat a vložit do *Maximum Number of Samples per Class* klidně i hodnotu odpovídající nejvíce zastoupené třídě.
+
+![](../assets/cviceni8/25_classification.png){ style="height:494px;"}
+![](../assets/cviceni8/26_number_of_samples.png){ style="height:128px;"}
+{: .process_container}
+
+V případě, že nejsme spokojeni s výsledkem ani po různých úpravách parametrů, nezbývá nic jiného, než upravit trénovací plochy. V takovém případě bych doporučil podívat se, kde se jednotlivé třídy klasifikují nesprávně (zejména třída s barely), a na takových místech přidat trénovací plochy pro správnou třídu, což by mělo výsledku pomoci. Nicméně pokud se jedná především o jednotlivé pixely, které se nesprávně zařadily do třídy *Barely*, jako je tomu na obrázku níže, tak není potřeba nic, protože se to vyřeší v postklasifikačních úpravách.
+
+![](../assets/cviceni8/27_classified_result.png)
+![](../assets/cviceni8/28_misclassified_pixels.png)
+{: .process_container}
+<figcaption>Výsledek klasifikace a detail na špatně klasifikované jednotlivé pixely</figcaption>
 
 <hr class="l1">
 
