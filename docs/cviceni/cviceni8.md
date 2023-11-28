@@ -228,7 +228,7 @@ Po dokončení klasifikace je někdy vhodné provést postklasifikační úpravy
 ![](../assets/cviceni8/30_sieve_filter.png){ style="height:354px;"}
 {: .process_container}
 
-Nástroj **Regular Sieve** bohužel z nějakého důvodu překlasifikovává data tak, aby číslování tříd začínalo od 0. Takže pokud jsme si je číslovali od 1, tak došlo k jejich přečíslování. Pokud jsme měli číslování od 0, ale došlo ke změně symbologie, můžeme použít nástroj [:material-open-in-new: Apply Symbology From Layer](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/apply-symbology-from-layer.htm){ .md-button .md-button--primary .button_smaller target="_blank"} k překopírování symbologie z původního klasifikovaného výsledku. Nicméně z následujícího porovnání je vidět, že aplikování sieve filtru výsledku výrazně pomohlo.
+Nástroj **Regular Sieve** bohužel z nějakého důvodu překlasifikovává data tak, aby číslování tříd začínalo od 0. Takže pokud jsme si je číslovali od 1, tak došlo k jejich přečíslování. Pokud jsme měli číslování od 0, ale došlo ke změně symbologie, můžeme použít nástroj [:material-open-in-new: Apply Symbology From Layer](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/apply-symbology-from-layer.htm){ .md-button .md-button--primary .button_smaller target="_blank"} k překopírování symbologie z původního klasifikovaného výsledku (ukázalo se ale, že moc nefunguje). Nicméně z následujícího porovnání je vidět, že aplikování sieve filtru výsledku výrazně pomohlo.
 
 ![](../assets/cviceni8/31_presieved.png)
 ![](../assets/cviceni8/32_sieved.png)
