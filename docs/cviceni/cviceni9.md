@@ -1,11 +1,5 @@
-# Ukázky webové prezentace map, Experience Builder, Instant Apps, Dashboards
+# Analýza tepelných ostrovů pomocí dat Landsat
 
 ## Cíl cvičení
 
 ## Základní pojmy
-
-## Použité datové podklady
-
-## Náplň cvičení
-
-## Zadání domácího úkolu k semestrální práci
