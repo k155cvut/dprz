@@ -239,7 +239,43 @@ Nástroj **Regular Sieve** bohužel z nějakého důvodu překlasifikovává dat
 
 ## Určení počtu barelů
 
-- Zamaskování hangáru a náklaďáků
-- Summarize Categorical Raster
+Po dokončení klasifikace chceme zjistit, jakou celkovou plochu barely zabírají, a z toho následně odhadnout, kolik se v oblasti nachází celkem barelů. Pro určení celkové plochy nejprve zjistíme, kolik pixelů se klasifikovalo do třídy barelů. K tomu můžeme použít buď nástroj [:material-open-in-new: Summarize Categorical Raster](https://pro.arcgis.com/en/pro-app/latest/tool-reference/image-analyst/summarize-categorical-raster.htm){ .md-button .md-button--primary .button_smaller target="_blank"} nebo se jednoduše podívat do atributové tabulky vrstvy s aplikovaným sieve filtrem (atributová tabulka původní klasifikované vrstvy bohužel tuto informaci nenabízí, takže u ní by bylo potřeba použít zmíněný nástroj).
+
+![](../assets/cviceni8/33_attribute_table.png){ style="height:167px;"}
+{: style="margin-bottom:0px;" align=center }
+
+Z této tabulky by se nyní dala vzít hodnota 172448, což je počet pixelů klasifikovaných jako barely, a určit z ní plochu a následně i počet barelů. Nicméně je potřeba vzít ale v potaz, že kromě barelů se do stejné třídy klasifikovaly i pozůstatky hangáru, nákladní auta a další zrezlý materiál.
+
+![](../assets/cviceni8/34_hangar.png)
+![](../assets/cviceni8/35_hangar_classification.png)
+{: .process_container}
+
+Abychom určili správnou plochu, kterou pokrývají barely, je potřeba tato místa zamaskovat. Vytvoříme si tedy v geodatabázi novou *Feature Class*, ve které následně vytvoříme polygony pokrývající hangár a další místa, klasifikovná jako barely. Nové prvky do polygonové vrstvy vkládáme přes menu **Edit** → **Create**. Vytvořené prvky si poté pro jistotu i uložíme v menu **Edit** → **Save**.
+
+![](../assets/cviceni8/36_new_feature_class.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni8/37_create_feature.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni8/38_mask_areas.png)
+{: .process_container}
+
+Po vytvoření polygonů použijeme již zmíněný nástroj **Summarize Categorical Raster**, do kterého vložíme klasifikovaný rastr a vytvořenou masku. Výslednou tabulku si následně otevřeme a sečteme hodnoty sloupce C_0 (případně jiného sloupce odpovídajícímu barelům).
+
+![](../assets/cviceni8/39_summarize_raster.png){ style="height:277px;"}
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni8/40_masked_attribute_table.png){ style="height:223px;"}
+{: .process_container}
+
+V mém případě to dává hodnotu 11633. Tu odečteme od celkového počtu pixelů klasifikovaných jako barely a zjistíme správnou plochu. Výpočet by tedy vypadal zhruba takto:
+
+**(172448 - 11633) × S**, kde S je plocha jednoho pixelu. V mém případě to vychází na nějakých **14473,35 m<sup>2</sup>**.
+
+Tuto hodnotu poté vynásobíme číslem **2,12** (počet barelů na metr čtvereční) a získáme tak odhad celkového počtu barelů. V mém případě vyšlo, že se na území nacházelo přibližně **30684 barelů**.
 
 <hr class="l1">
+
+## Úkol - VHR data
+
+- Proveďte klasifikaci na vybrané scéně s cílem určit celkovou plochu, kterou pokrývají barely
+- Určete, kolik se v oblasti nachází celkem barelů za předpokladu, že na jeden metr čtvereční připadá 2,12 barelů
+- Do technické zprávy popište postup, pomocí kterého jste se k výslednému číslu dopracovali
