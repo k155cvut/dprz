@@ -76,3 +76,38 @@ Jednotlivá pásma Landsat 8 a 9 shrnuje následující tabulka:
 <hr class="l1">
 
 ## Stažení dat Landsat
+
+Data Landsat budeme stahovat z portálu <a href="https://earthexplorer.usgs.gov/" target="_blank"> **USGS EarthExplorer**</a>, kde je potřeba se nejprve zaregistrovat. Registraci provedeme přes tlačítko ***Login*** v pravé horní části webových stránek (vlastní zkušenost ukázala, že registrace zde není zrovna nejjednodušší proces).
+
+![](../assets/cviceni9/03_EarthExplorer.png)
+{: style="margin-bottom:0px;" align=center }
+
+Když se nám podařilo se zaregistrovat, můžeme přejít k vybrání oblasti, ze které budeme chtít data stáhnout. Cílem tohoto cvičení je analyzovat tepelné ostrovy, takže si najdeme nějaké větší město kdekoliv na světě. Následně si naše území vyznačíme obyčejným klikáním do mapového okna.
+
+![](../assets/cviceni9/04_location.png)
+{: style="margin-bottom:0px;" align=center }
+
+Zároveň si ve spodní části záložky **Search Criteria** nastavím ***Date Range*** na období letních měsíců a ***Cloud Cover*** na nějakou rozumnou hodnotu (chceme ideálně bezoblačnou scénu)
+
+![](../assets/cviceni9/05_date_range.png){ style="height:350px;"}
+![](../assets/cviceni9/06_cloud_cover.png){ style="height:161px;"}
+{: .process_container}
+
+Dále se přepneme do záložky **Data Sets**, kde zvolíme, jaká data budeme chtít stahovat. V našem případě zvolíme **Landsat** → **Landsat Collection 2 Level-2** → **Landsat 8-9 OLI/TIRS C2 L2**. Jedná se o data s atmosferickými korekcemi.
+
+![](../assets/cviceni9/07_select_data.png){ style="height:306px;"}
+{: style="margin-bottom:0px;" align=center }
+
+Záložku **Addittional Criteria** můžeme přeskočit a rovnou se přepnout do záložky **Results**. Zde si již můžeme vybrat jednu z nabízených scén. Pomocí funkce ***Show Browse Overlay*** se můžeme podívat, jak dobře se daná scéna s naším uzemím překrývá.
+
+![](../assets/cviceni9/08_search_results.png)
+{: style="margin-bottom:0px;" align=center }
+
+Pokud jsme se scénou spokojeni, klikneme na ikonu ***Download Options***. Zde si zvolíme, jaké soubory chceme stahovat. V našem případě si stáhneme všechny soubory jak u *Level-2 Surface Reflectance Bands*, tak u *Level-2 Surface Temperature Bands*. Klikneme tedy na ***Product Options*** a stáhneme si celou Landsat kolekci.
+
+![](../assets/cviceni9/09_download_options.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni9/10_download_files.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni9/11_all_collection.png)
+{: .process_container}
