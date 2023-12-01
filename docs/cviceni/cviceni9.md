@@ -87,15 +87,15 @@ Když se nám podařilo se zaregistrovat, můžeme přejít k vybrání oblasti,
 ![](../assets/cviceni9/04_location.png)
 {: style="margin-bottom:0px;" align=center }
 
-Zároveň si ve spodní části záložky **Search Criteria** nastavím ***Date Range*** na období letních měsíců a ***Cloud Cover*** na nějakou rozumnou hodnotu (chceme ideálně bezoblačnou scénu)
+Zároveň si ve spodní části záložky **Search Criteria** nastavíme ***Date Range*** na období letních měsíců a ***Cloud Cover*** na nějakou rozumnou hodnotu (chceme ideálně bezoblačnou scénu).
 
 ![](../assets/cviceni9/05_date_range.png){ style="height:350px;"}
 ![](../assets/cviceni9/06_cloud_cover.png){ style="height:161px;"}
 {: .process_container}
 
-Dále se přepneme do záložky **Data Sets**, kde zvolíme, jaká data budeme chtít stahovat. V našem případě zvolíme **Landsat** → **Landsat Collection 2 Level-2** → **Landsat 8-9 OLI/TIRS C2 L2**. Jedná se o data s atmosferickými korekcemi.
+Dále se přepneme do záložky **Data Sets**, kde zvolíme, jaká data budeme chtít stahovat. V našem případě zvolíme **Landsat** → **Landsat Collection 2 Level-1** → **Landsat 8-9 OLI/TIRS C2 L1**. Jedná se o data bez atmosferických korekcí, která pro analýzu povrchové teploty budeme potřebovat.
 
-![](../assets/cviceni9/07_select_data.png){ style="height:306px;"}
+![](../assets/cviceni9/07_select_data.png){ style="height:405px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Záložku **Addittional Criteria** můžeme přeskočit a rovnou se přepnout do záložky **Results**. Zde si již můžeme vybrat jednu z nabízených scén. Pomocí funkce ***Show Browse Overlay*** se můžeme podívat, jak dobře se daná scéna s naším uzemím překrývá.
@@ -103,7 +103,7 @@ Záložku **Addittional Criteria** můžeme přeskočit a rovnou se přepnout do
 ![](../assets/cviceni9/08_search_results.png)
 {: style="margin-bottom:0px;" align=center }
 
-Pokud jsme se scénou spokojeni, klikneme na ikonu ***Download Options***. Zde si zvolíme, jaké soubory chceme stahovat. V našem případě si stáhneme všechny soubory jak u *Level-2 Surface Reflectance Bands*, tak u *Level-2 Surface Temperature Bands*. Klikneme tedy na ***Product Options*** a stáhneme si celou Landsat kolekci.
+Pokud jsme se scénou spokojeni, klikneme na ikonu ***Download Options***. Zde si zvolíme, jaké soubory chceme stahovat. V našem případě si stáhneme všechny soubory. Klikneme tedy na ***Product Options*** a stáhneme si celou Landsat kolekci.
 
 ![](../assets/cviceni9/09_download_options.png)
 ![](../assets/arrow.svg){: .off-glb .process_icon}
@@ -111,3 +111,5 @@ Pokud jsme se scénou spokojeni, klikneme na ikonu ***Download Options***. Zde s
 ![](../assets/arrow.svg){: .off-glb .process_icon}
 ![](../assets/cviceni9/11_all_collection.png)
 {: .process_container}
+
+K *Level 1* produktu si nicméně stáhneme i *Level 2* produkt (pokud je k dispozici). V záložce **Data Sets** stačí jen změnit data na **Landsat** → **Landsat Collection 2 Level-2** → **Landsat 8-9 OLI/TIRS C2 L2** a poté kliknout zpátky do **Results**, kde si vybereme korespondující scénu s *Level 1* produktem. *Level 2* produkt v sobě má již pásmo odpovídající ***Land Surface Temperature***. K jeho hodnotám se ale došlo trochu jinak, než jak k nim dojdeme my. V závěru cvičení můžeme ale naše výsledky s již předzpracovaným pásmem porovnat.
