@@ -113,3 +113,21 @@ Pokud jsme se scénou spokojeni, klikneme na ikonu ***Download Options***. Zde s
 {: .process_container}
 
 K *Level 1* produktu si nicméně stáhneme i *Level 2* produkt (pokud je k dispozici). V záložce **Data Sets** stačí jen změnit data na **Landsat** → **Landsat Collection 2 Level-2** → **Landsat 8-9 OLI/TIRS C2 L2** a poté kliknout zpátky do **Results**, kde si vybereme korespondující scénu s *Level 1* produktem. *Level 2* produkt v sobě má již pásmo odpovídající ***Land Surface Temperature***. K jeho hodnotám se ale došlo trochu jinak, než jak k nim dojdeme my. V závěru cvičení můžeme ale naše výsledky s již předzpracovaným pásmem porovnat.
+
+<hr class="l1">
+
+## Otevření a zobrazení dat
+
+Pokud jsme stahovali všechna data najednou (a ne třeba jen vybraná pásma), tak jsme data obdrželi ve formátu *TAR*. Jedná se o podobný formát jako *ZIP*, ale nedochází zde ke kompresi. Data v tomto formátu lze rozbalit např. pomocí nástroje <a href="https://www.7-zip.org/" target="_blank"> **7-Zip**</a>.
+
+![](../assets/cviceni9/12_7zip.png){ style="height:359px;"}
+{: style="margin-bottom:0px;" align=center }
+
+Po rozbalení dat si do ArcGIS Pro nahrajeme pásma B2, B3 a B4 a vytvoříme si z nich RGB kompozit pomocí funkce [:material-open-in-new: Composite Bands](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/composite-bands.htm){ .md-button .md-button--primary .button_smaller target="_blank"}.
+
+![](../assets/cviceni9/13_rgb_scene.png)
+{: style="margin-bottom:0px;" align=center }
+
+<hr class="l1">
+
+## Výpočet povrchové teploty
