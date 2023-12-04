@@ -36,7 +36,8 @@
 
 ## Základní pojmy
 
-- **LST** - Land surface temperature - radiační teplota zemského povrchu měřená ve směru senzoru
+- **LST** - Land Surface Temperature - radiační teplota zemského povrchu měřená ve směru senzoru
+- **LSE** - Land Surface Emissivity - bezrozměrná veličina udávající jak účinně povrch vyzařuje tepelné infračervené záření
 
 ### Program Landsat
 
@@ -65,7 +66,7 @@ V rámci tohoto cvičení budeme pracovat s daty z jedné z těchto dvou družic
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DGE-N8_LQBo?si=Ofntz4jPTBGPvdi8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
-[<span>:material-open-in-new: youtube.com</span><br>Landsat: Landsat 9: Continuing the Legacy)](https://www.youtube.com/playlist?list=PL_8hVmWnP_O3WFxfAa_xBlsmGq87HMhFW){ .md-button .md-button--primary .url-name target="_blank"}
+[<span>:material-open-in-new: youtube.com</span><br>Landsat 9: Continuing the Legacy](https://www.youtube.com/playlist?list=PL_8hVmWnP_O3WFxfAa_xBlsmGq87HMhFW){ .md-button .md-button--primary .url-name target="_blank"}
 {: align=center style="display:flex; justify-content:center; align-items:center; column-gap:20px; row-gap:10px; flex-wrap:wrap;"}
 
 Jednotlivá pásma Landsat 8 a 9 shrnuje následující tabulka:
@@ -134,8 +135,112 @@ Po rozbalení dat si do ArcGIS Pro nahrajeme pásma B2, B3 a B4 a vytvoříme si
 
 Výpočet povrchové teploty se bude skládat z celkem šesti kroků, které si postupně projdeme. Základem výpočtu bude termální pásmo **B10**, které si nejprve tedy přidáme do ArcGIS Pro.
 
-### Převod digitálních hodnot na TOA záření
+### 1) Převod digitálních hodnot na TOA záření
 
 Prvním krokem je, že si převedeme digitální hodnoty pixelů v pásmu **B10** na hodnoty záření na vrcholu atmosféry (*TOA = Top of Atmospheric*). Vzoreček pro tento převod je následující:
 
 **TOA = M<sub>L</sub>·B<sub>10</sub> + A<sub>L</sub>**
+
+kde:
+
+**M<sub>L</sub>** je multiplikativní přeškálovací faktor, jehož hodnotu najdeme v metadatech daného Landsat produktu. Metada nalezneme v textovém souboru končícím na *_MTL.txt*. Konkrétně se pak jedná o hodnotu ***RADIANCE_MULT_BAND_10***
+
+**B<sub>10</sub>** je termální pásmo B10
+
+**A<sub>L</sub>** je aditivní přeškálovací faktor, který rovněž najdeme v metadatech, kde nese název ***RADIANCE_ADD_BAND_10***
+
+K výpočtu použijeme nástroj [:material-open-in-new: Raster Calculator](https://pro.arcgis.com/en/pro-app/latest/tool-reference/image-analyst/raster-calculator.htm){ .md-button .md-button--primary .button_smaller target="_blank"}.
+
+![](../assets/cviceni9/14_raster_calculator.png){ style="height:400px;"}
+{: style="margin-bottom:0px;" align=center }
+
+### 2) Převod TOA záření na jasovou teplotu
+
+Pro výpočet jasové teploty (*Brightness Temperature*) použijeme následující vzorec:
+
+**BT = K<sub>2</sub> / ln(K<sub>1</sub>/TOA + 1) − 273.15**
+
+kde:
+
+**K<sub>2</sub>** a **K<sub>1</sub>** jsou konstanty tepelné konverze, které najdeme v metadatech pod názvy ***K1_CONSTANT_BAND_10*** a ***K2_CONSTANT_BAND_10***
+
+![](../assets/cviceni9/15_bt.png){ style="height:400px;"}
+{: style="margin-bottom:0px;" align=center }
+
+### 3) Výpočet NDVI
+
+V dalším kroku vypočteme index NDVI. Ten bude následně sloužit k určení emisivity povrchu. Vzoreček pro NDVI již všichi známe. Pokud ne, tak jeho podoba je následující (pozor na jiné pořadí pásem oproti Sentinel-2):
+
+**(NIR - Red)/(NIR + Red) = (B5 - B4)/(B5 + B4)**
+
+A jelikož máme pásma jednotlivě a ne v jedné vrstvě, použijeme znovu *Raster Calculator*.
+
+![](../assets/cviceni9/16_ndvi.png){ style="height:400px;"}
+{: style="margin-bottom:0px;" align=center }
+
+### 4) Zjištění podílu vegetace
+
+Vzorec pro určení podílu vegetace má následující tvar:
+
+**P<sub>V</sub> = ((NDVI - NDVI<sub>min</sub>)/(NDVI<sub>max</sub> - NDVI<sub>min</sub>))<sup>2</sup>**
+
+Hodnoty **NDVI<sub>min</sub>** a **NDVI<sub>max</sub>** zjistíme např. přímo z panelu *Contents*.
+
+![](../assets/cviceni9/17_minmax.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni9/18_pv.png){ style="height:400px;"}
+{: .process_container}
+
+### 5) Výpočet emisivity povrchu
+
+V předposledním kroku pomocí NDVI vypočteme emisivitu zemského povrchu. Vzoreček je následující:
+
+**e = 0,004 · P<sub>V</sub> + 0,986**
+
+![](../assets/cviceni9/19_e.png){ style="height:400px;"}
+{: style="margin-bottom:0px;" align=center }
+
+### 6) Výpočet teploty povrchu
+
+Posledním krokem je již výpočet samotné teploty povrchu.
+
+**LST = BT / (1 + (λ·BT/14388)·ln(e))**
+
+kde
+
+**λ** je vlnová délka vyzařovaného záření pásma B10. Použijeme průměrnou hodnotu z intervalu 10,6 - 11,19 → tedy **10,895** (hodnota je v mikrometrech, ale nemusíme ji převádět, protože konstanta 14388 je rovněž v mikrometrech).
+
+![](../assets/cviceni9/20_lst.png){ style="height:400px;"}
+{: style="margin-bottom:0px;" align=center }
+
+## Zhodnocení výsledků
+
+Takto vypočtenou teplotu povrchu jsme obdrželi rovnou ve °C. Pokud jsme nikde neudělali chybu, tak vidíme, že výsledky jsou realistické. Je ale dobré si uvědomit, že se nejedná o stejnou teplotu jako je teplota vzduchu.
+
+![](../assets/cviceni9/21_lst_values.png)
+{: style="margin-bottom:0px;" align=center }
+
+Dále je vhodné si data obarvit nějakým rozumným barevným schématem, které bude pro zobrazení teploty ituitivnější. V mém případě barevnou škálu trochu zkresluje drobná oblačnost v severní části scény a pro lepší vyzualizaci teplot ve městě by stálo za to scénu oříznout.
+
+![](../assets/cviceni9/22_color_schema.png){ style="height:565px;"}
+{: style="margin-bottom:0px;" align=center }
+
+Při porovnání s NDVI můžeme vidět, že nižší teploty odpovídají místům se zelení a naopak místa bez zeleně mají teplotu o poznání vyšší (což samozřejmě dává smysl, ale je vždy dobré mít to čím podpořit).
+
+![](../assets/cviceni9/23_rgb.png)
+![](../assets/cviceni9/24_lst.png)
+![](../assets/cviceni9/25_ndvi.png)
+{: .process_container}
+<figcaption>Vlevo - RGB scéna, uprostřed - povrchová teplota, vpravo - NDVI</figcaption>
+
+## Porovnání s Level 2 produktem
+
+*Level 2* Landsat produkt nabízí již předzpracované termální pásmo, a pro zjištění povrchové teploty ho lze pouze přeškálovat pomocí správných koeficientů. Přidáme si tedy do ArcGIS Pro pásmo B10 z *Level 2* produktu a pomocí následujícího vzorce ho přeškálujeme:
+
+**LST = M<sub>T</sub>·B<sub>10</sub> + A<sub>T</sub> - 273,15**
+
+kde
+
+**M<sub>T</sub>** je multiplikativní přeškálovací faktor, který nalezneme v metadatech (textový soubor s koncovkou *_MTL.txt*) pod názvem ***TEMPERATURE_MULT_BAND_ST_B10***
+
+**A<sub>T</sub>** je aditivní přeškálovací faktor, který nalezneme v metadatech pod názvem ***TEMPERATURE_ADD_BAND_ST_B10***
