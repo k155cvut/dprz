@@ -342,7 +342,7 @@ Uživatelskou (precision) a zpracovatelskou (recall) přesnost názorně znázor
 
 ### F1 score
 
-Metrika kombinující precision a recall pomocí harmonického průměru. Narozdíl od klasického průměru má harmonický průměr tendenci přiklánět se k nižšímu z obou hodnot. Proto pro dosažení vysokého F1 score je potřeba mít vysokou hodnotu jak u precision, tak u recall, což zajišťuje dobrou rovnováhu obou hodnot. Vzoreček je tedy následující: **F1 = 2 × Precision × Recall / (Precision + Recall)**.
+Metrika kombinující precision a recall pomocí harmonického průměru. Narozdíl od klasického průměru má harmonický průměr tendenci přiklánět se k nižšímu z obou hodnot. Proto pro dosažení vysokého F1 score je potřeba mít vysokou hodnotu jak u precision, tak u recall, což zajišťuje dobrou rovnováhu obou hodnot. Vzoreček je tedy následující: **F1 = 2 · Precision · Recall / (Precision + Recall)**.
 
 <hr class="l1">
 

@@ -123,7 +123,7 @@ Pokud jsme stahovali všechna data najednou (a ne třeba jen vybraná pásma), t
 ![](../assets/cviceni9/12_7zip.png){ style="height:359px;"}
 {: style="margin-bottom:0px;" align=center }
 
-Po rozbalení dat si do ArcGIS Pro nahrajeme pásma B2, B3 a B4 a vytvoříme si z nich RGB kompozit pomocí funkce [:material-open-in-new: Composite Bands](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/composite-bands.htm){ .md-button .md-button--primary .button_smaller target="_blank"}.
+Po rozbalení dat si do ArcGIS Pro nahrajeme pásma B2, B3 a B4 a vytvoříme si z nich RGB kompozit pomocí funkce [:material-open-in-new: Composite Bands](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/composite-bands.htm){ .md-button .md-button--primary .button_smaller target="_blank"}. Připomínám, že pracujeme s *Level 1* daty.
 
 ![](../assets/cviceni9/13_rgb_scene.png)
 {: style="margin-bottom:0px;" align=center }
@@ -131,3 +131,11 @@ Po rozbalení dat si do ArcGIS Pro nahrajeme pásma B2, B3 a B4 a vytvoříme si
 <hr class="l1">
 
 ## Výpočet povrchové teploty
+
+Výpočet povrchové teploty se bude skládat z celkem šesti kroků, které si postupně projdeme. Základem výpočtu bude termální pásmo **B10**, které si nejprve tedy přidáme do ArcGIS Pro.
+
+### Převod digitálních hodnot na TOA záření
+
+Prvním krokem je, že si převedeme digitální hodnoty pixelů v pásmu **B10** na hodnoty záření na vrcholu atmosféry (*TOA = Top of Atmospheric*). Vzoreček pro tento převod je následující:
+
+**TOA = M<sub>L</sub>·B<sub>10</sub> + A<sub>L</sub>**

@@ -268,7 +268,7 @@ Po vytvoření polygonů použijeme již zmíněný nástroj **Summarize Categor
 
 V mém případě to dává hodnotu 11633. Tu odečteme od celkového počtu pixelů klasifikovaných jako barely a zjistíme správnou plochu. Výpočet by tedy vypadal zhruba takto:
 
-**(172448 - 11633) × S**, kde S je plocha jednoho pixelu. V mém případě to vychází na nějakých **14473,35 m<sup>2</sup>**.
+**(172448 - 11633) · S**, kde S je plocha jednoho pixelu. V mém případě to vychází na nějakých **14473,35 m<sup>2</sup>**.
 
 Tuto hodnotu poté vynásobíme číslem **2,12** (počet barelů na metr čtvereční) a získáme tak odhad celkového počtu barelů. V mém případě vyšlo, že se na území nacházelo přibližně **30684 barelů**.
 
