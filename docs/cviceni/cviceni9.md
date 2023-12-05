@@ -23,14 +23,14 @@
   .process_container img {max-height:600px; display:flex;}                                    /* Obrazky ve flexboxech maji maximalni vysku */
 </style>
 
-# Analýza tepelných ostrovů pomocí dat Landsat
+# Tepelných analýza pomocí dat Landsat
 
 <hr class="l1">
 
 ## Cíl cvičení
 
 - Seznámit se s daty Landsat
-- Umět analyzovat tepelné ostrovy
+- Umět spočítat povrchovou teplotu na základě dat Landsat
 
 <hr class="l1">
 
@@ -206,12 +206,14 @@ Posledním krokem je již výpočet samotné teploty povrchu.
 
 **LST = BT / (1 + (λ·BT/14388)·ln(e))**
 
-kde
+kde:
 
 **λ** je vlnová délka vyzařovaného záření pásma B10. Použijeme průměrnou hodnotu z intervalu 10,6 - 11,19 → tedy **10,895** (hodnota je v mikrometrech, ale nemusíme ji převádět, protože konstanta 14388 je rovněž v mikrometrech).
 
 ![](../assets/cviceni9/20_lst.png){ style="height:400px;"}
 {: style="margin-bottom:0px;" align=center }
+
+<hr class="l1">
 
 ## Zhodnocení výsledků
 
@@ -233,14 +235,36 @@ Při porovnání s NDVI můžeme vidět, že nižší teploty odpovídají míst
 {: .process_container}
 <figcaption>Vlevo - RGB scéna, uprostřed - povrchová teplota, vpravo - NDVI</figcaption>
 
+<hr class="l1">
+
 ## Porovnání s Level 2 produktem
 
 *Level 2* Landsat produkt nabízí již předzpracované termální pásmo, a pro zjištění povrchové teploty ho lze pouze přeškálovat pomocí správných koeficientů. Přidáme si tedy do ArcGIS Pro pásmo B10 z *Level 2* produktu a pomocí následujícího vzorce ho přeškálujeme:
 
 **LST = M<sub>T</sub>·B<sub>10</sub> + A<sub>T</sub> - 273,15**
 
-kde
+kde:
 
 **M<sub>T</sub>** je multiplikativní přeškálovací faktor, který nalezneme v metadatech (textový soubor s koncovkou *_MTL.txt*) pod názvem ***TEMPERATURE_MULT_BAND_ST_B10***
 
 **A<sub>T</sub>** je aditivní přeškálovací faktor, který nalezneme v metadatech pod názvem ***TEMPERATURE_ADD_BAND_ST_B10***
+
+![](../assets/cviceni9/26_lst_lvl2.png){ style="height:400px;"}
+{: style="margin-bottom:0px;" align=center }
+
+V mém případě se výsledky trochu liší. V zástavbě byl rozdíl až 10 °C, v oblastech s vegetací se zjištěná teplota lišila zhruba o 5 °C a na vodních plochách byl rozdíl přibližně 3 °C. Otázkou tak zůstává, proč se výsledky takto liší, a který výsledek je přesnější.
+
+![](../assets/cviceni9/27_lst_comparison.png){ style="height:226px;"}
+{: style="margin-bottom:0px;" align=center }
+
+Pro zajímavost zde přidávám odstavec z oficiální <a href="https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-1619_Landsat8-9-Collection2-Level2-Science-Product-Guide-v5.pdf" target="_blank"> **příručky**</a> *Landsat 8-9*:
+
+*"The Landsat 8-9 Surface Temperature (ST) product is generated from the single channel algorithm version 1.3.0 (derived from June 2017 version of RIT ST code). The Landsat 8-9 Collection 2 ST is derived from the Collection 2 Level 1 Thermal Infrared Sensor (TIRS) band 10 using Top of Atmosphere (TOA) Reflectance, TOA Brightness Temperature (BT), Advanced Spaceborne Thermal Emission and Reflection Radiometer (ASTER) Global Emissivity Dataset (GED) data, ASTER Normalized Difference Vegetation Index (NDVI) data, and atmospheric profiles of geopotential height, specific humidity, and air temperature extracted from reanalysis data."*
+
+<hr class="l1">
+
+## Úkol - výpočet povrchové teploty
+
+- Stáhněte si data Landsat 8/9 z doby letních měsíců pro nějaké větší město
+- Spočtěte povrchovou teplotu jak z Level 1, tak i z Level 2 dat
+- Výsledky vizualizujte pomocí vhodné barevné škály
