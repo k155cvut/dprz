@@ -23,7 +23,7 @@
   .process_container img {max-height:600px; display:flex;}                                    /* Obrazky ve flexboxech maji maximalni vysku */
 </style>
 
-# Tepelných analýza pomocí dat Landsat
+# Tepelná analýza pomocí dat Landsat
 
 <hr class="l1">
 
@@ -263,7 +263,7 @@ Pro zajímavost zde přidávám odstavec z oficiální <a href="https://d9-wret.
 
 <hr class="l1">
 
-## Úkol - výpočet povrchové teploty
+## Úkol - Výpočet povrchové teploty
 
 - Stáhněte si data Landsat 8/9 z doby letních měsíců pro nějaké větší město
 - Spočtěte povrchovou teplotu jak z Level 1, tak i z Level 2 dat
