@@ -136,6 +136,41 @@ var visParams = {
 Map.addLayer(clipped_col, visParams, 'Sentinel-2');
 ```
 
+Spoustu dalších příkladů lze nalézt přímo v prostředí Google Earth Engine v části **Scripts** → **Examples**.
+
+![](../assets/cviceni10/02_gee_examples.png){ style="height:374px;"}
+{: style="margin-bottom:0px;" align=center }
+
 <hr class="l1">
 
 ## Detekce spálenišť pomocí Google Earth Engine
+
+V rámci tohoto cvičení využijeme Google Earth Engine pro detekování oblastí zasažených požárem. Konkrétní oblastí našeho zájmu bude národní park České Švýcarsko, kde došlo k požáru v období 23. 7. 2022 - 12. 8. 2022 (v německé části požár trval od 25. 7. 2022 - 19. 8. 2022). Práci začneme tím, že si vytvoříme nový soubor, do kterého budeme náš kód psát. Nový soubor vytvoříme v části **Scripts** → **NEW** → **File**. Protože jsme si ale nevytvořili repozitář, do kterého se soubor uloží, Google Earth Engine nás nejprve vyzve k vytvoření právě nového repozitáře. Teprve poté můžeme vytvořit nový soubor.
+
+![](../assets/cviceni10/03_new_file.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni10/04_new_repository.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni10/05_create_file.png)
+{: .process_container}
+
+Vytvořený soubor najdeme ve **Scripts** → **Owner**, kde si ho i můžeme otevřít.
+
+![](../assets/cviceni10/06_own_files.png){ style="height:198px;"}
+{: style="margin-bottom:0px;" align=center }
+
+### Výběr zájmové oblasti a získání dat
+
+Zájmové území si označíme přidáním bodu do mapy. Bod přidáme pomocí funkce ***Přidat značku***, která se nachází v levé horní části mapového okna. Bod umístíme přibližně mezi obce Hřensko a Mezná, tedy na místo, kde požár zhruba vypukl.
+
+![](../assets/cviceni10/07_add_point.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni10/08_point_location.png)
+{: .process_container}
+
+Pomocí funkce ***Edit layer properties*** si můžeme vytvořený bod přejmenovat z *geometry* např. na *point*.
+
+![](../assets/cviceni10/09_edit_point.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni10/10_edit_properties.png)
+{: .process_container}
