@@ -15,7 +15,6 @@ nav:
       - Cvičení 11: cviceni/cviceni11.md
   - Data: data.md
   - Hodnocení: hodnoceni.md
-  - Semestrální práce: semestralka.md
   - Výuková videa: videa.md
 plugins:
   - search
