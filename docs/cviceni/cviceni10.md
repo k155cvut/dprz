@@ -174,3 +174,41 @@ Pomocí funkce ***Edit layer properties*** si můžeme vytvořený bod přejmeno
 ![](../assets/arrow.svg){: .off-glb .process_icon}
 ![](../assets/cviceni10/10_edit_properties.png)
 {: .process_container}
+
+Nyní si můžeme vyhledat potřebná data. Konkrétně budeme pracovat s daty Sentinel-2. Bohužel v roce 2022 nebylo v daném místě mnoho bezoblačných scén, proto nastavíme datum na obdomí mezi 1. 4. 2022 - 31. 10. 2022. Jako limit pro oblačnost nastavíme 30 %.
+
+```js
+// Filter the Sentinel-2 image collection
+var S2 = ee.ImageCollection('COPERNICUS/S2_SR') // import data
+                  .filterBounds(point) // spatial filter
+                  .filterDate('2022-04-01', '2022-10-31') // temporal filter
+                  .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 30)) // metadata filter
+                  .sort('CLOUDY_PIXEL_PERCENTAGE'); // sort data
+
+// Print data to the Console
+print("Scenes:", S2);
+
+// Add True color RGB composite to the map
+Map.addLayer(S2.first(),
+            {min:0,max:3000,bands:"B4,B3,B2"}, 
+            "Image");
+```
+
+Pokud bychom si chtěli zobrazit jiný než první prvek z *ImageCollection*, je potřeba si *ImageCollection* převést na *List*. To můžeme udělat přidáním následujícího kódu.
+
+```js
+// Convert ImageCollection to List
+var S2List = S2.toList(S2.size());
+print(S2List);
+// Get second image from the list
+Map.addLayer(ee.Image(S2List.get(1)),
+            {min:0,max:3000,bands:"B4,B3,B2"}, 
+            "Image2");
+```
+
+Mezi vrstvami v mapovém okně lze jednoduše přepínat pomocí nástroje **Layers** v pravé části mapového okna.
+
+![](../assets/cviceni10/11_layers.png){ style="height:80px;"}
+{: style="margin-bottom:0px;" align=center }
+
+### Maskování oblačnosti, výpočet NBR indexu, analýza časové řady
