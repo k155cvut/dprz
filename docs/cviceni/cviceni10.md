@@ -179,11 +179,10 @@ Nyní si můžeme vyhledat potřebná data. Konkrétně budeme pracovat s daty S
 
 ```js
 // Filter the Sentinel-2 image collection
-var S2 = ee.ImageCollection('COPERNICUS/S2_SR') // import data
+var S2 = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED') // import data
                   .filterBounds(point) // spatial filter
                   .filterDate('2022-04-01', '2022-10-31') // temporal filter
-                  .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 30)) // metadata filter
-                  .sort('CLOUDY_PIXEL_PERCENTAGE'); // sort data
+                  .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 30)); // metadata filter
 
 // Print data to the Console
 print("Scenes:", S2);
@@ -191,7 +190,7 @@ print("Scenes:", S2);
 // Add True color RGB composite to the map
 Map.addLayer(S2.first(),
             {min:0,max:3000,bands:"B4,B3,B2"}, 
-            "Image");
+            "RGB");
 ```
 
 Pokud bychom si chtěli zobrazit jiný než první prvek z *ImageCollection*, je potřeba si *ImageCollection* převést na *List*. To můžeme udělat přidáním následujícího kódu.
@@ -200,10 +199,11 @@ Pokud bychom si chtěli zobrazit jiný než první prvek z *ImageCollection*, je
 // Convert ImageCollection to List
 var S2List = S2.toList(S2.size());
 print(S2List);
+
 // Get second image from the list
 Map.addLayer(ee.Image(S2List.get(1)),
             {min:0,max:3000,bands:"B4,B3,B2"}, 
-            "Image2");
+            "RGB 2");
 ```
 
 Mezi vrstvami v mapovém okně lze jednoduše přepínat pomocí nástroje **Layers** v pravé části mapového okna.
@@ -211,4 +211,58 @@ Mezi vrstvami v mapovém okně lze jednoduše přepínat pomocí nástroje **Lay
 ![](../assets/cviceni10/11_layers.png){ style="height:80px;"}
 {: style="margin-bottom:0px;" align=center }
 
-### Maskování oblačnosti, výpočet NBR indexu, analýza časové řady
+Při zavření a opětovném otevření Google Earth Engine není mapa vycentrována na naše území. Přidáním následujícího kódu do skriptu se mapa vycentruje na zobrazenou scénu.
+
+```js
+// Center the map to the image
+Map.centerObject(S2.first());
+```
+
+### Maskování oblačnosti
+
+Mohli jsme si všimnout, že na některých scénách je oblačnosti poměrně dost. To pro jakékoliv analýzy není zrovna nejlepší, a je proto potřeba oblačnost zamaskovat. Existuje více možností, jak scény maskovat, a lze k tomu použít i různé vrstvy obsažené v produktech Sentinel-2. <a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED#description" target="_blank"> **Zde**</a> je např. ukázka maskování oblačnosti pomocí vrstvy **QA60**, což je maska oblačnosti s rozlišením 60 m. Bohužel pro data od ledna 2022 není tato vrstva stále k dispozici. Lze ale využít i jiné vrstvy, jako např. **MSK_CLDPRB**, což je pravděpodobnost výskytu oblačnosti v pixelu s rozlišením 20 m. Přidáme si tedy do kódu funkci, která zamaskuje oblačnost pomocí vrstvy MSK_CLDPRB, zvolíme nějaký threshold určující, kolikaprocentní pravděpodobnost oblačnosti budeme brát v potaz, a aplikujeme masku oblačnosti na naše data. Můžeme poté porovnat zamaskovaná a nezamaskovaná data.
+
+```js hl_lines="7 8 9 10 11 12 13 14 15 16 17 19 20"
+// Filter the Sentinel-2 image collection
+var S2 = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED') // import data
+                  .filterBounds(point) // spatial filter
+                  .filterDate('2022-04-01', '2022-10-31') // temporal filter
+                  .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 30)); // metadata filter
+
+// Cloud mask based on MSK_CLDPRB layer
+function mask_clouds(image) {
+  // Select the MSK_CLDPRB band.
+  var cloudProbability = image.select('MSK_CLDPRB');
+
+  // Create a mask for clouds using a threshold.
+  var cloudMask = cloudProbability.lt(50);
+
+  // Update the image mask using the cloud mask.
+  return image.updateMask(cloudMask);
+}
+
+// Apply on image collection
+var S2_masked = S2.map(mask_clouds);
+
+// Add True color RGB composites to the map
+Map.addLayer(S2.first(),
+            {min:0,max:3000,bands:"B4,B3,B2"}, 
+            "RGB");
+Map.addLayer(S2_masked.first(),
+            {min:0,max:3000,bands:"B4,B3,B2"}, 
+            "RGB masked");
+```
+
+![](../assets/cviceni10/12_no_mask.png)
+![](../assets/cviceni10/13_mask.png)
+{: .process_container}
+<figcaption>Porovnání dat před a po použití masky oblačnosti</figcaption>
+
+Kdybychom se chtěli podívat znovu i na jiné scény, převedeme jako v předchozím příkladu *ImageCollection* na *List*. Správně by se měly maskovat i stíny tvořené oblačností, ale to si když tak zkuste později samostatně.
+
+### Výpočet NBR indexu
+
+Index <a href="https://un-spider.org/advisory-support/recommended-practices/recommended-practice-burn-severity/in-detail/normalized-burn-ratio" target="_blank"> **NBR**</a>, neboli **Normalized Burned Ratio**, je index určený ke zvýraznění spálenišť v rozsáhlých požárních oblastech. Vzoreček pro NBR je následující:
+
+**NBR = (NIR - SWIR)/(NIR + SWIR)**
+
