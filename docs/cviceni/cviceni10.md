@@ -266,3 +266,69 @@ Index <a href="https://un-spider.org/advisory-support/recommended-practices/reco
 
 **NBR = (NIR - SWIR)/(NIR + SWIR)**
 
+NBR index pro celou *ImageCollection* spočítáme přidáním následujícího kódu.
+
+```js
+// Compute NBR index
+function add_NBR(image) {
+  return image.addBands(image.normalizedDifference(['B8', 'B12']).rename('NBR'));
+}
+var S2_nbr = S2_masked.map(add_NBR);
+print(S2_nbr);
+```
+
+Následně si ho můžeme přidat i do mapového okna. Co se týče oblačnosti, tak před požárem nejlépe vychází scéna z 23. 4. 2022 (tj. druhá scéna v *ImageCollection*), a po požáru pak nejspíše scéna z 25. 9. 2022 (tj. pátá scéna v *ImageCollection*). Proto si budeme znázorňovat tyto dvě.
+
+```js
+// Convert ImageCollection to List
+var S2_nbr_list = S2_nbr.toList(S2_nbr.size());
+
+// Add layers to map
+Map.addLayer(ee.Image(S2_nbr_list.get(1)),
+            {min:0,max:3000,bands:"B4,B3,B2"}, 
+            "RGB pre-fire");
+Map.addLayer(ee.Image(S2_nbr_list.get(4)),
+            {min:0,max:3000,bands:"B4,B3,B2"}, 
+            "RGB post-fire");
+Map.addLayer(ee.Image(S2_nbr_list.get(1)),
+            {min: -1, max: 1, bands: ["NBR"]}, 
+            "NBR pre-fire");
+Map.addLayer(ee.Image(S2_nbr_list.get(4)),
+            {min: -1, max: 1, bands: ["NBR"]}, 
+            "NBR post-fire");
+```
+
+Na obrázku níže můžeme porovnat NBR index před a po požáru. Tmavé plochy znázorňují místa, kde k požáru došlo.
+
+![](../assets/cviceni10/14_pre_fire_nbr.png)
+![](../assets/cviceni10/15_post_fire_nbr.png)
+{: .process_container}
+<figcaption>Porovnání NBR indexu před a po požáru</figcaption>
+
+Dále si vytvoříme graf znázorňující časovou řadu NBR. Časovou řadu budeme ale znázorňovat jen pro území, kde k požáru opravdu došlo. Proto si toto území nebo jeho část vyznačíme polygonem, který vytvoříme pomocí nástroje **Nakreslit tvar**.
+
+![](../assets/cviceni10/16_draw_polygon.png){ style="height:117px;"}
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni10/17_polygon.png){ style="height:358px;"}
+{: .process_container}
+
+Nyní pomocí následujícího kódu vytvoříme graf.
+
+```js
+// Create Time series chart
+var TSChart = ui.Chart.image.series({
+    imageCollection: S2_nbr.select(['NBR']),
+    region: polygon,
+    reducer: ee.Reducer.mean(),
+    scale: 10,
+}).setOptions({
+    title: 'NBR time-series of the burned areas'
+});
+
+print(TSChart);
+```
+
+![](../assets/cviceni10/18_nbr_graph.png){ style="height:197px;"}
+{: style="margin-bottom:0px;" align=center }
+
+### Vizualizace spálenišť
