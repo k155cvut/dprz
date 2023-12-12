@@ -332,3 +332,137 @@ print(TSChart);
 {: style="margin-bottom:0px;" align=center }
 
 ### Vizualizace spálenišť
+
+Dále si spáleniště nějak vhodně vizualizujeme. Lépe než kombinace B4-B3-B2 se pro spáleniště jeví kombinace B12-B11-B9 (tedy kombinace SWIR pásem a pásma Water vapour). Zároveň si vyselektujeme druhou a pátou scénu z *ImageCollection* do vlastních proměnných.
+
+```js
+// Select pre-fire and post-fire images
+var pre_fire_image = ee.Image(S2_nbr_list.get(1));
+var post_fire_image = ee.Image(S2_nbr_list.get(4));
+
+Map.addLayer(pre_fire_image,
+            {min:0,max:3000,bands:"B12,B11,B9"}, 
+            "pre_fire_image");
+Map.addLayer(pre_fire_image,
+            {min:-1,max:1,bands:"NBR"}, 
+            "pre_fire_NBR");
+Map.addLayer(post_fire_image,
+            {min:0,max:3000,bands:"B12,B11,B9"}, 
+            "post_fire_image");
+Map.addLayer(post_fire_image,
+            {min:-1,max:1,bands:"NBR"}, 
+            "post_fire_NBR");
+```
+
+Dále si spočítáme tzv. ***Burn severity***, což je veličina udávající závažnost poškození požárem, a vypočítá se podle následujícího vzorce:
+
+**dNBR = NBR<sub>Prefire</sub> - NBR<sub>Postfire</sub>**
+
+Čím vyšší hodnota, tím větší poškození požárem.
+
+![](../assets/cviceni10/19_dnbr_values.png){ style="height:269px;"}
+{: style="margin-bottom:0px;" align=center }
+
+dNBR vypočítáme v Google Earth Engine pomocí následující kódu. Zároveň si i vyznačíme místa se střední až vysokou hodnotou poškození.
+
+```js
+// Calculate the dNBR
+var dNBR = pre_fire_image.select('NBR').subtract(post_fire_image.select('NBR')).rename('dNBR');
+
+// High and very high burned severity
+var modAndHighBS = dNBR.gt(0.27);
+
+Map.addLayer(dNBR,
+            {min:-1,max:1,bands:"dNBR"}, 
+            "dNBR Image");
+Map.addLayer(modAndHighBS,
+            {min:-1,max:1,bands:"dNBR"}, 
+            "Moderate and high burned severity");
+```
+
+Na závěr si můžeme vytvořit jednoduchou *Swipe* aplikaci pro přehledné znázorňování stavu před a po požáru.
+
+```js
+// Application
+// Create two map windows
+var MapLeft = ui.Map();
+var MapRight = ui.Map();
+
+MapLeft.addLayer(pre_fire_image,
+            {min:0,max:3000,bands:"B12,B11,B9"}, 
+            "pre_fire_image");
+
+MapLeft.addLayer(pre_fire_image,
+            {min:-1,max:1,bands:"NBR"}, 
+            "pre_fire_NBR");
+
+MapRight.addLayer(post_fire_image,
+            {min:0,max:3000,bands:"B12,B11,B9"}, 
+            "post_fire_image");
+
+MapRight.addLayer(post_fire_image,
+            {min:-1,max:1,bands:"NBR"}, 
+            "post_fire_NBR");
+
+// Create a swipe option
+var splitPanel = ui.SplitPanel({
+  firstPanel: MapLeft,
+  secondPanel: MapRight,
+  orientation: "horizontal",
+  wipe: true
+})
+
+// Clear map and add the swipe
+ui.root.clear()
+ui.root.add(splitPanel)
+
+// Link the map windows
+ui.Map.Linker([MapLeft,MapRight]);
+
+// Center it around our selected point
+MapRight.centerObject(point, 10)
+
+MapLeft.setControlVisibility({all: true});
+// MapRight.setControlVisibility({all: true});
+
+// Add map description
+var leftDescription = ui.Panel({
+  widgets: [  
+    ui.Label({value: "Pre-fire",
+style: {textAlign:'centasdsadered',fontSize: '15px', color: '484848', fontWeight: 'bold'}})],
+  style: {position: 'bottom-left'},
+  layout: null,
+});
+MapLeft.add(leftDescription);
+
+var rightDescription = ui.Panel({
+  widgets: [  
+    ui.Label({value: "Post-fire",
+style: {textAlign:'centasdsadered',fontSize: '15px', color: '484848', fontWeight: 'bold'}})],
+  style: {position: 'bottom-right'},
+  layout: null,
+});
+MapRight.add(rightDescription);
+
+// Create the panel widget
+var panel = ui.Panel()
+panel.style().set({ width: '350px',position: "middle-left"});
+ui.root.insert(1,panel)
+
+var title = ui.Label({value: "Detekce spálenišť pomocí GEE",
+style: {textAlign:'centasdsadered',fontSize: '21px', color: '484848', fontWeight: 'bold'}});
+
+panel.add(title)
+
+var infotext1 = ui.Label({value:
+"Aplikace znázorňující stav Českého Švýcarska před a po požáru v léte 2022." 
+,style: {fontSize: '13px', color: '484848',textAlign:'justify'}});
+panel.add(infotext1)
+```
+
+![](../assets/cviceni10/20_application.png)
+{: style="margin-bottom:0px;" align=center }
+
+<hr class="l1">
+
+Inspirace pro toto cvičení čerpána z: <a href="https://copernicus.gov.cz/index.php/uzivatelske-a-konference-a-seminare/ceske-uzivatelske-forum-2022/" target="_blank"> **GEE Workshop at Copernicus Forum 2022**</a>
