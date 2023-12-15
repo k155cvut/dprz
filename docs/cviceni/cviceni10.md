@@ -354,13 +354,17 @@ Map.addLayer(post_fire_image,
             "post_fire_NBR");
 ```
 
+![](../assets/cviceni10/19_post_fire_visualization.png){ style="height:392px;"}
+{: style="margin-bottom:0px;" align=center }
+<figcaption>Zvýraznění spáleniště pomocí RGB kombinace B12-B11-B9</figcaption>
+
 Dále si spočítáme tzv. ***Burn severity***, což je veličina udávající závažnost poškození požárem, a vypočítá se podle následujícího vzorce:
 
 **dNBR = NBR<sub>Prefire</sub> - NBR<sub>Postfire</sub>**
 
 Čím vyšší hodnota, tím větší poškození požárem.
 
-![](../assets/cviceni10/19_dnbr_values.png){ style="height:269px;"}
+![](../assets/cviceni10/20_dnbr_values.png){ style="height:269px;"}
 {: style="margin-bottom:0px;" align=center }
 
 dNBR vypočítáme v Google Earth Engine pomocí následující kódu. Zároveň si i vyznačíme místa se střední až vysokou hodnotou poškození.
@@ -460,7 +464,7 @@ var infotext1 = ui.Label({value:
 panel.add(infotext1)
 ```
 
-![](../assets/cviceni10/20_application.png)
+![](../assets/cviceni10/21_application.png)
 {: style="margin-bottom:0px;" align=center }
 
 <hr class="l1">
