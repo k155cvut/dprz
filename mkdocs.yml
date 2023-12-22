@@ -13,9 +13,6 @@ nav:
       - Cvičení 9: cviceni/cviceni9.md
       - Cvičení 10: cviceni/cviceni10.md
       - Cvičení 11: cviceni/cviceni11.md
-  - Data: data.md
-  - Hodnocení: hodnoceni.md
-  - Výuková videa: videa.md
 plugins:
   - search
   - glightbox:
