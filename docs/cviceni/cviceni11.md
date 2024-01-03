@@ -1,3 +1,7 @@
+---
+icon: custom/vc-numeric-11-box
+---
+
 <style>
   .md-typeset__scrollwrap {text-align: center ;}
   table th {text-align: center !important;}

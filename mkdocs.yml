@@ -2,17 +2,17 @@ site_name: 155DPRZ
 nav:
   - Charakterisika předmětu: index.md
   - Cvičení:
-      - Cvičení 1: cviceni/cviceni1.md
-      - Cvičení 2: cviceni/cviceni2.md
-      - Cvičení 3: cviceni/cviceni3.md
-      - Cvičení 4: cviceni/cviceni4.md
-      - Cvičení 5: cviceni/cviceni5.md
-      - Cvičení 6: cviceni/cviceni6.md
-      - Cvičení 7: cviceni/cviceni7.md
-      - Cvičení 8: cviceni/cviceni8.md
-      - Cvičení 9: cviceni/cviceni9.md
-      - Cvičení 10: cviceni/cviceni10.md
-      - Cvičení 11: cviceni/cviceni11.md
+      - Úvod do DPZ, ukázka webových portálů pro prohlížení a stahování družicových dat: cviceni/cviceni1.md
+      - Seznámení se softwarem SNAP, vytvoření subsetu, barevná syntéza, tvorba spektrálních křivek: cviceni/cviceni2.md
+      - Vegetační (spektrální) indexy, maskování, detekce vodních ploch: cviceni/cviceni3.md
+      - Filtrace obrazu: cviceni/cviceni4.md
+      - Neřízená klasifikace: cviceni/cviceni5.md
+      - Řízená klasifikace, validace výsledku klasifikace: cviceni/cviceni6.md
+      - Segmentace a objektová klasifikace: cviceni/cviceni7.md
+      - Ukázka VHR dat, pansharpening, řízená klasifikace v ArcGIS Pro: cviceni/cviceni8.md
+      - Tepelná analýza pomocí dat Landsat: cviceni/cviceni9.md
+      - Ukázka práce v Google Earth Engine: cviceni/cviceni10.md
+      - Zpracování radarových dat, tvorba DMT: cviceni/cviceni11.md
 plugins:
   - search
   - glightbox:
@@ -30,6 +30,7 @@ plugins:
       caption_position: bottom
 theme:
   name: material
+  custom_dir: overrides
   features:
     - navigation.tabs
     # - navigation.tabs.sticky
@@ -83,3 +84,6 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons

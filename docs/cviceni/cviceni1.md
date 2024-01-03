@@ -1,3 +1,7 @@
+---
+icon: material/numeric-1-box
+---
+
 <style>
   h2 {font-weight:700 !important;}      
   figcaption {font-size:12px;margin-top:5px !important;text-align:center;line-height:1.2em;}         /* Formatovani Popisku obrazku */
