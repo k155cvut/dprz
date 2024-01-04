@@ -12,7 +12,7 @@ nav:
       - Ukázka VHR dat, pansharpening, řízená klasifikace v ArcGIS Pro: cviceni/cviceni8.md
       - Tepelná analýza pomocí dat Landsat: cviceni/cviceni9.md
       - Ukázka práce v Google Earth Engine: cviceni/cviceni10.md
-      - Zpracování radarových dat, tvorba DMT: cviceni/cviceni11.md
+      - Radarová interferometrie, tvorba DEM: cviceni/cviceni11.md
 plugins:
   - search
   - glightbox:
