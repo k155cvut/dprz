@@ -81,7 +81,7 @@ Hodnoty *Path* a *Frame* zadáváme samozřejmě pouze tehdy, pokud je známe, a
 {: .process_container}
 <figcaption>Vlevo - vyhledaná data bez zadaných hodnot Path a Frame, vpravo - vyhledaná data se zadanými hodnotami Path a Frame</figcaption>
 
-Z vyhledaných výsledků si jeden zvolíme a zkopírujeme název dané scény (někam si to poznamenáme).
+Z vyhledaných výsledků si jeden zvolíme a zkopírujeme název dané scény (někam si to poznamenáme). Po kliknutí na scénu se v detailech můžeme dozvědět i hodnoty Path a Frame.
 
 ![](../assets/cviceni11/08_searched_data.png){ style="height:311px;"}
 {: style="margin-bottom:0px;" align=center }
@@ -115,3 +115,39 @@ Po upravení parametrů se nám zobrazí pouze potenciálně vhodné scény. Pok
 V případě nalezení vhodných scén si obě scény pomocí jejich názvu vyhledáme a stáhneme na <a href="https://dataspace.copernicus.eu/browser" target="_blank"> **Copernicus Browser**</a>, kde jsme již dříve stahovali data Sentinel-2. (Stahovat lze i přímo z nástroje *Vertex*, ale je potřeba být zaregistrován.)
 
 ### 3) Instalace pluginu ve SNAP
+
+Data budeme zpracovávat v softwaru SNAP. Ještě před samotným zpracováním musíme ale do softwaru nainstalovat zásuvný modul (plugin) **SNAPHU Unwrapping**. To uděláme v menu přes záložku ***Tools*** → ***Plugins***. V nově otevřeném okně se poté překlikneme do záložky ***Available Plugins***, kde najdeme plugin **SNAPHU Unwrapping** a nainstalujeme ho. Během instalace nás SNAP vyzve k restartování, což tedy i učiníme.
+
+![](../assets/cviceni11/15_plugins.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni11/16_install_plugin.png)
+{: .process_container}
+
+Plugin je dále nutné aktivovat. To se provede v záložce ***Tools*** → ***Manage External Tools*** – tedy pokud je zde vykřičník. Rozklikneme plugin *SNAPHU Unwrapping* a v záložce ***Bundled Binaries*** klikneme na tlačítko *Download and Install Now*. Po těchto krocích je SNAP připraven ke zpracování interferometických dat.
+
+![](../assets/cviceni11/17_manage_tools.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni11/18_external_tools.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni11/19_activate_plugin.png)
+{: .process_container}
+
+### 4) Koregistrace
+
+Stejně jako v případě dat Sentinel-2, tak ani data Sentinel-1 nebudeme rozzipovávat a nahrajeme je do SNAP tak, jak jsou. Prvním ze základních kroků pro úspěšné vytvoření interferogramu je použít dvojici SLC snímků a spojit je do jedné báze. Tato báze slouží ke koregistraci jednoho bodu na zemi pro oba dva snímky. Dvojici snímků dělíme na hlavní (master) a vedlejší (slave). Pokud pracujeme s daty, které jsme si stáhli ze stránek tohoto cvičení, tak jako *master* použijeme scénu s koncovkou **_8796**, a jako *slave* scénu s koncovkou **_07DD**. Koregistraci provedeme pomocí nástroje ***Radar*** → ***Coregistration*** → ***S1 TOPS Coregistration*** → ***S1 TOPS Coregistration with ESD***.
+
+![](../assets/cviceni11/20_coregistration.png){ style="height:295px;"}
+{: style="margin-bottom:0px;" align=center }
+
+V záložce ***Read*** vložíme náš první snímek (master) s koncovkou **_8796**, v druhé záložce ***Read(2)*** vložíme párový snímek s koncovkou **_07DD** (přepínání mezi záložkami může mít nějakou prodlevu). V záložce ***TOPSAR-Split*** zmenšíme oblast zpracování – pokud Vám SNAP hlásí chybu a nejde vybrat *Subswath*, zkuste znovu otevřít nástroj, případně restartovat software. Pokud SNAP chybu nehlásí, za *Subswath* zvolíme **IW2**, *Polarisations* **VV** a pomocí posuvníků upravíme *Burst* na dílky 3 až 5. Stejné nastavení vybereme i pro druhý snímek v záložce ***TOPSAR-Split(2)***. Záložky ***Apply-Orbit-File*** a ***Apply-Orbit-File(2)*** necháme ve výchozím stavu(Sentinel Precise, Polynomial Degree 3).
+
+![](../assets/cviceni11/21_topsar_split.png){ style="height:543px;"}
+{: style="margin-bottom:0px;" align=center }
+
+V záložce ***Back-Geocoding*** zvolíme *Digital Elevation Model* **SRTM 1Sec HGT (Auto Download)**. Další záložku neupravujeme a zvolíme rovnou poslední záložku ***Write***, kde přepíšeme název např. na S1A_S1B_IW_SLC_VV_8796_07DD_Orb_Stack (pro přehlednost) a zvolíme umístění.
+
+![](../assets/cviceni11/22_back_geocoding.png){ style="height:543px;"}
+{: style="margin-bottom:0px;" align=center }
+
+### 5) Interferogram
+
