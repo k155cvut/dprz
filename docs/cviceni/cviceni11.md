@@ -151,3 +151,50 @@ V záložce ***Back-Geocoding*** zvolíme *Digital Elevation Model* **SRTM 1Sec 
 
 ### 5) Interferogram
 
+Následně vytvoříme interferogram pomocí nástroje v menu ***Radar*** → ***Interferometric*** → ***Products*** → ***Interferogram Formation***. Do vstupních dat vložíme vytvořený *Orb_Stack* z minulého kroku. Název upravovat nemusíme, SNAP dopsal k názvu *_ifg*. Jelikož chceme z dat vytvořit DEM, zkontrolujeme, jestli je v záložce ***Processing Prameters*** označené **Subtract flat-earth phase**. *Subtract topographic phase* se používá pro tvorbu modelu deformací, a musí být tedy v našem případě neoznačené.
+
+![](../assets/cviceni11/23_interferogram.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni11/24_inter_io.png)
+![](../assets/cviceni11/25_inter_processing.png)
+{: .process_container}
+
+V prostředí softwaru SNAP lze zobrazit histogram interferogramu. Po vytvoření obrazu koherence se v levé části rozhraní softwaru zpřístupní záložka *Colour Manipulation* (pokud ne, tak zkusíme *View* → *Tool Windows* → *Colour Manipulation*). Aby se nám histogram správně zobrazil, musíme mít v mapovém okně otevřenou koherenci histogramu! (Rozbalit pomocí plus vytvořený interferogram, rozkliknout *Bands* a dvakrát kliknout na coh_IW2_VV_........._.........).
+
+![](../assets/cviceni11/26_ifg_histogram.png)
+{: style="margin-bottom:0px;" align=center }
+
+Koherence nabývá hodnot od 0 do 1, s tím že pokud se hodnota blíží k 1, je snímek více kvalitní a nachází se na něm méně šumu. Naopak, pokud je interferogram blíže k 0, snímky obsahují více šumu a tím pádem jsou méně kvalitní.
+
+### 6) Odstranění černých linií
+
+Na snímku jsou patrné černé linie, které způsobilo snímkování v jednotlivých pruzích. Následujícím krokem je možné tyto linie odebrat a vytvořit tak souvislý snímek. Použijeme funkci ***Radar*** → ***Sentinel-1 TOPS*** → ***S-1 TOPS Deburst***. Zde je nutné vložit vytvořený interferogram s označenou polarizací **VV** v záložce *Processing Parameters*.
+
+![](../assets/cviceni11/27_deburst.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni11/28_deburst_io.png)
+![](../assets/cviceni11/29_deburst_processing.png)
+{: .process_container}
+
+Opět zkusíme otevřít v *Bands* coh_IW2_VV_........._........., ale nyní ve vytvořeném interferogramu s ***_deb*** na konci názvu. Vidíme, že černé linie se již na snímku nenacházejí.
+
+![](../assets/cviceni11/30_no_lines.png)
+{: style="margin-bottom:0px;" align=center }
+
+### 7) Filtrace šumu
+
+Fáze (pásmo začínající na *Phase_*) obsahuje množství šumu, které je možné odstranit pomocí ***Radar*** → ***Interferometric*** → ***Filtering*** → ***Goldstein Phase Filtering***. Jako vstupní data vložíme soubor z předchozího kroku a zbytek necháme ve výchozím nastavení.
+
+![](../assets/cviceni11/31_filtering.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni11/32_filter_io.png)
+![](../assets/cviceni11/33_filter_processing.png)
+{: .process_container}
+
+Efekt filtrace můžeme ověřit porovnáním fáze před filtrací a po filtraci.
+
+![](../assets/cviceni11/34_phase_comparison.png){ style="height:520px;"}
+{: style="margin-bottom:0px;" align=center }
+<figcaption>Vlevo - fáze před filtrací, vpravo - fáze po filtraci</figcaption>
+
+### 8) Definice zájmové lokality
