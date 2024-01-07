@@ -198,3 +198,83 @@ Efekt filtrace můžeme ověřit porovnáním fáze před filtrací a po filtrac
 <figcaption>Vlevo - fáze před filtrací, vpravo - fáze po filtraci</figcaption>
 
 ### 8) Definice zájmové lokality
+
+Před rozbalením fáze si ořízneme výpočetní oblast pomocí funkce ***Subset*** (***Raster*** → ***Subset***), kterou aplikujeme na poslední krok, čili na soubor s *_flt* na konci názvu (je potřeba mít otevřenou fázy v mapovém okně). Abychom měli zaměřenou lokalitu hory Jabal Toubkal (pokud tedy pracujeme s poskytnutými daty a ne s nějakými vlastními), zadáme do *Pixel Coordinates* následující hodnoty:
+
+![](../assets/cviceni11/35_subset.png){ style="height:370px;"}
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni11/36_pixel_coordinates.png){ style="height:473px;"}
+{: .process_container}
+
+Subset se sám neuloží, SNAP vytvořil pouze dočasný soubor. Uložíme jej pomocí kliknutí pravého tlačítka myši na vytvořený subset v *Product Explorer* a dále na možnost *Save Product*.
+
+### 9) Rozbalení fáze
+
+Nejnáročnější částí jak časově tak hardwarově je rozbalení fáze, ke které je klíčový dříve nainstalovaný zásuvný modul SNAPHU Unwrapping. Fázový rozdíl vychází pouze v intervalu [-π, π] a jeden cyklus je roven polovině vlnové délky radaru. Tento krok má celkem tři části. První - export vytvořeného produktu pomocí funkce ***Snaphu Export*** (***Radar*** → ***Interferometric*** → ***Unwrapping*** → ***Snaphu Export***). Jako vstupní data poslouží vytvořený Subset.
+
+![](../assets/cviceni11/37_snaphu_export.png){ style="height:279px;"}
+{: style="margin-bottom:0px;" align=center }
+
+V záložce *SnaphuExport* zvolíme správnou složku uložení a název zvolíme snaphu_export. K odvození výškových hodnot terénu použijeme statistický model (*Statistical-cost mode*) **SMOOTH**, ale používá se i TOPO. Model DEFO se zabývá výpočtem deformací. Dalším polem je *Initial method*, která nabízí dvě statistické metody výpočtu - MCF (minimal cost flow) a MST (minimum spanning tree). My použijeme metodu **MCF**. Dále je možné nastavit počet řádků a sloupců (nicméně navýšení hodnot nevykázalo urychlení procesu, takže můžeme ponechat defaultní hodnoty). Urychlení procesu lze docílit navýšením aktivních jader v procesoru (dle hardwarových možností). Následně nastavíme překryt řádků a sloupců (*Row Overlap*, *Column Overlap*) na hodnotou 500.
+
+![](../assets/cviceni11/38_snaphu_export_read.png)
+![](../assets/cviceni11/39_snaphu_export_params.png)
+{: .process_container}
+
+Druhou částí rozbalení fáze je samotné rozbalení exportované složky (***Radar*** → ***Interferometric*** → ***Unwrapping*** → ***Snaphu-unwrapping***). Vložíme fázová data z exportované složky s koncovkou .img (Phase_ifg_IW2_VV_30Sep2020_24Sep2020.snaphu.img). Výstupní složkou tohoto procesu, v záložce *Processing Parameters*, bude složka vytvořená v předešlém kroku (snaphu_export). Pokud bychom data neuložili do stejné složky, další krok by poté nefungoval. Pro zobrazení výpočtu bylo zaškrtnuto pole *Display execution output*. Krok je poměrně náročný a může zabrat i několik desítek minut (záleží na hardwaru).
+
+![](../assets/cviceni11/40_snaphu_unwrapping.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni11/41_unwrap_input.png)
+![](../assets/cviceni11/42_unwrap_process.png)
+{: .process_container}
+
+Třetí a poslední částí rozbalování fáze je import rozbalených dat (***Radar*** → ***Interferometric*** → ***Unwrapping*** → ***Snaphu Import***). V záložce *1-Read-Phase* zvolíme vstupní data a to vytvořený Subset ještě **PŘED** samotným rozbalením fází. v druhé záložce *2-Read-Unwrapped-Phase* zvolíme vstupní data - rozbalený soubor v exportované složce s koncovkou .hdr (UnwPhase_ifg_IW2_VV_30Sep2020_24Sep2020.snaphu.hdr). Třetí záložka zůstala nezměněná – čili ponecháme neoznačenou volbu *Do NOT save Wrapped interferogram in the target product* a následně ve čtvrté záložce zvolíme, kam výstup uložíme. Pro přehlednost doporučuji označit soubor, že se jedná o rozbalenou fázi, například vepsáním _unw.
+
+![](../assets/cviceni11/43_snaphu_import.png){ style="height:279px;"}
+{: style="margin-bottom:0px;" align=center }
+
+![](../assets/cviceni11/44_import1.png)
+![](../assets/cviceni11/45_import2.png)
+{: .process_container}
+
+![](../assets/cviceni11/46_import3.png)
+![](../assets/cviceni11/47_import4.png)
+{: .process_container}
+
+Výsledek můžeme otevřít v Product Explorer.
+
+![](../assets/cviceni11/48_unw_phase.png)
+{: style="margin-bottom:0px;" align=center }
+
+### 10) Převedení fáze na výšku
+
+Takto zpracovaný produkt je nutné převést z jednotek radiánu na absolutní výšku v kartézském souřadnicovém systému. Kromě fázového šumu a možných chyb při rozbalení fáze je přesnost zpracování závislá taktéž na orbitálních vektorech určujících dráhu družice. Převod na výšku provedeme pomocí funkce ***Phase to Elevation*** (***Radar*** → ***Interferometric*** → ***Products***). Vstupním produktem bude produkt z minulého kroku (s koncovkou _unw). Zvolíme, kam se produkt uloží, a v záložce *Processing Parameters* opět zvolíme pro *DEM* **SRTM 1Sec HGT (Auto Download)** a nejjednodušší interpolační metodu pro *DEM Resampling Method*: **Nearest Neighboor**.
+
+![](../assets/cviceni11/49_phase_to_elevation.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni11/50_phaseToElev_io.png)
+![](../assets/cviceni11/51_phaseToElev_process.png)
+{: .process_container}
+
+### 11) Korekce terénu
+
+Pomocí funkce ***Range-Doppler Terrain Correction*** (***Radar*** → ***Geometric*** → ***Terrain Correction*** → ***Range-Doppler Terrain Correction***) geokódujeme snímek úpravou SAR geometrického zkreslení pomocí digitálního modelu terénu a vytvoříme snímek projektovaného produktu. Vstupním produktem je produkt z předchozího kroku. V *Processing Parameters* poté opět zvolíme pro *DEM* **SRTM 1Sec HGT (Auto Download)** a v *Source Bands* označíme pásmo *elevation*. Zbytek ponecháme tak, jak je.
+
+![](../assets/cviceni11/52_terrain_correction.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni11/53_terrain_correction_io.png)
+![](../assets/cviceni11/54_terrain_correction_process.png)
+{: .process_container}
+
+Výsledek by měl vypadat nějak takto:
+
+![](../assets/cviceni11/dem.png){ style="height:519px;"}
+{: style="margin-bottom:0px;" align=center }
+
+### 12) Export
+
+Posledním krokem je export vytvořeného DEM. Označíme tedy v *Product Explorer* poslední vytvořený produkt a následně přes ***File*** → ***Export*** vybereme vhodný formát (například GeoTIFF), který následně budeme moct otevřít například v ArcGIS Pro. Po exportu v námi zvoleném softwaru vytvoříme výkres, který bude obsahovat všechny náležitosti – **tiráž**, **měřítko**, **legendu**, **směrovku**, **nadpis**.
+
+![](../assets/cviceni11/55_export_dem.png){ style="height:452px;"}
+{: style="margin-bottom:0px;" align=center }
