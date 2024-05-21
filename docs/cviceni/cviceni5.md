@@ -136,7 +136,7 @@ Vcelku rozumná úvaha by byla nastavit *Number of clusters* na počet tříd, k
 {: style="margin-bottom:0px;" align=center }
 <figcaption>Vlevo - RGB scéna, uprostřed - 5 tříd a 1 iterace, vpravo - 5 tříd a 30 iterací</figcaption>
 
-Z výsledků je patrné, že při pěti třídách a jedné iteraci nedochází k dobré separabilitě tříd. V tomto případě jedna třída pokrývá jak vodní plochu, tak i holou půdu a les. Při třiceti iteracích je pak už vidět, že se jednotlivé třídy od sebe oddělily již mnohem lépe, a názorně to tak ilustruje princip fungování algoritmu *K-Means*. Nicméně výsledek není ani tak optimální. Došlo sice k separování jednotlivých tříd, ale ne těch, u kterých bychom to chtěli. Vodní plocha, holá půda a z část i zástavba v tomto případě stále spadají pod jednu spektrální třídu a je tedy potřeba zvýšit počet klastrů. Můžeme takto vyzkoušet například 10, 15 či 20 tříd, případně i navyšovat počet iterací.
+Z výsledků je patrné, že při pěti třídách a jedné iteraci nedochází k dobré separabilitě tříd. V tomto případě jedna třída pokrývá jak vodní plochu, tak i holou půdu a les. Při třiceti iteracích je pak už vidět, že se jednotlivé třídy od sebe oddělily již mnohem lépe, a názorně to tak ilustruje princip fungování algoritmu *K-Means*. Nicméně výsledek není ani tak optimální. Došlo sice k separování jednotlivých tříd, ale ne těch, u kterých bychom to chtěli. Vodní plocha, holá půda a z části i zástavba v tomto případě stále spadají pod jednu spektrální třídu a je tedy potřeba zvýšit počet klastrů. Můžeme takto vyzkoušet například 10, 15 či 20 tříd, případně i navyšovat počet iterací.
 
 ![](../assets/cviceni5/10_kmeans_10classes.png)
 {: style="margin-bottom:0px;" align=center }
