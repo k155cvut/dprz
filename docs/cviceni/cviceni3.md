@@ -83,7 +83,7 @@ Spektrálních indexů existuje celá řada. Příklady indexů můžeme nalézt
     <tr>
       <td><strong>AWEI<sub>sh</sub></strong></td>
       <td>Automated Water Extraction Index</td>
-      <td>Blue + 2.5·Green - 1.5·(NIR + SWIR<sub>1</sub>) - 0.25·SWIR<sub>2</sub>) = B2 + 2.5·B3 - 1.5·(B8 + B11) - 0.25·B12</td>
+      <td>Blue + 2.5·Green - 1.5·(NIR + SWIR<sub>1</sub>) - 0.25·SWIR<sub>2</sub> = B2 + 2.5·B3 - 1.5·(B8 + B11) - 0.25·B12</td>
     </tr>
   </tbody>
 </table>
