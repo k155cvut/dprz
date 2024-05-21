@@ -388,7 +388,7 @@ V mapovém okně se poté můžeme podívat, jestli v klasifikovaném produktu p
 ![](../assets/cviceni6/47_pins_in_classification.png){ style="height:490px;"}
 {: style="margin-bottom:0px;" align=center }
 
-Dále je potřeba do tabulky v ***Pin Manager*** přidat sloupec s hodnotou klasifikované třídy. To uděláme pomocí funkce ***Filter pixel data to be displayed in table.*** Z nabítky vybereme vrstvu *LabeledClasses* a dáme OK.
+Dále je potřeba do tabulky v ***Pin Manager*** přidat sloupec s hodnotou klasifikované třídy. To uděláme pomocí funkce ***Filter pixel data to be displayed in table.*** Z nabídky vybereme vrstvu *LabeledClasses* a dáme OK.
 
 ![](../assets/cviceni6/48_filter_pixel_data.png)
 ![](../assets/arrow.svg){: .off-glb .process_icon}
