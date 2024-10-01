@@ -67,8 +67,9 @@ Zpravidla se využívají dva druhy oběžných drah: **slunečně synchronní p
 
 Jedná se o program EU pro pozorování Země. Je koordinován a spravován Evropskou komisí. Zaměřuje se na sledování atmosféry, pevniny, moří a klimatu. Data poskytovaná programem Copernicus jsou přístupná bez poplatků. V rámci většiny cvičení budou využívána právě data z programu Copernicus.
 
-<div style="text-align: center;">
+<div class="process_container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/MGJss4lDaBo?si=stLxSof5nyzOw-K-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vyoXKUuAf5E?si=GHzzrPdsDrmLBjnx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 V rámci programu Copernicus byla vypuštěna řada družic. Tyto družice spadají pod tzv. mise Sentinel. Jedná se o družice Sentinel-1, Sentinel-2, Sentinel-3, Sentinel-5 Precursor (Sentinel-5P) a Sentinel-6. Dále je plánováno vypuštění družic Sentinel-4 a Sentinel-5.
