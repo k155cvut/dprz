@@ -134,7 +134,7 @@ Příklad maskování si ukážeme na dalším indexu, který si spočítáme. C
 ![](../assets/cviceni3/11_mask_manager_menu.png)
 {: .process_container}
 
-V ***Mask Manager*** jsou tři možnosti, jak masky tvořit. Jsou jimi: ***Creates a new mask based on a logical band maths expression***, ***Creates a new mask based on a value range*** a ***Creates a new mask based on a new geometry container (lines and polygons)***. Vytvořené mask je pak možné dále kombinovat pomocí logických operátorů. My nyní použijeme druhou možnost a vytvoříme masku pomocí rozsahu hodnot. Nejprve je ale potřeba znát, co hodnoty NDVI představují. To zhruba znázorňuje následující tabulka.
+V ***Mask Manager*** jsou tři možnosti, jak masky tvořit. Jsou jimi: ***Creates a new mask based on a logical band maths expression***, ***Creates a new mask based on a value range*** a ***Creates a new mask based on a new geometry container (lines and polygons)***. Vytvořené masky je pak možné dále kombinovat pomocí logických operátorů. My nyní použijeme druhou možnost a vytvoříme masku pomocí rozsahu hodnot. Nejprve je ale potřeba znát, co hodnoty NDVI představují. To zhruba znázorňuje následující tabulka.
 
 <table>
   <thead>
