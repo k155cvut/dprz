@@ -402,7 +402,7 @@ Posledním krokem je export tabulky do textového souboru pomocí funkce ***Expo
 ![](../assets/cviceni6/51_export_pins.png){ style="height:166px;"}
 {: style="margin-bottom:0px;" align=center }
 
-Následně si tyto data nahrajeme do Excelu (případně jiného softwaru) a vytvoříme matici chyb. <a href="https://geo.fsv.cvut.cz/vyuka/155dprz/cv6/matice_chyb.xlsx" target="_blank"> **Zde**</a> si můžete stáhnout předpřipravenou šablonu, do které můžete data postupně vkládat.
+Následně si tato data nahrajeme do Excelu (případně jiného softwaru) a vytvoříme matici chyb. <a href="https://geo.fsv.cvut.cz/vyuka/155dprz/cv6/matice_chyb.xlsx" target="_blank"> **Zde**</a> si můžete stáhnout předpřipravenou šablonu, do které můžete data postupně vkládat.
 
 ![](../assets/cviceni6/52_excel_matice_chyb.png)
 {: style="margin-bottom:0px;" align=center }
