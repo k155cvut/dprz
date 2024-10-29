@@ -97,7 +97,7 @@ Jednotlivé vektorové kontejnery se nám pak zobrazí v **Layer Manager** (spol
 ![](../assets/cviceni6/10_vector_data.png){ style="height:128px;"}
 {: .process_container}
 
-Máme-li vytvořený vektorový kontejner, můžeme začít s tvorbou trénovacích ploch. Ty budeme tvořit pomocí funkce **Polygon drawing tool**. Poté, když chceme začít kreslit polygon, se nás SNAP zeptám, do kterého kontejneru chceme polygon vložit. Z nabídky tedy vybereme příslušný název kontejneru a nakreslíme trénovací plochu. Kreslení polygonu ukončíme dvojklikem.
+Máme-li vytvořený vektorový kontejner, můžeme začít s tvorbou trénovacích ploch. Ty budeme tvořit pomocí funkce **Polygon drawing tool**. Poté, když chceme začít kreslit polygon, se nás SNAP zeptá, do kterého kontejneru chceme polygon vložit. Z nabídky tedy vybereme příslušný název kontejneru a nakreslíme trénovací plochu. Kreslení polygonu ukončíme dvojklikem.
 
 ![](../assets/cviceni6/11_polygon_draw.png)
 ![](../assets/arrow.svg){: .off-glb .process_icon}
