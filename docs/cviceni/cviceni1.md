@@ -3,7 +3,10 @@ icon: material/numeric-1-box
 ---
 
 <style>
-  h2 {font-weight:700 !important;}      
+  .md-typeset__scrollwrap {text-align: center ;}
+  table th {text-align: center !important;}
+  table td {text-align: center !important;}
+  h2 {font-weight:700 !important;}                                                                   /* Pokus – zmena formatu nadpisu 2 */
   figcaption {font-size:12px;margin-top:5px !important;text-align:center;line-height:1.2em;}         /* Formatovani Popisku obrazku */
   hr.l1 {background-color:var(--md-primary-fg-color);height:2px;margin-bottom:3em !important;}       /* Formatovani Break Line – LEVEL 1 */
   img,iframe {filter:drop-shadow(0 10px 16px rgba(0,0,0,0.2)) drop-shadow(0 6px 20px rgba(0,0,0,0.2)) !important; object-fit:contain;} /* Stin pod obrazky a videi */
@@ -18,10 +21,10 @@ icon: material/numeric-1-box
   .md-button.button_smaller {font-size:smaller; padding:1px 5px;}             /* Mensi button (bez URL) */
 
   /* FLEXBOXY */
-  .process_container {display:flex !important; justify-content:center; align-items:center; column-gap:calc((100vw * 0.02) - 6px);} /* Kontejner pro content = FlexBox */
+  .process_container {display:flex !important; justify-content:center; align-items:center; column-gap:calc((100vw * 0.03) - 6px);} /* Kontejner pro content = FlexBox */
   .process_container div {display:flex;}                                                                                           /* Obsah (obrazky a sipky) */
   .process_container .process_icon {width:/*40px*/calc((100vw * 0.01) + 25px); flex-shrink:0;filter:none !important;}              /* Velikost ikony (bacha na mobily) */
-  .process_container img {max-height:500px;}                                                                                       /* Obrazky ve flexboxech maji maximalni vysku */
+  .process_container img {max-height:600px; display:flex;}                                    /* Obrazky ve flexboxech maji maximalni vysku */
 </style>
 
 # Úvod do DPZ, ukázka webových portálů pro prohlížení a stahování družicových dat
