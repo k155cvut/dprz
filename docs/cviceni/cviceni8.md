@@ -128,7 +128,7 @@ Výsledkem budou pansharpovaná data, která můžeme porovnat s daty původním
 
 ### Oříznutí na zájmovou oblast
 
-Jelikož se barely nacházejí jen na části území, je zbytečné pracovat s celou scénou. Proto si scénu ořízneme jen na naše zájmové území. <a href="https://geo.fsv.cvut.cz/vyuka/155dprz/cv10/aoi.zip" target="_blank"> **Zde**</a> si tedy stáhněte shapefile, které toto zájmové území ohraničuje, a vložte si ho do vašeho projektu.
+Jelikož se barely nacházejí jen na části území, je zbytečné pracovat s celou scénou. Proto si scénu ořízneme jen na naše zájmové území. <a href="https://geo.fsv.cvut.cz/vyuka/155dprz/cv8/aoi.zip" target="_blank"> **Zde**</a> si tedy stáhněte shapefile, které toto zájmové území ohraničuje, a vložte si ho do vašeho projektu.
 
 ![](../assets/cviceni8/10_aoi.png){ style="height:554px;"}
 {: style="margin-bottom:0px;" align=center }
