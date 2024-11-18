@@ -123,7 +123,7 @@ K *Level 1* produktu si nicméně stáhneme i *Level 2* produkt (pokud je k disp
 
 ## Otevření a zobrazení dat
 
-Pokud jsme stahovali všechna data najednou (a ne třeba jen vybraná pásma), tak jsme data obdrželi ve formátu *TAR*. Jedná se o podobný formát jako *ZIP*, ale nedochází zde ke kompresi. Data v tomto formátu lze rozbalit např. pomocí nástroje <a href="https://www.7-zip.org/" target="_blank"> **7-Zip**</a>.
+Pokud jsme stahovali všechna data najednou (a ne třeba jen vybraná pásma), tak jsme data obdrželi ve formátu *TAR*. Jedná se o podobný formát jako *ZIP*, ale nedochází zde ke kompresi. Data v tomto formátu lze rozbalit např. pomocí nástroje <a href="https://www.7-zip.org/" target="_blank"> **7-Zip**</a>. Pokud 7-Zip v učebně není nainstalovaný, lze použít i **Total Commander**.
 
 ![](../assets/cviceni9/12_7zip.png){ style="height:359px;"}
 {: style="margin-bottom:0px;" align=center }
