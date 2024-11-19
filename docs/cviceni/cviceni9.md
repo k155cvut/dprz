@@ -175,7 +175,7 @@ kde:
 
 V dalším kroku vypočteme index NDVI. Ten bude následně sloužit k určení emisivity povrchu. Vzoreček pro NDVI již všichi známe. Pokud ne, tak jeho podoba je následující (pozor na jiné pořadí pásem oproti Sentinel-2):
 
-**(NIR - Red)/(NIR + Red) = (B5 - B4)/(B5 + B4)**
+**NDVI = (NIR - Red)/(NIR + Red) = (B5 - B4)/(B5 + B4)**
 
 A jelikož máme pásma jednotlivě a ne v jedné vrstvě, použijeme znovu *Raster Calculator*.
 
