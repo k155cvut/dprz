@@ -200,7 +200,7 @@ Doporučuji měnit jen první dva až tři parametry a zbytek nechat v defaultn�
 ![](../assets/cviceni5/iso_cluster_arcgis.png){ style="height:637px;"}
 {: style="margin-bottom:0px;" align=center }
 
-V dalším kroku by se nad klasifikovaným rastrem použila funkce [:material-open-in-new: Assign Classes](https://pro.arcgis.com/en/pro-app/latest/help/analysis/image-analyst/unsupervised-assign-classes.htm){ .md-button .md-button--primary .button_smaller target="_blank"}, která by se objevila v nabídce **Classification Tools**. Bohužel mi ArcGIS Pro na mém osobním notebooku nechtěl klasifikaci z nějakého důvodu provést, tudíž další postup zde není k dispozici. Uvidíme, jestli to bude fungovat v učebně.
+V dalším kroku by se nad klasifikovaným rastrem použila funkce [:material-open-in-new: Assign Classes](https://pro.arcgis.com/en/pro-app/latest/help/analysis/image-analyst/unsupervised-assign-classes.htm){ .md-button .md-button--primary .button_smaller target="_blank"}, která by se objevila v nabídce **Classification Tools**. Bohužel mi ArcGIS Pro na mém osobním notebooku nechtěl neřízenou klasifikaci z nějakého důvodu provést, tudíž další postup zde není k dispozici. Uvidíme, jestli to bude fungovat v učebně.
 
 ![](../assets/cviceni5/assign_classes.png)
 {: style="margin-bottom:0px;" align=center }
