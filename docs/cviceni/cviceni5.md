@@ -200,9 +200,9 @@ Doporučuji měnit jen první dva až tři parametry a zbytek nechat v defaultn�
 ![](../assets/cviceni5/iso_cluster_arcgis.png){ style="height:637px;"}
 {: style="margin-bottom:0px;" align=center }
 
-V dalším kroku by se nad klasifikovaným rastrem použila funkce [:material-open-in-new: Assign Classes](https://pro.arcgis.com/en/pro-app/latest/help/analysis/image-analyst/unsupervised-assign-classes.htm){ .md-button .md-button--primary .button_smaller target="_blank"}, která by se objevila v nabídce **Classification Tools**. Bohužel mi ArcGIS Pro na mém osobním notebooku nechtěl neřízenou klasifikaci z nějakého důvodu provést, tudíž další postup zde není k dispozici. Uvidíme, jestli to bude fungovat v učebně.
+V dalším kroku by se nad klasifikovaným rastrem použila funkce [:material-open-in-new: Assign Classes](https://pro.arcgis.com/en/pro-app/latest/help/analysis/image-analyst/unsupervised-assign-classes.htm){ .md-button .md-button--primary .button_smaller target="_blank"}, která by se objevila v nabídce **Classification Tools**. Bohužel ArcGIS Pro vrací při takovémto spuštění neřízené klasifikace chybu, a my tak nedostaneme žádný výsledek.
 
-![](../assets/cviceni5/assign_classes.png)
+![](../assets/cviceni5/assign_classes.png){ style="height:329px;"}
 {: style="margin-bottom:0px;" align=center }
 
 Alternativně lze využít nástroj [:material-open-in-new: Iso Cluster Unsupervised Classification](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/iso-cluster-unsupervised-classification.htm){ .md-button .md-button--primary .button_smaller target="_blank"}, který ovšem nenabízí tolik parametrů, byť by se mělo jednat o to samé. Nelze tak například nastavit počet iterací (pravděpodobně jsou nastavené automaticky pomocí nějaké mezní hodnoty).
@@ -212,8 +212,23 @@ Alternativně lze využít nástroj [:material-open-in-new: Iso Cluster Unsuperv
 
 Zde výpočet již fungoval a výsledkem je klasifikovaný raster. Je ale zapotřebí nastavit do výpočtu více tříd, které se budou následě spojovat do tříd informačních.
 
-![](../assets/cviceni5/iso_arcgis_result.png){ style="height:610px;"}
+![](../assets/cviceni5/iso_arcgis_result.png)
 {: style="margin-bottom:0px;" align=center }
+
+Dále můžeme výsledky porovnat se skutečností. K tomu můžeme využít například nástroj **Swipe** nacházející se v menu *Raster Layer*.
+
+![](../assets/cviceni5/swipe.png)
+{: style="margin-bottom:0px;" align=center }
+
+Dalším krokem bude vytvořené spektrální třídy seskupit do tříd informačních. Na to se hodí funkce [:material-open-in-new: Reclassify](https://pro.arcgis.com/en/pro-app/latest/tool-reference/3d-analyst/reclassify.htm){ .md-button .md-button--primary .button_smaller target="_blank"}, kde nastavíme stávajícím třídám nové hodnoty. Abychom se ale vyznaly v tom, co jaká třídy v klasifikovaném rastru představuje, tak si pomůžeme "jakýmsi maskováním". Vždy si tedy zobrazíme jen jednu konkrétní třídu. To uděláme tak, že si v symbologii klasifikovaného rastru nastavíme všechny třídy taky, aby měly *No color*, kromě jedné zrovna zkoumané třídy. D9ky tomu pak přehledně vidíme, co daná třída pokrývá, a co tedy ve skutečnosti představuje. Poté se vrátíme do nástroje **Reclassify** a dané třídě přiřadíme novou hodnotu (co nová hodnota představuje si buď poznamenám někam bokem nebo si to zapamatuji).
+
+![](../assets/cviceni5/reclassify.png)
+![](../assets/cviceni5/symbology.png)
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni5/one_spectral_class.png)
+{: .process_container}
+
+Takto to uděláme pro všechny třídy. Následně spustíme nástroj **Reclassify** a v nově vytvořeném reklasifikovaném rastru v symbologii pojmenujeme jednotlivé výsledné třídy.
 
 <hr class="l1">
 
