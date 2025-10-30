@@ -69,11 +69,17 @@ Druhým způsobem je dělení klasifikace podle toho, zda do tříd přiřazujem
 
 Většina algoritmů neřízené klasifikace je založena na **shlukové analýze**. Ta iterativním způsobem slučuje pixely do shluků se stejnými či podobnými spektrálními vlastnostmi. Základním předpokladem tedy je, že pixely, které patří do jedné třídy, jsou ve vícerozměrném prostoru přirozeně blízko sebe a naopak pixely odlišných skupin, které představují povrchy lišící se svým spektrálním chováním, jsou dobře separované. Vytvořené shluky se nazívají **spektrální třídy**. Tyto spektrální třídy ale nemají požadovanou informační hodnotu a teprve jejich interpretací a postupným spojováním vzikají **třídy informační**.
 
-V rámci tohoto cvičení si ve SNAP vyzkoušíme neřízenou klasifikaci pomocí metody **K-Means Cluster Analysis**. Ta po uživateli před spuštěním požaduje pouze zadání konkrétního počtu shluků a počet iterací. Postup výpočtu lze pak shrnout do následujících kroků:
+### Algoritmy neřízené klasifikace
+
+Algoritmů neřízené klasifikace je celá řada. SNAP nabízí dva algoritmy: **K-Means Cluster Analysis** a **EM Cluster Analysis**. V ArcGIS Pro pak nalezneme algoritmus **ISO Cluster**.
+
+#### K-Means Cluster Analysis
+
+Metoda **K-Means Cluster Analysis** ve SNAP po uživateli před spuštěním požaduje pouze zadání konkrétního počtu shluků a počet iterací. Postup výpočtu lze pak shrnout do následujících kroků:
 
 1. Definování počtu výsledných shluků a určení počtu iterací
 2. Určení počáteční polohy centroidu pro každý shluk (pokud není poloha explicitně zadána, jsou centroidy rozmístěny rovnoměrně po diagonále příznakového prostoru)
-3. Postupné přiřazení všech pixelů k tomu shluku, k němuž mají v příznakovém prostoru nejblíže
+3. Postupné přiřazení všech pixelů k tomu shluku, k němuž mají v příznakovém prostoru nejblíže (podle Euklidovské vzdálenosti)
 4. Výpočet nové polohy centroidu pro každý shluk na základě nově přiřazených pixelů
 5. Opakování kroků 3. a 4. dokud nenastane jedna z následujících momžností:
     1. Bylo dosaženo jednoho z **kritérií konvergence**, tj. poloha centroidů či počet pixelů zařazených do jednotlivých shluků se již výrazně nemění
@@ -87,6 +93,26 @@ Následně pak uživatel již samostatně provádí následující dva kroky, kt
 
 1. Přiřazení konkrétního významu každému tzv. stabilnímu shluku (spektrální třídě)
 2. Vytvoření informačních tříd spojováním tříd spektrálních
+
+#### EM Cluster Analysis
+
+Metoda **EM (Expectation Maximization) Cluster Analysis** funguje podobně jako K-Means Cluster Analysis. Nastavuje se znovu pouze jen počet shluků a počet iterací. Přiřazování pixelů do shluků ale neprobíhá na základě Euklidovské vzdálenosti (tj. ke kterému centroidu má daný pixel nejblíže), ale podle pravděpodobnosti, že daný pixel patří do daného shluku. Tyto pravděpodobnosti jsou určeny pomocí normálního rozdělení.
+
+1. Definování počtu výsledných shluků a určení počtu iterací
+2. Určení počáteční střední hodnoty a rozptylu pro každý shluk (náhodně nebo pomocí K-Means)
+3. Výpočet pravděpodobností každého pixelu že patří do daného shluku (normální rozdělení)
+4. Aktualizace parametrů každého shluku na základě vypočtených pravděpodobností
+5. Opakování kroků 3. a 4. dokud nenastane jedna z následujících momžností:
+    1. Bylo dosaženo **kritéria konvergence**, tj. pravděpodobnosti jednotlivých pixelů, že patří do daných shluků, se již výrazně nemění
+    2. Bylo dosaženo maximálního počtu iterací zadaného uživatelem
+
+![](../assets/cviceni5/EM_cluster_analysis.jpg){ style="height:234px;"}
+{: style="margin-bottom:0px;" align=center }
+<figcaption>Princip EM Cluster Analysis</figcaption>
+
+#### ISO Cluster Analysis
+
+ArcGIS Pro ve své dokumentaci **ISO Cluster** moc detailně nepopisuje. Nicméně dle jejich popisu se jedná o metodu velmi podobnou metodě K-means, která navíc může automatiky odstranit či spojit některé shluky, pokud obsahují malé množství vzorků či se nacházejí blízko sebe. Konkrétní parametry, které se zde nastavují si ukážeme v praktické ukázce.
 
 <hr class="l1">
 
@@ -116,9 +142,7 @@ Po dokončení výpočtu se do *Product Explorer* přidá nový produkt, kde v *
 ![](../assets/cviceni5/08_display_class_indices.png)
 {: .process_container}
 
-<hr class="l1">
-
-## Vliv počátečních parametrů na výsledek
+### Vliv počátečních parametrů na výsledek
 
 Vcelku rozumná úvaha by byla nastavit *Number of clusters* na počet tříd, které na scéně doopravdy vidíme. Těmi mohou být například *Zástavba*, *Holá půda*, *Zemědělské oblasti*, *Les* a *Vodní plocha* (tříd je reálně samozřejmě víc, nicméně např. třídu *Traviny* jen těžko rozeznáme na datech Sentinel-2 od třídy *Zemědělské oblasti*). Zkusme tedy začít s těmito parametry:
 
@@ -152,13 +176,44 @@ U patnácti tříd vypadají výsledky zas o něco lépe, byť alespoň na této
 
 <hr class="l1">
 
+## Neřízená klasifikace v ArcGIS Pro
+
+???+ note "&nbsp;<span style="color:#448aff">Pozn.</span>"
+      Jak exportovat data ze SNAP a následně je správně zobrazit v ArcGIS Pro naleznete ve **Cvičení 7**
+
+Klasifikační nástroje v ArcGIS Pro nalezneme pod záložkou **Imagery** → **Classification Tools**. Zde pak z nabídky zvolíme nástroj [:material-open-in-new: Classify](https://pro.arcgis.com/en/pro-app/latest/help/analysis/image-analyst/classify.htm){ .md-button .md-button--primary .button_smaller target="_blank"}.
+
+![](../assets/cviceni7/15_classification_tools.png){ style="height:360px;"}
+{: style="margin-bottom:0px;" align=center }
+
+Zde již ale musíme vědět, který z nabízených klasifikátorů patří mezi klasifikátory neřízené klasifikace. Tím je v ArcGIS Pro pouze klasifikátor **ISO Cluster**. Dalé je zde potřeba vyplnit několik parametrů. Jsou jimi následující:
+
+1. *Maximum Number of Classes* udávající maximální počet výsledných tříd (nemusí se tedy jednat o přesný počet, který ve výsledku dostaneme).
+2. *Maximum Number of Iterations*, tj. maximální počet iterací.
+3. *Maximum Number of Cluster Merges per Iteration*, tj. maximální počet kolikrát může být shluk spojen s jiným shlukem během jedné iterace.
+4. *Maximum Merge Distance* - v tomto případě vzdálenost pixelů na základě RGB hodnot. Čím vyšší hodnota, tím může docházet více ke spojování shluků.
+5. *Minimum Samples Per Cluster*, tj. minimální počet vzorků ve shluku.
+6. *Skip Factor* - Z dokumentace to není příliš jasné. Pravděpodobně počet pixelů které jsou vynechány v určitém intervalu při tvorbě shluků.
+
+Doporučuji měnit jen první dva až tři parametry a zbytek nechat v defaultních hodnotách. Zároveň je lepší nastavit si větší počet tříd, které následně budete spojovat do menšího počtu tříd informačních. 
+
+![](../assets/cviceni5/iso_cluster_arcgis.png){ style="height:637px;"}
+{: style="margin-bottom:0px;" align=center }
+
+V dalším kroku by se nad klasifikovaným rastrem použila funkce [:material-open-in-new: Assign Classes](https://pro.arcgis.com/en/pro-app/latest/help/analysis/image-analyst/unsupervised-assign-classes.htm){ .md-button .md-button--primary .button_smaller target="_blank"}, která by se objevila v nabídce **Classification Tools**. Bohužel mi ArcGIS Pro na mém osobním notebooku nechtěl klasifikaci z nějakého důvodu provést, tudíž další postup zde není k dispozici. Uvidíme, jestli to bude fungovat v učebně.
+
+![](../assets/cviceni5/assign_classes.png)
+{: style="margin-bottom:0px;" align=center }
+
+<hr class="l1">
+
 ## Úkol - Neřízená klasifikace
 
 - Provést neřízenou klasifikaci na svém území
 - Seskupit spektrální třídy do informačních tříd (mít pokud možno správně klasifikovanou vodu, zemědělské oblasti, les, holou půdu a zástavbu)
 - Zhodnotit výsledek (jakou jste použili klasifikaci, jaké jste nastavili parametry, kolik je ve výsledku tříd, s čím a proč byly problémy atd.)
 
-### Postup
+### Seskupování spektrálních tříd ve SNAP
 
 Neřízenou klasifikaci ve SNAP jsme si ukazovali již výše. SNAP bohužel neumožňuje nějaké jednoduché seskupování tříd v rastru, nicméně pro náš účel postačí, když si třídy pojmenujeme, a těm třídám, které představují stejný povrch, přidělíme stejnou barvu. Upravíme tedy tabulku v *Colour Manipulation*, kde se mimochodem dozvíme i četnost jednotlivých spektrálních tříd.
 
