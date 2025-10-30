@@ -205,7 +205,7 @@ V dalším kroku by se nad klasifikovaným rastrem použila funkce [:material-op
 ![](../assets/cviceni5/assign_classes.png)
 {: style="margin-bottom:0px;" align=center }
 
-ALternativně lze využít nástroj [:material-open-in-new: Iso Cluster Unsupervised Classification](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/iso-cluster-unsupervised-classification.htm){ .md-button .md-button--primary .button_smaller target="_blank"}, který ovšem nenabízí tolik parametrů, byť by se mělo jednat o to samé. Nelze tak například nastavit počet iterací (pravděpodobně jsou nastavené automaticky pomocí nějaké mezní hodnoty).
+Alternativně lze využít nástroj [:material-open-in-new: Iso Cluster Unsupervised Classification](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/iso-cluster-unsupervised-classification.htm){ .md-button .md-button--primary .button_smaller target="_blank"}, který ovšem nenabízí tolik parametrů, byť by se mělo jednat o to samé. Nelze tak například nastavit počet iterací (pravděpodobně jsou nastavené automaticky pomocí nějaké mezní hodnoty).
 
 ![](../assets/cviceni5/iso_cluster_arcgis2.png){ style="height:418px;"}
 {: style="margin-bottom:0px;" align=center }
