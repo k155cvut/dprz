@@ -293,7 +293,9 @@ Nejjednodušší způsob vytváření trénovacích ploch je zřejmě pomocí fu
 ![](../assets/cviceni6/training_area.png){ style="height:400px;"}
 {: .process_container}
 
-Když máme naklikáno dostatečné množství trénovacích ploch, můžeme přejít ke klasifikaci. Klasifikátory najdeme v **Imagery** → **Classification Tools** → **Classify**. My si vyzkoušíme klasifikátor ***Random Trees*** (správně je to Random Forest). Vložíme naše vytvořené trénovací plochy a nastavíme příslušné parametry, tj. počet stromů a maximální hloubku.
+### Klasifikace
+
+Když máme naklikáno dostatečné množství trénovacích ploch, můžeme přejít ke klasifikaci. Klasifikátory najdeme v **Imagery** → **Classification Tools** → **Classify**. My si vyzkoušíme například klasifikátor ***Random Trees*** (správně je to Random Forest). Vložíme naše vytvořené trénovací plochy a nastavíme příslušné parametry, tj. počet stromů a maximální hloubku.
 
 ![](../assets/cviceni6/rf_arcgis.png){ style="height:637px;"}
 {: style="margin-bottom:0px;" align=center }
