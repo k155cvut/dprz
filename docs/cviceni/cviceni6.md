@@ -27,7 +27,7 @@ icon: material/numeric-6-box
   .process_container img {max-height:600px; display:flex;}                                    /* Obrazky ve flexboxech maji maximalni vysku */
 </style>
 
-# Řízená klasifikace, validace výsledku klasifikace
+# Řízená klasifikace
 
 <hr class="l1">
 
@@ -270,6 +270,43 @@ Z mnou dosažených výsledků je ale vidět, že poměrně dost oblastí s holo
 
 <hr class="l1">
 
+## Řízená klasifikace v ArcGIS Pro
+
+### Tvorba trénovacích ploch
+
+Trénovací plochy v ArcGIS Pro budeme vytvářet pomocí nástroje **Imagery** → **Classification Tools** → **Training Samples Manager**.
+
+![](../assets/cviceni6/arcgis_training_samples_manager.png){ style="height:265px;"}
+{: style="margin-bottom:0px;" align=center }
+
+Zde se nám otevře již předpřipravené schéma NLCD2011, což je zřejmě klasifikační systém používaný v USA. My si ovšem pomocí funkce ***Create New Schema*** vytvoříme novou legendu, dle tříd, které se vyskytují na našem území. Scéma pak můžeme uložit ideálně do geodatabáze.
+
+![](../assets/cviceni6/nlcd2011.png){ style="height:351px;"}
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni6/new_schema.png){ style="height:351px;"}
+{: .process_container}
+
+Nejjednodušší způsob vytváření trénovacích ploch je zřejmě pomocí funkce ***Polygon***. Pomocí ní pak vytvoříme dostatečný počet trénovacích ploch pro každou třídu. Pro jistotu si vytvořené plochy i průběžně ukládáme.
+
+![](../assets/cviceni6/polygon_tool.png){ style="height:194px;"}
+![](../assets/arrow.svg){: .off-glb .process_icon}
+![](../assets/cviceni6/training_area.png){ style="height:400px;"}
+{: .process_container}
+
+Když máme naklikáno dostatečné množství trénovacích ploch, můžeme přejít ke klasifikaci. Klasifikátory najdeme v **Imagery** → **Classification Tools** → **Classify**. My si vyzkoušíme klasifikátor ***Random Trees*** (správně je to Random Forest). Vložíme naše vytvořené trénovací plochy a nastavíme příslušné parametry, tj. počet stromů a maximální hloubku.
+
+![](../assets/cviceni6/rf_arcgis.png){ style="height:637px;"}
+{: style="margin-bottom:0px;" align=center }
+
+Výpočet běží poměrně rychle, takže můžeme zkusit různé nastavení parametrů. Například můžeme zvětšit počet vzorků v jednotlivých třídách, čímž dáme klasifikátoru možnost naučit se charakteristiky jednotlivých tříd na více vzorcích. Větší počet stromů rovněž může výsledek klasifikace zlepšit. Případně se můžete i vrátit k úpravě trénovacích ploch. Výsledek pak může vypadat nějak následovně.
+
+![](../assets/cviceni6/rf_result.png){ style="height:531px;"}
+{: style="margin-bottom:0px;" align=center }
+
+Vyzkoušet můžete i různé klasifikátory. Uvidíte tak, že klasifikátory strojového učení jako jsou Random Forest či Support Vector Machine dosahují lepších výsledků než klasické statistické klasifikátory jako Maximum Likelihood.
+
+<hr class="l1">
+
 ## Validace výsledku klasifikace
 
 Nedílnou součástí klasifikace obrazových dat je i posouzení její přesnosti. Ta se posuzuje pomocí tzv. validačních (testovacích) dat reprezentujících skutečnost, kterými mohou být body zaměřené v terénu či nad ortofotem, případně data typu ZABAGED atd. Důležité také je, aby se jednalo o data nezávislá na datech trénovacích. V opačném případě by taková validace nebyla směrodatná. Přesnost klasifikace se nejčastěji posuzuje pomocí **chybové matice** (kontingenční tabulky), a z ní plynoucích statistických ukazatelů, jakými jsou např. **uživatelská přesnost**, **zpracovatelská přesnost** či **celková přesnost**.
@@ -418,6 +455,6 @@ Znovu ale připomínám, že takovýto postup validace slouží jen jako názorn
 
 ## Úkol - Řízená klasifikace
 
-- Spočítat řízenou klasifikaci na svém území
-- Provést validaci výsledku klasifikace
+- Provést řízenou klasifikaci na svém území
+- Porovnat více klasifikátorů - který dle vás dosáhl nejlepších výsledků?
 - Zhodnotit výsledky (jakou jste použili klasifikaci, jaké jste nastavili parametry, jaké třídy jste klasifikovali, s čím byly problémy atd.)

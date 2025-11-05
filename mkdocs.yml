@@ -7,7 +7,7 @@ nav:
       - Vegetační (spektrální) indexy, maskování, detekce vodních ploch: cviceni/cviceni3.md
       - Filtrace obrazu: cviceni/cviceni4.md
       - Neřízená klasifikace: cviceni/cviceni5.md
-      - Řízená klasifikace, validace výsledku klasifikace: cviceni/cviceni6.md
+      - Řízená klasifikace: cviceni/cviceni6.md
       - Segmentace a objektová klasifikace: cviceni/cviceni7.md
       - Ukázka VHR dat, pansharpening, řízená klasifikace v ArcGIS Pro: cviceni/cviceni8.md
       - Tepelná analýza pomocí dat Landsat: cviceni/cviceni9.md
