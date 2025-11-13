@@ -27,7 +27,7 @@ icon: material/numeric-8-box
   .process_container img {max-height:600px; display:flex;}                                    /* Obrazky ve flexboxech maji maximalni vysku */
 </style>
 
-# Ukázka VHR dat, pansharpening, řízená klasifikace v ArcGIS Pro
+# Ukázka VHR dat, pansharpening, komplexní úloha s využitím klasifikace
 
 <hr class="l1">
 
