@@ -33,7 +33,7 @@ icon: material/numeric-10-box
 
 ## Cíl cvičení
 
-- Seznámit se cloudovým nástrojem Google Earth Engine
+- Seznámit se s cloudovým nástrojem Google Earth Engine
 - Umět detekovat spáleniště pomocí dat DPZ
 
 <hr class="l1">
