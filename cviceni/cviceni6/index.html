@@ -1,0 +1,1497 @@
+<!DOCTYPE html><html lang="cs" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../cviceni5/">
+      
+      
+        <link rel="next" href="../cviceni7/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Řízená klasifikace - 155DPRZ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rizena-klasifikace" class="md-skip">
+          Přeskočit obsah
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Záhlaví">
+    <a href="../.." title="155DPRZ" class="md-header__button md-logo" aria-label="155DPRZ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            155DPRZ
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Řízená klasifikace
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="teal" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Hledat" placeholder="Hledat" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Vyhledávání">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Vyčistit" aria-label="Vyčistit" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializace vyhledávání
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Karty" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Charakterisika předmětu
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../cviceni1/" class="md-tabs__link">
+          
+  
+  
+  Cvičení
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigace" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="155DPRZ" class="md-nav__button md-logo" aria-label="155DPRZ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    155DPRZ
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Charakterisika předmětu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cvičení
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cvičení
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni1/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 17h-2V9h-2V7h4m5-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Úvod do DPZ, ukázka webových portálů pro prohlížení a stahování družicových dat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni2/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 11a2 2 0 0 1-2 2h-2v2h4v2H9v-4a2 2 0 0 1 2-2h2V9H9V7h4a2 2 0 0 1 2 2m4-6H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Seznámení se softwarem SNAP, vytvoření subsetu, barevná syntéza, tvorba spektrálních křivek
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni3/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 10.5a1.5 1.5 0 0 1-1.5 1.5c.84 0 1.5.67 1.5 1.5V15c0 1.11-.89 2-2 2H9v-2h4v-2h-2v-2h2V9H9V7h4c1.11 0 2 .89 2 2m4-6H5c-1.09 0-2 .9-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Vegetační (spektrální) indexy, maskování, detekce vodních ploch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni4/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 17h-2v-4H9V7h2v4h2V7h2m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Filtrace obrazu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni5/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 9h-4v2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H9v-2h4v-2H9V7h6m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Neřízená klasifikace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 9h-4v2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h4m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-8 12h2v-2h-2z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Řízená klasifikace
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 9h-4v2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h4m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-8 12h2v-2h-2z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Řízená klasifikace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Obsah">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Obsah
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cil-cviceni" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cíl cvičení
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zakladni-pojmy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Základní pojmy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rizena-klasifikace-ve-snap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Řízená klasifikace ve SNAP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Řízená klasifikace ve SNAP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transformace-obrazovych-dat-do-wgs84" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transformace obrazových dat do WGS84
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tvorba-trenovacich-ploch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tvorba trénovacích ploch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kontrola-homogenity-trenovacich-ploch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kontrola homogenity trénovacích ploch
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kontrola homogenity trénovacích ploch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#histogram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Histogram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rozptylogram-scatter-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rozptylogram (scatter plot)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spusteni-rizene-klasifikace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spuštění řízené klasifikace
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rizena-klasifikace-v-arcgis-pro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Řízená klasifikace v ArcGIS Pro
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Řízená klasifikace v ArcGIS Pro">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tvorba-trenovacich-ploch_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tvorba trénovacích ploch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#klasifikace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Klasifikace
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validace-vysledku-klasifikace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validace výsledku klasifikace
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validace výsledku klasifikace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chybova-matice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chybová matice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#celkova-presnost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Celková přesnost
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uzivatelska-presnost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uživatelská přesnost
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zpracovatelska-presnost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zpracovatelská přesnost
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f1-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F1 score
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validace-ve-snap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validace ve SNAP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ukol-rizena-klasifikace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Úkol - Řízená klasifikace
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni7/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-8 14 4-8V7H9v2h4l-4 8z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Segmentace a objektová klasifikace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni8/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-8 14h2a2 2 0 0 0 2-2v-1.5a1.5 1.5 0 0 0-1.5-1.5 1.5 1.5 0 0 0 1.5-1.5V9a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v1.5a1.5 1.5 0 0 0 1.5 1.5A1.5 1.5 0 0 0 9 13.5V15a2 2 0 0 0 2 2m0-4h2v2h-2zm0-4h2v2h-2z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ukázka VHR dat, pansharpening, komplexní úloha s využitím klasifikace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni9/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-6 8h-2V9h2zm0-4h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2v2H9v2h4a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Tepelná analýza pomocí dat Landsat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni10/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 9h2v6h-2zm7-4v14c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2M10 7H6v2h2v8h2zm8 2a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2c1.11 0 2-.89 2-2z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ukázka práce v Google Earth Engine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni11/" class="md-nav__link">
+        
+  
+  
+    <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+<svg viewBox="0 0 24 24" version="1.1" id="svg1" sodipodi:docname="numeric-10-box.svg" inkscape:version="1.3 (0e150ed6c4, 2023-07-21)" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <defs id="defs1"></defs>
+  <sodipodi:namedview id="namedview1" pagecolor="#505050" bordercolor="#eeeeee" borderopacity="1" inkscape:showpageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:current-layer="svg1"></sodipodi:namedview>
+  <path id="path2" d="M 5 3 A 2 2 0 0 0 3 5 L 3 19 A 2 2 0 0 0 5 21 L 19 21 C 20.109999 21 21 20.109999 21 19 L 21 5 C 21 3.9000011 20.109999 3 19 3 L 5 3 z M 7 7 L 11 7 L 11 17 L 9 17 L 9 9 L 7 9 L 7 7 z M 13 7 L 17 7 L 17 17 L 15 17 L 15 9 L 13 9 L 13 7 z "></path>
+</svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Detekce zaplaveného území pomocí radarových dat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni12/" class="md-nav__link">
+        
+  
+  
+    <!--?xml version="1.0" encoding="utf-8"?-->
+<svg viewBox="0 0 24 24" version="1.1" id="svg1" xmlns="http://www.w3.org/2000/svg">
+  <path id="path2" d="M 5 3 C 3.895 3 3 3.895 3 5 L 3 19 C 3 20.105 3.895 21 5 21 L 19 21 C 20.11 21 21 20.11 21 19 L 21 5 C 21 3.9 20.11 3 19 3 L 5 3 Z M 6.416 6.976 L 10.416 6.976 L 10.416 16.976 L 8.416 16.976 L 8.416 8.976 L 6.416 8.976 L 6.416 6.976 Z M 12.416 6.976 L 17.751 6.949 L 17.687 12.974 L 14.449 12.981 L 14.457 14.962 L 17.668 14.983 L 17.682 16.976 L 12.458 16.939 L 12.448 10.997 L 15.694 10.99 L 15.695 8.976 L 12.416 8.976 L 12.416 6.976 Z"></path>
+</svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Radarová interferometrie, tvorba DEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<style>
+  .md-typeset__scrollwrap {text-align: center ;}
+  table th {text-align: center !important;}
+  table td {text-align: center !important;}
+  h2 {font-weight:700 !important;}                                                                   /* Pokus – zmena formatu nadpisu 2 */
+  figcaption {font-size:12px;margin-top:5px !important;text-align:center;line-height:1.2em;}         /* Formatovani Popisku obrazku */
+  hr.l1 {background-color:var(--md-primary-fg-color);height:2px;margin-bottom:3em !important;}       /* Formatovani Break Line – LEVEL 1 */
+  img,iframe {filter:drop-shadow(0 10px 16px rgba(0,0,0,0.2)) drop-shadow(0 6px 20px rgba(0,0,0,0.2)) !important; object-fit:contain;} /* Stin pod obrazky a videi */
+
+  /* TLACITKA */
+  .md-button {text-align:center;transition: all .1s ease-in-out !important;}  /* Button – zarovnani textu */
+  .md-button:hover {transform: scale(1.04);opacity:.8;background-color:var(--md-primary-fg-color) !important;border-color:var(--md-primary-fg-color) !important;color:var(--md-primary-bg-color) !important;/*filter: brightness(80%);*/}            /* Button Hover – animace zvetseni a zmeny barvy */
+  .md-button:focus {opacity:.8;background-color:var(--md-primary-fg-color) !important;border-color:var(--md-primary-fg-color) !important;color:var(--md-primary-bg-color) !important;}                                                                /* Button Focus – stejny vzhled jako hover */
+  .url-name {line-height:1.2;/*padding-top:5px !important;*/}                 /* Button s URL */
+  .url-name span:first-child {font-size:.7em; font-weight:300;}               /* Button s URL – format*/
+  .url-name span.twemoji {vertical-align:-0px;}                               /* Button s URL – zarovnani ikony*/
+  .md-button.button_smaller {font-size:smaller; padding:1px 5px;}             /* Mensi button (bez URL) */
+
+  /* FLEXBOXY */
+  .process_container {display:flex !important; justify-content:center; align-items:center; column-gap:calc((100vw * 0.03) - 6px);} /* Kontejner pro content = FlexBox */
+  .process_container div {display:flex;}                                                                                           /* Obsah (obrazky a sipky) */
+  .process_container .process_icon {width:/*40px*/calc((100vw * 0.01) + 25px); flex-shrink:0;filter:none !important;}              /* Velikost ikony (bacha na mobily) */
+  .process_container img {max-height:600px; display:flex;}                                    /* Obrazky ve flexboxech maji maximalni vysku */
+</style>
+
+<h1 id="rizena-klasifikace">Řízená klasifikace</h1>
+<hr class="l1">
+
+<h2 id="cil-cviceni">Cíl cvičení</h2>
+<ul>
+<li>Naučit se provádět řízenou klasifikaci na družicových datech</li>
+<li>Porozumnět principu validování land cover produktů</li>
+</ul>
+<hr class="l1">
+
+<h2 id="zakladni-pojmy">Základní pojmy</h2>
+<ul>
+<li>
+<p><strong>Řízená klasifikace</strong> - Jedná se o proces, při kterém se klasifikátor nejprve učí vlastnosti předem zadaných tříd na poskytnutých trénovacích vzorcích a následně tyto "znalosti" aplikuje na celý dataset. V DPZ lze celý proces rozdělit do následujících kroků:</p>
+<ol>
+<li>Určení jednotlivých tříd a definování trénovacích vzorků (v DPZ často mluvíme o trénovacích plochách)</li>
+<li>Výpočet statistických charakteristik (tzv. <strong>spektrálních příznaků</strong>) pro trénovací plochy popisující jednotlivé třídy, editace trénovacích ploch a výběr vhodných pásem pro vlastní klasifikaci</li>
+<li>Volba vhodného rozhodovacího pravidla (tzv. klasifikátoru) pro zařazení všech prvků obrazu (pixelů) do jednotlivých tříd</li>
+<li>Zatřídění všech obrazových prvků do stanovených tříd</li>
+<li>Úprava, hodnocení a prezentace výsledků klasifikace</li>
+</ol>
+</li>
+</ul>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/01_schema_klasifikace.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/01_schema_klasifikace.png" style="height:138px;"></a></p>
+<figcaption>Schéma řízené klasifikace</figcaption>
+
+<ul>
+<li><strong>Trénovací plochy</strong> - Jedná se o reprezentativní pixely nebo prvky ze souboru obrazových dat pro každou definovanou třídu. Pro úspěšnost klasifikace je volba trénovacích množin stěžejní. Je tedy potřeba mít definovám dostatečný počet těchto trénovacích ploch a v ideálním případě je mít i rovnoměrně rozmístěné na obrazových datech (pokud to jednotlivé třídy dovolují). Důležité také je, aby byly trénovací plochy jednotlivých tříd spektrálně co nejvíce homogenní.</li>
+<li><strong>Klasifikátor</strong> - Algoritmus nebo metoda použitá k provedení klasifikace. V současné době jsou nejpopulárnější metody patřící do strojového či hlubokého učení, případně metody využívající umělých neuronových sítí.</li>
+<li><strong>Validace</strong> - Kontrola přesnoti výsledku klasifikace s využitím tzv. testovacího datasetu. K určení přesnosti se užívá řada metrik. Patří mezi ně například <em>Celková přesnost</em>, <em>Uživatelská přesnost</em> či <em>Zpracovatelská přesnost</em>.</li>
+<li><strong>Chybová matice</strong> (Kontingenční tabulka) - Čtvercová matice, kde počet sloupců i řádků odpovídá počtu definovaných tříd. Slouží k přehlednému zobrazení záměny mezi jednotlivými třídami (tj. které třídy se špatně klasifikovaly do jiných tříd). Správně klasifikovaná data se v této matici nachází na hlavní diagonále. V ideálním případě by měla být hlavní diagonála tvořena nejvyššími hodnotami v matici a hodnoty mimo diagonálu by se měly blížit nule.</li>
+<li><strong>Přetrénování</strong> (Overfitting) - Přetrénování klasifikátoru je jev, kdy se klasifikátor až příliš přizpůsobí trénovacím datům. Důsledkem pak může být špatná generalizace při použití na jiných datech, než na kterých byl klasifikátor natrénován.</li>
+<li><strong>Land use / land cover</strong> - Jedná se o výsledek klasifikace družicových obrazových dat. Konkrétně se jedná o tematické mapy popisující zemský povrch. <em>Land use</em> povrch popisuje z hlediska jeho využití lidmi. <em>Land cover</em> pak znázorňuje jednotlivé druhy povrchů (voda, holá půda, les atd.).</li>
+</ul>
+<hr class="l1">
+
+<h2 id="rizena-klasifikace-ve-snap">Řízená klasifikace ve SNAP</h2>
+<h3 id="transformace-obrazovych-dat-do-wgs84">Transformace obrazových dat do WGS84</h3>
+<p>Tento krok budeme považovat za tzv. nultý krok, protože není běžnou součástí řízené klasifikace. Ve SNAP bohužel z nějakého důvodu řízená klasifikace funguje pouze na <em>Lat/Long</em> datech v systému WGS84. Je tedy potřeba si naše data přetransformovat. K tomu slouží funkce nacházející se v <strong>Raster</strong> → <strong>Geometric</strong> → <strong>Reprojection</strong>.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/02_reprojection_menu.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/02_reprojection_menu.png" style="height:393px;"></a></p>
+<p>V záložce <strong><em>I/O Parameters</em></strong> nastavíme produkt, který chceme transformovat, název transformovaného produktu a zda chceme výsledný produkt uložit. V záložce <strong><em>Reprojection Parameters</em></strong> poté nastavíme, do jakého systému bude produkt transformován. V tomto případě můžeme nechat vše tak, jak je.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/03_reprojection_io.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/03_reprojection_io.png" style="height:548px;"></a>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/04_reprojection_parameters.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/04_reprojection_parameters.png" style="height:548px;"></a></p>
+<p>Výsledkem je pak v závislosti na poloze více či méně "zdeformovaná" scéna.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/05_reprojected_scene.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/05_reprojected_scene.png" style="height:472px;"></a></p>
+<h3 id="tvorba-trenovacich-ploch">Tvorba trénovacích ploch</h3>
+<p>Prvním krokem řízené klasifikace je definování jednotlivých tříd a k nim odpovídajících trénovacích ploch. Pokud trénovací plochy nemáme odněkud přebrané, musíme si je vytvořit sami. Trénovací plochy budeme vkládat do tzv. vektorových kontejnerů. Vektorový kontejner vytvoříme pomocí <strong>Vector</strong> → <strong>New Vector Data Container</strong>, případně pomocí ikony této funkce. Vektorové kontejnery vytvoříme pro všechny klasifikační třídy (buď všechny najednou nebo postupně po vytvoření trénovacích ploch pro danou třídu).</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/06_container_menu.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/06_container_menu.png"></a>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/07_container_icon.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/07_container_icon.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/08_new_container.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/08_new_container.png"></a></p>
+<p>Jednotlivé vektorové kontejnery se nám pak zobrazí v <strong>Layer Manager</strong> (spolu s dalšími již existujícími kontejnery) a zároveň i v <em>Product Explorer</em> ve složce <strong>Vector Data</strong>.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/09_layer_manager.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/09_layer_manager.png" style="height:113px;"></a>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/10_vector_data.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/10_vector_data.png" style="height:128px;"></a></p>
+<p>Máme-li vytvořený vektorový kontejner, můžeme začít s tvorbou trénovacích ploch. Ty budeme tvořit pomocí funkce <strong>Polygon drawing tool</strong>. Poté, když chceme začít kreslit polygon, se nás SNAP zeptá, do kterého kontejneru chceme polygon vložit. Z nabídky tedy vybereme příslušný název kontejneru a nakreslíme trénovací plochu. Kreslení polygonu ukončíme dvojklikem.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/11_polygon_draw.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/11_polygon_draw.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/12_choose_container.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/12_choose_container.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/13_training_area.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/13_training_area.png"></a></p>
+<p>Na to, do jakého vektorového kontejneru chceme polygon vkládat, se nás SNAP zeptá dvakrát. Následně už se automaticky volí dříve zvolený kontejner. Pokud bychom ale chtěli poté vkládat polygon do jiného kontejneru, je potřeba příslušný kontejner označit v <strong>Layer Manager</strong>.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/14_selected_container.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/14_selected_container.png" style="height:80px;"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/15_new_training_area.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/15_new_training_area.png" style="height:534px;"></a></p>
+<p>Tímto způsobem vytvoříme trénovací plochy pro všechny třídy. Trénovacích ploch by mělo být dostatečné množství a je ideální, aby se nacházely rovnoměrně po celé ploše obrazových dat.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/16_all_training_areas.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/16_all_training_areas.png" style="height:520px;"></a></p>
+<details class="note" open="open">
+<summary>&nbsp;<span style="color:#448aff">Pozn.</span></summary>
+<p>Někdy se může stát, že funkce <strong>Polygon drawing tool</strong> nebude z nějakého důvodu reagovat. V takovém případě je potřeba buď zkusit uložit práci a vypnout a zapnout SNAP, případně tvořit trénovací plochy pomocí jedné z funkcí <strong>Rectangle drawing tool</strong> či <strong>Ellipse drawing tool</strong>.</p>
+</details>
+<p>Kromě nefunkčnosti <strong>Polygon drawing tool</strong> může nastat i poněkud horší problém. Po naklikání všech trénovacích ploch a uložení produktu se můžeme rozhodnout, že v práci budeme pokračovat později a SNAP zavřeme. Při znovuotevření produktu a snaze vytvořit RGB kompozit či si zobrazit jakékoliv pásmo se zobrazí následující chybové hlášky:</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/Error1.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/Error1.png" style="height:171px;"></a>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/Error2.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/Error2.png" style="height:171px;"></a></p>
+<p>Nejspíš se jedná o nějaký <em>bug</em> a celý transformovaný produkt je nefunkční. Neznamená to ale, že jsme vytvořené trénovací plochy nadobro ztratily. Každý <strong>DIM</strong> soubor má k sobě přidruženou složku s koncovkou <strong>.data</strong> a právě v této složce lze naše trénovací plochy dohledat. Ve složce se nacházejí soubory jednotlivých pásem a také podsložka <strong><em>vector_data</em></strong>, ve které se nacházejí <strong>CSV</strong> soubory jednotlivých vektorových dat, mezi nimiž jsou i vytvořené trénovací plochy. Soubory trénovacích ploch poté můžeme jednoduše překopírovat do příslušné složky nově vytvořeného transformovaného produktu.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/dim_data.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/dim_data.png"></a></p>
+<h3 id="kontrola-homogenity-trenovacich-ploch">Kontrola homogenity trénovacích ploch</h3>
+<p>Pro co nejlepší natrénování klasifikátoru je vhodné, aby trénovací plochy byly pokud možno co nejhomogennější a mezi sebou spektrálně odlišné. Homogenitu tříd ve SNAP můžeme zkontrolovat dvěma způsoby.</p>
+<h4 id="histogram">Histogram</h4>
+<p>Funkci pro vykreslování histogramů najdeme v menu <strong>Analysis</strong> → <strong>Histogram</strong>, případně v <strong>Analysis</strong> → <strong>Statistics</strong>, kde se kromě histogramu zobrazují i další informace. Dále je potřeba mít zaškrtnuté <strong><em>Use ROI mask:</em></strong> a zvolit příslušnou vektorovou vrstvu obsahující konkrétní třídu. Zároveň je nutné znovu kliknout do mapového okna, aby nástroj věděl, nad jakými daty histogram počítat.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/17_histogram_menu.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/17_histogram_menu.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/18_histogram.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/18_histogram.png"></a></p>
+<p>Z histogramu lze poté vyčíst, zda je třída homogenní a nebo je tvořena více třídami. V ideálním případě by měl být histogram tvořen jedním vrcholem. Pokud je vrcholů více, indikuje to, že je více i tříd (tj. počet vrcholů = počet tříd). Na příkladu níže jsou zobrazeny histogramy pro vodu (vlevo), pole (uprostřed) a holou půdu (vpravo). Z histogramů vyplývá, že trénovací plochy pro vodu jsou homogenní, zatímco trénovací plochy pro pole a holou půdu jsou ve skutečnosti tvořemi dvěmi, resp. až třemi spektrálními třídami.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/19_hist_water.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/19_hist_water.png"></a>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/20_hist_pole.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/20_hist_pole.png"></a>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/21_hist_bareland.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/21_hist_bareland.png"></a></p>
+<figcaption>Histogramy vybraných tříd (vlevo - voda, uprostřed - pole, vpravo - holá půda)</figcaption>
+
+<details class="note" open="open">
+<summary>&nbsp;<span style="color:#448aff">Pozn.</span></summary>
+<p>Histogram se vždy zobrazuje pro jedno konkrétní pásmo (v tomto případě B4). Pokud by bylo použito pásmo jiné, histogramy by se zamozřejmě trochu lišily.</p>
+</details>
+<h4 id="rozptylogram-scatter-plot">Rozptylogram (scatter plot)</h4>
+<p>Druhou možností sledovat homogenitu tříd je tzv. rozptylogram, který najdeme v menu <strong>Analysis</strong> → <strong>Scatter Plot</strong>. Znovu je potřeba zaškrtnou <strong><em>Use ROI mask:</em></strong> a zvolit příslušnou vektorovou vrstvu obsahující konkrétní třídu. Dále je potřeba vybrat pásma, jejichž hodnoty budou vyneseny na osu X a osu Y (můžeme zvolit např. pásma B4 a B8).</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/22_scatter_plot_menu.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/22_scatter_plot_menu.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/23_scatter_plot.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/23_scatter_plot.png"></a></p>
+<p>Rozptylogram v tomto případě znázorňuje již zmíněný <strong>příznakový prostor</strong> (v našem případě dvourozměrný). Třídy by pak měly v rozptylogramu tvořit tzv. shluky. V ideálním případě by tak jedna třída měla tvořit jeden shluk. Pokud je shluků víc, indikuje to znovu i více tříd. Příklady níže ukazují rozptylogramy pro vodu (vlevo), pole (uprostřed) a holou půdu (vpravo). Je tedy vidět, že by bylo vhodné některé třídy rozdělit do více podtříd.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/24_scatter_water.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/24_scatter_water.png"></a>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/25_scatter_pole.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/25_scatter_pole.png"></a>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/26_scatter_bareland.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/26_scatter_bareland.png"></a></p>
+<figcaption>Rozptylogramy vybraných tříd (vlevo - voda, uprostřed - pole, vpravo - holá půda)</figcaption>
+
+<h3 id="spusteni-rizene-klasifikace">Spuštění řízené klasifikace</h3>
+<p>Řízenou klasifikaci ve SNAP najdeme v menu <strong>Raster</strong> → <strong>Classification</strong> → <strong>Supervised Classification</strong>, kde si vybereme jeden z nabízených algoritmů. V našem případě <strong>Random Forest Classifier</strong>.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/27_sup_classification_menu.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/27_sup_classification_menu.png" style="height:449px;"></a></p>
+<p><strong>Random Forest</strong> je v současné době jedním z nejpopulárnějších klasifikátorů na bázi strojového učení. Vychází z tzv. <em>Decision Trees (rozhodovacích stromů)</em>, kde každý strom vezme jen určitý a náhodný počet příznaků a z nich určí, o jakou třídu se podle něj jedná. Výsledná třída je pak určena na základě přavažujícího výsledku ze všech stromů.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/28_random_forest.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/28_random_forest.png" style="height:389px;"></a></p>
+<p>Nástroj <strong>Random Forest Classifier</strong> se ve SNAP zkládá ze tří záložek. V <strong><em>ProductSet-Reader</em></strong> je potřeba zvolit produkt, který se bude klasifikovat. Záložka <strong><em>Random-Forest-Classifier</em></strong> slouží k nastavení samotného klasifikátoru. Volíme zde, jestli chceme trénovat klasifikátor na rastru nebo na vektorech (v našem případě chceme na vektorech). Dále jestli chceme klasifikátor evaluovat, ale především určujeme hodnoty <strong><em>Number of training samples</em></strong> a <strong><em>Number of trees</em></strong>. V neposlední řadě je potřeba označit i všechny třídy, které chceme klasifikovat a označit i všechna pásma, která chceme v klasifikaci použít (kromě původních pásem Sentinel-2 můžeme použít i vypočtené spektrální indexy atd.). V poslední záložce <strong><em>Write</em></strong> zvolíme, kam chceme klasifikovaný produkt uložit.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/29_rf_productset.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/29_rf_productset.png"></a>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/30_rf_classifier.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/30_rf_classifier.png"></a>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/31_rf_write.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/31_rf_write.png"></a></p>
+<p>Pro první pokus klasifikace můžeme nechat parametry klasifikátoru tak, jak jsou. Byť tedy počet stromů nastavený na 10 se zdá být relativně nízký (v praxi se využívá až stovky stromů). Důležíté je také pochopit, jak zde funguje hodnota počtu trénovacích vzorků. Kromě trénování dochází totiž i k testování klasifikátoru, tudíž pokud je defaultně nastavena hodnota trénovacích vzorků na 5000, znamená to, že dalších 5000 vzorků bude použito na testování. Tyto počty se poté rovnoměrně rozdělí mezi jednotlivé třídy. Pokud jsme si definovali 5 tříd, na jednu třídu tak přijde 1000 trénovacích vzorků, které jsou náhodně vybrány z trénovacích ploch. Toto je tedy potřeba brát do úvahy, a pokud chceme využít co nejvíce pixelů z trénovacích ploch, které jsme vytvářeli, je potřeba hodnotu <strong><em>Number of training samples</em></strong> náležitě upravit. Počet pixelů, které pokrývají jednotlivé třídy, zjistíme v <strong>Analysis</strong> → <strong>Statistics</strong>. Samozřejmě je potřeba i počítat s tím, že čím více trénovacích vzorků a čím více stromů, tím déle pak samotný výpočet trvá. Následující tabulka znázorňuje časovou náročnost výpočtu pro různá nestavení vstupních parametrů (v tomto případě do klasifikace vstupovalo 12 pásem Sentinel-2 a 4 vypočtené spektrální indexy):</p>
+<table>
+  <thead>
+    <tr>
+      <th><strong>Number of training samples</strong></th>
+      <th><strong>Number of trees</strong></th>
+      <th><strong>Čas výpočtu</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>5000</td>
+      <td>10</td>
+      <td>46 s</td>
+    </tr>
+    <tr>
+      <td>10000</td>
+      <td>10</td>
+      <td>52 s</td>
+    </tr>
+    <tr>
+      <td>40000</td>
+      <td>10</td>
+      <td>4 min</td>
+    </tr>
+    <tr>
+      <td>40000</td>
+      <td>30</td>
+      <td>11,5 min</td>
+    </tr>
+    <tr>
+      <td>100000</td>
+      <td>10</td>
+      <td>17 min</td>
+    </tr>
+    <tr>
+      <td>100000</td>
+      <td>30</td>
+      <td>50 min</td>
+    </tr>
+    <tr>
+      <td>200000</td>
+      <td>10</td>
+      <td>51 min</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Z tabulky vyplývá, že vyšší časovou náročnost způsobuje parametr <strong><em>Number of trees</em></strong>.</p>
+<p>Výsledkem klasifikace je nový produkt obsahující klasifikovanou vrstvu, kterou najdeme pod názvem <em>LabeledClasses</em>.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/32_classification_product.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/32_classification_product.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/33_classification_result.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/33_classification_result.png"></a></p>
+<p>Při podrobnějším zkoumání výsledku klasifikace si můžeme všimnout tmavě šedých pixelů nekorespondujících s žádnou barvou v legendě.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/34_legend.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/34_legend.png"></a>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/35_low_confidence.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/35_low_confidence.png"></a></p>
+<p>Jedná se o zamaskované pixely, jejichž <em>"Confidence"</em> (viz vrstva <strong><em>Confidence</em></strong> v klasifikovaném produktu) je menší než určitá mez. Tuto mez lze změnit kliknutím pravým tlačítkem na vrstvu <em>LabeledClasses</em> v klasifikovaném produktu a vybráním možnosti <em>Properties</em>. Zde následně změníme hodnotu <strong><em>Valid-Pixel Expression</em></strong> z <strong><em>Confidence &gt;= 0.5</em></strong> např. na <strong><em>Confidence &gt;= 0</em></strong>, čímž se pixely odmaskují.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/36_labeledclasses_properties.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/36_labeledclasses_properties.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/37_set_confidence_value.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/37_set_confidence_value.png"></a></p>
+<p>Z mnou dosažených výsledků je ale vidět, že poměrně dost oblastí s holou půdou se klasifikovalo jako zástavba a bylo by tedy potřeba na klasifikaci dále pracovat.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/38_misclassification.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/38_misclassification.png" style="height:520px;"></a></p>
+<hr class="l1">
+
+<h2 id="rizena-klasifikace-v-arcgis-pro">Řízená klasifikace v ArcGIS Pro</h2>
+<h3 id="tvorba-trenovacich-ploch_1">Tvorba trénovacích ploch</h3>
+<p>Trénovací plochy v ArcGIS Pro budeme vytvářet pomocí nástroje <strong>Imagery</strong> → <strong>Classification Tools</strong> → <strong>Training Samples Manager</strong>.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/arcgis_training_samples_manager.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/arcgis_training_samples_manager.png" style="height:265px;"></a></p>
+<p>Zde se nám otevře již předpřipravené schéma NLCD2011, což je zřejmě klasifikační systém používaný v USA. My si ovšem pomocí funkce <strong><em>Create New Schema</em></strong> vytvoříme novou legendu, dle tříd, které se vyskytují na našem území. Scéma pak můžeme uložit ideálně do geodatabáze.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/nlcd2011.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/nlcd2011.png" style="height:351px;"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/new_schema.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/new_schema.png" style="height:351px;"></a></p>
+<p>Nejjednodušší způsob vytváření trénovacích ploch je zřejmě pomocí funkce <strong><em>Polygon</em></strong>. Pomocí ní pak vytvoříme dostatečný počet trénovacích ploch pro každou třídu. Pro jistotu si vytvořené plochy i průběžně ukládáme.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/polygon_tool.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/polygon_tool.png" style="height:194px;"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/training_area.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/training_area.png" style="height:400px;"></a></p>
+<h3 id="klasifikace">Klasifikace</h3>
+<p>Když máme naklikáno dostatečné množství trénovacích ploch, můžeme přejít ke klasifikaci. Klasifikátory najdeme v <strong>Imagery</strong> → <strong>Classification Tools</strong> → <strong>Classify</strong>. My si vyzkoušíme například klasifikátor <strong><em>Random Trees</em></strong> (správně je to Random Forest). Vložíme naše vytvořené trénovací plochy a nastavíme příslušné parametry, tj. počet stromů a maximální hloubku.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/rf_arcgis.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/rf_arcgis.png" style="height:637px;"></a></p>
+<p>Výpočet běží poměrně rychle, takže můžeme zkusit různé nastavení parametrů. Například můžeme zvětšit počet vzorků v jednotlivých třídách, čímž dáme klasifikátoru možnost naučit se charakteristiky jednotlivých tříd na více vzorcích. Větší počet stromů rovněž může výsledek klasifikace zlepšit. Případně se můžete i vrátit k úpravě trénovacích ploch. Výsledek pak může vypadat nějak následovně.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/rf_result.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/rf_result.png" style="height:531px;"></a></p>
+<p>Vyzkoušet můžete i různé klasifikátory. Uvidíte tak, že klasifikátory strojového učení jako jsou Random Forest či Support Vector Machine dosahují lepších výsledků než klasické statistické klasifikátory jako Maximum Likelihood.</p>
+<hr class="l1">
+
+<h2 id="validace-vysledku-klasifikace">Validace výsledku klasifikace</h2>
+<p>Nedílnou součástí klasifikace obrazových dat je i posouzení její přesnosti. Ta se posuzuje pomocí tzv. validačních (testovacích) dat reprezentujících skutečnost, kterými mohou být body zaměřené v terénu či nad ortofotem, případně data typu ZABAGED atd. Důležité také je, aby se jednalo o data nezávislá na datech trénovacích. V opačném případě by taková validace nebyla směrodatná. Přesnost klasifikace se nejčastěji posuzuje pomocí <strong>chybové matice</strong> (kontingenční tabulky), a z ní plynoucích statistických ukazatelů, jakými jsou např. <strong>uživatelská přesnost</strong>, <strong>zpracovatelská přesnost</strong> či <strong>celková přesnost</strong>.</p>
+<h3 id="chybova-matice">Chybová matice</h3>
+<p>Jedná se o čtvercovou matici, kde počet sloupců i řádků odpovídá počtu definovaných tříd. Řádky chybové matice jsou zpravidla tvořeny klasifikovanými daty a sloupce daty, které odpovídají skutečnosti. Správně klasifikovaná data se v této matici nachází na hlavní diagonále. V ideálním případě by měla být hlavní diagonála tvořena nejvyššími hodnotami v matici a hodnoty mimo diagonálu by se měly blížit nule.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/39_error-matrix.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/39_error-matrix.png" style="height:422px;"></a></p>
+<h3 id="celkova-presnost">Celková přesnost</h3>
+<p>Celková přesnost (overall accuracy) se vztahuje k celé klasifikaci a udává poměr spávně klasifikovaných pixelů ku všem pixelům vstupujících do validování. Je to tedy suma hodnot na hlavní diagonále chybové matice ku celkovému počtu testovacích vzorků. Dle chybové matice výše by se celková přesnosti rovnala: <strong>(21 + 31 + 22)/95 = 0,78</strong>. Celková přesnost klasifikace nicméně není nejlepším ukazatelem správnosti klasifikace, protože nám neříká nic o tom, jak se klasifikovaly jednotlivé třídy.</p>
+<h3 id="uzivatelska-presnost">Uživatelská přesnost</h3>
+<p>Uživatelská přesnost (user's accuracy), ve strojovém učení označována také jako <strong>Precision</strong>, udává, s jakou pravděpodobností pixel zařazený do určité třídy tuto třídu opravdu představuje. Počítá se pro každou třídu zvlášť, a to jako podíl správně klasifikovaných pixelů ku celkovému počtu pixelů, které do dané třídy byly zařazeny. Hodnoty uživatelské přesnosti pro jednotlivé třídy uvedené v matici chyb výše by byly následující:</p>
+<table>
+  <thead>
+    <tr>
+      <th><strong>Třída</strong></th>
+      <th><strong>Uživatelská přesnost</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Water</td>
+      <td>21/27 = 0,78</td>
+    </tr>
+    <tr>
+      <td>Forest</td>
+      <td>31/37 = 0,84</td>
+    </tr>
+    <tr>
+      <td>Urban</td>
+      <td>22/31 = 0,71</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="zpracovatelska-presnost">Zpracovatelská přesnost</h3>
+<p>Zpracovatelská přesnost (producer's accuracy), ve strojovém učení označována také jako <strong>Recall</strong>, je poměr správně klasifikovaných pixelů ku celkovému počtu pixelů použitých pro testování dané třídy. Stejně tedy jako u uživatelské přesnoti se počítá pro každou třídu zvlášt, a pro data z matice chyb uvedené výše by nabývala následujících hodnot:</p>
+<table>
+  <thead>
+    <tr>
+      <th><strong>Třída</strong></th>
+      <th><strong>Zpracovatelská přesnost</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Water</td>
+      <td>21/33 = 0,64</td>
+    </tr>
+    <tr>
+      <td>Forest</td>
+      <td>31/39 = 0,79</td>
+    </tr>
+    <tr>
+      <td>Urban</td>
+      <td>22/23 = 0,96</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Uživatelskou (precision) a zpracovatelskou (recall) přesnost názorně znázorňuje následující obrázek:</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/40_precision_recall.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/40_precision_recall.png" style="height:381px;"></a></p>
+<h3 id="f1-score">F1 score</h3>
+<p>Metrika kombinující precision a recall pomocí harmonického průměru. Narozdíl od klasického průměru má harmonický průměr tendenci přiklánět se k nižšímu z obou hodnot. Proto pro dosažení vysokého F1 score je potřeba mít vysokou hodnotu jak u precision, tak u recall, což zajišťuje dobrou rovnováhu obou hodnot. Vzoreček je tedy následující: <strong>F1 = 2 · Precision · Recall / (Precision + Recall)</strong>.</p>
+<hr class="l1">
+
+<h2 id="validace-ve-snap">Validace ve SNAP</h2>
+<p>SNAP narozdíl od jiných softwarů bohužel neumožňuje nějakou automatickou validaci provádět. Nicméně pro pochopení principu validace ho v rámci cvičení využít můžeme. Konkrétně použijeme nástroje <strong><em>Pin placing tool</em></strong> a <strong><em>Pin Manager</em></strong> a následně si chybovou matici ručně vytvoříme v Excelu. Pro účely cvičení budeme pro každou třídu vkládat 10 pinů a pro zachování nezávislosti na trénovacích datech je budeme vkládat mimo dříve vytvořené trénovací plochy. Řekněme tedy, že nejprve budeme chtít vytvořit piny pro třídu <em>Holá půda</em>. Pomocí nástroje <strong><em>Pin placing tool</em></strong> vytvoříme 10 pinů na místech s holou půdou a ideálně je umístíme rovnoměrně napříč celou scénou (pracujeme nad transformovaným produktem nad RGB kompozitem). </p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni2/32_pin_placing_tool.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni2/32_pin_placing_tool.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/41_validation_pin.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/41_validation_pin.png"></a></p>
+<p>Po naklikání 10 pinů s holou půdou si otevřeme <strong><em>Pin Manager</em></strong> a přepíšeme hodnoty <em>Label</em> z "Pin 1", "Pin 2" atd. na název třídy, kterou jsme zrovna klikali, tj. <em>Holá půda</em>. Bohužel to asi nejde nějak hromadně, takže nezbývá nic jiného než použít metodu <em>Copy - Paste</em>.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni2/31_pin_manager_menu.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni2/31_pin_manager_menu.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/42_pin_manager.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/42_pin_manager.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/43_pin_manager_label.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/43_pin_manager_label.png"></a></p>
+<p>Stejný postup uděláme pro všechny ostatní třídy.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/44_all_pins.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/44_all_pins.png" style="height:489px;"></a></p>
+<details class="note" open="open">
+<summary>&nbsp;<span style="color:#448aff">Pozn.</span></summary>
+<p>Pokud by se opět stalo, že by transformovaný produkt přestal fungovat, tak pro obnovení pinů lze použít stejný postup jako u obnovení trénovacích ploch.</p>
+</details>
+<p>Když máme naklikané všechny piny pro všechny třídy, je potřeba překopírovat piny vytvořené nad RGB kompozitem do našeho klasifikovaného snímku. K tomu použijeme v <strong><em>Pin Manager</em></strong> funkci <strong><em>Transfer the selected pins to other products.</em></strong> Je potřeba mít ale vybrány (selectovány) všechny piny, jinak se překopíruje jen část.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/45_transfer_pins.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/45_transfer_pins.png" style="height:165px;"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/46_transfer_product.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/46_transfer_product.png" style="height:174px;"></a></p>
+<p>V mapovém okně se poté můžeme podívat, jestli v klasifikovaném produktu piny opravdu máme.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/47_pins_in_classification.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/47_pins_in_classification.png" style="height:490px;"></a></p>
+<p>Dále je potřeba do tabulky v <strong><em>Pin Manager</em></strong> přidat sloupec s hodnotou klasifikované třídy. To uděláme pomocí funkce <strong><em>Filter pixel data to be displayed in table.</em></strong> Z nabídky vybereme vrstvu <em>LabeledClasses</em> a dáme OK.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/48_filter_pixel_data.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/48_filter_pixel_data.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/49_labeledclasses.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/49_labeledclasses.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/50_new_column.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/50_new_column.png"></a></p>
+<p>Posledním krokem je export tabulky do textového souboru pomocí funkce <strong><em>Export selected data to flat text file.</em></strong> Znovu je potřeba mít selectované všechny piny.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/51_export_pins.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/51_export_pins.png" style="height:166px;"></a></p>
+<p>Následně si tato data nahrajeme do Excelu (případně jiného softwaru) a vytvoříme matici chyb. <a href="https://geo.fsv.cvut.cz/vyuka/155dprz/cv6/matice_chyb.xlsx" target="_blank"> <strong>Zde</strong></a> si můžete stáhnout předpřipravenou šablonu, do které můžete data postupně vkládat.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/52_excel_matice_chyb.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/52_excel_matice_chyb.png"></a></p>
+<p>Pro správné vyplnění matice chyb je dobré vědět, jaká hodnota odpovídá které třídě. To zjistíme v <strong><em>Colour Manipulation</em></strong> klasifikovaného produktu. Matici chyb poté vyplňujeme po sloupcích, kde do každého řádku zapíšeme počet testovacích vzorků z dané třídy, které se klasifikovaly jako třída na konkrétním řádku matice.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni6/34_legend.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni6/34_legend.png" style="height:122px;"></a></p>
+<p>Znovu ale připomínám, že takovýto postup validace slouží jen jako názorná ukázka. Aby byla validace více vypovídající, tak by bylo vhodné, aby se prováděla na více testovacích vzorcích. Tomu i odpovídá fakt, že se mi v tomto případě čtyři z pěti tříd klasifikovaly se 100% přesností, což asi nebude úplně pravda.</p>
+<hr class="l1">
+
+<h2 id="ukol-rizena-klasifikace">Úkol - Řízená klasifikace</h2>
+<ul>
+<li>Provést řízenou klasifikaci na svém území</li>
+<li>Porovnat více klasifikátorů - který dle vás dosáhl nejlepších výsledků?</li>
+<li>Zhodnotit výsledky (jakou jste použili klasifikaci, jaké jste nastavili parametry, jaké třídy jste klasifikovali, s čím byly problémy atd.)</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Zpět na začátek
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a href="https://geomatics.fsv.cvut.cz" target="_blank">Katedra geomatiky</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;2023
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/CTUGeomatics" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/geomatics.ctu" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256c0 120 82.7 220.8 194.2 248.5V334.2h-52.8V256h52.8v-33.7c0-87.1 39.4-127.5 125-127.5 16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287v175.9C413.8 494.8 512 386.9 512 256"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.instagram.com/geomatics.ctu" target="_blank" rel="noopener" title="www.instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3 141a115 115 0 1 0-.6 230 115 115 0 1 0 .6-230m-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1-.6-149.2m93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1-53.6 0m129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Zkop\u00edrov\u00e1no do schr\u00e1nky", "clipboard.copy": "Kop\u00edrovat do schr\u00e1nky", "search.result.more.one": "1 dal\u0161\u00ed na t\u00e9to str\u00e1nce", "search.result.more.other": "# v\u00edce na t\u00e9to str\u00e1nce", "search.result.none": "Nenalezeny \u017e\u00e1dn\u00e9 dokumenty", "search.result.one": "Nalezen\u00fd dokument: 1", "search.result.other": "Nalezen\u00e9 dokumenty: #", "search.result.placeholder": "Pi\u0161te co se m\u00e1 vyhledat", "search.result.term.missing": "Chyb\u011bj\u00edc\u00ed", "select.version": "Vyberte verzi"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

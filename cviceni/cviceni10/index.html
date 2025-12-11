@@ -1,0 +1,1418 @@
+<!DOCTYPE html><html lang="cs" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../cviceni9/">
+      
+      
+        <link rel="next" href="../cviceni11/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Ukázka práce v Google Earth Engine - 155DPRZ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ukazka-prace-v-google-earth-engine" class="md-skip">
+          Přeskočit obsah
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Záhlaví">
+    <a href="../.." title="155DPRZ" class="md-header__button md-logo" aria-label="155DPRZ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            155DPRZ
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ukázka práce v Google Earth Engine
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="teal" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Hledat" placeholder="Hledat" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Vyhledávání">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Vyčistit" aria-label="Vyčistit" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializace vyhledávání
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Karty" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Charakterisika předmětu
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../cviceni1/" class="md-tabs__link">
+          
+  
+  
+  Cvičení
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigace" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="155DPRZ" class="md-nav__button md-logo" aria-label="155DPRZ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    155DPRZ
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Charakterisika předmětu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cvičení
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cvičení
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni1/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 17h-2V9h-2V7h4m5-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Úvod do DPZ, ukázka webových portálů pro prohlížení a stahování družicových dat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni2/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 11a2 2 0 0 1-2 2h-2v2h4v2H9v-4a2 2 0 0 1 2-2h2V9H9V7h4a2 2 0 0 1 2 2m4-6H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Seznámení se softwarem SNAP, vytvoření subsetu, barevná syntéza, tvorba spektrálních křivek
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni3/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 10.5a1.5 1.5 0 0 1-1.5 1.5c.84 0 1.5.67 1.5 1.5V15c0 1.11-.89 2-2 2H9v-2h4v-2h-2v-2h2V9H9V7h4c1.11 0 2 .89 2 2m4-6H5c-1.09 0-2 .9-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Vegetační (spektrální) indexy, maskování, detekce vodních ploch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni4/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 17h-2v-4H9V7h2v4h2V7h2m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Filtrace obrazu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni5/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 9h-4v2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H9v-2h4v-2H9V7h6m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Neřízená klasifikace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni6/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 9h-4v2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h4m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-8 12h2v-2h-2z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Řízená klasifikace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni7/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-8 14 4-8V7H9v2h4l-4 8z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Segmentace a objektová klasifikace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni8/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-8 14h2a2 2 0 0 0 2-2v-1.5a1.5 1.5 0 0 0-1.5-1.5 1.5 1.5 0 0 0 1.5-1.5V9a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v1.5a1.5 1.5 0 0 0 1.5 1.5A1.5 1.5 0 0 0 9 13.5V15a2 2 0 0 0 2 2m0-4h2v2h-2zm0-4h2v2h-2z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ukázka VHR dat, pansharpening, komplexní úloha s využitím klasifikace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni9/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-6 8h-2V9h2zm0-4h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2v2H9v2h4a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Tepelná analýza pomocí dat Landsat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 9h2v6h-2zm7-4v14c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2M10 7H6v2h2v8h2zm8 2a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2c1.11 0 2-.89 2-2z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ukázka práce v Google Earth Engine
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 9h2v6h-2zm7-4v14c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2M10 7H6v2h2v8h2zm8 2a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2c1.11 0 2-.89 2-2z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ukázka práce v Google Earth Engine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Obsah">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Obsah
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cil-cviceni" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cíl cvičení
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zakladni-prehled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Základní přehled
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Základní přehled">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Editor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ukazky-javascript-kodu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ukázky JavaScript kódu
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detekce-spalenist-pomoci-google-earth-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detekce spálenišť pomocí Google Earth Engine
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detekce spálenišť pomocí Google Earth Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vyber-zajmove-oblasti-a-ziskani-dat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Výběr zájmové oblasti a získání dat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maskovani-oblacnosti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Maskování oblačnosti
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vypocet-nbr-indexu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Výpočet NBR indexu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vizualizace-spalenist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vizualizace spálenišť
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni11/" class="md-nav__link">
+        
+  
+  
+    <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+<svg viewBox="0 0 24 24" version="1.1" id="svg1" sodipodi:docname="numeric-10-box.svg" inkscape:version="1.3 (0e150ed6c4, 2023-07-21)" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <defs id="defs1"></defs>
+  <sodipodi:namedview id="namedview1" pagecolor="#505050" bordercolor="#eeeeee" borderopacity="1" inkscape:showpageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:current-layer="svg1"></sodipodi:namedview>
+  <path id="path2" d="M 5 3 A 2 2 0 0 0 3 5 L 3 19 A 2 2 0 0 0 5 21 L 19 21 C 20.109999 21 21 20.109999 21 19 L 21 5 C 21 3.9000011 20.109999 3 19 3 L 5 3 z M 7 7 L 11 7 L 11 17 L 9 17 L 9 9 L 7 9 L 7 7 z M 13 7 L 17 7 L 17 17 L 15 17 L 15 9 L 13 9 L 13 7 z "></path>
+</svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Detekce zaplaveného území pomocí radarových dat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni12/" class="md-nav__link">
+        
+  
+  
+    <!--?xml version="1.0" encoding="utf-8"?-->
+<svg viewBox="0 0 24 24" version="1.1" id="svg1" xmlns="http://www.w3.org/2000/svg">
+  <path id="path2" d="M 5 3 C 3.895 3 3 3.895 3 5 L 3 19 C 3 20.105 3.895 21 5 21 L 19 21 C 20.11 21 21 20.11 21 19 L 21 5 C 21 3.9 20.11 3 19 3 L 5 3 Z M 6.416 6.976 L 10.416 6.976 L 10.416 16.976 L 8.416 16.976 L 8.416 8.976 L 6.416 8.976 L 6.416 6.976 Z M 12.416 6.976 L 17.751 6.949 L 17.687 12.974 L 14.449 12.981 L 14.457 14.962 L 17.668 14.983 L 17.682 16.976 L 12.458 16.939 L 12.448 10.997 L 15.694 10.99 L 15.695 8.976 L 12.416 8.976 L 12.416 6.976 Z"></path>
+</svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Radarová interferometrie, tvorba DEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<style>
+  .md-typeset__scrollwrap {text-align: center ;}
+  table th {text-align: center !important;}
+  table td {text-align: center !important;}
+  h2 {font-weight:700 !important;}                                                                   /* Pokus – zmena formatu nadpisu 2 */
+  figcaption {font-size:12px;margin-top:5px !important;text-align:center;line-height:1.2em;}         /* Formatovani Popisku obrazku */
+  hr.l1 {background-color:var(--md-primary-fg-color);height:2px;margin-bottom:3em !important;}       /* Formatovani Break Line – LEVEL 1 */
+  img,iframe {filter:drop-shadow(0 10px 16px rgba(0,0,0,0.2)) drop-shadow(0 6px 20px rgba(0,0,0,0.2)) !important; object-fit:contain;} /* Stin pod obrazky a videi */
+
+  /* TLACITKA */
+  .md-button {text-align:center;transition: all .1s ease-in-out !important;}  /* Button – zarovnani textu */
+  .md-button:hover {transform: scale(1.04);opacity:.8;background-color:var(--md-primary-fg-color) !important;border-color:var(--md-primary-fg-color) !important;color:var(--md-primary-bg-color) !important;/*filter: brightness(80%);*/}            /* Button Hover – animace zvetseni a zmeny barvy */
+  .md-button:focus {opacity:.8;background-color:var(--md-primary-fg-color) !important;border-color:var(--md-primary-fg-color) !important;color:var(--md-primary-bg-color) !important;}                                                                /* Button Focus – stejny vzhled jako hover */
+  .url-name {line-height:1.2;/*padding-top:5px !important;*/}                 /* Button s URL */
+  .url-name span:first-child {font-size:.7em; font-weight:300;}               /* Button s URL – format*/
+  .url-name span.twemoji {vertical-align:-0px;}                               /* Button s URL – zarovnani ikony*/
+  .md-button.button_smaller {font-size:smaller; padding:1px 5px;}             /* Mensi button (bez URL) */
+
+  /* FLEXBOXY */
+  .process_container {display:flex !important; justify-content:center; align-items:center; column-gap:calc((100vw * 0.03) - 6px);} /* Kontejner pro content = FlexBox */
+  .process_container div {display:flex;}                                                                                           /* Obsah (obrazky a sipky) */
+  .process_container .process_icon {width:/*40px*/calc((100vw * 0.01) + 25px); flex-shrink:0;filter:none !important;}              /* Velikost ikony (bacha na mobily) */
+  .process_container img {max-height:600px; display:flex;}                                    /* Obrazky ve flexboxech maji maximalni vysku */
+</style>
+
+<h1 id="ukazka-prace-v-google-earth-engine">Ukázka práce v Google Earth Engine</h1>
+<hr class="l1">
+
+<h2 id="cil-cviceni">Cíl cvičení</h2>
+<ul>
+<li>Seznámit se s cloudovým nástrojem Google Earth Engine</li>
+<li>Umět detekovat spáleniště pomocí dat DPZ</li>
+</ul>
+<hr class="l1">
+
+<h2 id="zakladni-prehled">Základní přehled</h2>
+<p><a href="https://earthengine.google.com/" target="_blank"> <strong>Google Earth Engine</strong></a> je cloudová platforma pro geoprostorovou analýzu, která uživatelům umožňuje vizualizovat a analyzovat satelitní snímky naší planety.</p>
+<ul>
+<li>Code Editor: <a href="https://code.earthengine.google.com/" target="_blank"> <strong>https://code.earthengine.google.com/</strong></a></li>
+<li>Dokumentace: <a href="https://developers.google.com/earth-engine/" target="_blank"> <strong>https://developers.google.com/earth-engine/</strong></a></li>
+<li>Dostupná data: <a href="https://developers.google.com/earth-engine/datasets/" target="_blank"> <strong>https://developers.google.com/earth-engine/datasets/</strong></a></li>
+<li>Ukázky: <a href="https://earthengine.google.com/timelapse/" target="_blank"> <strong>https://earthengine.google.com/timelapse/</strong></a></li>
+<li>Tutoriály: <a href="https://developers.google.com/earth-engine/guides" target="_blank"> <strong>https://developers.google.com/earth-engine/guides</strong></a></li>
+</ul>
+<h3 id="code-editor">Code Editor</h3>
+<p>Code Editor je webové vývojové prostředí Google Earth Engine využívající programovací jazyk JavaScript.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/01_gee_gui.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/01_gee_gui.png"></a></p>
+<h3 id="ukazky-javascript-kodu">Ukázky JavaScript kódu</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nx">print</span><span class="p">(</span><span class="s1">'Hello world!'</span><span class="p">);</span>
+</code></pre></div>
+<p>Zobrazení dat MODIS:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">dataset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ee</span><span class="p">.</span><span class="nx">ImageCollection</span><span class="p">(</span><span class="s1">'MODIS/061/MOD09GA'</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="c1">// filter by dates</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="p">.</span><span class="nx">filterDate</span><span class="p">(</span><span class="s1">'2023-04-01'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2023-06-01'</span><span class="p">);</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1">// Select the bands you want to visualize</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kd">var</span><span class="w"> </span><span class="nx">visParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nx">bands</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'sur_refl_b01'</span><span class="p">,</span><span class="w"> </span><span class="s1">'sur_refl_b04'</span><span class="p">,</span><span class="w"> </span><span class="s1">'sur_refl_b03'</span><span class="p">],</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">5000</span><span class="p">,</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="nx">gamma</span><span class="o">:</span><span class="w"> </span><span class="mf">1.4</span><span class="p">,</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">};</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1">// add to the map window</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">dataset</span><span class="p">,</span><span class="w"> </span><span class="nx">visParams</span><span class="p">,</span><span class="w"> </span><span class="s1">'MODIS'</span><span class="p">);</span>
+</code></pre></div>
+<p>Zobrazení dat Landsat 9 s oblačností menší než 10 % a s přeškálováním:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">dataset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ee</span><span class="p">.</span><span class="nx">ImageCollection</span><span class="p">(</span><span class="s1">'LANDSAT/LC09/C02/T1_L2'</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="c1">// filter by dates</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="p">.</span><span class="nx">filterDate</span><span class="p">(</span><span class="s1">'2023-07-01'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2023-08-31'</span><span class="p">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="c1">// filter by cloud cover</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">ee</span><span class="p">.</span><span class="nx">Filter</span><span class="p">.</span><span class="nx">lessThan</span><span class="p">(</span><span class="s1">'CLOUD_COVER'</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">));</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1">// Applies scaling factors</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="kd">function</span><span class="w"> </span><span class="nx">applyScaleFactors</span><span class="p">(</span><span class="nx">image</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">opticalBands</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">image</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s1">'SR_B.'</span><span class="p">).</span><span class="nx">multiply</span><span class="p">(</span><span class="mf">0.0000275</span><span class="p">).</span><span class="nx">add</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">);</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">thermalBands</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">image</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s1">'ST_B.*'</span><span class="p">).</span><span class="nx">multiply</span><span class="p">(</span><span class="mf">0.00341802</span><span class="p">).</span><span class="nx">add</span><span class="p">(</span><span class="mf">149.0</span><span class="p">);</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">image</span><span class="p">.</span><span class="nx">addBands</span><span class="p">(</span><span class="nx">opticalBands</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">              </span><span class="p">.</span><span class="nx">addBands</span><span class="p">(</span><span class="nx">thermalBands</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">}</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="nx">dataset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dataset</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">applyScaleFactors</span><span class="p">);</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="c1">// Select the bands you want to visualize</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="kd">var</span><span class="w"> </span><span class="nx">visParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">  </span><span class="nx">bands</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'SR_B4'</span><span class="p">,</span><span class="w"> </span><span class="s1">'SR_B3'</span><span class="p">,</span><span class="w"> </span><span class="s1">'SR_B2'</span><span class="p">],</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">  </span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">  </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="p">};</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="c1">// add to the map window</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">dataset</span><span class="p">,</span><span class="w"> </span><span class="nx">visParams</span><span class="p">,</span><span class="w"> </span><span class="s1">'Landsat 9'</span><span class="p">);</span>
+</code></pre></div>
+<p>Zobrazení dat Sentinel-2 s oblačností menší než 10 % a jejich oříznutí na zájmové území:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">sentinel_col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ee</span><span class="p">.</span><span class="nx">ImageCollection</span><span class="p">(</span><span class="s2">"COPERNICUS/S2_SR_HARMONIZED"</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="c1">// filter by dates</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="p">.</span><span class="nx">filterDate</span><span class="p">(</span><span class="s1">'2023-05-01'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2023-06-30'</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="c1">// filter for the drawn rectangle</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="p">.</span><span class="nx">filterBounds</span><span class="p">(</span><span class="nx">geometry</span><span class="p">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="c1">// filter by cloud cover</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">ee</span><span class="p">.</span><span class="nx">Filter</span><span class="p">.</span><span class="nx">lt</span><span class="p">(</span><span class="s1">'CLOUDY_PIXEL_PERCENTAGE'</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">));</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1">// Define a function to clip each image in the collection to the geometry</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="kd">var</span><span class="w"> </span><span class="nx">clipToGeometry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">image</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">image</span><span class="p">.</span><span class="nx">clip</span><span class="p">(</span><span class="nx">geometry</span><span class="p">);</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">};</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1">// Use the map function to apply the clip function to each image in the collection</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="kd">var</span><span class="w"> </span><span class="nx">clipped_col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sentinel_col</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">clipToGeometry</span><span class="p">);</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="c1">// Select the bands you want to visualize</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="kd">var</span><span class="w"> </span><span class="nx">visParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">  </span><span class="nx">bands</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'B4'</span><span class="p">,</span><span class="w"> </span><span class="s1">'B3'</span><span class="p">,</span><span class="w"> </span><span class="s1">'B2'</span><span class="p">],</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">  </span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">  </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">3000</span><span class="p">,</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="p">};</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="c1">// add to the map window</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">clipped_col</span><span class="p">,</span><span class="w"> </span><span class="nx">visParams</span><span class="p">,</span><span class="w"> </span><span class="s1">'Sentinel-2'</span><span class="p">);</span>
+</code></pre></div>
+<p>Spoustu dalších příkladů lze nalézt přímo v prostředí Google Earth Engine v části <strong>Scripts</strong> → <strong>Examples</strong>.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/02_gee_examples.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/02_gee_examples.png" style="height:374px;"></a></p>
+<hr class="l1">
+
+<h2 id="detekce-spalenist-pomoci-google-earth-engine">Detekce spálenišť pomocí Google Earth Engine</h2>
+<p>V rámci tohoto cvičení využijeme Google Earth Engine pro detekování oblastí zasažených požárem. Konkrétní oblastí našeho zájmu bude národní park České Švýcarsko, kde došlo k požáru v období 23. 7. 2022 - 12. 8. 2022 (v německé části požár trval od 25. 7. 2022 - 19. 8. 2022). Práci začneme tím, že si vytvoříme nový soubor, do kterého budeme náš kód psát. Nový soubor vytvoříme v části <strong>Scripts</strong> → <strong>NEW</strong> → <strong>File</strong>. Protože jsme si ale nevytvořili repozitář, do kterého se soubor uloží, Google Earth Engine nás nejprve vyzve k vytvoření právě nového repozitáře. Teprve poté můžeme vytvořit nový soubor.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/03_new_file.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/03_new_file.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/04_new_repository.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/04_new_repository.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/05_create_file.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/05_create_file.png"></a></p>
+<p>Vytvořený soubor najdeme ve <strong>Scripts</strong> → <strong>Owner</strong>, kde si ho i můžeme otevřít.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/06_own_files.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/06_own_files.png" style="height:198px;"></a></p>
+<h3 id="vyber-zajmove-oblasti-a-ziskani-dat">Výběr zájmové oblasti a získání dat</h3>
+<p>Zájmové území si označíme přidáním bodu do mapy. Bod přidáme pomocí funkce <strong><em>Přidat značku</em></strong>, která se nachází v levé horní části mapového okna. Bod umístíme přibližně mezi obce Hřensko a Mezná, tedy na místo, kde požár zhruba vypukl.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/07_add_point.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/07_add_point.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/08_point_location.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/08_point_location.png"></a></p>
+<p>Pomocí funkce <strong><em>Edit layer properties</em></strong> si můžeme vytvořený bod přejmenovat z <em>geometry</em> např. na <em>point</em>.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/09_edit_point.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/09_edit_point.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/10_edit_properties.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/10_edit_properties.png"></a></p>
+<p>Nyní si můžeme vyhledat potřebná data. Konkrétně budeme pracovat s daty Sentinel-2. Bohužel v roce 2022 nebylo v daném místě mnoho bezoblačných scén, proto nastavíme datum na obdomí mezi 1. 4. 2022 - 31. 10. 2022. Jako limit pro oblačnost nastavíme 30&nbsp;%.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Filter the Sentinel-2 image collection</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">S2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ee</span><span class="p">.</span><span class="nx">ImageCollection</span><span class="p">(</span><span class="s1">'COPERNICUS/S2_SR_HARMONIZED'</span><span class="p">)</span><span class="w"> </span><span class="c1">// import data</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">                  </span><span class="p">.</span><span class="nx">filterBounds</span><span class="p">(</span><span class="nx">point</span><span class="p">)</span><span class="w"> </span><span class="c1">// spatial filter</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">                  </span><span class="p">.</span><span class="nx">filterDate</span><span class="p">(</span><span class="s1">'2022-04-01'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2022-10-31'</span><span class="p">)</span><span class="w"> </span><span class="c1">// temporal filter</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">                  </span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">ee</span><span class="p">.</span><span class="nx">Filter</span><span class="p">.</span><span class="nx">lt</span><span class="p">(</span><span class="s1">'CLOUDY_PIXEL_PERCENTAGE'</span><span class="p">,</span><span class="w"> </span><span class="mf">30</span><span class="p">));</span><span class="w"> </span><span class="c1">// metadata filter</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1">// Print data to the Console</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nx">print</span><span class="p">(</span><span class="s2">"Scenes:"</span><span class="p">,</span><span class="w"> </span><span class="nx">S2</span><span class="p">);</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1">// Add True color RGB composite to the map</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">S2</span><span class="p">.</span><span class="nx">first</span><span class="p">(),</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span><span class="nx">max</span><span class="o">:</span><span class="mf">3000</span><span class="p">,</span><span class="nx">bands</span><span class="o">:</span><span class="s2">"B4,B3,B2"</span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">            </span><span class="s2">"RGB"</span><span class="p">);</span>
+</code></pre></div>
+<p>Pokud bychom si chtěli zobrazit jiný než první prvek z <em>ImageCollection</em>, je potřeba si <em>ImageCollection</em> převést na <em>List</em>. To můžeme udělat přidáním následujícího kódu.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Convert ImageCollection to List</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">S2List</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">S2</span><span class="p">.</span><span class="nx">toList</span><span class="p">(</span><span class="nx">S2</span><span class="p">.</span><span class="nx">size</span><span class="p">());</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nx">print</span><span class="p">(</span><span class="nx">S2List</span><span class="p">);</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1">// Get second image from the list</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">ee</span><span class="p">.</span><span class="nx">Image</span><span class="p">(</span><span class="nx">S2List</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mf">1</span><span class="p">)),</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span><span class="nx">max</span><span class="o">:</span><span class="mf">3000</span><span class="p">,</span><span class="nx">bands</span><span class="o">:</span><span class="s2">"B4,B3,B2"</span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">            </span><span class="s2">"RGB 2"</span><span class="p">);</span>
+</code></pre></div>
+<p>Mezi vrstvami v mapovém okně lze jednoduše přepínat pomocí nástroje <strong>Layers</strong> v pravé části mapového okna.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/11_layers.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/11_layers.png" style="height:80px;"></a></p>
+<p>Při zavření a opětovném otevření Google Earth Engine není mapa vycentrována na naše území. Přidáním následujícího kódu do skriptu se mapa vycentruje na zobrazenou scénu.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// Center the map to the image</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">centerObject</span><span class="p">(</span><span class="nx">S2</span><span class="p">.</span><span class="nx">first</span><span class="p">());</span>
+</code></pre></div>
+<h3 id="maskovani-oblacnosti">Maskování oblačnosti</h3>
+<p>Mohli jsme si všimnout, že na některých scénách je oblačnosti poměrně dost. To pro jakékoliv analýzy není zrovna nejlepší, a je proto potřeba oblačnost zamaskovat. Existuje více možností, jak scény maskovat, a lze k tomu použít i různé vrstvy obsažené v produktech Sentinel-2. <a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED#description" target="_blank"> <strong>Zde</strong></a> je např. ukázka maskování oblačnosti pomocí vrstvy <strong>QA60</strong>, což je maska oblačnosti s rozlišením 60 m. Bohužel pro data od ledna 2022 není tato vrstva stále k dispozici. Lze ale využít i jiné vrstvy, jako např. <strong>MSK_CLDPRB</strong>, což je pravděpodobnost výskytu oblačnosti v pixelu s rozlišením 20 m. Přidáme si tedy do kódu funkci, která zamaskuje oblačnost pomocí vrstvy MSK_CLDPRB, zvolíme nějaký threshold určující, kolikaprocentní pravděpodobnost oblačnosti budeme brát v potaz, a aplikujeme masku oblačnosti na naše data. Můžeme poté porovnat zamaskovaná a nezamaskovaná data.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// Filter the Sentinel-2 image collection</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">S2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ee</span><span class="p">.</span><span class="nx">ImageCollection</span><span class="p">(</span><span class="s1">'COPERNICUS/S2_SR_HARMONIZED'</span><span class="p">)</span><span class="w"> </span><span class="c1">// import data</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">                  </span><span class="p">.</span><span class="nx">filterBounds</span><span class="p">(</span><span class="nx">point</span><span class="p">)</span><span class="w"> </span><span class="c1">// spatial filter</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">                  </span><span class="p">.</span><span class="nx">filterDate</span><span class="p">(</span><span class="s1">'2022-04-01'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2022-10-31'</span><span class="p">)</span><span class="w"> </span><span class="c1">// temporal filter</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">                  </span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">ee</span><span class="p">.</span><span class="nx">Filter</span><span class="p">.</span><span class="nx">lt</span><span class="p">(</span><span class="s1">'CLOUDY_PIXEL_PERCENTAGE'</span><span class="p">,</span><span class="w"> </span><span class="mf">30</span><span class="p">));</span><span class="w"> </span><span class="c1">// metadata filter</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="hll"><span class="c1">// Cloud mask based on MSK_CLDPRB layer</span>
+</span><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="hll"><span class="kd">function</span><span class="w"> </span><span class="nx">mask_clouds</span><span class="p">(</span><span class="nx">image</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="hll"><span class="w">  </span><span class="c1">// Select the MSK_CLDPRB band.</span>
+</span><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="hll"><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">cloudProbability</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">image</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s1">'MSK_CLDPRB'</span><span class="p">);</span>
+</span><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="hll">
+</span><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="hll"><span class="w">  </span><span class="c1">// Create a mask for clouds using a threshold.</span>
+</span><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="hll"><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">cloudMask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cloudProbability</span><span class="p">.</span><span class="nx">lt</span><span class="p">(</span><span class="mf">50</span><span class="p">);</span>
+</span><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="hll">
+</span><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="hll"><span class="w">  </span><span class="c1">// Update the image mask using the cloud mask.</span>
+</span><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="hll"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">image</span><span class="p">.</span><span class="nx">updateMask</span><span class="p">(</span><span class="nx">cloudMask</span><span class="p">);</span>
+</span><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="hll"><span class="p">}</span>
+</span><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="hll"><span class="c1">// Apply on image collection</span>
+</span><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="hll"><span class="kd">var</span><span class="w"> </span><span class="nx">S2_masked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">S2</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">mask_clouds</span><span class="p">);</span>
+</span><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="c1">// Add True color RGB composites to the map</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">S2</span><span class="p">.</span><span class="nx">first</span><span class="p">(),</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span><span class="nx">max</span><span class="o">:</span><span class="mf">3000</span><span class="p">,</span><span class="nx">bands</span><span class="o">:</span><span class="s2">"B4,B3,B2"</span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">            </span><span class="s2">"RGB"</span><span class="p">);</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">S2_masked</span><span class="p">.</span><span class="nx">first</span><span class="p">(),</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span><span class="nx">max</span><span class="o">:</span><span class="mf">3000</span><span class="p">,</span><span class="nx">bands</span><span class="o">:</span><span class="s2">"B4,B3,B2"</span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="w">            </span><span class="s2">"RGB masked"</span><span class="p">);</span>
+</code></pre></div>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/12_no_mask.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/12_no_mask.png"></a>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/13_mask.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/13_mask.png"></a></p>
+<figcaption>Porovnání dat před a po použití masky oblačnosti</figcaption>
+
+<p>Kdybychom se chtěli podívat znovu i na jiné scény, převedeme jako v předchozím příkladu <em>ImageCollection</em> na <em>List</em>. Správně by se měly maskovat i stíny tvořené oblačností, ale to si když tak zkuste později samostatně.</p>
+<h3 id="vypocet-nbr-indexu">Výpočet NBR indexu</h3>
+<p>Index <a href="https://un-spider.org/advisory-support/recommended-practices/recommended-practice-burn-severity/in-detail/normalized-burn-ratio" target="_blank"> <strong>NBR</strong></a>, neboli <strong>Normalized Burned Ratio</strong>, je index určený ke zvýraznění spálenišť v rozsáhlých požárních oblastech. Vzoreček pro NBR je následující:</p>
+<p><strong>NBR = (NIR - SWIR)/(NIR + SWIR)</strong></p>
+<p>NBR index pro celou <em>ImageCollection</em> spočítáme přidáním následujícího kódu.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// Compute NBR index</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kd">function</span><span class="w"> </span><span class="nx">add_NBR</span><span class="p">(</span><span class="nx">image</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">image</span><span class="p">.</span><span class="nx">addBands</span><span class="p">(</span><span class="nx">image</span><span class="p">.</span><span class="nx">normalizedDifference</span><span class="p">([</span><span class="s1">'B8'</span><span class="p">,</span><span class="w"> </span><span class="s1">'B12'</span><span class="p">]).</span><span class="nx">rename</span><span class="p">(</span><span class="s1">'NBR'</span><span class="p">));</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">}</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="kd">var</span><span class="w"> </span><span class="nx">S2_nbr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">S2_masked</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">add_NBR</span><span class="p">);</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nx">print</span><span class="p">(</span><span class="nx">S2_nbr</span><span class="p">);</span>
+</code></pre></div>
+<p>Následně si ho můžeme přidat i do mapového okna. Co se týče oblačnosti, tak před požárem nejlépe vychází scéna z 23. 4. 2022 (tj. druhá scéna v <em>ImageCollection</em>), a po požáru pak nejspíše scéna z 25. 9. 2022 (tj. pátá scéna v <em>ImageCollection</em>). Proto si budeme znázorňovat tyto dvě.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// Convert ImageCollection to List</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">S2_nbr_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">S2_nbr</span><span class="p">.</span><span class="nx">toList</span><span class="p">(</span><span class="nx">S2_nbr</span><span class="p">.</span><span class="nx">size</span><span class="p">());</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1">// Add layers to map</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">ee</span><span class="p">.</span><span class="nx">Image</span><span class="p">(</span><span class="nx">S2_nbr_list</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mf">1</span><span class="p">)),</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span><span class="nx">max</span><span class="o">:</span><span class="mf">3000</span><span class="p">,</span><span class="nx">bands</span><span class="o">:</span><span class="s2">"B4,B3,B2"</span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">            </span><span class="s2">"RGB pre-fire"</span><span class="p">);</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">ee</span><span class="p">.</span><span class="nx">Image</span><span class="p">(</span><span class="nx">S2_nbr_list</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mf">4</span><span class="p">)),</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span><span class="nx">max</span><span class="o">:</span><span class="mf">3000</span><span class="p">,</span><span class="nx">bands</span><span class="o">:</span><span class="s2">"B4,B3,B2"</span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">            </span><span class="s2">"RGB post-fire"</span><span class="p">);</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">ee</span><span class="p">.</span><span class="nx">Image</span><span class="p">(</span><span class="nx">S2_nbr_list</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mf">1</span><span class="p">)),</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">bands</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"NBR"</span><span class="p">]},</span><span class="w"> </span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">            </span><span class="s2">"NBR pre-fire"</span><span class="p">);</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">ee</span><span class="p">.</span><span class="nx">Image</span><span class="p">(</span><span class="nx">S2_nbr_list</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mf">4</span><span class="p">)),</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">bands</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"NBR"</span><span class="p">]},</span><span class="w"> </span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">            </span><span class="s2">"NBR post-fire"</span><span class="p">);</span>
+</code></pre></div>
+<p>Na obrázku níže můžeme porovnat NBR index před a po požáru. Tmavé plochy znázorňují místa, kde k požáru došlo.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/14_pre_fire_nbr.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/14_pre_fire_nbr.png"></a>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/15_post_fire_nbr.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/15_post_fire_nbr.png"></a></p>
+<figcaption>Porovnání NBR indexu před a po požáru</figcaption>
+
+<p>Dále si vytvoříme graf znázorňující časovou řadu NBR. Časovou řadu budeme ale znázorňovat jen pro území, kde k požáru opravdu došlo. Proto si toto území nebo jeho část vyznačíme polygonem, který vytvoříme pomocí nástroje <strong>Nakreslit tvar</strong>.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/16_draw_polygon.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/16_draw_polygon.png" style="height:117px;"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/17_polygon.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/17_polygon.png" style="height:358px;"></a></p>
+<p>Nyní pomocí následujícího kódu vytvoříme graf.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// Create Time series chart</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">TSChart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Chart</span><span class="p">.</span><span class="nx">image</span><span class="p">.</span><span class="nx">series</span><span class="p">({</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="nx">imageCollection</span><span class="o">:</span><span class="w"> </span><span class="nx">S2_nbr</span><span class="p">.</span><span class="nx">select</span><span class="p">([</span><span class="s1">'NBR'</span><span class="p">]),</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="nx">region</span><span class="o">:</span><span class="w"> </span><span class="nx">polygon</span><span class="p">,</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="nx">reducer</span><span class="o">:</span><span class="w"> </span><span class="nx">ee</span><span class="p">.</span><span class="nx">Reducer</span><span class="p">.</span><span class="nx">mean</span><span class="p">(),</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="nx">scale</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="p">}).</span><span class="nx">setOptions</span><span class="p">({</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">'NBR time-series of the burned areas'</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="p">});</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="nx">print</span><span class="p">(</span><span class="nx">TSChart</span><span class="p">);</span>
+</code></pre></div>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/18_nbr_graph.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/18_nbr_graph.png" style="height:197px;"></a></p>
+<h3 id="vizualizace-spalenist">Vizualizace spálenišť</h3>
+<p>Dále si spáleniště nějak vhodně vizualizujeme. Lépe než kombinace B4-B3-B2 se pro spáleniště jeví kombinace B12-B11-B9 (tedy kombinace SWIR pásem a pásma Water vapour). Zároveň si vyselektujeme druhou a pátou scénu z <em>ImageCollection</em> do vlastních proměnných.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">// Select pre-fire and post-fire images</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">pre_fire_image</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ee</span><span class="p">.</span><span class="nx">Image</span><span class="p">(</span><span class="nx">S2_nbr_list</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mf">1</span><span class="p">));</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">post_fire_image</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ee</span><span class="p">.</span><span class="nx">Image</span><span class="p">(</span><span class="nx">S2_nbr_list</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mf">4</span><span class="p">));</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">pre_fire_image</span><span class="p">,</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span><span class="nx">max</span><span class="o">:</span><span class="mf">3000</span><span class="p">,</span><span class="nx">bands</span><span class="o">:</span><span class="s2">"B12,B11,B9"</span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">            </span><span class="s2">"pre_fire_image"</span><span class="p">);</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">pre_fire_image</span><span class="p">,</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:-</span><span class="mf">1</span><span class="p">,</span><span class="nx">max</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span><span class="nx">bands</span><span class="o">:</span><span class="s2">"NBR"</span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">            </span><span class="s2">"pre_fire_NBR"</span><span class="p">);</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">post_fire_image</span><span class="p">,</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span><span class="nx">max</span><span class="o">:</span><span class="mf">3000</span><span class="p">,</span><span class="nx">bands</span><span class="o">:</span><span class="s2">"B12,B11,B9"</span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">            </span><span class="s2">"post_fire_image"</span><span class="p">);</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">post_fire_image</span><span class="p">,</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:-</span><span class="mf">1</span><span class="p">,</span><span class="nx">max</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span><span class="nx">bands</span><span class="o">:</span><span class="s2">"NBR"</span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">            </span><span class="s2">"post_fire_NBR"</span><span class="p">);</span>
+</code></pre></div>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/19_post_fire_visualization.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/19_post_fire_visualization.png" style="height:392px;"></a></p>
+<figcaption>Zvýraznění spáleniště pomocí RGB kombinace B12-B11-B9</figcaption>
+
+<p>Dále si spočítáme tzv. <strong><em>Burn severity</em></strong>, což je veličina udávající závažnost poškození požárem, a vypočítá se podle následujícího vzorce:</p>
+<p><strong>dNBR = NBR<sub>Prefire</sub> - NBR<sub>Postfire</sub></strong></p>
+<p>Čím vyšší hodnota, tím větší poškození požárem.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/20_dnbr_values.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/20_dnbr_values.png" style="height:269px;"></a></p>
+<p>dNBR vypočítáme v Google Earth Engine pomocí následující kódu. Zároveň si i vyznačíme místa se střední až vysokou hodnotou poškození.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">// Calculate the dNBR</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">dNBR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pre_fire_image</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s1">'NBR'</span><span class="p">).</span><span class="nx">subtract</span><span class="p">(</span><span class="nx">post_fire_image</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s1">'NBR'</span><span class="p">)).</span><span class="nx">rename</span><span class="p">(</span><span class="s1">'dNBR'</span><span class="p">);</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1">// High and very high burned severity</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="kd">var</span><span class="w"> </span><span class="nx">modAndHighBS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dNBR</span><span class="p">.</span><span class="nx">gt</span><span class="p">(</span><span class="mf">0.27</span><span class="p">);</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">dNBR</span><span class="p">,</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:-</span><span class="mf">1</span><span class="p">,</span><span class="nx">max</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span><span class="nx">bands</span><span class="o">:</span><span class="s2">"dNBR"</span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">            </span><span class="s2">"dNBR Image"</span><span class="p">);</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="nb">Map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">modAndHighBS</span><span class="p">,</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:-</span><span class="mf">1</span><span class="p">,</span><span class="nx">max</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span><span class="nx">bands</span><span class="o">:</span><span class="s2">"dNBR"</span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">            </span><span class="s2">"Moderate and high burned severity"</span><span class="p">);</span>
+</code></pre></div>
+<p>Na závěr si můžeme vytvořit jednoduchou <em>Swipe</em> aplikaci pro přehledné znázorňování stavu před a po požáru.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">// Application</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="c1">// Create two map windows</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">MapLeft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nb">Map</span><span class="p">();</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="kd">var</span><span class="w"> </span><span class="nx">MapRight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nb">Map</span><span class="p">();</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nx">MapLeft</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">pre_fire_image</span><span class="p">,</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span><span class="nx">max</span><span class="o">:</span><span class="mf">3000</span><span class="p">,</span><span class="nx">bands</span><span class="o">:</span><span class="s2">"B12,B11,B9"</span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">            </span><span class="s2">"pre_fire_image"</span><span class="p">);</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="nx">MapLeft</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">pre_fire_image</span><span class="p">,</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:-</span><span class="mf">1</span><span class="p">,</span><span class="nx">max</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span><span class="nx">bands</span><span class="o">:</span><span class="s2">"NBR"</span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">            </span><span class="s2">"pre_fire_NBR"</span><span class="p">);</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="nx">MapRight</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">post_fire_image</span><span class="p">,</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:</span><span class="mf">0</span><span class="p">,</span><span class="nx">max</span><span class="o">:</span><span class="mf">3000</span><span class="p">,</span><span class="nx">bands</span><span class="o">:</span><span class="s2">"B12,B11,B9"</span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">            </span><span class="s2">"post_fire_image"</span><span class="p">);</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="nx">MapRight</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">post_fire_image</span><span class="p">,</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="w">            </span><span class="p">{</span><span class="nx">min</span><span class="o">:-</span><span class="mf">1</span><span class="p">,</span><span class="nx">max</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span><span class="nx">bands</span><span class="o">:</span><span class="s2">"NBR"</span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="w">            </span><span class="s2">"post_fire_NBR"</span><span class="p">);</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="c1">// Create a swipe option</span>
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="kd">var</span><span class="w"> </span><span class="nx">splitPanel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">SplitPanel</span><span class="p">({</span>
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="w">  </span><span class="nx">firstPanel</span><span class="o">:</span><span class="w"> </span><span class="nx">MapLeft</span><span class="p">,</span>
+<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="w">  </span><span class="nx">secondPanel</span><span class="o">:</span><span class="w"> </span><span class="nx">MapRight</span><span class="p">,</span>
+<a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="w">  </span><span class="nx">orientation</span><span class="o">:</span><span class="w"> </span><span class="s2">"horizontal"</span><span class="p">,</span>
+<a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a><span class="w">  </span><span class="nx">wipe</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a><span class="p">})</span>
+<a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a>
+<a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a><span class="c1">// Clear map and add the swipe</span>
+<a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a><span class="nx">ui</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
+<a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a><span class="nx">ui</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">splitPanel</span><span class="p">)</span>
+<a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a>
+<a id="__codelineno-13-34" name="__codelineno-13-34" href="#__codelineno-13-34"></a><span class="c1">// Link the map windows</span>
+<a id="__codelineno-13-35" name="__codelineno-13-35" href="#__codelineno-13-35"></a><span class="nx">ui</span><span class="p">.</span><span class="nb">Map</span><span class="p">.</span><span class="nx">Linker</span><span class="p">([</span><span class="nx">MapLeft</span><span class="p">,</span><span class="nx">MapRight</span><span class="p">]);</span>
+<a id="__codelineno-13-36" name="__codelineno-13-36" href="#__codelineno-13-36"></a>
+<a id="__codelineno-13-37" name="__codelineno-13-37" href="#__codelineno-13-37"></a><span class="c1">// Center it around our selected point</span>
+<a id="__codelineno-13-38" name="__codelineno-13-38" href="#__codelineno-13-38"></a><span class="nx">MapRight</span><span class="p">.</span><span class="nx">centerObject</span><span class="p">(</span><span class="nx">point</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">)</span>
+<a id="__codelineno-13-39" name="__codelineno-13-39" href="#__codelineno-13-39"></a>
+<a id="__codelineno-13-40" name="__codelineno-13-40" href="#__codelineno-13-40"></a><span class="nx">MapLeft</span><span class="p">.</span><span class="nx">setControlVisibility</span><span class="p">({</span><span class="nx">all</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">});</span>
+<a id="__codelineno-13-41" name="__codelineno-13-41" href="#__codelineno-13-41"></a><span class="c1">// MapRight.setControlVisibility({all: true});</span>
+<a id="__codelineno-13-42" name="__codelineno-13-42" href="#__codelineno-13-42"></a>
+<a id="__codelineno-13-43" name="__codelineno-13-43" href="#__codelineno-13-43"></a><span class="c1">// Add map description</span>
+<a id="__codelineno-13-44" name="__codelineno-13-44" href="#__codelineno-13-44"></a><span class="kd">var</span><span class="w"> </span><span class="nx">leftDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Panel</span><span class="p">({</span>
+<a id="__codelineno-13-45" name="__codelineno-13-45" href="#__codelineno-13-45"></a><span class="w">  </span><span class="nx">widgets</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w">  </span>
+<a id="__codelineno-13-46" name="__codelineno-13-46" href="#__codelineno-13-46"></a><span class="w">    </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Label</span><span class="p">({</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="s2">"Pre-fire"</span><span class="p">,</span>
+<a id="__codelineno-13-47" name="__codelineno-13-47" href="#__codelineno-13-47"></a><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">textAlign</span><span class="o">:</span><span class="s1">'centasdsadered'</span><span class="p">,</span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="s1">'15px'</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">'484848'</span><span class="p">,</span><span class="w"> </span><span class="nx">fontWeight</span><span class="o">:</span><span class="w"> </span><span class="s1">'bold'</span><span class="p">}})],</span>
+<a id="__codelineno-13-48" name="__codelineno-13-48" href="#__codelineno-13-48"></a><span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="s1">'bottom-left'</span><span class="p">},</span>
+<a id="__codelineno-13-49" name="__codelineno-13-49" href="#__codelineno-13-49"></a><span class="w">  </span><span class="nx">layout</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<a id="__codelineno-13-50" name="__codelineno-13-50" href="#__codelineno-13-50"></a><span class="p">});</span>
+<a id="__codelineno-13-51" name="__codelineno-13-51" href="#__codelineno-13-51"></a><span class="nx">MapLeft</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">leftDescription</span><span class="p">);</span>
+<a id="__codelineno-13-52" name="__codelineno-13-52" href="#__codelineno-13-52"></a>
+<a id="__codelineno-13-53" name="__codelineno-13-53" href="#__codelineno-13-53"></a><span class="kd">var</span><span class="w"> </span><span class="nx">rightDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Panel</span><span class="p">({</span>
+<a id="__codelineno-13-54" name="__codelineno-13-54" href="#__codelineno-13-54"></a><span class="w">  </span><span class="nx">widgets</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w">  </span>
+<a id="__codelineno-13-55" name="__codelineno-13-55" href="#__codelineno-13-55"></a><span class="w">    </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Label</span><span class="p">({</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="s2">"Post-fire"</span><span class="p">,</span>
+<a id="__codelineno-13-56" name="__codelineno-13-56" href="#__codelineno-13-56"></a><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">textAlign</span><span class="o">:</span><span class="s1">'centasdsadered'</span><span class="p">,</span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="s1">'15px'</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">'484848'</span><span class="p">,</span><span class="w"> </span><span class="nx">fontWeight</span><span class="o">:</span><span class="w"> </span><span class="s1">'bold'</span><span class="p">}})],</span>
+<a id="__codelineno-13-57" name="__codelineno-13-57" href="#__codelineno-13-57"></a><span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="s1">'bottom-right'</span><span class="p">},</span>
+<a id="__codelineno-13-58" name="__codelineno-13-58" href="#__codelineno-13-58"></a><span class="w">  </span><span class="nx">layout</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<a id="__codelineno-13-59" name="__codelineno-13-59" href="#__codelineno-13-59"></a><span class="p">});</span>
+<a id="__codelineno-13-60" name="__codelineno-13-60" href="#__codelineno-13-60"></a><span class="nx">MapRight</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">rightDescription</span><span class="p">);</span>
+<a id="__codelineno-13-61" name="__codelineno-13-61" href="#__codelineno-13-61"></a>
+<a id="__codelineno-13-62" name="__codelineno-13-62" href="#__codelineno-13-62"></a><span class="c1">// Create the panel widget</span>
+<a id="__codelineno-13-63" name="__codelineno-13-63" href="#__codelineno-13-63"></a><span class="kd">var</span><span class="w"> </span><span class="nx">panel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Panel</span><span class="p">()</span>
+<a id="__codelineno-13-64" name="__codelineno-13-64" href="#__codelineno-13-64"></a><span class="nx">panel</span><span class="p">.</span><span class="nx">style</span><span class="p">().</span><span class="nx">set</span><span class="p">({</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="s1">'350px'</span><span class="p">,</span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="s2">"middle-left"</span><span class="p">});</span>
+<a id="__codelineno-13-65" name="__codelineno-13-65" href="#__codelineno-13-65"></a><span class="nx">ui</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="nx">panel</span><span class="p">)</span>
+<a id="__codelineno-13-66" name="__codelineno-13-66" href="#__codelineno-13-66"></a>
+<a id="__codelineno-13-67" name="__codelineno-13-67" href="#__codelineno-13-67"></a><span class="kd">var</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Label</span><span class="p">({</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="s2">"Detekce spálenišť pomocí GEE"</span><span class="p">,</span>
+<a id="__codelineno-13-68" name="__codelineno-13-68" href="#__codelineno-13-68"></a><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">textAlign</span><span class="o">:</span><span class="s1">'centasdsadered'</span><span class="p">,</span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="s1">'21px'</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">'484848'</span><span class="p">,</span><span class="w"> </span><span class="nx">fontWeight</span><span class="o">:</span><span class="w"> </span><span class="s1">'bold'</span><span class="p">}});</span>
+<a id="__codelineno-13-69" name="__codelineno-13-69" href="#__codelineno-13-69"></a>
+<a id="__codelineno-13-70" name="__codelineno-13-70" href="#__codelineno-13-70"></a><span class="nx">panel</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">title</span><span class="p">)</span>
+<a id="__codelineno-13-71" name="__codelineno-13-71" href="#__codelineno-13-71"></a>
+<a id="__codelineno-13-72" name="__codelineno-13-72" href="#__codelineno-13-72"></a><span class="kd">var</span><span class="w"> </span><span class="nx">infotext1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Label</span><span class="p">({</span><span class="nx">value</span><span class="o">:</span>
+<a id="__codelineno-13-73" name="__codelineno-13-73" href="#__codelineno-13-73"></a><span class="s2">"Aplikace znázorňující stav Českého Švýcarska před a po požáru v léte 2022."</span><span class="w"> </span>
+<a id="__codelineno-13-74" name="__codelineno-13-74" href="#__codelineno-13-74"></a><span class="p">,</span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="s1">'13px'</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">'484848'</span><span class="p">,</span><span class="nx">textAlign</span><span class="o">:</span><span class="s1">'justify'</span><span class="p">}});</span>
+<a id="__codelineno-13-75" name="__codelineno-13-75" href="#__codelineno-13-75"></a><span class="nx">panel</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">infotext1</span><span class="p">)</span>
+</code></pre></div>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni10/21_application.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni10/21_application.png"></a></p>
+<hr class="l1">
+
+<p>Inspirace pro toto cvičení čerpána z: <a href="https://copernicus.gov.cz/index.php/uzivatelske-a-konference-a-seminare/ceske-uzivatelske-forum-2022/" target="_blank"> <strong>GEE Workshop at Copernicus Forum 2022</strong></a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Zpět na začátek
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a href="https://geomatics.fsv.cvut.cz" target="_blank">Katedra geomatiky</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;2023
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/CTUGeomatics" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/geomatics.ctu" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256c0 120 82.7 220.8 194.2 248.5V334.2h-52.8V256h52.8v-33.7c0-87.1 39.4-127.5 125-127.5 16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287v175.9C413.8 494.8 512 386.9 512 256"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.instagram.com/geomatics.ctu" target="_blank" rel="noopener" title="www.instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3 141a115 115 0 1 0-.6 230 115 115 0 1 0 .6-230m-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1-.6-149.2m93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1-53.6 0m129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Zkop\u00edrov\u00e1no do schr\u00e1nky", "clipboard.copy": "Kop\u00edrovat do schr\u00e1nky", "search.result.more.one": "1 dal\u0161\u00ed na t\u00e9to str\u00e1nce", "search.result.more.other": "# v\u00edce na t\u00e9to str\u00e1nce", "search.result.none": "Nenalezeny \u017e\u00e1dn\u00e9 dokumenty", "search.result.one": "Nalezen\u00fd dokument: 1", "search.result.other": "Nalezen\u00e9 dokumenty: #", "search.result.placeholder": "Pi\u0161te co se m\u00e1 vyhledat", "search.result.term.missing": "Chyb\u011bj\u00edc\u00ed", "select.version": "Vyberte verzi"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

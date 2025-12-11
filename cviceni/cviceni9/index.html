@@ -1,0 +1,1277 @@
+<!DOCTYPE html><html lang="cs" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../cviceni8/">
+      
+      
+        <link rel="next" href="../cviceni10/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Tepelná analýza pomocí dat Landsat - 155DPRZ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tepelna-analyza-pomoci-dat-landsat" class="md-skip">
+          Přeskočit obsah
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Záhlaví">
+    <a href="../.." title="155DPRZ" class="md-header__button md-logo" aria-label="155DPRZ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            155DPRZ
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tepelná analýza pomocí dat Landsat
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="teal" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Hledat" placeholder="Hledat" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Vyhledávání">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Vyčistit" aria-label="Vyčistit" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializace vyhledávání
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Karty" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Charakterisika předmětu
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../cviceni1/" class="md-tabs__link">
+          
+  
+  
+  Cvičení
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigace" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="155DPRZ" class="md-nav__button md-logo" aria-label="155DPRZ" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    155DPRZ
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Charakterisika předmětu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cvičení
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cvičení
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni1/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 17h-2V9h-2V7h4m5-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Úvod do DPZ, ukázka webových portálů pro prohlížení a stahování družicových dat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni2/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 11a2 2 0 0 1-2 2h-2v2h4v2H9v-4a2 2 0 0 1 2-2h2V9H9V7h4a2 2 0 0 1 2 2m4-6H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Seznámení se softwarem SNAP, vytvoření subsetu, barevná syntéza, tvorba spektrálních křivek
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni3/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 10.5a1.5 1.5 0 0 1-1.5 1.5c.84 0 1.5.67 1.5 1.5V15c0 1.11-.89 2-2 2H9v-2h4v-2h-2v-2h2V9H9V7h4c1.11 0 2 .89 2 2m4-6H5c-1.09 0-2 .9-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Vegetační (spektrální) indexy, maskování, detekce vodních ploch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni4/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 17h-2v-4H9V7h2v4h2V7h2m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Filtrace obrazu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni5/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 9h-4v2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H9v-2h4v-2H9V7h6m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Neřízená klasifikace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni6/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 9h-4v2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h4m4-4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-8 12h2v-2h-2z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Řízená klasifikace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni7/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-8 14 4-8V7H9v2h4l-4 8z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Segmentace a objektová klasifikace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni8/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-8 14h2a2 2 0 0 0 2-2v-1.5a1.5 1.5 0 0 0-1.5-1.5 1.5 1.5 0 0 0 1.5-1.5V9a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v1.5a1.5 1.5 0 0 0 1.5 1.5A1.5 1.5 0 0 0 9 13.5V15a2 2 0 0 0 2 2m0-4h2v2h-2zm0-4h2v2h-2z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ukázka VHR dat, pansharpening, komplexní úloha s využitím klasifikace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-6 8h-2V9h2zm0-4h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2v2H9v2h4a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Tepelná analýza pomocí dat Landsat
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-6 8h-2V9h2zm0-4h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2v2H9v2h4a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Tepelná analýza pomocí dat Landsat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Obsah">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Obsah
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cil-cviceni" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cíl cvičení
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zakladni-pojmy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Základní pojmy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Základní pojmy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#program-landsat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Program Landsat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#landsat-89" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Landsat 8/9
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stazeni-dat-landsat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stažení dat Landsat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otevreni-a-zobrazeni-dat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Otevření a zobrazení dat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vypocet-povrchove-teploty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Výpočet povrchové teploty
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Výpočet povrchové teploty">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-prevod-digitalnich-hodnot-na-toa-zareni" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Převod digitálních hodnot na TOA záření
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-prevod-toa-zareni-na-jasovou-teplotu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Převod TOA záření na jasovou teplotu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-vypocet-ndvi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Výpočet NDVI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-zjisteni-podilu-vegetace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Zjištění podílu vegetace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-vypocet-emisivity-povrchu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Výpočet emisivity povrchu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-vypocet-teploty-povrchu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Výpočet teploty povrchu
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zhodnoceni-vysledku" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zhodnocení výsledků
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#porovnani-s-level-2-produktem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Porovnání s Level 2 produktem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ukol-vypocet-povrchove-teploty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Úkol - Výpočet povrchové teploty
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni10/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 9h2v6h-2zm7-4v14c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2M10 7H6v2h2v8h2zm8 2a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2c1.11 0 2-.89 2-2z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ukázka práce v Google Earth Engine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni11/" class="md-nav__link">
+        
+  
+  
+    <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+<svg viewBox="0 0 24 24" version="1.1" id="svg1" sodipodi:docname="numeric-10-box.svg" inkscape:version="1.3 (0e150ed6c4, 2023-07-21)" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <defs id="defs1"></defs>
+  <sodipodi:namedview id="namedview1" pagecolor="#505050" bordercolor="#eeeeee" borderopacity="1" inkscape:showpageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:current-layer="svg1"></sodipodi:namedview>
+  <path id="path2" d="M 5 3 A 2 2 0 0 0 3 5 L 3 19 A 2 2 0 0 0 5 21 L 19 21 C 20.109999 21 21 20.109999 21 19 L 21 5 C 21 3.9000011 20.109999 3 19 3 L 5 3 z M 7 7 L 11 7 L 11 17 L 9 17 L 9 9 L 7 9 L 7 7 z M 13 7 L 17 7 L 17 17 L 15 17 L 15 9 L 13 9 L 13 7 z "></path>
+</svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Detekce zaplaveného území pomocí radarových dat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cviceni12/" class="md-nav__link">
+        
+  
+  
+    <!--?xml version="1.0" encoding="utf-8"?-->
+<svg viewBox="0 0 24 24" version="1.1" id="svg1" xmlns="http://www.w3.org/2000/svg">
+  <path id="path2" d="M 5 3 C 3.895 3 3 3.895 3 5 L 3 19 C 3 20.105 3.895 21 5 21 L 19 21 C 20.11 21 21 20.11 21 19 L 21 5 C 21 3.9 20.11 3 19 3 L 5 3 Z M 6.416 6.976 L 10.416 6.976 L 10.416 16.976 L 8.416 16.976 L 8.416 8.976 L 6.416 8.976 L 6.416 6.976 Z M 12.416 6.976 L 17.751 6.949 L 17.687 12.974 L 14.449 12.981 L 14.457 14.962 L 17.668 14.983 L 17.682 16.976 L 12.458 16.939 L 12.448 10.997 L 15.694 10.99 L 15.695 8.976 L 12.416 8.976 L 12.416 6.976 Z"></path>
+</svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Radarová interferometrie, tvorba DEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<style>
+  .md-typeset__scrollwrap {text-align: center ;}
+  table th {text-align: center !important;}
+  table td {text-align: center !important;}
+  h2 {font-weight:700 !important;}                                                                   /* Pokus – zmena formatu nadpisu 2 */
+  figcaption {font-size:12px;margin-top:5px !important;text-align:center;line-height:1.2em;}         /* Formatovani Popisku obrazku */
+  hr.l1 {background-color:var(--md-primary-fg-color);height:2px;margin-bottom:3em !important;}       /* Formatovani Break Line – LEVEL 1 */
+  img,iframe {filter:drop-shadow(0 10px 16px rgba(0,0,0,0.2)) drop-shadow(0 6px 20px rgba(0,0,0,0.2)) !important; object-fit:contain;} /* Stin pod obrazky a videi */
+
+  /* TLACITKA */
+  .md-button {text-align:center;transition: all .1s ease-in-out !important;}  /* Button – zarovnani textu */
+  .md-button:hover {transform: scale(1.04);opacity:.8;background-color:var(--md-primary-fg-color) !important;border-color:var(--md-primary-fg-color) !important;color:var(--md-primary-bg-color) !important;/*filter: brightness(80%);*/}            /* Button Hover – animace zvetseni a zmeny barvy */
+  .md-button:focus {opacity:.8;background-color:var(--md-primary-fg-color) !important;border-color:var(--md-primary-fg-color) !important;color:var(--md-primary-bg-color) !important;}                                                                /* Button Focus – stejny vzhled jako hover */
+  .url-name {line-height:1.2;/*padding-top:5px !important;*/}                 /* Button s URL */
+  .url-name span:first-child {font-size:.7em; font-weight:300;}               /* Button s URL – format*/
+  .url-name span.twemoji {vertical-align:-0px;}                               /* Button s URL – zarovnani ikony*/
+  .md-button.button_smaller {font-size:smaller; padding:1px 5px;}             /* Mensi button (bez URL) */
+
+  /* FLEXBOXY */
+  .process_container {display:flex !important; justify-content:center; align-items:center; column-gap:calc((100vw * 0.03) - 6px);} /* Kontejner pro content = FlexBox */
+  .process_container div {display:flex;}                                                                                           /* Obsah (obrazky a sipky) */
+  .process_container .process_icon {width:/*40px*/calc((100vw * 0.01) + 25px); flex-shrink:0;filter:none !important;}              /* Velikost ikony (bacha na mobily) */
+  .process_container img {max-height:600px; display:flex;}                                    /* Obrazky ve flexboxech maji maximalni vysku */
+</style>
+
+<h1 id="tepelna-analyza-pomoci-dat-landsat">Tepelná analýza pomocí dat Landsat</h1>
+<hr class="l1">
+
+<h2 id="cil-cviceni">Cíl cvičení</h2>
+<ul>
+<li>Seznámit se s daty Landsat</li>
+<li>Umět spočítat povrchovou teplotu na základě dat Landsat</li>
+</ul>
+<hr class="l1">
+
+<h2 id="zakladni-pojmy">Základní pojmy</h2>
+<ul>
+<li><strong>LST</strong> - Land Surface Temperature - radiační teplota zemského povrchu měřená ve směru senzoru</li>
+<li><strong>LSE</strong> - Land Surface Emissivity - bezrozměrná veličina udávající jak účinně povrch vyzařuje tepelné infračervené záření</li>
+</ul>
+<h3 id="program-landsat">Program Landsat</h3>
+<p>Program Landsat je nejdéle probíhající projekt zaměřený na pozorování Země. Scény zobrazující zemský povrch poskytuje nepřetržitě již od roku 1972. Během více než padesáti let bylo postupně vypuštěno devět družic s názvy Landsat 1 až Landsat 9. V současné době jsou aktivní družice Landsat 8 a Landsat 9 a z části i Landsat 7. Program společně řídí agentury <a href="https://www.nasa.gov/" target="_blank"> <strong>NASA</strong></a> a <a href="https://www.usgs.gov/" target="_blank"> <strong>U.S. Geological Survey</strong></a>. Veškerá data jsou volně dostupná. Více o historii, současnosti i budoucnosti programu Landsat se můžete dozvědět na následujích webových stránkách:</p>
+<p align="center" style="display:flex; justify-content:center; align-items:center; column-gap:20px; row-gap:10px; flex-wrap:wrap;"><a class="md-button md-button--primary button_smaller" href="https://www.usgs.gov/landsat-missions/landsat-satellite-missions" target="_blank"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2z"></path></svg></span> Landsat Satellite Missions</a></p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/01_Landsat_timeline.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/01_Landsat_timeline.png"></a></p>
+<figcaption>Mise Landsat</figcaption>
+
+<div style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7XKVSTX1vdE?si=HvOfNrfjRDOqKuzn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<p align="center" style="display:flex; justify-content:center; align-items:center; column-gap:20px; row-gap:10px; flex-wrap:wrap;"><a class="md-button md-button--primary url-name" href="https://www.youtube.com/watch?v=gfUYFPWYwXI" target="_blank"><span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2z"></path></svg></span> youtube.com</span><br>Landsat: Celebrating 50 Years (Extended Edition)</a></p>
+<h3 id="landsat-89">Landsat 8/9</h3>
+<p>V rámci tohoto cvičení budeme pracovat s daty z jedné z těchto dvou družic. Obě družice nesou téměř identické vybavení s tím, že přístroje na Landsatu 9 jsou vylepšenými replikami přístrojů družice Landsat 8. Na obou družicích najdeme tedy dva senzory (OLI, resp. OLI-2 a TIRS, resp. TIRS-2). OLI je zkratkou pro <strong>Operational Land Imager</strong>, který snímá 8 spektrálních pásem a jedno pásmo panchromatické. TIRS je zktratkou pro <strong>Thermal Infrared Sensor</strong>, který měří tepelné záření vyzařované zemským povrchem ve dvou termálních infračervených pásmech.</p>
+<div class="process_container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1DLDjxpPElA?si=5CCyCYFM_ArWyZ9o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DGE-N8_LQBo?si=Ofntz4jPTBGPvdi8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<p align="center" style="display:flex; justify-content:center; align-items:center; column-gap:20px; row-gap:10px; flex-wrap:wrap;"><a class="md-button md-button--primary url-name" href="https://www.youtube.com/playlist?list=PL_8hVmWnP_O3WFxfAa_xBlsmGq87HMhFW" target="_blank"><span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2z"></path></svg></span> youtube.com</span><br>Landsat 9: Continuing the Legacy</a></p>
+<p>Jednotlivá pásma Landsat 8 a 9 shrnuje následující tabulka:</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/02_landsat8_9_bands.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/02_landsat8_9_bands.png" style="height:558px;"></a></p>
+<hr class="l1">
+
+<h2 id="stazeni-dat-landsat">Stažení dat Landsat</h2>
+<p>Data Landsat budeme stahovat z portálu <a href="https://earthexplorer.usgs.gov/" target="_blank"> <strong>USGS EarthExplorer</strong></a>, kde je potřeba se nejprve zaregistrovat. Registraci provedeme přes tlačítko <strong><em>Login</em></strong> v pravé horní části webových stránek (vlastní zkušenost ukázala, že registrace zde není zrovna nejjednodušší proces).</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/03_EarthExplorer.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/03_EarthExplorer.png"></a></p>
+<p>Když se nám podařilo se zaregistrovat, můžeme přejít k vybrání oblasti, ze které budeme chtít data stáhnout. Cílem tohoto cvičení je analyzovat tepelné ostrovy, takže si najdeme nějaké větší město kdekoliv na světě. Následně si naše území vyznačíme obyčejným klikáním do mapového okna.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/04_location.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/04_location.png"></a></p>
+<p>Zároveň si ve spodní části záložky <strong>Search Criteria</strong> nastavíme <strong><em>Date Range</em></strong> na období letních měsíců a <strong><em>Cloud Cover</em></strong> na nějakou rozumnou hodnotu (chceme ideálně bezoblačnou scénu).</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/05_date_range.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/05_date_range.png" style="height:350px;"></a>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/06_cloud_cover.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/06_cloud_cover.png" style="height:161px;"></a></p>
+<p>Dále se přepneme do záložky <strong>Data Sets</strong>, kde zvolíme, jaká data budeme chtít stahovat. V našem případě zvolíme <strong>Landsat</strong> → <strong>Landsat Collection 2 Level-1</strong> → <strong>Landsat 8-9 OLI/TIRS C2 L1</strong>. Jedná se o data bez atmosferických korekcí, která pro analýzu povrchové teploty budeme potřebovat.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/07_select_data.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/07_select_data.png" style="height:405px;"></a></p>
+<p>Záložku <strong>Addittional Criteria</strong> můžeme přeskočit a rovnou se přepnout do záložky <strong>Results</strong>. Zde si již můžeme vybrat jednu z nabízených scén. Pomocí funkce <strong><em>Show Browse Overlay</em></strong> se můžeme podívat, jak dobře se daná scéna s naším uzemím překrývá.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/08_search_results.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/08_search_results.png"></a></p>
+<p>Pokud jsme se scénou spokojeni, klikneme na ikonu <strong><em>Download Options</em></strong>. Zde si zvolíme, jaké soubory chceme stahovat. V našem případě si stáhneme všechny soubory. Klikneme tedy na <strong><em>Product Options</em></strong> a stáhneme si celou Landsat kolekci.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/09_download_options.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/09_download_options.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/10_download_files.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/10_download_files.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/11_all_collection.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/11_all_collection.png"></a></p>
+<p>K <em>Level 1</em> produktu si nicméně stáhneme i <em>Level 2</em> produkt (pokud je k dispozici). V záložce <strong>Data Sets</strong> stačí jen změnit data na <strong>Landsat</strong> → <strong>Landsat Collection 2 Level-2</strong> → <strong>Landsat 8-9 OLI/TIRS C2 L2</strong> a poté kliknout zpátky do <strong>Results</strong>, kde si vybereme korespondující scénu s <em>Level 1</em> produktem. <em>Level 2</em> produkt v sobě má již pásmo odpovídající <strong><em>Land Surface Temperature</em></strong>. K jeho hodnotám se ale došlo trochu jinak, než jak k nim dojdeme my. V závěru cvičení můžeme ale naše výsledky s již předzpracovaným pásmem porovnat.</p>
+<hr class="l1">
+
+<h2 id="otevreni-a-zobrazeni-dat">Otevření a zobrazení dat</h2>
+<p>Pokud jsme stahovali všechna data najednou (a ne třeba jen vybraná pásma), tak jsme data obdrželi ve formátu <em>TAR</em>. Jedná se o podobný formát jako <em>ZIP</em>, ale nedochází zde ke kompresi. Data v tomto formátu lze rozbalit např. pomocí nástroje <a href="https://www.7-zip.org/" target="_blank"> <strong>7-Zip</strong></a>. Pokud 7-Zip v učebně není nainstalovaný, lze použít i <strong>Total Commander</strong>.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/12_7zip.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/12_7zip.png" style="height:359px;"></a></p>
+<p>Po rozbalení dat si do ArcGIS Pro nahrajeme pásma B2, B3 a B4 a vytvoříme si z nich RGB kompozit pomocí funkce <a class="md-button md-button--primary button_smaller" href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/composite-bands.htm" target="_blank"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2z"></path></svg></span> Composite Bands</a>. Připomínám, že pracujeme s <em>Level 1</em> daty.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/13_rgb_scene.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/13_rgb_scene.png"></a></p>
+<hr class="l1">
+
+<h2 id="vypocet-povrchove-teploty">Výpočet povrchové teploty</h2>
+<p>Výpočet povrchové teploty se bude skládat z celkem šesti kroků, které si postupně projdeme. Základem výpočtu bude termální pásmo <strong>B10</strong>, které si nejprve tedy přidáme do ArcGIS Pro.</p>
+<h3 id="1-prevod-digitalnich-hodnot-na-toa-zareni">1) Převod digitálních hodnot na TOA záření</h3>
+<p>Prvním krokem je, že si převedeme digitální hodnoty pixelů v pásmu <strong>B10</strong> na hodnoty záření na vrcholu atmosféry (<em>TOA = Top of Atmospheric</em>). Vzoreček pro tento převod je následující:</p>
+<p><strong>TOA = M<sub>L</sub>·B<sub>10</sub> + A<sub>L</sub></strong></p>
+<p>kde:</p>
+<p><strong>M<sub>L</sub></strong> je multiplikativní přeškálovací faktor, jehož hodnotu najdeme v metadatech daného Landsat produktu. Metada nalezneme v textovém souboru končícím na <em>_MTL.txt</em>. Konkrétně se pak jedná o hodnotu <strong><em>RADIANCE_MULT_BAND_10</em></strong></p>
+<p><strong>B<sub>10</sub></strong> je termální pásmo B10</p>
+<p><strong>A<sub>L</sub></strong> je aditivní přeškálovací faktor, který rovněž najdeme v metadatech, kde nese název <strong><em>RADIANCE_ADD_BAND_10</em></strong></p>
+<p>K výpočtu použijeme nástroj <a class="md-button md-button--primary button_smaller" href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/image-analyst/raster-calculator.htm" target="_blank"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2z"></path></svg></span> Raster Calculator</a>.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/14_raster_calculator.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/14_raster_calculator.png" style="height:400px;"></a></p>
+<h3 id="2-prevod-toa-zareni-na-jasovou-teplotu">2) Převod TOA záření na jasovou teplotu</h3>
+<p>Pro výpočet jasové teploty (<em>Brightness Temperature</em>) použijeme následující vzorec:</p>
+<p><strong>BT = K<sub>2</sub> / ln(K<sub>1</sub>/TOA + 1) − 273.15</strong></p>
+<p>kde:</p>
+<p><strong>K<sub>2</sub></strong> a <strong>K<sub>1</sub></strong> jsou konstanty tepelné konverze, které najdeme v metadatech pod názvy <strong><em>K1_CONSTANT_BAND_10</em></strong> a <strong><em>K2_CONSTANT_BAND_10</em></strong></p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/15_bt.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/15_bt.png" style="height:400px;"></a></p>
+<h3 id="3-vypocet-ndvi">3) Výpočet NDVI</h3>
+<p>V dalším kroku vypočteme index NDVI. Ten bude následně sloužit k určení emisivity povrchu. Vzoreček pro NDVI již všichi známe. Pokud ne, tak jeho podoba je následující (pozor na jiné pořadí pásem oproti Sentinel-2):</p>
+<p><strong>NDVI = (NIR - Red)/(NIR + Red) = (B5 - B4)/(B5 + B4)</strong></p>
+<p>A jelikož máme pásma jednotlivě a ne v jedné vrstvě, použijeme znovu <em>Raster Calculator</em>.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/16_ndvi.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/16_ndvi.png" style="height:400px;"></a></p>
+<h3 id="4-zjisteni-podilu-vegetace">4) Zjištění podílu vegetace</h3>
+<p>Vzorec pro určení podílu vegetace má následující tvar:</p>
+<p><strong>P<sub>V</sub> = ((NDVI - NDVI<sub>min</sub>)/(NDVI<sub>max</sub> - NDVI<sub>min</sub>))<sup>2</sup></strong></p>
+<p>Hodnoty <strong>NDVI<sub>min</sub></strong> a <strong>NDVI<sub>max</sub></strong> zjistíme např. přímo z panelu <em>Contents</em>.</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/17_minmax.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/17_minmax.png"></a>
+<img alt="" class="off-glb process_icon" src="../../assets/arrow.svg">
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/18_pv.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/18_pv.png" style="height:400px;"></a></p>
+<h3 id="5-vypocet-emisivity-povrchu">5) Výpočet emisivity povrchu</h3>
+<p>V předposledním kroku pomocí NDVI vypočteme emisivitu zemského povrchu. Vzoreček je následující:</p>
+<p><strong>e = 0,004 · P<sub>V</sub> + 0,986</strong></p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/19_e.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/19_e.png" style="height:400px;"></a></p>
+<h3 id="6-vypocet-teploty-povrchu">6) Výpočet teploty povrchu</h3>
+<p>Posledním krokem je již výpočet samotné teploty povrchu.</p>
+<p><strong>LST = BT / (1 + (λ·BT/14388)·ln(e))</strong></p>
+<p>kde:</p>
+<p><strong>λ</strong> je vlnová délka vyzařovaného záření pásma B10. Použijeme průměrnou hodnotu z intervalu 10,6 - 11,19 → tedy <strong>10,895</strong> (hodnota je v mikrometrech, ale nemusíme ji převádět, protože konstanta 14388 je rovněž v mikrometrech).</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/20_lst.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/20_lst.png" style="height:400px;"></a></p>
+<hr class="l1">
+
+<h2 id="zhodnoceni-vysledku">Zhodnocení výsledků</h2>
+<p>Takto vypočtenou teplotu povrchu jsme obdrželi rovnou ve °C. Pokud jsme nikde neudělali chybu, tak vidíme, že výsledky jsou realistické. Je ale dobré si uvědomit, že se nejedná o stejnou teplotu jako je teplota vzduchu.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/21_lst_values.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/21_lst_values.png"></a></p>
+<p>Dále je vhodné si data obarvit nějakým rozumným barevným schématem, které bude pro zobrazení teploty ituitivnější. V mém případě barevnou škálu trochu zkresluje drobná oblačnost v severní části scény a pro lepší vyzualizaci teplot ve městě by stálo za to scénu oříznout.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/22_color_schema.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/22_color_schema.png" style="height:565px;"></a></p>
+<p>Při porovnání s NDVI můžeme vidět, že nižší teploty odpovídají místům se zelení a naopak místa bez zeleně mají teplotu o poznání vyšší (což samozřejmě dává smysl, ale je vždy dobré mít to čím podpořit).</p>
+<p class="process_container"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/23_rgb.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/23_rgb.png"></a>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/24_lst.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/24_lst.png"></a>
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/25_ndvi.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/25_ndvi.png"></a></p>
+<figcaption>Vlevo - RGB scéna, uprostřed - povrchová teplota, vpravo - NDVI</figcaption>
+
+<hr class="l1">
+
+<h2 id="porovnani-s-level-2-produktem">Porovnání s Level 2 produktem</h2>
+<p><em>Level 2</em> Landsat produkt nabízí již předzpracované termální pásmo, a pro zjištění povrchové teploty ho lze pouze přeškálovat pomocí správných koeficientů. Přidáme si tedy do ArcGIS Pro pásmo B10 z <em>Level 2</em> produktu a pomocí následujícího vzorce ho přeškálujeme:</p>
+<p><strong>LST = M<sub>T</sub>·B<sub>10</sub> + A<sub>T</sub> - 273,15</strong></p>
+<p>kde:</p>
+<p><strong>M<sub>T</sub></strong> je multiplikativní přeškálovací faktor, který nalezneme v metadatech (textový soubor s koncovkou <em>_MTL.txt</em>) pod názvem <strong><em>TEMPERATURE_MULT_BAND_ST_B10</em></strong></p>
+<p><strong>A<sub>T</sub></strong> je aditivní přeškálovací faktor, který nalezneme v metadatech pod názvem <strong><em>TEMPERATURE_ADD_BAND_ST_B10</em></strong></p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/26_lst_lvl2.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/26_lst_lvl2.png" style="height:400px;"></a></p>
+<p>V mém případě se výsledky trochu liší. V zástavbě byl rozdíl až 10 °C, v oblastech s vegetací se zjištěná teplota lišila zhruba o 5 °C a na vodních plochách byl rozdíl přibližně 3 °C. Otázkou tak zůstává, proč se výsledky takto liší, a který výsledek je přesnější.</p>
+<p align="center" style="margin-bottom:0px;"><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/cviceni9/27_lst_comparison.png" data-desc-position="bottom"><img alt="" src="../../assets/cviceni9/27_lst_comparison.png" style="height:226px;"></a></p>
+<p>Pro zajímavost zde přidávám odstavec z oficiální <a href="https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-1619_Landsat8-9-Collection2-Level2-Science-Product-Guide-v5.pdf" target="_blank"> <strong>příručky</strong></a> <em>Landsat 8-9</em>:</p>
+<p><em>"The Landsat 8-9 Surface Temperature (ST) product is generated from the single channel algorithm version 1.3.0 (derived from June 2017 version of RIT ST code). The Landsat 8-9 Collection 2 ST is derived from the Collection 2 Level 1 Thermal Infrared Sensor (TIRS) band 10 using Top of Atmosphere (TOA) Reflectance, TOA Brightness Temperature (BT), Advanced Spaceborne Thermal Emission and Reflection Radiometer (ASTER) Global Emissivity Dataset (GED) data, ASTER Normalized Difference Vegetation Index (NDVI) data, and atmospheric profiles of geopotential height, specific humidity, and air temperature extracted from reanalysis data."</em></p>
+<hr class="l1">
+
+<h2 id="ukol-vypocet-povrchove-teploty">Úkol - Výpočet povrchové teploty</h2>
+<ul>
+<li>Stáhněte si data Landsat 8/9 z doby letních měsíců pro nějaké větší město</li>
+<li>Spočtěte povrchovou teplotu jak z Level 1, tak i z Level 2 dat</li>
+<li>Výsledky vizualizujte pomocí vhodné barevné škály</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Zpět na začátek
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a href="https://geomatics.fsv.cvut.cz" target="_blank">Katedra geomatiky</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;2023
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/CTUGeomatics" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/geomatics.ctu" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256c0 120 82.7 220.8 194.2 248.5V334.2h-52.8V256h52.8v-33.7c0-87.1 39.4-127.5 125-127.5 16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287v175.9C413.8 494.8 512 386.9 512 256"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.instagram.com/geomatics.ctu" target="_blank" rel="noopener" title="www.instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3 141a115 115 0 1 0-.6 230 115 115 0 1 0 .6-230m-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1-.6-149.2m93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1-53.6 0m129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Zkop\u00edrov\u00e1no do schr\u00e1nky", "clipboard.copy": "Kop\u00edrovat do schr\u00e1nky", "search.result.more.one": "1 dal\u0161\u00ed na t\u00e9to str\u00e1nce", "search.result.more.other": "# v\u00edce na t\u00e9to str\u00e1nce", "search.result.none": "Nenalezeny \u017e\u00e1dn\u00e9 dokumenty", "search.result.one": "Nalezen\u00fd dokument: 1", "search.result.other": "Nalezen\u00e9 dokumenty: #", "search.result.placeholder": "Pi\u0161te co se m\u00e1 vyhledat", "search.result.term.missing": "Chyb\u011bj\u00edc\u00ed", "select.version": "Vyberte verzi"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
