@@ -148,7 +148,7 @@ Dále použijeme nástroj ***Apply Radiometric Calibration***. Kalibrace dat SAR
 
 ### 4) Radiometrické vyrovnání terénu
 
-V dalším kroku opravíme data o radiometrické zkreslení způsobené topografií pomocí nástroje ***Apply Radiometric Terrain Flattening***. Vzhledem k bočnímu pohledu senzorů SAR se prvky terénu směřující k senzoru jeví uměle jasnější a prvky směřující od senzoru se jeví uměle tmavší. Radiometrické vyrovnání terénu normalizuje hodnoty zpětného odrazu, aby toto zkreslení odstranilo. K tomuto kroku je ale zapotřemí mít k dispozici DEM. Proto si ho <a href="https://geo.fsv.cvut.cz/vyuka/155dprz/cv11/dem_wgs84.tif" target="_blank"> **Zde**</a> stáhněte. Do nástroje poté vložíme výstup z předchozího kroku, DEM, zaškrtneme obě polarizace, a jako kalibrační typ nyní zvolíme *Sigma nought*, který je vhodný právě pro detekci vodních ploch.
+V dalším kroku opravíme data o radiometrické zkreslení způsobené topografií pomocí nástroje ***Apply Radiometric Terrain Flattening***. Vzhledem k bočnímu pohledu senzorů SAR se prvky terénu směřující k senzoru jeví uměle jasnější a prvky směřující od senzoru se jeví uměle tmavší. Radiometrické vyrovnání terénu normalizuje hodnoty zpětného odrazu, aby toto zkreslení odstranilo. K tomuto kroku je ale zapotřemí mít k dispozici DEM. Proto si ho <a href="https://geo.fsv.cvut.cz/vyuka/155dprz/cv11/dem_wgs84_clip.tif" target="_blank"> **Zde**</a> stáhněte. Do nástroje poté vložíme výstup z předchozího kroku, DEM, zaškrtneme obě polarizace, a jako kalibrační typ nyní zvolíme *Sigma nought*, který je vhodný právě pro detekci vodních ploch.
 
 ![](../assets/cviceni12/10_radiometric_terrain_flattening.png){ style="height:345px;"}
 {: style="margin-bottom:0px;" align=center }
